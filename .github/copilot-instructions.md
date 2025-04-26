@@ -1,0 +1,3 @@
+This is an Angular 19 website with beautiful and modern graphics. It is an information and marketing website for Nostria, which is a good Nostr client built to scale well. Nostria also provides modern cloud infrastructure for its premium users.
+
+This page contains information to explain the benefits of Nostria and its features. It also contains a section for testimonials from users who have used Nostria and found it to be a great Nostr client. The page is designed to be responsive and work well on all devices, including mobile phones and tablets.
