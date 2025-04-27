@@ -3,10 +3,10 @@ name: Build and Deploy to Azure Web Apps
 on:
   push:
     branches: [ main ]
-  workflow_dispatch:  # Allows manual triggering
+  workflow_dispatch:
 
 env:
-  AZURE_WEBAPP_NAME: nostria-about    # Change this to your actual Azure Web App name
+  AZURE_WEBAPP_NAME: nostria-website
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
   IMAGE_TAG: ${{ github.sha }}
