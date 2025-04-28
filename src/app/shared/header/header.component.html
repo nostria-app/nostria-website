@@ -1,0 +1,27 @@
+<header class="header">
+  <div class="container">
+    <div class="header-content">
+      <a routerLink="/" class="logo">
+        <img src="icons/icon-128x128.png" alt="Nostria Logo" class="logo-image" />
+        <span class="logo-text">Nostria</span>
+      </a>
+      
+      <nav class="nav" [class.nav-open]="isMenuOpen">
+        <ul class="nav-list">
+          <li><a routerLink="/home" routerLinkActive="active" class="nav-link">Home</a></li>
+          <li><a routerLink="/features" routerLinkActive="active" class="nav-link">Features</a></li>
+          <li><a routerLink="/premium" routerLinkActive="active" class="nav-link">Premium</a></li>
+          <li><a routerLink="/testimonials" routerLinkActive="active" class="nav-link">Testimonials</a></li>
+          <li><a routerLink="/about" routerLinkActive="active" class="nav-link">About</a></li>
+        </ul>
+      </nav>
+      
+      <div class="header-actions">
+        <a href="https://app.nostria.com" target="_blank" class="btn btn-primary">Launch App</a>
+        <button class="menu-toggle" (click)="toggleMenu()" aria-label="Toggle menu">
+          <span class="menu-icon" [class.menu-open]="isMenuOpen"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>

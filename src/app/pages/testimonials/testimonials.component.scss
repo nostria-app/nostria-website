@@ -1,0 +1,246 @@
+// Testimonials Hero Section
+.testimonials-hero {
+  padding: 5rem 0 3rem;
+  background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-color) 100%);
+  text-align: center;
+  color: white;
+  
+  h1 {
+    color: white;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.25rem;
+    margin: 1rem auto 0;
+    max-width: 600px;
+    opacity: 0.9;
+  }
+}
+
+// Testimonials Section
+.testimonials-section {
+  padding: 4rem 0;
+  background-color: var(--surface);
+}
+
+// Testimonials Filter
+.testimonials-filter {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  
+  .filter-btn {
+    background: none;
+    border: 2px solid var(--divider);
+    border-radius: 2rem;
+    padding: 0.75rem 1.5rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    
+    &:hover {
+      border-color: var(--primary-light);
+      color: var(--primary-color);
+    }
+    
+    &.active {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+      color: white;
+    }
+  }
+}
+
+// Testimonials Grid
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 3rem;
+  
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Testimonial Card
+.testimonial-card {
+  background-color: white;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  .testimonial-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    
+    .testimonial-rating {
+      margin-bottom: 1rem;
+      
+      .star {
+        color: #ffc107;
+        font-size: 1.25rem;
+      }
+    }
+    
+    .testimonial-quote {
+      color: var(--primary-color);
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      opacity: 0.5;
+    }
+    
+    .testimonial-text {
+      flex: 1;
+      margin-bottom: 1.5rem;
+      font-size: 1.125rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      font-style: italic;
+    }
+    
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      
+      .author-avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+      
+      .author-info {
+        h4 {
+          margin-bottom: 0.25rem;
+          font-weight: 600;
+          font-size: 1rem;
+        }
+        
+        p {
+          color: var(--text-secondary);
+          margin-bottom: 0;
+          font-size: 0.875rem;
+        }
+      }
+    }
+  }
+  
+  &.hidden {
+    display: none;
+  }
+}
+
+// Load More Button
+.load-more {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+// Submit Testimonial Section
+.submit-testimonial {
+  padding: 5rem 0;
+  background: linear-gradient(135deg, #f0f9ff 0%, #f8fafc 100%);
+  
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  .testimonial-form-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    padding: 2.5rem;
+  }
+  
+  .testimonial-form {
+    .form-group {
+      margin-bottom: 1.5rem;
+      
+      label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+        color: var(--text-primary);
+      }
+      
+      input[type="text"],
+      input[type="email"],
+      select,
+      textarea {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        border: 1px solid var(--divider);
+        border-radius: 0.5rem;
+        transition: border-color 0.3s ease;
+        
+        &:focus {
+          outline: none;
+          border-color: var(--primary-color);
+        }
+      }
+      
+      textarea {
+        resize: vertical;
+      }
+      
+      // Star Rating Input
+      .rating-input {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+        
+        input {
+          display: none;
+        }
+        
+        label {
+          cursor: pointer;
+          font-size: 2rem;
+          color: #ddd;
+          margin: 0;
+          padding: 0 0.25rem;
+          
+          &:hover,
+          &:hover ~ label,
+          input:checked ~ label {
+            color: #ffc107;
+          }
+        }
+      }
+    }
+    
+    .form-submit {
+      text-align: center;
+      margin-top: 2rem;
+      
+      .btn-primary {
+        padding: 0.875rem 2rem;
+      }
+    }
+  }
+}
