@@ -19,22 +19,22 @@ export class FeaturesComponent {
         {
           title: 'Intuitive Interface',
           description: 'Clean, modern design that makes navigating the Nostr network simple for both beginners and power users.',
-          icon: 'fa-solid fa-wand-magic-sparkles'
+          icon: 'material-symbols-outlined auto_fix'
         },
         {
           title: 'Customizable Themes',
           description: 'Choose from multiple themes or create your own to personalize your Nostria experience.',
-          icon: 'fa-solid fa-palette'
+          icon: 'material-symbols-outlined palette'
         },
         {
           title: 'Multi-column Layout',
           description: 'Power users can view multiple timelines simultaneously with our flexible column layout system.',
-          icon: 'fa-solid fa-table-columns'
+          icon: 'material-symbols-outlined view_column'
         },
         {
           title: 'Advanced Filters',
           description: 'Filter your timeline by content type, keywords, authors, and more to focus on what matters to you.',
-          icon: 'fa-solid fa-filter'
+          icon: 'material-symbols-outlined filter_alt'
         }
       ]
     },
@@ -45,22 +45,22 @@ export class FeaturesComponent {
         {
           title: 'Lightning Fast Load Times',
           description: 'Optimized client architecture ensures quick startup and responsive interactions.',
-          icon: 'fa-solid fa-bolt'
+          icon: 'material-symbols-outlined bolt'
         },
         {
           title: 'Efficient Caching',
           description: 'Smart local caching reduces redundant network requests and speeds up your browsing experience.',
-          icon: 'fa-solid fa-database'
+          icon: 'material-symbols-outlined database'
         },
         {
           title: 'Background Syncing',
           description: 'Stay up-to-date even when offline with background synchronization that updates when you reconnect.',
-          icon: 'fa-solid fa-arrows-rotate'
+          icon: 'material-symbols-outlined sync'
         },
         {
           title: 'Optimized Media Loading',
           description: 'Intelligent media loading prioritizes visible content for faster scrolling and reduced data usage.',
-          icon: 'fa-solid fa-photo-film'
+          icon: 'material-symbols-outlined perm_media'
         }
       ]
     },
@@ -71,22 +71,22 @@ export class FeaturesComponent {
         {
           title: 'User Relays',
           description: 'Premium users get dedicated relay servers for faster message propagation and improved reliability.',
-          icon: 'fa-solid fa-server'
+          icon: 'material-symbols-outlined dns'
         },
         {
           title: 'Media Servers',
           description: 'Store and deliver your media content through our optimized, censorship-resistant content delivery network.',
-          icon: 'fa-solid fa-cloud'
+          icon: 'material-symbols-outlined cloud'
         },
         {
           title: 'Discovery Relays',
           description: 'Find relevant content and people through our specialized discovery relays with advanced filtering.',
-          icon: 'fa-solid fa-compass'
+          icon: 'material-symbols-outlined explore'
         },
         {
           title: 'Global Scale',
           description: 'Nostria\'s infrastructure is built to scale globally, ensuring consistent performance worldwide.',
-          icon: 'fa-solid fa-globe'
+          icon: 'material-symbols-outlined public'
         }
       ]
     },
@@ -97,22 +97,22 @@ export class FeaturesComponent {
         {
           title: 'Web App',
           description: 'Access Nostria from any modern web browser without downloading software.',
-          icon: 'fa-solid fa-globe'
+          icon: 'material-symbols-outlined public'
         },
         {
           title: 'Desktop Apps',
           description: 'Native applications for Windows, macOS, and Linux with OS-specific optimizations.',
-          icon: 'fa-solid fa-desktop'
+          icon: 'material-symbols-outlined desktop_windows'
         },
         {
           title: 'Mobile Apps',
           description: 'iOS and Android apps designed specifically for the mobile experience.',
-          icon: 'fa-solid fa-mobile-screen'
+          icon: 'material-symbols-outlined smartphone'
         },
         {
           title: 'Synchronized Experience',
           description: 'Seamlessly switch between devices while maintaining your exact place in conversations and feeds.',
-          icon: 'fa-solid fa-arrows-spin'
+          icon: 'material-symbols-outlined sync_alt'
         }
       ]
     }
