@@ -16,6 +16,10 @@
   }
 }
 
+.container {
+  height: 100%;
+}
+
 .header-content {
   display: flex;
   justify-content: space-between;
@@ -46,15 +50,21 @@
 .nav {
   display: flex;
   align-items: center;
+  height: 100%;
   
   .nav-list {
     display: flex;
+    align-items: center;
+    height: 100%;
     list-style: none;
     margin: 0;
     padding: 0;
     
     li {
       margin: 0 0.75rem;
+      height: 100%;
+      display: flex;
+      align-items: center;
     }
     
     .nav-link {
@@ -86,9 +96,14 @@
 .header-actions {
   display: flex;
   align-items: center;
+  height: 100%;
   
   .btn-primary {
     margin-right: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
   }
 }
 
