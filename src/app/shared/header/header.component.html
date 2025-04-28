@@ -8,7 +8,7 @@
       
       <nav class="nav" [class.nav-open]="isMenuOpen">
         <ul class="nav-list">
-          <li><a routerLink="/home" routerLinkActive="active" class="nav-link">Home</a></li>
+          <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-link">Home</a></li>
           <li><a routerLink="/features" routerLinkActive="active" class="nav-link">Features</a></li>
           <li><a routerLink="/premium" routerLinkActive="active" class="nav-link">Premium</a></li>
           <li><a routerLink="/testimonials" routerLinkActive="active" class="nav-link">Testimonials</a></li>
