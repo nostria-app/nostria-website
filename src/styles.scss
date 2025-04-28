@@ -33,11 +33,25 @@
 
 html, body {
   height: 100%;
-  font-family: 'Inter', sans-serif;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
   background-color: var(--background);
   color: var(--text-primary);
   line-height: 1.6;
   font-weight: 400;
+}
+
+.title-font {
+  font-family: "Protest Strike", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Protest Strike", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }
 
 /* Containers */
@@ -55,7 +69,6 @@ html, body {
 
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
-  font-weight: 700;
   line-height: 1.2;
   margin-bottom: 0.75rem;
   color: var(--text-primary);
