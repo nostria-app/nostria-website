@@ -2,124 +2,193 @@
 <section class="features-hero">
   <div class="container">
     <div class="hero-content">
-      <h1>Powerful Features for a Connected World</h1>
+      <h1>Features that matters</h1>
       <p class="hero-subtitle">
-        Discover how Nostria combines ease of use with powerful features to create the best Nostr experience
+        We focus on the features that matter most to you, so you can focus on what matters most to you. Our goal is to delivery a premium experience for our users.
       </p>
       <div class="feature-categories">
-        <button *ngFor="let category of featureCategories" 
-                class="category-button" 
-                (click)="scrollToSection(category.id)">
-          {{ category.title }}
-        </button>
+        @for (category of featureCategories; track category.id) {
+          <button class="category-button" 
+                  (click)="scrollToSection(category.id)">
+            {{ category.title }}
+          </button>
+        }
       </div>
     </div>
   </div>
 </section>
 
+
+
 <!-- Feature Categories -->
-<section *ngFor="let category of featureCategories" 
-         [id]="category.id" 
-         class="feature-section">
+@for (category of featureCategories; track category.id) {
+  <section [id]="category.id" class="feature-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>{{ category.title }}</h2>
+        @if (category.id === 'user-experience') {
+          <p class="section-subheading">Intuitive design meets powerful functionality</p>
+        }
+        @if (category.id === 'performance') {
+          <p class="section-subheading">Blazing fast performance everywhere you go</p>
+        }
+        @if (category.id === 'infrastructure') {
+          <p class="section-subheading">Built to scale with your needs and the network</p>
+        }
+        @if (category.id === 'cross-platform') {
+          <p class="section-subheading">Use Nostria anywhere, on any device</p>
+        }
+      </div>
+      
+      <div class="features-grid">
+        @for (feature of category.features; track feature.title) {
+          <div class="feature-item">
+            <div class="feature-icon">
+              <i class="{{feature.icon}}"></i>
+            </div>
+            <div class="feature-content">
+              <h3>{{ feature.title }}</h3>
+              <p>{{ feature.description }}</p>
+            </div>
+          </div>
+        }
+      </div>
+      
+      <div class="feature-showcase" *ngIf="category.id === 'user-experience'">
+        <img src="assets/screenshots/nostria-02.jpg" alt="Nostria User Interface" class="feature-image" />
+        <div class="feature-details">
+          <h3>A Beautiful Interface for Everyone</h3>
+          <p>
+            Whether you're new to Nostr or a power user, Nostria's interface adapts to your needs.
+            Our design philosophy puts your content front and center while providing powerful tools
+            right where you need them.
+          </p>
+          <ul class="feature-list">
+            <li>Intuitive navigation for new users</li>
+            <li>Keyboard shortcuts for power users</li>
+            <li>Flexible layout options for any screen size</li>
+            <li>Accessibility features built-in</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="feature-showcase reverse" *ngIf="category.id === 'performance'">
+        <div class="feature-details">
+          <h3>Performance That Feels Like Magic</h3>
+          <p>
+            Nostria is built from the ground up for performance. Our client intelligently manages resources
+            to provide a smooth experience even on slower networks or devices. You'll notice the difference
+            immediately when switching from other Nostr clients.
+          </p>
+          <ul class="feature-list">
+            <li>Optimized startup sequence for instant access</li>
+            <li>Progressive loading of content</li>
+            <li>Intelligent caching to reduce network usage</li>
+            <li>Battery-friendly operation on mobile devices</li>
+          </ul>
+        </div>
+        <img src="assets/features/performance-chart.png" alt="Nostria Performance Metrics" class="feature-image" />
+      </div>
+      
+      <div class="feature-showcase" *ngIf="category.id === 'infrastructure'">
+        <img src="assets/features/infrastructure-diagram.png" alt="Nostria Infrastructure" class="feature-image" />
+        <div class="feature-details">
+          <h3>Infrastructure Built for Scale</h3>
+          <p>
+            Premium users enjoy access to Nostria's dedicated infrastructure, designed to enhance 
+            your experience and ensure reliability. Our global network provides consistent performance 
+            wherever you are in the world.
+          </p>
+          <ul class="feature-list">
+            <li>Dedicated user relays for premium subscribers</li>
+            <li>Media servers with high availability</li>
+            <li>Discovery relays for content and connection discovery</li>
+            <li>Geographically distributed infrastructure for global reach</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="feature-showcase reverse" *ngIf="category.id === 'cross-platform'">
+        <div class="feature-details">
+          <h3>Seamless Experience Across Devices</h3>
+          <p>
+            Start a conversation on your phone, continue it on your desktop, and finish it on your tablet.
+            Nostria synchronizes your experience across all platforms, allowing you to stay connected
+            no matter where you are or what device you're using.
+          </p>
+          <ul class="feature-list">
+            <li>Native apps for all major platforms</li>
+            <li>Real-time synchronization across devices</li>
+            <li>Optimized interfaces for each form factor</li>
+            <li>Offline capability with synchronized updates</li>
+          </ul>
+        </div>
+        <img src="assets/features/cross-platform.png" alt="Nostria on Multiple Devices" class="feature-image" />
+      </div>
+    </div>
+  </section>
+}
+
+<!-- Learn Section (Migrated from learn component) -->
+<section class="learn-section">
   <div class="container">
-    <div class="section-header">
-      <h2>{{ category.title }}</h2>
-      <p class="section-subheading" *ngIf="category.id === 'user-experience'">
-        Intuitive design meets powerful functionality
-      </p>
-      <p class="section-subheading" *ngIf="category.id === 'performance'">
-        Blazing fast performance everywhere you go
-      </p>
-      <p class="section-subheading" *ngIf="category.id === 'infrastructure'">
-        Built to scale with your needs and the network
-      </p>
-      <p class="section-subheading" *ngIf="category.id === 'cross-platform'">
-        Use Nostria anywhere, on any device
-      </p>
-    </div>
-    
-    <div class="features-grid">
-      <div class="feature-item" *ngFor="let feature of category.features">
-        <div class="feature-icon">
-          <span [class]="feature.icon"></span>
+    <div class="section-container">
+      @for (section of sections; track section.title) {
+        <div class="info-card">
+          <div class="card-header">
+            <div class="icon-container">
+              <i class="icon-{{section.icon}}"></i>
+            </div>
+            <h3 class="card-title">{{section.title}}</h3>
+          </div>
+          <div class="card-content">
+            <p>{{section.content}}</p>
+          </div>
         </div>
-        <div class="feature-content">
-          <h3>{{ feature.title }}</h3>
-          <p>{{ feature.description }}</p>
+      }
+    </div>
+
+    <div class="features-section">
+      <h2>Key Features</h2>
+      <div class="features-grid">
+        <div class="feature-item">
+          <i class="icon-speed"></i>
+          <h3>Fast & Responsive</h3>
+          <p>Optimized for speed and responsiveness, and doesn't require you to use large centralized relays.</p>
+        </div>
+        <div class="feature-item">
+          <i class="icon-sync"></i>
+          <h3>Auto Relay Discovery</h3>
+          <p>Automatically connects to the right relays to find user content.</p>
+        </div>
+        <div class="feature-item">
+          <i class="icon-wallet"></i>
+          <h3>Multiple Sign Options</h3>
+          <p>Support for various signing methods to keep your keys secure.</p>
+        </div>
+        <div class="feature-item">
+          <i class="icon-devices"></i>
+          <h3>Multi-platform</h3>
+          <p>Available as web, desktop, and mobile application.</p>
         </div>
       </div>
     </div>
-    
-    <div class="feature-showcase" *ngIf="category.id === 'user-experience'">
-      <img src="assets/screenshots/nostria-02.jpg" alt="Nostria User Interface" class="feature-image" />
-      <div class="feature-details">
-        <h3>A Beautiful Interface for Everyone</h3>
-        <p>
-          Whether you're new to Nostr or a power user, Nostria's interface adapts to your needs.
-          Our design philosophy puts your content front and center while providing powerful tools
-          right where you need them.
-        </p>
-        <ul class="feature-list">
-          <li>Intuitive navigation for new users</li>
-          <li>Keyboard shortcuts for power users</li>
-          <li>Flexible layout options for any screen size</li>
-          <li>Accessibility features built-in</li>
-        </ul>
+
+    <div class="faq-section">
+      <h2>Frequently Asked Questions</h2>
+      <div class="accordion">
+        @for (faq of faqs; track faq.question; let i = $index) {
+          <div class="accordion-item">
+            <div class="accordion-header" (click)="toggleFaq(i)">
+              <h4>{{faq.question}}</h4>
+              <span class="accordion-icon">{{ isFaqExpanded(i) ? '−' : '+' }}</span>
+            </div>
+            <div class="accordion-content" [class.expanded]="isFaqExpanded(i)">
+              <p>{{faq.answer}}</p>
+            </div>
+          </div>
+        }
       </div>
-    </div>
-    
-    <div class="feature-showcase reverse" *ngIf="category.id === 'performance'">
-      <div class="feature-details">
-        <h3>Performance That Feels Like Magic</h3>
-        <p>
-          Nostria is built from the ground up for performance. Our client intelligently manages resources
-          to provide a smooth experience even on slower networks or devices. You'll notice the difference
-          immediately when switching from other Nostr clients.
-        </p>
-        <ul class="feature-list">
-          <li>Optimized startup sequence for instant access</li>
-          <li>Progressive loading of content</li>
-          <li>Intelligent caching to reduce network usage</li>
-          <li>Battery-friendly operation on mobile devices</li>
-        </ul>
-      </div>
-      <img src="assets/features/performance-chart.png" alt="Nostria Performance Metrics" class="feature-image" />
-    </div>
-    
-    <div class="feature-showcase" *ngIf="category.id === 'infrastructure'">
-      <img src="assets/features/infrastructure-diagram.png" alt="Nostria Infrastructure" class="feature-image" />
-      <div class="feature-details">
-        <h3>Infrastructure Built for Scale</h3>
-        <p>
-          Premium users enjoy access to Nostria's dedicated infrastructure, designed to enhance 
-          your experience and ensure reliability. Our global network provides consistent performance 
-          wherever you are in the world.
-        </p>
-        <ul class="feature-list">
-          <li>Dedicated user relays for premium subscribers</li>
-          <li>Media servers with high availability</li>
-          <li>Discovery relays for content and connection discovery</li>
-          <li>Geographically distributed infrastructure for global reach</li>
-        </ul>
-      </div>
-    </div>
-    
-    <div class="feature-showcase reverse" *ngIf="category.id === 'cross-platform'">
-      <div class="feature-details">
-        <h3>Seamless Experience Across Devices</h3>
-        <p>
-          Start a conversation on your phone, continue it on your desktop, and finish it on your tablet.
-          Nostria synchronizes your experience across all platforms, allowing you to stay connected
-          no matter where you are or what device you're using.
-        </p>
-        <ul class="feature-list">
-          <li>Native apps for all major platforms</li>
-          <li>Real-time synchronization across devices</li>
-          <li>Optimized interfaces for each form factor</li>
-          <li>Offline capability with synchronized updates</li>
-        </ul>
-      </div>
-      <img src="assets/features/cross-platform.png" alt="Nostria on Multiple Devices" class="feature-image" />
     </div>
   </div>
 </section>
@@ -128,14 +197,14 @@
 <section class="features-cta">
   <div class="container">
     <div class="cta-content">
-      <h2>Ready to Experience Nostria?</h2>
+      <h2>Ready to get started?</h2>
       <p>Join thousands of satisfied users and discover the best way to connect on Nostr</p>
       <div class="cta-buttons">
         <a href="https://nostria.app" target="_blank" class="btn btn-primary">
-          Get Started
+          Start Using Nostria
         </a>
-        <a routerLink="/premium" class="btn btn-outline">
-          Explore Premium
+        <a routerLink="/about" class="btn btn-outline">
+          About Nostria
         </a>
       </div>
     </div>
