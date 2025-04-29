@@ -470,6 +470,7 @@
         background-color: var(--surface);
         color: var(--primary-color);
         transition: all 0.3s ease;
+        text-decoration: none;
         
         &:hover {
           background-color: var(--primary-color);
@@ -640,6 +641,7 @@
         color: var(--primary-color);
         font-size: 1.25rem;
         transition: all 0.3s ease;
+        text-decoration: none;
         
         &:hover {
           background-color: var(--primary-color);
