@@ -168,32 +168,47 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh;
+    height: auto;
+    max-height: 80vh;
     background-color: var(--surface);
-    padding-top: 80px;
-    transform: translateX(100%);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    border-radius: 0 0 16px 16px;
+    padding: 1rem 0;
+    transform: translateY(-100%);
     transition: transform 0.3s ease;
     overflow-y: auto;
     
     &.nav-open {
-      transform: translateX(0);
+      transform: translateY(0);
     }
     
     .nav-list {
       flex-direction: column;
       width: 100%;
-      padding: 2rem;
+      padding: 1rem;
       
       li {
         margin: 0;
         width: 100%;
+        height: auto;
       }
       
       .nav-link {
         display: block;
-        font-size: 1.25rem;
-        padding: 1rem 0;
-        border-bottom: 1px solid var(--divider);
+        font-size: 1.125rem;
+        padding: 0.75rem 1rem;
+        margin: 0.25rem 0;
+        border-radius: 8px;
+        border: none;
+        transition: all 0.2s ease;
+        
+        &:hover, &.active {
+          background-color: rgba(var(--primary-color-rgb), 0.1);
+        }
+        
+        &.active::after {
+          display: none;
+        }
       }
     }
   }

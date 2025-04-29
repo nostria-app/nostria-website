@@ -18,6 +18,14 @@ export class HeaderComponent {
     document.body.classList.toggle('no-scroll', this.isMenuOpen);
   }
 
+  closeMenu(): void {
+    // Only close menu if it's currently open
+    if (this.isMenuOpen) {
+      this.isMenuOpen = false;
+      document.body.classList.remove('no-scroll');
+    }
+  }
+
   @HostListener('window:scroll', ['$event'])
   onWindowScroll() {
     this.isScrolled = window.scrollY > 50;
