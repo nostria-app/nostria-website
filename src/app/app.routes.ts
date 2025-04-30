@@ -8,7 +8,7 @@ export const routes: Routes = [
   {
     path: '',
     loadComponent: () => import('./pages/home/home.component').then(m => m.HomeComponent),
-    title: 'Nostria - The Social Network That\'s Yours'
+    title: 'Nostria - Your Social Network'
   },
   {
     path: 'home',
