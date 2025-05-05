@@ -1,0 +1,368 @@
+<!-- Funding Hero Section -->
+<section class="funding-hero">
+  <div class="container">
+    <div class="hero-content">
+      <h1>Join the Nostria Pre-Seed Funding Round</h1>
+      <p class="hero-subtitle">
+        Be part of the future of decentralized social communication. Limited opportunity to invest in Nostria's growth.
+      </p>
+
+      <div class="funding-status">
+        <!-- Show different content based on funding status -->
+        <div *ngIf="!fundingStarted" class="funding-countdown">
+          <h2>Pre-Seed Round Starts In</h2>
+          <div class="countdown-timer">
+            <div class="countdown-unit">
+              <span class="count-number">{{daysLeft}}</span>
+              <span class="count-label">Days</span>
+            </div>
+            <div class="countdown-unit">
+              <span class="count-number">{{hoursLeft}}</span>
+              <span class="count-label">Hours</span>
+            </div>
+            <div class="countdown-unit">
+              <span class="count-number">{{minutesLeft}}</span>
+              <span class="count-label">Mins</span>
+            </div>
+            <div class="countdown-unit">
+              <span class="count-number">{{secondsLeft}}</span>
+              <span class="count-label">Secs</span>
+            </div>
+          </div>
+          <p class="funding-dates">May 11, 2024 - May 31, 2024</p>
+        </div>
+        
+        <div *ngIf="fundingStarted && !fundingEnded" class="funding-countdown">
+          <h2>Pre-Seed Round Ends In</h2>
+          <div class="countdown-timer">
+            <div class="countdown-unit">
+              <span class="count-number">{{daysLeft}}</span>
+              <span class="count-label">Days</span>
+            </div>
+            <div class="countdown-unit">
+              <span class="count-number">{{hoursLeft}}</span>
+              <span class="count-label">Hours</span>
+            </div>
+            <div class="countdown-unit">
+              <span class="count-number">{{minutesLeft}}</span>
+              <span class="count-label">Mins</span>
+            </div>
+            <div class="countdown-unit">
+              <span class="count-number">{{secondsLeft}}</span>
+              <span class="count-label">Secs</span>
+            </div>
+          </div>
+          <p class="funding-dates">Funding Round Open: May 11 - May 31, 2024</p>
+        </div>
+        
+        <div *ngIf="fundingEnded" class="funding-ended">
+          <h2>Pre-Seed Round Opens Soon</h2>
+          <p>
+            We're preparing for our pre-seed round. If you are interested in investing, please reach out to us.</p>
+        </div>
+      </div>
+
+      <div class="hero-cta">
+        <button *ngIf="!fundingStarted" class="btn btn-outline" (click)="scrollToInvestment()">
+          Learn More
+        </button>
+        <button *ngIf="fundingStarted && !fundingEnded" class="btn btn-primary" (click)="openInvestModal()">
+          Invest Now
+        </button>
+        <a *ngIf="fundingStarted && !fundingEnded" class="btn btn-outline" (click)="scrollToInvestment()">
+          View Investment Options
+        </a>
+        <a *ngIf="fundingEnded" routerLink="/about" class="btn btn-primary">
+          About Nostria
+        </a>
+        <a *ngIf="fundingEnded" href="mailto:investors@nostria.app" class="btn btn-outline">
+          Contact Investor Relations
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Funding Overview Section -->
+<section class="funding-overview">
+  <div class="container">
+    <div class="section-header">
+      <h2>Pre-Seed Funding Overview</h2>
+      <p class="section-subheading">Supporting the initial development of Nostria</p>
+    </div>
+
+    <div class="funding-details">
+      <div class="detail-card">
+        <div class="detail-icon">
+          <span class="material-symbols-outlined">calendar_month</span>
+        </div>
+        <h3>Timeline</h3>
+        <p>
+          Pre-Seed Round opens May 11, 2024 and closes May 31, 2024. Funds will be used for a 3-month development period.
+        </p>
+      </div>
+
+      <div class="detail-card">
+        <div class="detail-icon">
+          <span class="material-symbols-outlined">monetization_on</span>
+        </div>
+        <h3>Investment Terms</h3>
+        <p>
+          Investors receive 10% of Nostria revenue, proportional to investment amount, until 120% of initial investment is returned.
+        </p>
+      </div>
+
+      <div class="detail-card">
+        <div class="detail-icon">
+          <span class="material-symbols-outlined">trending_up</span>
+        </div>
+        <h3>Future Rounds</h3>
+        <p>
+          Pre-Seed investors get pro-rata rights for our Seed Round, which will be announced after the 3-month development period.
+        </p>
+      </div>
+
+      <div class="detail-card">
+        <div class="detail-icon">
+          <span class="material-symbols-outlined">handshake</span>
+        </div>
+        <h3>Angor Protocol</h3>
+        <p>
+          All investments are managed through the Angor P2P funding protocol on Bitcoin, ensuring transparency and security.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Investment Tiers Section -->
+<section id="investment-options" class="investment-tiers">
+  <div class="container">
+    <div class="section-header">
+      <h2>Investment Options</h2>
+      <p class="section-subheading">Choose the investment tier that's right for you</p>
+    </div>
+
+    <div class="tiers-grid">
+      @for (tier of investmentTiers; track tier.name) {
+        <div class="tier-card" [class.highlighted]="tier.highlighted">
+          <div *ngIf="tier.highlighted" class="recommended-badge">Recommended</div>
+          <h3>{{tier.name}}</h3>
+          <div class="tier-amount">{{tier.amount}}</div>
+          <ul class="tier-benefits">
+            @for (benefit of tier.benefits; track benefit) {
+              <li>
+                <span class="check-icon"><span class="material-symbols-outlined">check</span></span>
+                {{benefit}}
+              </li>
+            }
+          </ul>
+          <div class="tier-cta">
+            <button [class]="tier.highlighted ? 'btn btn-primary' : 'btn btn-outline'" (click)="openInvestModal()">
+              Invest as {{tier.name}}
+            </button>
+          </div>
+        </div>
+      }
+    </div>
+
+    <div class="custom-investment">
+      <p>Looking to invest a different amount? Contact us directly for custom investment options.</p>
+      <a href="mailto:investors@nostria.app" class="btn btn-outline">Contact Investment Team</a>
+    </div>
+  </div>
+</section>
+
+<!-- Funding Milestones Section -->
+<section class="funding-milestones">
+  <div class="container">
+    <div class="section-header">
+      <h2>3-Month Development Plan</h2>
+      <p class="section-subheading">Your investment will fund these critical milestones</p>
+    </div>
+
+    <div class="milestones-timeline">
+      @for (milestone of fundingMilestones; track milestone.title; let i = $index) {
+        <div class="milestone">
+          <div class="milestone-connector">
+            <div class="connector-line"></div>
+            <div class="connector-dot">{{i + 1}}</div>
+          </div>
+          <div class="milestone-content">
+            <h3>{{milestone.title}}</h3>
+            <div class="milestone-amount">{{milestone.amount}}</div>
+            <p class="milestone-description">{{milestone.description}}</p>
+            <div class="milestone-date">{{milestone.date}}</div>
+          </div>
+        </div>
+      }
+    </div>
+
+    <div class="total-funding">
+      <h3>Total Pre-Seed Target: €15,000 - €200,000</h3>
+    </div>
+  </div>
+</section>
+
+<!-- Why Invest Section -->
+<section class="why-invest">
+  <div class="container">
+    <div class="section-header">
+      <h2>Why Invest in Nostria?</h2>
+      <p class="section-subheading">The opportunity to be part of the decentralized social future</p>
+    </div>
+
+    <div class="reasons-grid">
+      <div class="reason-card">
+        <div class="reason-icon">
+          <span class="material-symbols-outlined">trending_up</span>
+        </div>
+        <h3>Growing Market</h3>
+        <p>
+          Nostr protocol is gaining rapid adoption. Nostria is positioned to become the leading client as the network grows.
+        </p>
+      </div>
+
+      <div class="reason-card">
+        <div class="reason-icon">
+          <span class="material-symbols-outlined">design_services</span>
+        </div>
+        <h3>Premium Experience</h3>
+        <p>
+          Our focus on user experience and premium features sets us apart from other clients in the ecosystem.
+        </p>
+      </div>
+
+      <div class="reason-card">
+        <div class="reason-icon">
+          <span class="material-symbols-outlined">payments</span>
+        </div>
+        <h3>Revenue Model</h3>
+        <p>
+          Clear path to revenue through premium subscriptions, ensuring return on investment for early backers.
+        </p>
+      </div>
+
+      <div class="reason-card">
+        <div class="reason-icon">
+          <span class="material-symbols-outlined">groups</span>
+        </div>
+        <h3>Experienced Team</h3>
+        <p>
+          Our team combines deep technical expertise in decentralized systems with proven product development skills.
+        </p>
+      </div>
+
+      <div class="reason-card">
+        <div class="reason-icon">
+          <span class="material-symbols-outlined">cloud</span>
+        </div>
+        <h3>Infrastructure Assets</h3>
+        <p>
+          Investments build valuable relay network and media servers that become company infrastructure assets.
+        </p>
+      </div>
+
+      <div class="reason-card">
+        <div class="reason-icon">
+          <span class="material-symbols-outlined">network_node</span>
+        </div>
+        <h3>Network Effects</h3>
+        <p>
+          Early investment helps accelerate growth and establish strong network effects before competitors.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="funding-faq">
+  <div class="container">
+    <div class="section-header">
+      <h2>Investment FAQs</h2>
+      <p class="section-subheading">Common questions about investing in Nostria</p>
+    </div>
+
+    <div class="faq-grid">
+      <div class="faq-item">
+        <h3>How does the 10% revenue share work?</h3>
+        <p>
+          Pre-Seed investors collectively receive 10% of all Nostria revenue. Your share is proportional to your 
+          investment amount relative to total Pre-Seed funds raised. Payments continue until you've received 120% 
+          of your initial investment.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3>What is the Angor protocol?</h3>
+        <p>
+          Angor is a P2P funding protocol built on Bitcoin that enables transparent milestone-based funding. 
+          It ensures funds are released only when development milestones are reached and verified.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3>What happens after the Pre-Seed round?</h3>
+        <p>
+          After the 3-month development period, we'll announce our Seed Round. Pre-Seed investors will have 
+          pro-rata rights to participate in the Seed Round and maintain their ownership percentage.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3>What are the minimum and maximum investment amounts?</h3>
+        <p>
+          The minimum investment in the Pre-Seed round is $1,000. There is no maximum, but investments 
+          above $50,000 require direct discussion with our team for custom terms.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3>How will I receive investment updates?</h3>
+        <p>
+          All investors receive monthly progress reports. Angel tier ($5,000+) and Partner tier ($10,000+) 
+          investors also get access to quarterly investor calls with the founding team.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3>When will revenue sharing begin?</h3>
+        <p>
+          Revenue sharing begins as soon as Nostria starts generating revenue from premium subscriptions, 
+          expected within 3 months after the completion of Pre-Seed development.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3>What is Pre-seed funding?</h3>
+        <p>
+          Pre-seed funding is the earliest investment a startup receives. 
+          Learn more here: <a href="https://carta.com/learn/startups/fundraising/pre-seed-funding/" rel="noopener noreferrer" target="_blank">Pre-seed Funding</a>
+        
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Investor Contact Section -->
+<section class="investor-contact">
+  <div class="container">
+    <div class="contact-content">
+      <h2>Ready to Invest in the Future of Social?</h2>
+      <p>
+        Join us in building the next generation of decentralized social communication. For investment questions or to discuss 
+        custom investment options, contact our investment team.
+      </p>
+      <div class="contact-cta">
+        <button class="btn btn-primary btn-lg" (click)="openInvestModal()">
+          Invest Now
+        </button>
+        <a href="mailto:investors@nostria.app" class="btn btn-outline btn-lg">
+          Contact Investment Team
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

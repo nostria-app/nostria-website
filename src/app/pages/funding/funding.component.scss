@@ -1,0 +1,631 @@
+/* This file will contain styles specific to the funding component */
+/* For brevity, the actual SCSS implementation is not included here */
+/* The component will inherit global styles and use component-specific styles defined here */
+
+// Funding Component Styles
+
+// Hero Section
+.funding-hero {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  color: white;
+  padding: 6rem 0 4rem;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/assets/patterns/circuit-pattern.svg');
+    background-size: cover;
+    opacity: 0.1;
+    z-index: 0;
+  }
+  
+  .container {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+      color: white;
+      background: none;
+      -webkit-background-clip: initial;
+      background-clip: initial;
+      
+      @media (max-width: 768px) {
+        font-size: 2.25rem;
+      }
+    }
+    
+    .hero-subtitle {
+      font-size: 1.25rem;
+      margin-bottom: 2.5rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      
+      @media (max-width: 768px) {
+        font-size: 1.125rem;
+      }
+    }
+  }
+}
+
+// Countdown styling
+.funding-status {
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  
+  h2 {
+    margin-bottom: 1.5rem;
+    font-size: 1.75rem;
+    color: white;
+  }
+  
+  .countdown-timer {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    
+    @media (max-width: 576px) {
+      gap: 0.75rem;
+    }
+    
+    .countdown-unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 80px;
+      
+      @media (max-width: 576px) {
+        min-width: 60px;
+      }
+      
+      .count-number {
+        font-size: 3rem;
+        line-height: 1;
+        color: white;
+        
+        @media (max-width: 576px) {
+          font-size: 2rem;
+        }
+      }
+      
+      .count-label {
+        font-size: 0.875rem;
+        color: rgba(255, 255, 255, 0.8);
+        margin-top: 0.5rem;
+      }
+    }
+  }
+  
+  .funding-dates {
+    font-size: 1rem;
+    opacity: 0.9;
+  }
+}
+
+.hero-cta {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  
+  @media (max-width: 576px) {
+    flex-direction: column;
+    width: 100%;
+    
+    .btn {
+      width: 100%;
+    }
+  }
+}
+
+// Overview Section
+.funding-overview {
+  padding: 5rem 0;
+  background-color: var(--background);
+  
+  .funding-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+    
+    .detail-card {
+      background-color: var(--surface);
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+      
+      .detail-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 64px;
+        height: 64px;
+        background-color: rgba(142, 68, 173, 0.1); // Lighter version of primary-color
+        color: var(--primary-color);
+        border-radius: 50%;
+        margin-bottom: 1.5rem;
+        
+        .material-symbols-outlined {
+          font-size: 32px;
+        }
+      }
+      
+      h3 {
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+        color: var(--text-primary);
+      }
+      
+      p {
+        color: var(--text-secondary);
+        line-height: 1.6;
+      }
+    }
+  }
+}
+
+// Section headers consistent styling
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  
+  h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    
+    @media (max-width: 768px) {
+      font-size: 2rem;
+    }
+  }
+  
+  .section-subheading {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+// Investment Tiers
+.investment-tiers {
+  padding: 5rem 0;
+  background-color: var(--surface);
+  
+  .tiers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+    
+    @media (max-width: 992px) {
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+    
+    .tier-card {
+      position: relative;
+      background-color: var(--surface);
+      border-radius: 12px;
+      padding: 2.5rem 2rem;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+      border: 1px solid var(--divider);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      }
+      
+      &.highlighted {
+        border: 2px solid var(--primary-color);
+        box-shadow: 0 10px 40px rgba(142, 68, 173, 0.15);
+      }
+      
+      .recommended-badge {
+        position: absolute;
+        top: -12px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: var(--primary-color);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.875rem;
+      }
+      
+      h3 {
+        text-align: center;
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
+      
+      .tier-amount {
+        text-align: center;
+        font-size: 2.5rem;
+        color: var(--primary-color);
+        margin-bottom: 1.5rem;
+      }
+      
+      .tier-benefits {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 2rem 0;
+        
+        li {
+          display: flex;
+          align-items: flex-start;
+          margin-bottom: 1rem;
+          color: var(--text-secondary);
+          
+          .check-icon {
+            color: #27ae60; // Success color
+            margin-right: 0.75rem;
+            display: flex;
+            align-items: center;
+          }
+        }
+      }
+      
+      .tier-cta {
+        text-align: center;
+      }
+    }
+  }
+  
+  .custom-investment {
+    text-align: center;
+    margin-top: 2rem;
+    
+    p {
+      margin-bottom: 1rem;
+      color: var(--text-secondary);
+    }
+  }
+}
+
+// Funding Milestones
+.funding-milestones {
+  padding: 5rem 0;
+  background-color: var(--background);
+  
+  .milestones-timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 0;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50px;
+      width: 4px;
+      background-color: var(--divider);
+      
+      @media (max-width: 768px) {
+        left: 30px;
+      }
+    }
+    
+    .milestone {
+      display: flex;
+      margin-bottom: 3rem;
+      position: relative;
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+      
+      .milestone-connector {
+        position: relative;
+        flex-shrink: 0;
+        width: 100px;
+        
+        @media (max-width: 768px) {
+          width: 60px;
+        }
+        
+        .connector-dot {
+          position: absolute;
+          top: 0;
+          left: 50px;
+          transform: translateX(-50%);
+          width: 40px;
+          height: 40px;
+          background-color: var(--primary-color);
+          color: white;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.25rem;
+          box-shadow: 0 4px 10px rgba(142, 68, 173, 0.2);
+          
+          @media (max-width: 768px) {
+            width: 30px;
+            height: 30px;
+            font-size: 1rem;
+            left: 30px;
+          }
+        }
+      }
+      
+      .milestone-content {
+        flex-grow: 1;
+        background-color: var(--surface);
+        border-radius: 12px;
+        padding: 1.5rem 2rem;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        
+        h3 {
+          font-size: 1.25rem;
+          margin-bottom: 0.5rem;
+          color: var(--text-primary);
+        }
+        
+        .milestone-amount {
+          font-size: 1.5rem;
+          color: var(--primary-color);
+          margin-bottom: 0.75rem;
+        }
+        
+        .milestone-description {
+          color: var(--text-secondary);
+          margin-bottom: 0.75rem;
+          line-height: 1.6;
+        }
+        
+        .milestone-date {
+          font-size: 0.875rem;
+          color: var(--text-secondary);
+        }
+      }
+    }
+  }
+  
+  .total-funding {
+    text-align: center;
+    margin-top: 3rem;
+    
+    h3 {
+      font-size: 1.5rem;
+      color: var(--primary-color);
+    }
+  }
+}
+
+// Why Invest Section
+.why-invest {
+  padding: 5rem 0;
+  background-color: var(--surface);
+  
+  .reasons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    
+    @media (max-width: 992px) {
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+    
+    .reason-card {
+      background-color: var(--background);
+      border-radius: 12px;
+      padding: 2rem;
+      transition: transform 0.3s ease;
+      
+      &:hover {
+        transform: translateY(-5px);
+      }
+      
+      .reason-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 60px;
+        height: 60px;
+        background-color: rgba(142, 68, 173, 0.1);
+        color: var(--primary-color);
+        border-radius: 12px;
+        margin-bottom: 1.5rem;
+        
+        .material-symbols-outlined {
+          font-size: 30px;
+        }
+      }
+      
+      h3 {
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+      }
+      
+      p {
+        color: var(--text-secondary);
+        line-height: 1.6;
+      }
+    }
+  }
+}
+
+// FAQ Section
+.funding-faq {
+  padding: 5rem 0;
+  background-color: var(--background);
+  
+  .faq-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+    gap: 2rem;
+    
+    @media (max-width: 992px) {
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+    
+    .faq-item {
+      background-color: var(--surface);
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      
+      h3 {
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+        color: var(--primary-color);
+      }
+      
+      p {
+        color: var(--text-secondary);
+        line-height: 1.6;
+      }
+    }
+  }
+}
+
+// Investor Contact Section
+.investor-contact {
+  padding: 5rem 0;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  color: white;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/assets/patterns/circuit-pattern.svg');
+    background-size: cover;
+    opacity: 0.1;
+    z-index: 0;
+  }
+  
+  .container {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .contact-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      color: white;
+      
+      @media (max-width: 768px) {
+        font-size: 2rem;
+      }
+    }
+    
+    p {
+      font-size: 1.125rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+    
+    .contact-cta {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      
+      @media (max-width: 576px) {
+        flex-direction: column;
+        
+        .btn {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+// Button Styles
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  
+  &.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+    
+    &:hover {
+      background-color: var(--primary-color-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(142, 68, 173, 0.3);
+    }
+  }
+  
+  &.btn-outline {
+    background-color: transparent;
+    border: 2px solid currentColor;
+    color: var(--primary-color);
+    
+    &:hover {
+      background-color: rgba(142, 68, 173, 0.1);
+      transform: translateY(-2px);
+    }
+  }
+  
+  &.btn-lg {
+    padding: 1rem 2rem;
+    font-size: 1.125rem;
+  }
+}
+
+// Responsive container adjustments
+@media (max-width: 1200px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .container {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+}
+
+// Animation for elements
+.tier-card, .detail-card, .reason-card, .milestone-content, .faq-item {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform, box-shadow;
+}
