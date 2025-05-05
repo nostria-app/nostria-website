@@ -55,7 +55,11 @@
       </div>
       
       <div class="feature-showcase" *ngIf="category.id === 'user-experience'">
-        <img src="assets/screenshots/nostria-02.jpg" alt="Nostria User Interface" class="feature-image" />
+        <img 
+          src="assets/screenshots/nostria-02.jpg" 
+          alt="Nostria User Interface" 
+          class="feature-image" 
+          (click)="openLightbox('assets/screenshots/nostria-02.jpg', 'Nostria User Interface')" />
         <div class="feature-details">
           <h3>A Beautiful Interface for Everyone</h3>
           <p>
@@ -87,11 +91,19 @@
             <li>Battery-friendly operation on mobile devices</li>
           </ul>
         </div>
-        <img src="assets/diagrams/nostria-architecture.svg" alt="Nostria Performance Metrics" class="feature-image" />
+        <img 
+          src="assets/diagrams/nostria-architecture.svg" 
+          alt="Nostria Performance Metrics" 
+          class="feature-image" 
+          (click)="openLightbox('assets/diagrams/nostria-architecture.svg', 'Nostria Architecture')" />
       </div>
       
       <div class="feature-showcase" *ngIf="category.id === 'infrastructure'">
-        <img src="assets/diagrams/nostria-infrastructure.svg" alt="Nostria Infrastructure" class="feature-image" />
+        <img 
+          src="assets/diagrams/nostria-infrastructure.svg" 
+          alt="Nostria Infrastructure" 
+          class="feature-image" 
+          (click)="openLightbox('assets/diagrams/nostria-infrastructure.svg', 'Nostria Infrastructure')" />
         <div class="feature-details">
           <h3>Infrastructure Built for Scale</h3>
           <p>
@@ -123,7 +135,11 @@
             <li>Offline capability with synchronized updates</li>
           </ul>
         </div>
-        <img src="assets/diagrams/nostria-infrastructure.svg" alt="Nostria on Multiple Devices" class="feature-image" />
+        <img 
+          src="assets/diagrams/nostria-infrastructure.svg" 
+          alt="Nostria on Multiple Devices" 
+          class="feature-image" 
+          (click)="openLightbox('assets/diagrams/nostria-infrastructure.svg', 'Nostria on Multiple Devices')" />
       </div>
     </div>
   </section>
@@ -199,3 +215,12 @@
     </div>
   </div>
 </section>
+
+<!-- Lightbox Modal -->
+<div class="lightbox-overlay" [class.active]="showLightbox" (click)="closeLightbox()">
+  <div class="lightbox-content" (click)="$event.stopPropagation()">
+    <button class="lightbox-close" (click)="closeLightbox()">×</button>
+    <img [src]="lightboxImageSrc" [alt]="lightboxAlt" />
+    <div class="lightbox-caption">{{ lightboxAlt }}</div>
+  </div>
+</div>

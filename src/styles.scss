@@ -78,6 +78,11 @@ h1, h2, h3, h4, h5, h6 {
   padding: 5rem 0;
 }
 
+/* No scroll for modals */
+body.no-scroll {
+  overflow: hidden;
+}
+
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
   line-height: 1.2;

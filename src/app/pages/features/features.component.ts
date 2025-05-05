@@ -240,4 +240,21 @@ export class FeaturesComponent {
   isFaqExpanded(index: number): boolean {
     return this.expandedFaqs[index] === true;
   }
+
+  // Lightbox properties
+  showLightbox = false;
+  lightboxImageSrc = '';
+  lightboxAlt = '';
+  
+  openLightbox(imageSrc: string, alt: string): void {
+    this.lightboxImageSrc = imageSrc;
+    this.lightboxAlt = alt;
+    this.showLightbox = true;
+    document.body.classList.add('no-scroll');
+  }
+  
+  closeLightbox(): void {
+    this.showLightbox = false;
+    document.body.classList.remove('no-scroll');
+  }
 }
