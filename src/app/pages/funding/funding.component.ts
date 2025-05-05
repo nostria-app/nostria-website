@@ -49,7 +49,7 @@ export class FundingComponent implements OnInit {
       amount: '€10,000+',
       benefits: [
         'All Angel benefits',
-        'Direct access to founding team',
+        'Direct access to Nostria team',
         'Input on product roadmap',
         'Nostria Premium+ account (1 year)'
       ],
