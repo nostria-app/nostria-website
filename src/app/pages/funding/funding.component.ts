@@ -24,7 +24,7 @@ export class FundingComponent implements OnInit {
       name: 'Supporter',
       amount: '$1,000',
       benefits: [
-        'Convertible Notes with 15% discount rate',
+        'SAFE Agreement with 15% discount rate',
         'Pro-rata rights for future rounds',
         'Supporter Exclusive Badge',
         'Nostria Premium account (6 months)'
@@ -63,19 +63,19 @@ export class FundingComponent implements OnInit {
       title: 'Infrastructure Setup',
       amount: '$10,000',
       description: 'Deploy global relay network and media servers to support the Nostria app, continue development on the Nostria app.',
-      date: 'Month 1'
+      date: 'June'
     },
     {
       title: 'Core Feature Development',
       amount: '$10,000',
       description: 'Enhance premium features, improve app and multi-platform support.',
-      date: 'Month 2'
+      date: 'July'
     },
     {
       title: 'Marketing & Growth',
       amount: '$10,000',
       description: 'User acquisition, community building, and preparing for Seed Round.',
-      date: 'Month 3'
+      date: 'August'
     }
   ];
 
