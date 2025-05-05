@@ -59,19 +59,19 @@ export class FundingComponent implements OnInit {
   fundingMilestones = [
     {
       title: 'Infrastructure Setup',
-      amount: '$50,000',
+      amount: '$10,000',
       description: 'Deploy global relay network and media servers to support the Nostria app',
       date: 'Month 1'
     },
     {
       title: 'Core Feature Development',
-      amount: '$75,000',
+      amount: '$10,000',
       description: 'Enhance premium features, payments integration, and multi-platform support',
       date: 'Month 2'
     },
     {
       title: 'Marketing & Growth',
-      amount: '$75,000',
+      amount: '$10,000',
       description: 'User acquisition, community building, and preparation for Seed round',
       date: 'Month 3'
     }
