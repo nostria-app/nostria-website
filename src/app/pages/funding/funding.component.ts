@@ -22,7 +22,7 @@ export class FundingComponent implements OnInit {
   investmentTiers = [
     {
       name: 'Supporter',
-      amount: '€1,000',
+      amount: '$1,000',
       benefits: [
         'Convertible Notes with 15% discount rate',
         'Pro-rata rights for future rounds',
@@ -33,7 +33,7 @@ export class FundingComponent implements OnInit {
     },
     {
       name: 'Angel',
-      amount: '€5,000',
+      amount: '$5,000',
       benefits: [
         'All Supporter benefits',
         'Quarterly investor calls',
@@ -46,7 +46,7 @@ export class FundingComponent implements OnInit {
     },
     {
       name: 'Partner',
-      amount: '€10,000+',
+      amount: '$10,000+',
       benefits: [
         'All Angel benefits',
         'Direct access to Nostria team',
@@ -61,20 +61,20 @@ export class FundingComponent implements OnInit {
   fundingMilestones = [
     {
       title: 'Infrastructure Setup',
-      amount: '€10,000',
+      amount: '$10,000',
       description: 'Deploy global relay network and media servers to support the Nostria app, continue development on the Nostria app.',
       date: 'Month 1'
     },
     {
       title: 'Core Feature Development',
-      amount: '€10,000',
-      description: 'Enhance premium features, lightning payments integration, and multi-platform support.',
+      amount: '$10,000',
+      description: 'Enhance premium features, improve app and multi-platform support.',
       date: 'Month 2'
     },
     {
       title: 'Marketing & Growth',
-      amount: '€10,000',
-      description: 'User acquisition, community building, and preparing for incorporation to fiat payment integration.',
+      amount: '$10,000',
+      description: 'User acquisition, community building, and preparing for Seed Round.',
       date: 'Month 3'
     }
   ];
