@@ -43,8 +43,8 @@
       <div class="features-grid">
         @for (feature of category.features; track feature.title) {
           <div class="feature-item">
-            <div class="feature-icon">
-              <i class="{{feature.icon}}"></i>
+            <div class="feature-icon" [style.background]="'linear-gradient(135deg, ' + feature.color + ', ' + feature.color + '80)'" >
+              <span [class]="feature.icon"></span>
             </div>
             <div class="feature-content">
               <h3>{{ feature.title }}</h3>
@@ -87,7 +87,7 @@
             <li>Battery-friendly operation on mobile devices</li>
           </ul>
         </div>
-        <img src="assets/features/performance-chart.png" alt="Nostria Performance Metrics" class="feature-image" />
+        <img src="assets/diagrams/nostria-infrastructure.svg" alt="Nostria Performance Metrics" class="feature-image" />
       </div>
       
       <div class="feature-showcase" *ngIf="category.id === 'infrastructure'">
@@ -123,7 +123,7 @@
             <li>Offline capability with synchronized updates</li>
           </ul>
         </div>
-        <img src="assets/features/cross-platform.png" alt="Nostria on Multiple Devices" class="feature-image" />
+        <img src="assets/diagrams/nostria-infrastructure.svg" alt="Nostria on Multiple Devices" class="feature-image" />
       </div>
     </div>
   </section>
@@ -137,7 +137,7 @@
         <div class="info-card">
           <div class="card-header">
             <div class="icon-container">
-              <i class="icon-{{section.icon}}"></i>
+              <span class="material-symbols-outlined">{{section.icon}}</span>
             </div>
             <h3 class="card-title">{{section.title}}</h3>
           </div>
@@ -150,27 +150,16 @@
 
     <div class="features-section">
       <h2>Key Features</h2>
-      <div class="features-grid">
-        <div class="feature-item">
-          <i class="icon-speed"></i>
-          <h3>Fast & Responsive</h3>
-          <p>Optimized for speed and responsiveness, and doesn't require you to use large centralized relays.</p>
-        </div>
-        <div class="feature-item">
-          <i class="icon-sync"></i>
-          <h3>Auto Relay Discovery</h3>
-          <p>Automatically connects to the right relays to find user content.</p>
-        </div>
-        <div class="feature-item">
-          <i class="icon-wallet"></i>
-          <h3>Multiple Sign Options</h3>
-          <p>Support for various signing methods to keep your keys secure.</p>
-        </div>
-        <div class="feature-item">
-          <i class="icon-devices"></i>
-          <h3>Multi-platform</h3>
-          <p>Available as web, desktop, and mobile application.</p>
-        </div>
+      <div class="key-features-grid">
+        @for (feature of keyFeatures; track feature.title) {
+          <div class="key-feature-item">
+            <div class="feature-icon" [style.background]="'linear-gradient(135deg, ' + feature.color + ', ' + feature.color + '80)'">
+              <span [class]="feature.icon"></span>
+            </div>
+            <h3>{{feature.title}}</h3>
+            <p>{{feature.description}}</p>
+          </div>
+        }
       </div>
     </div>
 

@@ -105,7 +105,6 @@
       width: 48px;
       height: 48px;
       border-radius: 12px;
-      background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
       color: white;
       font-size: 1.25rem;
       flex-shrink: 0;
@@ -282,7 +281,7 @@
       .icon-container {
         margin-right: 1rem;
         
-        i {
+        i, span {
           font-size: 1.75rem;
           color: var(--primary-color);
         }
@@ -312,37 +311,49 @@
       margin-bottom: 2rem;
     }
 
-    .features-grid {
+    .key-features-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
       grid-gap: 1.5rem;
     }
 
-    .feature-item {
+    .key-feature-item {
       text-align: center;
       padding: 1.5rem;
-      border-radius: 8px;
-      background-color: rgba(0, 0, 0, 0.03);
-      transition: background-color 0.2s ease;
+      border-radius: 12px;
+      background-color: white;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
 
       &:hover {
-        background-color: rgba(0, 0, 0, 0.05);
+        transform: translateY(-5px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
       }
 
-      i {
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
-        color: var(--primary-color);
-        display: inline-block;
+      .feature-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        margin: 0 auto 1.5rem;
+        color: white;
+        
+        span {
+          font-size: 1.75rem;
+        }
       }
 
       h3 {
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.75rem;
+        font-size: 1.25rem;
       }
 
       p {
-        font-size: 0.9rem;
-        opacity: 0.8;
+        font-size: 0.95rem;
+        color: var(--text-secondary);
+        margin-bottom: 0;
       }
     }
   }
@@ -404,17 +415,9 @@
 // Dark mode support
 :host-context(.dark-theme) {
   .learn-section {
-    .info-card {
+    .info-card, .key-feature-item {
       background-color: var(--dark-surface);
       box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
-    }
-    
-    .feature-item {
-      background-color: rgba(255, 255, 255, 0.05);
-      
-      &:hover {
-        background-color: rgba(255, 255, 255, 0.08);
-      }
     }
     
     .accordion-item {
@@ -422,6 +425,10 @@
         background-color: var(--dark-surface);
       }
     }
+  }
+  
+  .feature-item {
+    background-color: var(--dark-surface);
   }
 }
 
@@ -476,11 +483,11 @@
   
   .learn-section {
     .section-container,
-    .features-grid {
+    .key-features-grid {
       grid-gap: 1rem;
     }
     
-    .feature-item {
+    .key-feature-item {
       padding: 1rem;
     }
   }

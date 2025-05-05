@@ -71,106 +71,154 @@ export class FeaturesComponent {
     {
       id: 'user-experience',
       title: 'User Experience',
+      color: '#8e44ad', // Purple
       features: [
         {
           title: 'Intuitive Interface',
           description: 'Clean, modern design that makes navigating the Nostr network simple for both beginners and power users.',
-          icon: 'material-symbols-outlined auto_fix'
+          icon: 'material-symbols-outlined auto_fix',
+          color: '#8e44ad' // Purple
         },
         {
           title: 'Customizable Themes',
           description: 'Choose from multiple themes or create your own to personalize your Nostria experience.',
-          icon: 'material-symbols-outlined palette'
+          icon: 'material-symbols-outlined palette',
+          color: '#9b59b6' // Light purple
         },
         {
           title: 'Multi-column Layout',
           description: 'Power users can view multiple timelines simultaneously with our flexible column layout system.',
-          icon: 'material-symbols-outlined view_column'
+          icon: 'material-symbols-outlined view_column',
+          color: '#8e44ad' // Purple
         },
         {
           title: 'Advanced Filters',
           description: 'Filter your timeline by content type, keywords, authors, and more to focus on what matters to you.',
-          icon: 'material-symbols-outlined filter_alt'
+          icon: 'material-symbols-outlined filter_alt',
+          color: '#9b59b6' // Light purple
         }
       ]
     },
     {
       id: 'performance',
       title: 'Performance',
+      color: '#2980b9', // Blue
       features: [
         {
           title: 'Lightning Fast Load Times',
           description: 'Optimized client architecture ensures quick startup and responsive interactions.',
-          icon: 'material-symbols-outlined bolt'
+          icon: 'material-symbols-outlined bolt',
+          color: '#2980b9' // Blue
         },
         {
           title: 'Efficient Caching',
           description: 'Smart local caching reduces redundant network requests and speeds up your browsing experience.',
-          icon: 'material-symbols-outlined database'
+          icon: 'material-symbols-outlined database',
+          color: '#3498db' // Light blue
         },
         {
           title: 'Background Syncing',
           description: 'Stay up-to-date even when offline with background synchronization that updates when you reconnect.',
-          icon: 'material-symbols-outlined sync'
+          icon: 'material-symbols-outlined sync',
+          color: '#2980b9' // Blue
         },
         {
           title: 'Optimized Media Loading',
           description: 'Intelligent media loading prioritizes visible content for faster scrolling and reduced data usage.',
-          icon: 'material-symbols-outlined perm_media'
+          icon: 'material-symbols-outlined perm_media',
+          color: '#3498db' // Light blue
         }
       ]
     },
     {
       id: 'infrastructure',
       title: 'Infrastructure',
+      color: '#16a085', // Teal
       features: [
         {
           title: 'User Relays',
           description: 'Premium users get dedicated relay servers for faster message propagation and improved reliability.',
-          icon: 'material-symbols-outlined dns'
+          icon: 'material-symbols-outlined dns',
+          color: '#16a085' // Teal
         },
         {
           title: 'Media Servers',
           description: 'Store and deliver your media content through our optimized, censorship-resistant content delivery network.',
-          icon: 'material-symbols-outlined cloud'
+          icon: 'material-symbols-outlined cloud',
+          color: '#1abc9c' // Light teal
         },
         {
           title: 'Discovery Relays',
           description: 'Find relevant content and people through our specialized discovery relays with advanced filtering.',
-          icon: 'material-symbols-outlined explore'
+          icon: 'material-symbols-outlined explore',
+          color: '#16a085' // Teal
         },
         {
           title: 'Global Scale',
           description: 'Nostria\'s infrastructure is built to scale globally, ensuring consistent performance worldwide.',
-          icon: 'material-symbols-outlined public'
+          icon: 'material-symbols-outlined public',
+          color: '#1abc9c' // Light teal
         }
       ]
     },
     {
       id: 'cross-platform',
       title: 'Cross-Platform',
+      color: '#c0392b', // Red
       features: [
         {
           title: 'Web App',
           description: 'Access Nostria from any modern web browser without downloading software.',
-          icon: 'material-symbols-outlined public'
+          icon: 'material-symbols-outlined public',
+          color: '#c0392b' // Red
         },
         {
           title: 'Desktop Apps',
           description: 'Native applications for Windows, macOS, and Linux with OS-specific optimizations.',
-          icon: 'material-symbols-outlined desktop_windows'
+          icon: 'material-symbols-outlined desktop_windows',
+          color: '#e74c3c' // Light red
         },
         {
           title: 'Mobile Apps',
           description: 'iOS and Android apps designed specifically for the mobile experience.',
-          icon: 'material-symbols-outlined smartphone'
+          icon: 'material-symbols-outlined smartphone',
+          color: '#c0392b' // Red
         },
         {
           title: 'Synchronized Experience',
           description: 'Seamlessly switch between devices while maintaining your exact place in conversations and feeds.',
-          icon: 'material-symbols-outlined sync_alt'
+          icon: 'material-symbols-outlined sync_alt',
+          color: '#e74c3c' // Light red
         }
       ]
+    }
+  ];
+
+  // Key features with proper icons
+  keyFeatures = [
+    {
+      title: 'Fast & Responsive',
+      description: 'Optimized for speed and responsiveness, and doesn\'t require you to use large centralized relays.',
+      icon: 'material-symbols-outlined bolt',
+      color: '#2980b9' // Blue
+    },
+    {
+      title: 'Auto Relay Discovery',
+      description: 'Automatically connects to the right relays to find user content.',
+      icon: 'material-symbols-outlined sync',
+      color: '#16a085' // Teal
+    },
+    {
+      title: 'Multiple Sign Options',
+      description: 'Support for various signing methods to keep your keys secure.',
+      icon: 'material-symbols-outlined key',
+      color: '#c0392b' // Red
+    },
+    {
+      title: 'Multi-platform',
+      description: 'Available as web, desktop, and mobile application.',
+      icon: 'material-symbols-outlined devices',
+      color: '#8e44ad' // Purple
     }
   ];
 
