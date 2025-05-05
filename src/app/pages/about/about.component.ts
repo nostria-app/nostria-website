@@ -23,27 +23,12 @@ export class AboutComponent implements OnInit {
 
   ngOnInit(): void {
     this.setupContactForm();
+    this.initScrollAnimations();
   }
 
   setupContactForm(): void {
-    setTimeout(() => {
-      const form = document.querySelector('.contact-form');
-      
-      if (form) {
-        form.addEventListener('submit', (event) => {
-          event.preventDefault();
-          
-          // In a real app, we would send the form data to a backend
-          console.log('Contact form submitted:', this.contactForm);
-          
-          // Show success message
-          alert('Thank you for your message! We will get back to you shortly.');
-          
-          // Reset form
-          (event.target as HTMLFormElement).reset();
-        });
-      }
-    }, 0);
+    // Keep this for backward compatibility, but it's no longer needed
+    // as we removed the form
   }
 
   // Method to handle animations when scrolling
@@ -58,7 +43,7 @@ export class AboutComponent implements OnInit {
       });
     }, { threshold: 0.2 });
 
-    // Apply to timeline items, team members, etc.
+    // Apply to timeline items, team members, testimonials, etc.
     document.querySelectorAll('.timeline-item, .team-member, .principle-card').forEach(el => {
       animateOnScroll.observe(el);
     });

@@ -545,18 +545,14 @@
   padding: 6rem 0;
   background-color: white;
   
-  .contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: start;
-    
-    @media (max-width: 992px) {
-      grid-template-columns: 1fr;
-    }
+  .contact-content {
+    max-width: 1000px;
+    margin: 0 auto;
   }
   
   .contact-info {
+    text-align: center;
+    
     h2 {
       font-size: 2.5rem;
       background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
@@ -564,21 +560,33 @@
       -webkit-text-fill-color: transparent;
       background-clip: text;
       margin-bottom: 1.5rem;
+      display: inline-block;
     }
     
     p {
       font-size: 1.125rem;
       color: var(--text-secondary);
       margin-bottom: 3rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
     }
     
     .contact-methods {
-      margin-bottom: 3rem;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      max-width: 800px;
+      margin: 0 auto 3rem;
+      
+      @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+      }
       
       .contact-method {
         display: flex;
         align-items: flex-start;
-        margin-bottom: 1.5rem;
+        text-align: left;
         
         .method-icon {
           width: 50px;
@@ -623,33 +631,53 @@
         &:nth-child(3) .method-icon {
           background: linear-gradient(135deg, #f093fb, #f5576c);
         }
-      }
-    }
-    
-    .social-links {
-      display: flex;
-      gap: 1rem;
-      
-      .social-link {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        background-color: var(--surface);
-        color: var(--primary-color);
-        font-size: 1.25rem;
-        transition: all 0.3s ease;
-        text-decoration: none;
-        
-        &:hover {
-          background-color: var(--primary-color);
-          color: white;
-          transform: translateY(-5px);
+
+        &:nth-child(4) .method-icon {
+          background: linear-gradient(135deg, #ffea00, #ff6b00);
         }
       }
     }
   }
+}
+
+// Testimonials Section
+.testimonials-section {
+  padding: 6rem 0;
+  background-color: var(--surface);
   
+  .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    
+    h2 {
+      font-size: 2.5rem;
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+    
+    .section-subheading {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }
+  
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    
+    @media (max-width: 992px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
 }
