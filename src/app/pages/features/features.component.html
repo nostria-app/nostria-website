@@ -29,8 +29,8 @@
         @if (category.id === 'user-experience') {
           <p class="section-subheading">Intuitive design meets powerful functionality</p>
         }
-        @if (category.id === 'performance') {
-          <p class="section-subheading">Blazing fast performance everywhere you go</p>
+        @if (category.id === 'scaling') {
+          <p class="section-subheading">Enabling truly decentralized global scale for Nostr</p>
         }
         @if (category.id === 'infrastructure') {
           <p class="section-subheading">Built to scale with your needs and the network</p>
@@ -76,7 +76,7 @@
         </div>
       </div>
       
-      <div class="feature-showcase reverse" *ngIf="category.id === 'performance'">
+      <!-- <div class="feature-showcase reverse" *ngIf="category.id === 'performance'">
         <div class="feature-details">
           <h3>Performance That Feels Like Magic</h3>
           <p>
@@ -96,6 +96,28 @@
           alt="Nostria Performance Metrics" 
           class="feature-image" 
           (click)="openLightbox('assets/diagrams/nostria-architecture.svg', 'Nostria Architecture')" />
+      </div> -->
+      
+      <div class="feature-showcase reverse" *ngIf="category.id === 'scaling'">
+        <div class="feature-details">
+          <h3>Scaling Beyond Centralized Relays</h3>
+          <p>
+            Nostria is designed to enable true global scaling for the Nostr network. By intelligently 
+            distributing user content across appropriate relays rather than relying on massive centralized 
+            servers, Nostria helps create a more resilient, faster, and truly decentralized network.
+          </p>
+          <ul class="feature-list">
+            <li>Connect directly to smaller user relays</li>
+            <li>Automatic discovery of relevant relays for content</li>
+            <li>Efficient data propagation across the network</li>
+            <li>Reduced dependency on large centralized relays</li>
+          </ul>
+        </div>
+        <img 
+          src="assets/diagrams/nostria-architecture.svg" 
+          alt="Nostria Scaling Architecture" 
+          class="feature-image" 
+          (click)="openLightbox('assets/diagrams/nostria-architecture.svg', 'Nostria Scaling Architecture')" />
       </div>
       
       <div class="feature-showcase" *ngIf="category.id === 'infrastructure'">
@@ -132,14 +154,13 @@
             <li>Native apps for all major platforms</li>
             <li>Real-time synchronization across devices</li>
             <li>Optimized interfaces for each form factor</li>
-            <li>Offline capability with synchronized updates</li>
           </ul>
         </div>
         <img 
-          src="assets/diagrams/nostria-infrastructure.svg" 
+          src="assets/screenshots/nostria-bookmarks.jpg" 
           alt="Nostria on Multiple Devices" 
           class="feature-image" 
-          (click)="openLightbox('assets/diagrams/nostria-infrastructure.svg', 'Nostria on Multiple Devices')" />
+          (click)="openLightbox('assets/screenshots/nostria-bookmarks.jpg', 'Nostria Bookmarks')" />
       </div>
     </div>
   </section>

@@ -100,32 +100,32 @@ export class FeaturesComponent {
       ]
     },
     {
-      id: 'performance',
-      title: 'Performance',
+      id: 'scaling',
+      title: 'Scaling',
       color: '#2980b9', // Blue
       features: [
         {
-          title: 'Lightning Fast Load Times',
-          description: 'Optimized client architecture ensures quick startup and responsive interactions.',
-          icon: 'material-symbols-outlined bolt',
+          title: 'Decentralized Architecture',
+          description: 'Distribute load across the network without relying on centralized relays, ensuring better resilience and global reach.',
+          icon: 'material-symbols-outlined hub',
           color: '#2980b9' // Blue
         },
         {
-          title: 'Efficient Caching',
-          description: 'Smart local caching reduces redundant network requests and speeds up your browsing experience.',
-          icon: 'material-symbols-outlined database',
+          title: 'Automatic Relay Usage',
+          description: 'Automatically connects to the relays for each user, optimizing network traffic and reducing bottlenecks.',
+          icon: 'material-symbols-outlined router',
           color: '#3498db' // Light blue
         },
         {
-          title: 'Background Syncing',
-          description: 'Stay up-to-date even when offline with background synchronization that updates when you reconnect.',
-          icon: 'material-symbols-outlined sync',
+          title: 'Load Balancing',
+          description: 'Intelligently distributes requests across multiple relays to prevent overloading and ensure consistent performance.',
+          icon: 'material-symbols-outlined balance',
           color: '#2980b9' // Blue
         },
         {
-          title: 'Optimized Media Loading',
-          description: 'Intelligent media loading prioritizes visible content for faster scrolling and reduced data usage.',
-          icon: 'material-symbols-outlined perm_media',
+          title: 'Discovery Relay',
+          description: 'Utilizing high-performance Discovery Relay enables anyone to find everyone.',
+          icon: 'material-symbols-outlined sync_alt',
           color: '#3498db' // Light blue
         }
       ]
@@ -174,7 +174,7 @@ export class FeaturesComponent {
         },
         {
           title: 'Desktop Apps',
-          description: 'Native applications for Windows, macOS, and Linux with OS-specific optimizations.',
+          description: 'Native applications for Windows, macOS, and Linux.',
           icon: 'material-symbols-outlined desktop_windows',
           color: '#e74c3c' // Light red
         },

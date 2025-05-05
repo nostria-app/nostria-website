@@ -652,45 +652,4 @@
     }
   }
   
-  .contact-form-container {
-    background-color: var(--surface);
-    border-radius: 1rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    padding: 2.5rem;
-    
-    .form-group {
-      margin-bottom: 1.5rem;
-      
-      label {
-        display: block;
-        margin-bottom: 0.5rem;
-        font-weight: 500;
-      }
-      
-      input,
-      textarea {
-        width: 100%;
-        padding: 0.875rem 1rem;
-        border: 1px solid var(--divider);
-        border-radius: 0.5rem;
-        
-        &:focus {
-          outline: none;
-          border-color: var(--primary-color);
-        }
-      }
-      
-      textarea {
-        resize: vertical;
-      }
-    }
-    
-    .form-submit {
-      text-align: right;
-      
-      button {
-        padding: 0.875rem 2rem;
-      }
-    }
-  }
 }
