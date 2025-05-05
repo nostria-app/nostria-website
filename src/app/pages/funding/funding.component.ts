@@ -26,8 +26,8 @@ export class FundingComponent implements OnInit {
       benefits: [
         'Pro-rata rights for future rounds',
         '10% revenue share until 150% returned',
-        'Early access to new features',
-        'Nostria Premium+ account (1 year)'
+        'Supporter Exclusive Badge',
+        'Nostria Premium account (6 months)'
       ],
       highlighted: false
     },
@@ -38,7 +38,9 @@ export class FundingComponent implements OnInit {
         'All Supporter benefits',
         'Quarterly investor calls',
         'Name in app credits',
-        'Nostria Premium+ account (2 years)'
+        'Investor Exclusive Badge',
+        'Early access to new features',
+        'Nostria Premium account (1 years)'
       ],
       highlighted: true
     },
@@ -49,7 +51,7 @@ export class FundingComponent implements OnInit {
         'All Angel benefits',
         'Direct access to founding team',
         'Input on product roadmap',
-        'Nostria Premium+ account (lifetime)'
+        'Nostria Premium+ account (1 year)'
       ],
       highlighted: false
     }
@@ -60,19 +62,19 @@ export class FundingComponent implements OnInit {
     {
       title: 'Infrastructure Setup',
       amount: '$10,000',
-      description: 'Deploy global relay network and media servers to support the Nostria app',
+      description: 'Deploy global relay network and media servers to support the Nostria app, continue development on the Nostria app.',
       date: 'Month 1'
     },
     {
       title: 'Core Feature Development',
       amount: '$10,000',
-      description: 'Enhance premium features, payments integration, and multi-platform support',
+      description: 'Enhance premium features, lightning payments integration, and multi-platform support.',
       date: 'Month 2'
     },
     {
       title: 'Marketing & Growth',
       amount: '$10,000',
-      description: 'User acquisition, community building, and preparation for Seed round',
+      description: 'User acquisition, community building, and preparing for incorporation to fiat payment integration.',
       date: 'Month 3'
     }
   ];
@@ -85,8 +87,8 @@ export class FundingComponent implements OnInit {
 
   initCountdown(): void {
     // Set funding dates
-    const fundingStartDate = new Date('May 11, 2024 00:00:00 UTC').getTime();
-    const fundingEndDate = new Date('May 31, 2024 23:59:59 UTC').getTime();
+    const fundingStartDate = new Date('May 11, 2025 00:00:00 UTC').getTime();
+    const fundingEndDate = new Date('May 31, 2025 23:59:59 UTC').getTime();
     const now = new Date().getTime();
 
     // Check if funding has started or ended

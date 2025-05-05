@@ -63,21 +63,9 @@
       </div>
 
       <div class="hero-cta">
-        <button *ngIf="!fundingStarted" class="btn btn-outline" (click)="scrollToInvestment()">
-          Learn More
-        </button>
         <button *ngIf="fundingStarted && !fundingEnded" class="btn btn-primary" (click)="openInvestModal()">
           Invest Now
         </button>
-        <a *ngIf="fundingStarted && !fundingEnded" class="btn btn-outline" (click)="scrollToInvestment()">
-          View Investment Options
-        </a>
-        <a *ngIf="fundingEnded" routerLink="/about" class="btn btn-primary">
-          About Nostria
-        </a>
-        <a *ngIf="fundingEnded" href="mailto:investors@nostria.app" class="btn btn-outline">
-          Contact Investor Relations
-        </a>
       </div>
     </div>
   </div>
@@ -157,18 +145,18 @@
               </li>
             }
           </ul>
-          <div class="tier-cta">
+          <!-- <div class="tier-cta">
             <button [class]="tier.highlighted ? 'btn btn-primary' : 'btn btn-outline'" (click)="openInvestModal()">
               Invest as {{tier.name}}
             </button>
-          </div>
+          </div> -->
         </div>
       }
     </div>
 
     <div class="custom-investment">
       <p>Looking to invest a different amount? Contact us directly for custom investment options.</p>
-      <a href="mailto:nostriaapp@gmail.com" class="btn btn-outline">Contact Investment Team</a>
+      <a href="mailto:nostriaapp@gmail.com" class="btn btn-outline">Contact us about investing</a>
     </div>
   </div>
 </section>
@@ -356,11 +344,11 @@
         custom investment options, contact our investment team.
       </p>
       <div class="contact-cta">
-        <button class="btn btn-primary btn-lg" (click)="openInvestModal()">
+        <!-- <button class="btn btn-primary btn-lg" (click)="openInvestModal()">
           Invest Now
-        </button>
-        <a href="mailto:investors@nostria.app" class="btn btn-outline btn-lg">
-          Contact Investment Team
+        </button> -->
+        <a href="mailto:nostriaapp@gmail.com" class="btn btn-primary btn-lg">
+          Contact us about investing
         </a>
       </div>
     </div>
