@@ -101,7 +101,7 @@ export class FeaturesComponent {
     },
     {
       id: 'scaling',
-      title: 'Scaling',
+      title: 'Global Scaling',
       color: '#2980b9', // Blue
       features: [
         {
