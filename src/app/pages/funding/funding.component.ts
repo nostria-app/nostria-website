@@ -87,7 +87,7 @@ export class FundingComponent implements OnInit {
 
   initCountdown(): void {
     // Set funding dates
-    const fundingStartDate = new Date('May 11, 2025 00:00:00 UTC').getTime();
+    const fundingStartDate = new Date('May 12, 2025 00:00:00 UTC').getTime();
     const fundingEndDate = new Date('May 31, 2025 23:59:59 UTC').getTime();
     const now = new Date().getTime();
 
