@@ -52,7 +52,7 @@
               <span class="count-label">Secs</span>
             </div>
           </div>
-          <p class="funding-dates">Funding Round Open: May 11 - May 31, 2024</p>
+          <p class="funding-dates">Funding Round Open: May 12 - May 31, 2024</p>
         </div>
         
         <div *ngIf="fundingEnded" class="funding-ended">
@@ -63,9 +63,9 @@
       </div>
 
       <div class="hero-cta">
-        <button *ngIf="fundingStarted && !fundingEnded" class="btn btn-primary" (click)="openInvestModal()">
+        <a href="https://hub.angor.io/project/angor1qwdgxjuzhjykgpn5q8p3l2q9vyrgqdlrkfp5sjr?network=main" rel="noopener noreferrer" *ngIf="fundingStarted && !fundingEnded" class="btn btn-primary">
           Invest Now
-        </button>
+        </a>
       </div>
     </div>
   </div>
@@ -156,7 +156,7 @@
 
     <div class="custom-investment">
       <p>Looking to invest a different amount? Contact us directly for custom investment options.</p>
-      <a href="mailto:nostriaapp@gmail.com" class="btn btn-outline">Contact us about investing</a>
+      <a href="mailto:nostriaapp@gmail.com" class="btn btn-outline">Contact us about investing</a> or <a href="https://hub.angor.io/project/angor1qwdgxjuzhjykgpn5q8p3l2q9vyrgqdlrkfp5sjr?network=main" class="btn btn-outline">invest now</a>
     </div>
   </div>
 </section>
@@ -346,7 +346,9 @@
       <div class="contact-cta">
         <a href="mailto:nostriaapp@gmail.com" class="btn btn-primary btn-lg">
           Contact us about investing
-        </a>
+        </a><br>
+        or<br>
+        <a href="https://hub.angor.io/project/angor1qwdgxjuzhjykgpn5q8p3l2q9vyrgqdlrkfp5sjr?network=main" class="btn btn-primary btn-lg">invest now</a>
       </div>
     </div>
   </div>

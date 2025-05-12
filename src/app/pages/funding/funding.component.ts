@@ -109,7 +109,7 @@ export class FundingComponent implements OnInit {
         } else {
           this.updateCountdown(fundingStartDate);
         }
-      }, 1000);
+        }, 1000);
     }
   }
 
@@ -141,6 +141,6 @@ export class FundingComponent implements OnInit {
   }
 
   openInvestModal(): void {
-    alert('In a real implementation, this would open a secure investment modal or redirect to an investment platform');
+    document.location = 'https://nostria.com/invest';
   }
 }
