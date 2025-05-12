@@ -71,6 +71,7 @@
   </div>
 </section>
 
+
 <!-- Funding Overview Section -->
 <section class="funding-overview">
   <div class="container">
@@ -188,6 +189,37 @@
 
     <div class="total-funding">
       <h3>Total Pre-Seed Target: €30,000</h3>
+    </div>
+  </div>
+</section>
+
+<!-- Funding Videos Section -->
+<section class="funding-videos">
+  <div class="container">
+    <div class="section-header">
+      <h2>Nostria Funding Updates</h2>
+      <p class="section-subheading">Watch our latest updates on the funding round and project development</p>
+    </div>
+
+    <div class="videos-grid">
+      @for (video of fundingVideos; track video.youtubeId) {
+        <div class="video-card">
+          <div class="video-container">
+            <!-- <youtube-player [videoId]="video.youtubeId" placeholderImageQuality="high"/> -->
+            <iframe 
+              [src]="'https://www.youtube.com/embed/' + video.youtubeId | safe:'resourceUrl'"
+              title="YouTube video player" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen>
+            </iframe>
+          </div>
+          <div class="video-info">
+            <h3>{{ video.title }}</h3>
+            <p>{{ video.description }}</p>
+          </div>
+        </div>
+      }
     </div>
   </div>
 </section>
