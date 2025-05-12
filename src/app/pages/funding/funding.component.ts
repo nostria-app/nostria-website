@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { SafePipeModule } from '../../shared/pipes/safe.pipe';
 import { YouTubePlayerModule } from '@angular/youtube-player';
+import { PitchDeckDownloadComponent } from '../../components/pitch-deck-download/pitch-deck-download.component';
 
 @Component({
   selector: 'app-funding',
   standalone: true,
-  imports: [CommonModule, RouterLink, SafePipeModule, YouTubePlayerModule],
+  imports: [CommonModule, RouterLink, SafePipeModule, YouTubePlayerModule, PitchDeckDownloadComponent],
   templateUrl: './funding.component.html',
   styleUrl: './funding.component.scss'
 })
