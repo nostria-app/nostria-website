@@ -98,6 +98,11 @@ export class FundingComponent implements OnInit {
       title: 'Nostria: Update May 9th 2025',
       description: 'The latest updates on our progress, roadmap, and upcoming features for Nostria.',
       youtubeId: 'ZvInhmp0YAI'
+    },
+    {
+      title: 'Nostria: Update May 19th 2025',
+      description: 'Demonstration of latest updates to Nostria app and platform.',
+      youtubeId: 'e7a4J6RDmcc'
     }
   ];
 
