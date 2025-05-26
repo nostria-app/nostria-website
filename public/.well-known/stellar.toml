@@ -1,0 +1,29 @@
+VERSION = "2.0.0"
+
+ACCOUNTS = [
+  "GC726GMMOKZQP4BEFSBY4EKYIJ7PUNEDMMJYTXUOTLJWS3THAJ3S5KKO"
+]
+
+[DOCUMENTATION]
+ORG_NAME = "Nostria"
+ORG_URL = "https://www.nostria.app"
+ORG_LOGO="https://www.nostria.app/assets/icons/icon-128x128.png"
+ORG_DESCRIPTION = "Your Social Network"
+ORG_TWITTER="nostriaapp"
+ORG_GITHUB="nostria-app"
+ORG_OFFICIAL_EMAIL = "nostriaapp@gmail.com"
+ORG_SUPPORT_EMAIL = "nostriaapp@gmail.com"
+
+[[PRINCIPALS]]
+name = "Sondre"
+email = "nostriaapp@gmail.com"
+
+[[CURRENCIES]]
+code = "NOSTRIA"
+issuer = "GC726GMMOKZQP4BEFSBY4EKYIJ7PUNEDMMJYTXUOTLJWS3THAJ3S5KKO"
+status = "live"
+display_decimals = 0
+name = "NOSTRIA"
+desc = "NOSTRIA Token"
+is_unlimited = true
+image = "https://www.nostria.app/assets/icons/icon-token.png"
