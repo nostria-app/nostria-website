@@ -7,7 +7,7 @@ ACCOUNTS = [
 [DOCUMENTATION]
 ORG_NAME = "Nostria"
 ORG_URL = "https://www.nostria.app"
-ORG_LOGO="https://www.nostria.app/assets/icons/icon-128x128.png"
+ORG_LOGO="https://www.nostria.app/assets/icons/icon-token.png"
 ORG_DESCRIPTION = "Your Social Network"
 ORG_TWITTER="nostriaapp"
 ORG_GITHUB="nostria-app"
