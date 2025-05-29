@@ -6,6 +6,7 @@ import { AboutComponent } from './pages/about/about.component';
 import { FundingComponent } from './pages/funding/funding.component';
 import { PrivacyComponent } from './pages/privacy/privacy.component';
 import { TermsComponent } from './pages/terms/terms.component';
+import { PreSeedFundRaisedComponent } from './pages/press/pre-seed-fund-raised/pre-seed-fund-raised.component';
 
 export const routes: Routes = [
   {
@@ -19,6 +20,7 @@ export const routes: Routes = [
     pathMatch: 'full'
   },
   { path: 'features', component: FeaturesComponent },
+  { path: 'press/pre-seed-funding-raised', component: PreSeedFundRaisedComponent },
   { path: 'premium', component: PremiumComponent },
   { path: 'funding', component: FundingComponent },
   { path: 'terms', component: TermsComponent },
