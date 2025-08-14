@@ -36,6 +36,7 @@
       radial-gradient(circle at 40% 70%, rgba(236, 72, 153, 0.08) 0%, transparent 30%);
     pointer-events: none;
     animation: pulseGradient 8s ease-in-out infinite;
+    z-index: 0; // Ensure pseudo-elements are below content
   }
   
   &::after {
@@ -56,6 +57,7 @@
         transparent 360deg);
     animation: rotate 20s linear infinite;
     pointer-events: none;
+    z-index: 0; // Ensure pseudo-elements are below content
   }
 }
 
@@ -71,6 +73,8 @@
 .hero-text {
   grid-column: span 6;
   animation: fadeInUp 0.8s ease-out;
+  position: relative;
+  z-index: 5; // Increased z-index to ensure it's above animations
   
   @media (max-width: 1024px) {
     grid-column: span 12;
@@ -129,6 +133,8 @@
   display: flex;
   gap: 1.5rem;
   margin-bottom: 2rem;
+  position: relative;
+  z-index: 10; // High z-index to ensure buttons are always on top
   
   @media (max-width: 1024px) {
     justify-content: center;
@@ -148,6 +154,8 @@
   border-radius: 2rem;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  position: relative; // Added to ensure z-index works
+  z-index: 5; // Ensure buttons are above animations
   
   &.btn-primary {
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
@@ -249,6 +257,7 @@
   grid-column: span 6;
   position: relative;
   animation: fadeInUp 0.8s ease-out 0.3s both;
+  z-index: 1; // Lower z-index for the image container
   
   @media (max-width: 1024px) {
     grid-column: span 12;
