@@ -488,6 +488,20 @@
   box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
   animation: fadeInUp 0.6s ease-out;
   
+  // Mobile fallback
+  @media (max-width: 768px) {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+  
+  // Reduced motion preference
+  @media (prefers-reduced-motion: reduce) {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+  
   .material-symbols-outlined {
     font-size: 1.2rem;
   }
@@ -503,6 +517,20 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
   animation: fadeInUp 0.6s ease-out 0.1s both;
+  
+  // Mobile fallback
+  @media (max-width: 768px) {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+  
+  // Reduced motion preference
+  @media (prefers-reduced-motion: reduce) {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
 }
 
 .section-subheading {
@@ -511,6 +539,20 @@
   margin-top: 1rem;
   line-height: 1.6;
   animation: fadeInUp 0.6s ease-out 0.2s both;
+  
+  // Mobile fallback
+  @media (max-width: 768px) {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+  
+  // Reduced motion preference
+  @media (prefers-reduced-motion: reduce) {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
 }
 
 // Features Overview
@@ -584,6 +626,25 @@
   &:nth-child(1) { animation: fadeInUp 0.8s ease-out 0.3s both; }
   &:nth-child(2) { animation: fadeInUp 0.8s ease-out 0.5s both; }
   &:nth-child(3) { animation: fadeInUp 0.8s ease-out 0.7s both; }
+
+  // Mobile fallback - ensure elements are visible on mobile devices
+  @media (max-width: 768px) {
+    // Remove animations on mobile to prevent rendering issues
+    &:nth-child(1), &:nth-child(2), &:nth-child(3) {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
+  }
+
+  // Reduced motion preference fallback
+  @media (prefers-reduced-motion: reduce) {
+    &:nth-child(1), &:nth-child(2), &:nth-child(3) {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
+  }
   
   &.feature-card-primary {
     .feature-background {
@@ -2080,6 +2141,98 @@
 // Utility Classes
 .text-center {
   text-align: center;
+}
+
+// Mobile Animation Overrides - Critical for mobile rendering
+@media (max-width: 768px) {
+  // Override ALL delayed animations on mobile to prevent rendering issues
+  .section-badge,
+  .section-title,
+  .section-subheading,
+  .feature-card,
+  .feature-card:nth-child(1),
+  .feature-card:nth-child(2),
+  .feature-card:nth-child(3),
+  .features-cta,
+  .showcase-badge,
+  .showcase-title,
+  .showcase-description,
+  .showcase-feature,
+  .showcase-feature:nth-child(1),
+  .showcase-feature:nth-child(2),
+  .showcase-feature:nth-child(3),
+  .showcase-feature:nth-child(4),
+  .showcase-image,
+  .premium-badge,
+  .premium-title,
+  .premium-card,
+  .premium-card:nth-child(1),
+  .premium-card:nth-child(2),
+  .premium-card:nth-child(3),
+  .premium-cta,
+  .comparison-card.legacy,
+  .comparison-card.nostria,
+  .comparison-stats,
+  .cta-badge,
+  .cta-title,
+  .cta-description,
+  .cta-features,
+  .cta-buttons,
+  .cta-note,
+  .hero-image,
+  .platform-icon,
+  .platform-icon:nth-child(1),
+  .platform-icon:nth-child(2),
+  .platform-icon:nth-child(3),
+  .comparison-header-main .section-badge,
+  .comparison-main-title {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    animation-delay: 0s !important;
+    animation-duration: 0s !important;
+  }
+}
+
+// Accessibility: Respect reduced motion preference
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  // Ensure all animated elements are visible
+  .section-badge,
+  .section-title,
+  .section-subheading,
+  .feature-card,
+  .features-cta,
+  .showcase-badge,
+  .showcase-title,
+  .showcase-description,
+  .showcase-feature,
+  .showcase-image,
+  .premium-badge,
+  .premium-title,
+  .premium-card,
+  .premium-cta,
+  .comparison-card,
+  .comparison-stats,
+  .cta-badge,
+  .cta-title,
+  .cta-description,
+  .cta-features,
+  .cta-buttons,
+  .cta-note,
+  .hero-image,
+  .platform-icon {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
 }
 
 .mt-lg {

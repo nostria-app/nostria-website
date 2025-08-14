@@ -135,25 +135,26 @@
     height: 2px;
     background-color: var(--primary-color);
     transition: all 0.3s ease;
+    left: 0;
   }
   
   &::before {
-    transform: translateY(-8px);
+    transform: translateY(-6px);
   }
   
   &::after {
-    transform: translateY(8px);
+    transform: translateY(6px);
   }
   
   &.menu-open {
     background-color: transparent;
     
     &::before {
-      transform: rotate(45deg);
+      transform: translateY(0) rotate(45deg);
     }
     
     &::after {
-      transform: rotate(-45deg);
+      transform: translateY(0) rotate(-45deg);
     }
   }
 }
