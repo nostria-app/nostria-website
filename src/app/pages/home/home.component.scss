@@ -218,15 +218,15 @@
 // Features Overview
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
   
-  @media (max-width: 1024px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  @media (max-width: 640px) {
+  @media (max-width: 768px) {
     grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 500px;
   }
 }
 
@@ -270,7 +270,6 @@
   &:nth-child(1) { animation: fadeInUp 0.6s ease-out 0.1s both; }
   &:nth-child(2) { animation: fadeInUp 0.6s ease-out 0.2s both; }
   &:nth-child(3) { animation: fadeInUp 0.6s ease-out 0.3s both; }
-  &:nth-child(4) { animation: fadeInUp 0.6s ease-out 0.4s both; }
   
   .feature-icon {
     width: 72px;
@@ -381,15 +380,15 @@
 // Premium Section
 .premium-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
   
-  @media (max-width: 1024px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  @media (max-width: 640px) {
+  @media (max-width: 768px) {
     grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 500px;
   }
 }
 
@@ -632,20 +631,20 @@
       color: var(--primary-color);
     }
     
-    &::before {
-      content: "✨ Recommended";
-      position: absolute;
-      top: -12px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-      color: white;
-      padding: 0.5rem 1.25rem;
-      border-radius: 25px;
-      font-size: 0.875rem;
-      font-weight: 600;
-      box-shadow: 0 4px 15px rgba(142, 68, 173, 0.3);
-    }
+    // &::before {
+    //   content: "✨ Recommended";
+    //   position: absolute;
+    //   top: -12px;
+    //   left: 50%;
+    //   transform: translateX(-50%);
+    //   background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    //   color: white;
+    //   padding: 0.5rem 1.25rem;
+    //   border-radius: 25px;
+    //   font-size: 0.875rem;
+    //   font-weight: 600;
+    //   box-shadow: 0 4px 15px rgba(142, 68, 173, 0.3);
+    // }
   }
 }
 
