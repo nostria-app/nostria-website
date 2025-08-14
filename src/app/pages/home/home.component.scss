@@ -130,6 +130,11 @@
     background-color: var(--surface);
   }
   
+  &.user-control-highlight {
+    background: linear-gradient(135deg, #fff8f0 0%, #f0f9ff 100%);
+    padding: 4rem 0;
+  }
+  
   &.app-showcase {
     background-color: #f8fafc;
   }
@@ -473,6 +478,118 @@
 .btn-lg {
   padding: 1rem 2rem;
   font-size: 1.125rem;
+}
+
+// User Control Highlight Section
+.comparison-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+.comparison-card {
+  background-color: white;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  position: relative;
+  
+  &.legacy {
+    border: 2px solid #fee2e2;
+    
+    .comparison-header h3 {
+      color: #dc2626;
+    }
+  }
+  
+  &.nostria {
+    border: 2px solid #dcfce7;
+    transform: translateY(-10px);
+    
+    .comparison-header h3 {
+      color: var(--primary-color);
+    }
+    
+    &::before {
+      content: "✨ Recommended";
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+  }
+}
+
+.comparison-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  
+  h3 {
+    margin: 0;
+    font-size: 1.25rem;
+  }
+}
+
+.comparison-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  
+  &.negative {
+    background-color: #fee2e2;
+    color: #dc2626;
+  }
+  
+  &.positive {
+    background-color: #dcfce7;
+    color: #16a34a;
+  }
+}
+
+.comparison-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  
+  li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #f1f5f9;
+    color: var(--text-secondary);
+    
+    &:last-child {
+      border-bottom: none;
+    }
+    
+    &::before {
+      content: "•";
+      color: var(--primary-color);
+      margin-right: 0.75rem;
+      font-weight: bold;
+    }
+  }
+  
+  .legacy & li::before {
+    color: #dc2626;
+  }
 }
 
 // Utility Classes
