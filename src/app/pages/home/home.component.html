@@ -229,38 +229,112 @@
 <section class="section premium-overview">
   <div class="container">
     <div class="section-header">
-      <h2>Power Up with Nostria Premium</h2>
-      <p class="section-subheading">Unlock advanced features and dedicated infrastructure</p>
+      <div class="premium-badge">
+        <span class="material-symbols-outlined">workspace_premium</span>
+        <span>Premium Experience</span>
+      </div>
+      <h2 class="premium-title">Power Up with Nostria Premium</h2>
+      <p class="section-subheading">Unlock advanced features and dedicated infrastructure for the ultimate social experience</p>
     </div>
 
     <div class="premium-grid">
-      <div class="premium-card">
+      <div class="premium-card premium-card-performance">
+        <div class="premium-background"></div>
         <div class="premium-icon">
           <span class="material-symbols-outlined">rocket_launch</span>
         </div>
-        <h3>Dedicated Relays</h3>
-        <p>Get faster message delivery with priority access to our high-performance relay network.</p>
+        <div class="premium-content">
+          <h3>Dedicated Relays</h3>
+          <p>Get faster message delivery with priority access to our high-performance relay network.</p>
+          <div class="premium-features">
+            <div class="premium-feature">
+              <span class="material-symbols-outlined">speed</span>
+              <span>Lightning Fast</span>
+            </div>
+            <div class="premium-feature">
+              <span class="material-symbols-outlined">priority_high</span>
+              <span>Priority Access</span>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="premium-card">
+      <div class="premium-card premium-card-storage">
+        <div class="premium-background"></div>
         <div class="premium-icon">
           <span class="material-symbols-outlined">cloud</span>
         </div>
-        <h3>Media Servers</h3>
-        <p>Store and serve your media content through our globally distributed CDN.</p>
+        <div class="premium-content">
+          <h3>Media Servers</h3>
+          <p>Store and serve your media content through our globally distributed CDN.</p>
+          <div class="premium-features">
+            <div class="premium-feature">
+              <span class="material-symbols-outlined">public</span>
+              <span>Global CDN</span>
+            </div>
+            <div class="premium-feature">
+              <span class="material-symbols-outlined">storage</span>
+              <span>More Storage</span>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="premium-card">
+      <div class="premium-card premium-card-features">
+        <div class="premium-background"></div>
         <div class="premium-icon">
           <span class="material-symbols-outlined">auto_fix</span>
         </div>
-        <h3>Advanced Features</h3>
-        <p>Unlock premium features like content backup, relay migration, verified username, and Bitcoin payments.</p>
+        <div class="premium-content">
+          <h3>Advanced Features</h3>
+          <p>Unlock premium features like content backup, relay migration, verified username, and Bitcoin payments.</p>
+          <div class="premium-features">
+            <div class="premium-feature">
+              <span class="material-symbols-outlined">verified</span>
+              <span>Verified Status</span>
+            </div>
+            <div class="premium-feature">
+              <span class="material-symbols-outlined">currency_bitcoin</span>
+              <span>Bitcoin Payments</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="text-center mt-lg">
-      <a routerLink="/premium" class="btn btn-primary">Explore Premium</a>
+    <div class="premium-cta">
+      <div class="premium-value">
+        <div class="value-item">
+          <span class="value-icon">
+            <span class="material-symbols-outlined">trending_up</span>
+          </span>
+          <div class="value-content">
+            <span class="value-number">Better</span>
+            <span class="value-label">Performance</span>
+          </div>
+        </div>
+        <div class="value-item">
+          <span class="value-icon">
+            <span class="material-symbols-outlined">cloud_done</span>
+          </span>
+          <div class="value-content">
+            <span class="value-number">Reliable</span>
+            <span class="value-label">Infrastructure</span>
+          </div>
+        </div>
+        <div class="value-item">
+          <span class="value-icon">
+            <span class="material-symbols-outlined">support_agent</span>
+          </span>
+          <div class="value-content">
+            <span class="value-number">24/7</span>
+            <span class="value-label">Premium Support</span>
+          </div>
+        </div>
+      </div>
+      <a routerLink="/premium" class="btn btn-primary btn-premium">
+        Explore Premium Plans <span class="material-symbols-outlined">arrow_forward</span>
+      </a>
     </div>
   </div>
 </section>
