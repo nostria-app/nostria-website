@@ -50,21 +50,36 @@
   <section [id]="category.id" class="feature-section">
     <div class="container">
       <div class="section-header">
-        <div class="section-badge">
-          <span class="material-symbols-outlined">{{ getCategoryIcon(category.id) }}</span>
-          <span>{{ category.title }}</span>
-        </div>
-        <h2 class="section-title">{{ category.title }}</h2>
         @if (category.id === 'user-experience') {
+          <div class="section-badge">
+            <span class="material-symbols-outlined">{{ getCategoryIcon(category.id) }}</span>
+            <span>UX & Design</span>
+          </div>
+          <h2 class="section-title">{{ category.title }}</h2>
           <p class="section-subheading">Intuitive design meets powerful functionality for the best user experience</p>
         }
         @if (category.id === 'scaling') {
+          <div class="section-badge">
+            <span class="material-symbols-outlined">{{ getCategoryIcon(category.id) }}</span>
+            <span>Performance</span>
+          </div>
+          <h2 class="section-title">{{ category.title }}</h2>
           <p class="section-subheading">Enabling truly decentralized global scale for the Nostr protocol</p>
         }
         @if (category.id === 'infrastructure') {
+          <div class="section-badge">
+            <span class="material-symbols-outlined">{{ getCategoryIcon(category.id) }}</span>
+            <span>Enterprise Ready</span>
+          </div>
+          <h2 class="section-title">{{ category.title }}</h2>
           <p class="section-subheading">Enterprise-grade infrastructure built to scale with your needs</p>
         }
         @if (category.id === 'cross-platform') {
+          <div class="section-badge">
+            <span class="material-symbols-outlined">{{ getCategoryIcon(category.id) }}</span>
+            <span>Multi-Platform</span>
+          </div>
+          <h2 class="section-title">{{ category.title }}</h2>
           <p class="section-subheading">Seamless experience across every device and platform</p>
         }
       </div>

@@ -35,23 +35,35 @@ export class PremiumComponent implements OnInit {
     const toggleLabels = document.querySelectorAll('.toggle-label');
     
     if (isYearly) {
+      // Show yearly prices, hide monthly prices
       yearlyElements.forEach(el => el.classList.remove('hide'));
       monthlyElements.forEach(el => el.classList.add('hide'));
+      
+      // Update toggle labels
       toggleLabels[0].classList.remove('active');
       toggleLabels[1].classList.add('active');
       
+      // Update pricing duration text
       document.querySelectorAll('.pricing-duration').forEach(el => {
-        el.textContent = '/month, billed yearly';
+        const pricingCard = el.closest('.pricing-card');
+        if (pricingCard && !pricingCard.querySelector('.pricing-duration-free')) {
+          el.textContent = '/month, billed yearly';
+        }
       });
     } else {
+      // Show monthly prices, hide yearly prices
       yearlyElements.forEach(el => el.classList.add('hide'));
       monthlyElements.forEach(el => el.classList.remove('hide'));
+      
+      // Update toggle labels
       toggleLabels[0].classList.add('active');
       toggleLabels[1].classList.remove('active');
       
+      // Update pricing duration text
       document.querySelectorAll('.pricing-duration').forEach(el => {
-        if (el.parentElement?.querySelector('.pricing-number')?.textContent !== '0') {
-          el.textContent = '/month';
+        const pricingCard = el.closest('.pricing-card');
+        if (pricingCard && !pricingCard.querySelector('.pricing-duration-free')) {
+          el.textContent = '/month, billed quarterly';
         }
       });
     }

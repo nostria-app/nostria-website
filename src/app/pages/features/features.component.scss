@@ -230,8 +230,9 @@
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      background: linear-gradient(135deg, rgba(124, 77, 255, 0.1), rgba(59, 130, 246, 0.1));
-      color: var(--primary-color);
+      background: linear-gradient(135deg, rgba(71, 85, 105, 0.1), rgba(100, 116, 139, 0.1));
+      color: #475569;
+      border: 1px solid rgba(71, 85, 105, 0.2);
       padding: 0.75rem 1.5rem;
       border-radius: 2rem;
       font-weight: 600;
@@ -241,6 +242,7 @@
       
       .material-symbols-outlined {
         font-size: 1.1rem;
+        color: #64748b;
       }
     }
     
