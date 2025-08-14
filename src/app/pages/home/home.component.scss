@@ -1,9 +1,17 @@
 // Hero Section
 .hero {
-  padding: 6rem 0;
+  padding: 12rem 0 12rem;
   position: relative;
   overflow: hidden;
   background: linear-gradient(135deg, #f0f4ff 0%, #f8fafc 100%);
+  
+  @media (max-width: 768px) {
+    padding: 6rem 0 8rem;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 4rem 0 6rem;
+  }
   
   &::before {
     content: '';
@@ -159,6 +167,15 @@
   
   &.features-overview {
     background-color: var(--surface);
+    padding: 8rem 0 6rem;
+    
+    @media (max-width: 768px) {
+      padding: 6rem 0 5rem;
+    }
+    
+    @media (max-width: 480px) {
+      padding: 4rem 0 4rem;
+    }
   }
   
   &.user-control-highlight {
