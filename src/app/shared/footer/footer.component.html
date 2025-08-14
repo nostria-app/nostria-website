@@ -1,84 +1,128 @@
 <footer class="footer">
+  <div class="footer-background">
+    <div class="footer-decoration footer-decoration-1"></div>
+    <div class="footer-decoration footer-decoration-2"></div>
+    <div class="footer-decoration footer-decoration-3"></div>
+  </div>
+  
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
         <a routerLink="/" class="footer-logo">
-          <img src="assets/icons/icon-128x128.png" alt="Nostria Logo" class="footer-logo-image" />
+          <div class="logo-wrapper">
+            <img src="assets/icons/icon-128x128.png" alt="Nostria Logo" class="footer-logo-image" />
+            <div class="logo-glow"></div>
+          </div>
           <span class="footer-logo-text title-font">Nostria</span>
         </a>
         <p class="footer-tagline">Your Social Network</p>
+        <p class="footer-description">
+          Take control of your social experience with user-controlled algorithms and zero data tracking.
+        </p>
         <div class="social-links">
-          <a href="https://x.com/nostriaapp" target="_blank" class="social-link" aria-label="Twitter">
+          <a href="https://x.com/nostriaapp" target="_blank" rel="noopener" class="social-link social-twitter" aria-label="Twitter">
             <span class="material-symbols-outlined">tag</span>
           </a>
-          <a href="https://github.com/nostria-app" target="_blank" class="social-link" aria-label="GitHub">
+          <a href="https://github.com/nostria-app" target="_blank" rel="noopener" class="social-link social-github" aria-label="GitHub">
             <span class="material-symbols-outlined">code</span>
           </a>
-          <a href="https://www.blockcore.net/discord" target="_blank" class="social-link" aria-label="Discord">
+          <a href="https://www.blockcore.net/discord" target="_blank" rel="noopener" class="social-link social-discord" aria-label="Discord">
             <span class="material-symbols-outlined">forum</span>
           </a>
-          <a href="https://nostr.at/nostr:npub16x7nxvehx0wvgy0sa6ynkw9c2ghuph3z0ll5t8veq3xwm8n9tqds6ka44x" target="_blank" class="social-link" aria-label="Nostr">
+          <a href="https://nostr.at/nostr:npub16x7nxvehx0wvgy0sa6ynkw9c2ghuph3z0ll5t8veq3xwm8n9tqds6ka44x" target="_blank" rel="noopener" class="social-link social-nostr" aria-label="Nostr">
             <span class="material-symbols-outlined">bolt</span>
           </a>
         </div>
       </div>
 
       <div class="footer-links">
-        <h5 class="footer-heading">Product</h5>
+        <h5 class="footer-heading">
+          <span class="heading-icon">
+            <span class="material-symbols-outlined">apps</span>
+          </span>
+          Product
+        </h5>
         <ul class="footer-list">
-          <li><a routerLink="/features">Features</a></li>
-          <li><a routerLink="/premium">Premium</a></li>
-          <!-- <li><a href="https://docs.nostria.app" target="_blank">Documentation</a></li> -->
-          <li><a href="https://status.nostria.app" target="_blank">Status</a></li>
+          <li><a routerLink="/features"><span class="material-symbols-outlined">star</span>Features</a></li>
+          <li><a routerLink="/premium"><span class="material-symbols-outlined">workspace_premium</span>Premium</a></li>
+          <li><a href="https://status.nostria.app" target="_blank" rel="noopener"><span class="material-symbols-outlined">monitor_heart</span>Status</a></li>
         </ul>
       </div>
 
       <div class="footer-links">
-        <h5 class="footer-heading">Company</h5>
+        <h5 class="footer-heading">
+          <span class="heading-icon">
+            <span class="material-symbols-outlined">business</span>
+          </span>
+          Company
+        </h5>
         <ul class="footer-list">
-          <li><a routerLink="/about">About</a></li>
-          <li><a routerLink="/press">Press</a></li>
-          <!-- <li><a routerLink="/funding">Funding</a></li> -->
-          <li><a href="https://nostria.app/p/npub16x7nxvehx0wvgy0sa6ynkw9c2ghuph3z0ll5t8veq3xwm8n9tqds6ka44x/reads" target="_blank">Blog</a></li>
-          <!-- <li><a href="https://careers.nostria.app" target="_blank">Careers</a></li> -->
+          <li><a routerLink="/about"><span class="material-symbols-outlined">info</span>About</a></li>
+          <li><a routerLink="/press"><span class="material-symbols-outlined">newspaper</span>Press</a></li>
+          <li><a href="https://nostria.app/p/npub16x7nxvehx0wvgy0sa6ynkw9c2ghuph3z0ll5t8veq3xwm8n9tqds6ka44x/reads" target="_blank" rel="noopener"><span class="material-symbols-outlined">article</span>Blog</a></li>
         </ul>
       </div>
 
       <div class="footer-links">
-        <h5 class="footer-heading">Resources</h5>
+        <h5 class="footer-heading">
+          <span class="heading-icon">
+            <span class="material-symbols-outlined">help</span>
+          </span>
+          Resources
+        </h5>
         <ul class="footer-list">
-          <li><a href="https://nostr.at/npub1mzz0g9y86ljtt94zl3dsvnlzz93jljwygkdz8pfew20lrvrd0lrsn0c2z2">Support</a></li>
-          <li><a  [routerLink]="['/privacy']">Privacy Policy</a></li>
-          <li><a [routerLink]="['/terms']">Terms of Service</a></li>
-          <li><a href="mailto:nostriaapp@gmail.com">Contact Us</a></li>
+          <li><a href="https://nostr.at/npub1mzz0g9y86ljtt94zl3dsvnlzz93jljwygkdz8pfew20lrvrd0lrsn0c2z2"><span class="material-symbols-outlined">support_agent</span>Support</a></li>
+          <li><a [routerLink]="['/privacy']"><span class="material-symbols-outlined">privacy_tip</span>Privacy Policy</a></li>
+          <li><a [routerLink]="['/terms']"><span class="material-symbols-outlined">gavel</span>Terms of Service</a></li>
+          <li><a href="mailto:nostriaapp@gmail.com"><span class="material-symbols-outlined">mail</span>Contact Us</a></li>
         </ul>
       </div>
 
       <div class="footer-newsletter">
-        <h5 class="footer-heading">Stay Updated</h5>
-        <p>Follow us on Nostr for the latest updates:</p>
-        <p>
-          <a class="link" href="https://nostr.at/npub16x7nxvehx0wvgy0sa6ynkw9c2ghuph3z0ll5t8veq3xwm8n9tqds6ka44x" rel="noopener noreferrer" target="_blank">&#64;nostria.app</a>
-
-        </p>
-        <!-- <form class="newsletter-form">
-          <div class="form-group">
-            <input type="email" placeholder="Your email" class="newsletter-input" required />
-            <button type="submit" class="btn btn-primary">Subscribe</button>
+        <h5 class="footer-heading">
+          <span class="heading-icon">
+            <span class="material-symbols-outlined">notifications</span>
+          </span>
+          Stay Updated
+        </h5>
+        <p class="newsletter-description">Follow us on Nostr for the latest updates and features:</p>
+        <div class="nostr-link-card">
+          <div class="nostr-icon">
+            <span class="material-symbols-outlined">bolt</span>
           </div>
-        </form> -->
+          <div class="nostr-content">
+            <p class="nostr-label">Follow on Nostr</p>
+            <a class="nostr-handle" href="https://nostr.at/npub16x7nxvehx0wvgy0sa6ynkw9c2ghuph3z0ll5t8veq3xwm8n9tqds6ka44x" rel="noopener noreferrer" target="_blank">
+              &#64;nostria.app
+            </a>
+          </div>
+          <div class="nostr-arrow">
+            <span class="material-symbols-outlined">arrow_outward</span>
+          </div>
+        </div>
       </div>
     </div>
 
     <div class="footer-bottom">
-      <p>Built with ❤️</p>
-      <div class="app-downloads">
-        <!-- <a href="https://play.google.com/store/apps/details?id=app.nostria" target="_blank" class="download-link">
-          <img src="assets/icons/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" />
-        </a>
-        <a href="https://apps.apple.com/app/nostria/id123456789" target="_blank" class="download-link">
-          <img src="assets/icons/Download_on_the_App_Store_Badge.svg" alt="Download on the App Store" />
-        </a> -->
+      <div class="footer-bottom-content">
+        <div class="footer-copyright">
+          <p class="built-with">Built with <span class="heart">❤️</span> for the Nostr community</p>
+          <p class="copyright-text">Open source software. Taking back social media, one user at a time.</p>
+        </div>
+        <div class="footer-stats">
+          <div class="stat-badge">
+            <span class="material-symbols-outlined">security</span>
+            <span>100% Open Source</span>
+          </div>
+          <div class="stat-badge">
+            <span class="material-symbols-outlined">public</span>
+            <span>Decentralized</span>
+          </div>
+          <div class="stat-badge">
+            <span class="material-symbols-outlined">verified_user</span>
+            <span>Privacy First</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
