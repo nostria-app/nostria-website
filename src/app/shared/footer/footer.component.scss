@@ -66,6 +66,14 @@
   padding: 5rem 1rem 2rem;
   max-width: 1200px;
   margin: 0 auto;
+
+  @media (max-width: 768px) {
+    padding: 3rem 1rem 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 2rem 0.75rem 1rem;
+  }
 }
 
 .footer-grid {
@@ -73,6 +81,16 @@
   grid-template-columns: repeat(12, 1fr);
   gap: 3rem;
   margin-bottom: 4rem;
+
+  @media (max-width: 768px) {
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  @media (max-width: 480px) {
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
   
   .footer-brand {
     grid-column: span 4;
@@ -82,6 +100,14 @@
       grid-column: span 12;
       text-align: center;
       margin-bottom: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      margin-bottom: 1.5rem;
+    }
+
+    @media (max-width: 480px) {
+      margin-bottom: 1rem;
     }
   }
   
@@ -96,6 +122,12 @@
     @media (max-width: 768px) {
       grid-column: span 6;
     }
+
+    @media (max-width: 480px) {
+      grid-column: span 12;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
   }
   
   .footer-newsletter {
@@ -104,6 +136,10 @@
 
     @media (max-width: 1024px) {
       grid-column: span 12;
+    }
+
+    @media (max-width: 480px) {
+      text-align: center;
     }
   }
 }
@@ -114,6 +150,14 @@
   text-decoration: none;
   margin-bottom: 1.5rem;
   transition: all 0.3s ease;
+
+  @media (max-width: 1024px) {
+    justify-content: center;
+  }
+
+  @media (max-width: 480px) {
+    margin-bottom: 1rem;
+  }
   
   &:hover {
     transform: translateY(-2px);
@@ -132,6 +176,10 @@
       height: 36px;
       position: relative;
       z-index: 2;
+
+      @media (max-width: 480px) {
+        height: 32px;
+      }
     }
     
     .logo-glow {
@@ -146,6 +194,11 @@
       opacity: 0;
       transition: all 0.3s ease;
       z-index: 1;
+
+      @media (max-width: 480px) {
+        width: 40px;
+        height: 40px;
+      }
     }
   }
   
@@ -156,6 +209,10 @@
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+
+    @media (max-width: 480px) {
+      font-size: 1.3rem;
+    }
   }
 }
 
@@ -164,6 +221,11 @@
   color: #cbd5e1;
   margin-bottom: 1rem;
   font-weight: 500;
+
+  @media (max-width: 480px) {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+  }
 }
 
 .footer-description {
@@ -171,6 +233,11 @@
   color: #94a3b8;
   line-height: 1.6;
   margin-bottom: 2rem;
+
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
 }
 
 .social-links {
@@ -180,6 +247,12 @@
   
   @media (max-width: 1024px) {
     justify-content: center;
+  }
+
+  @media (max-width: 480px) {
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
   }
 }
 
@@ -254,6 +327,12 @@
   font-size: 1.1rem;
   font-weight: 600;
   margin-bottom: 1.5rem;
+
+  @media (max-width: 480px) {
+    justify-content: center;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
   
   .heading-icon {
     display: flex;
@@ -263,10 +342,19 @@
     height: 32px;
     border-radius: 8px;
     background: linear-gradient(135deg, rgba(124, 77, 255, 0.2), rgba(59, 130, 246, 0.2));
+
+    @media (max-width: 480px) {
+      width: 28px;
+      height: 28px;
+    }
     
     .material-symbols-outlined {
       font-size: 1.1rem;
       color: #7c4dff;
+
+      @media (max-width: 480px) {
+        font-size: 1rem;
+      }
     }
   }
 }
@@ -278,32 +366,28 @@
   
   li {
     margin-bottom: 0.75rem;
+
+    @media (max-width: 480px) {
+      margin-bottom: 0.5rem;
+    }
     
     a {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
       color: #94a3b8;
       text-decoration: none;
       transition: all 0.3s ease;
       font-size: 0.95rem;
       padding: 0.5rem 0;
       border-radius: 6px;
-      
-      .material-symbols-outlined {
-        font-size: 1rem;
-        opacity: 0.7;
-        transition: all 0.3s ease;
+      display: block;
+
+      @media (max-width: 480px) {
+        text-align: center;
+        font-size: 0.9rem;
+        padding: 0.4rem 0;
       }
       
       &:hover {
         color: #e2e8f0;
-        transform: translateX(8px);
-        
-        .material-symbols-outlined {
-          opacity: 1;
-          color: #7c4dff;
-        }
       }
     }
   }
@@ -314,6 +398,11 @@
   font-size: 0.95rem;
   line-height: 1.6;
   margin-bottom: 1.5rem;
+
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
 }
 
 .nostr-link-card {
@@ -328,11 +417,21 @@
   padding: 1.25rem;
   margin-bottom: 2rem;
   transition: all 0.3s ease;
+
+  @media (max-width: 480px) {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    gap: 0.75rem;
+  }
   
   &:hover {
     background: rgba(255, 255, 255, 0.08);
     border-color: rgba(124, 77, 255, 0.3);
     transform: translateY(-2px);
+
+    @media (max-width: 480px) {
+      transform: translateY(-1px);
+    }
   }
   
   .nostr-icon {
@@ -344,10 +443,20 @@
     border-radius: 12px;
     background: linear-gradient(135deg, #7c4dff, #673ab7);
     flex-shrink: 0;
+
+    @media (max-width: 480px) {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+    }
     
     .material-symbols-outlined {
       font-size: 1.5rem;
       color: white;
+
+      @media (max-width: 480px) {
+        font-size: 1.3rem;
+      }
     }
   }
   
@@ -358,6 +467,10 @@
       font-size: 0.85rem;
       color: #94a3b8;
       margin: 0 0 0.25rem 0;
+
+      @media (max-width: 480px) {
+        font-size: 0.8rem;
+      }
     }
     
     .nostr-handle {
@@ -365,6 +478,10 @@
       font-weight: 600;
       color: #e2e8f0;
       text-decoration: none;
+
+      @media (max-width: 480px) {
+        font-size: 0.9rem;
+      }
       
       &:hover {
         color: #7c4dff;
@@ -381,10 +498,19 @@
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.1);
     transition: all 0.3s ease;
+
+    @media (max-width: 480px) {
+      width: 28px;
+      height: 28px;
+    }
     
     .material-symbols-outlined {
       font-size: 1.1rem;
       color: #94a3b8;
+
+      @media (max-width: 480px) {
+        font-size: 1rem;
+      }
     }
   }
   
@@ -401,6 +527,10 @@
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding-top: 2rem;
   animation: fadeInUp 0.8s ease-out 0.7s both;
+
+  @media (max-width: 480px) {
+    padding-top: 1.5rem;
+  }
 }
 
 .footer-bottom-content {
@@ -414,6 +544,10 @@
     text-align: center;
     gap: 2rem;
   }
+
+  @media (max-width: 480px) {
+    gap: 1.5rem;
+  }
 }
 
 .footer-copyright {
@@ -421,6 +555,11 @@
     font-size: 1rem;
     margin-bottom: 0.5rem;
     color: #cbd5e1;
+
+    @media (max-width: 480px) {
+      font-size: 0.9rem;
+      margin-bottom: 0.4rem;
+    }
     
     .heart {
       color: #ef4444;
@@ -432,6 +571,10 @@
     font-size: 0.875rem;
     color: #94a3b8;
     margin: 0;
+
+    @media (max-width: 480px) {
+      font-size: 0.8rem;
+    }
   }
 }
 
@@ -442,6 +585,10 @@
   @media (max-width: 768px) {
     justify-content: center;
     flex-wrap: wrap;
+  }
+
+  @media (max-width: 480px) {
+    gap: 0.75rem;
   }
 }
 
@@ -456,16 +603,30 @@
   font-size: 0.8rem;
   color: #cbd5e1;
   transition: all 0.3s ease;
+
+  @media (max-width: 480px) {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.75rem;
+    gap: 0.4rem;
+  }
   
   .material-symbols-outlined {
     font-size: 0.9rem;
     color: #7c4dff;
+
+    @media (max-width: 480px) {
+      font-size: 0.8rem;
+    }
   }
   
   &:hover {
     background: rgba(124, 77, 255, 0.1);
     border-color: rgba(124, 77, 255, 0.3);
     transform: translateY(-2px);
+
+    @media (max-width: 480px) {
+      transform: translateY(-1px);
+    }
   }
 }
 
@@ -490,5 +651,46 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+// Extra small screens optimization
+@media (max-width: 320px) {
+  .container {
+    padding: 1.5rem 0.5rem 1rem;
+  }
+
+  .footer-grid {
+    gap: 1rem;
+  }
+
+  .footer-logo {
+    .footer-logo-text {
+      font-size: 1.2rem;
+    }
+  }
+
+  .social-links {
+    gap: 0.5rem;
+  }
+
+  .social-link {
+    width: 40px;
+    height: 40px;
+    
+    .material-symbols-outlined {
+      font-size: 1.1rem;
+    }
+  }
+
+  .footer-stats {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .stat-badge {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.7rem;
   }
 }
