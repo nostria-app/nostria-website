@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { PitchDeckDownloadComponent } from '../../components/pitch-deck-download/pitch-deck-download.component';
@@ -10,7 +10,7 @@ import { PitchDeckDownloadComponent } from '../../components/pitch-deck-download
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewInit {
   // Properties for any interactive elements like testimonial slider
   currentTestimonialIndex = 0;
   testimonials = [
@@ -43,6 +43,10 @@ export class HomeComponent implements OnInit {
     this.setupTestimonialsSlider();
   }
 
+  ngAfterViewInit(): void {
+    this.setupScrollReveal();
+  }
+
   setupTestimonialsSlider(): void {
     // In a real implementation, would set up an automated slider
     // For now, it's just static with the dots being clickable
@@ -58,5 +62,33 @@ export class HomeComponent implements OnInit {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
+  }
+
+  setupScrollReveal(): void {
+    const revealElements = document.querySelectorAll('.reveal-on-scroll');
+    
+    if (!revealElements.length) return;
+    
+    const observerOptions = {
+      root: null, // use viewport as root
+      rootMargin: '0px 0px -100px 0px', // trigger slightly before element comes into view
+      threshold: 0.1 // trigger when 10% of element is visible
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          // Once revealed, no need to observe anymore
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+    
+    revealElements.forEach(element => {
+      // Reset to ensure clean initial state
+      element.classList.remove('revealed');
+      observer.observe(element);
+    });
   }
 }

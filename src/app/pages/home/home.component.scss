@@ -2086,6 +2086,38 @@
   margin-top: 3rem;
 }
 
+// Scroll Reveal Utilities
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  will-change: opacity, transform;
+}
+
+.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+// Modify existing animations to use the utility classes instead of automatic animations
+.section-badge, 
+.section-title, 
+.section-subheading,
+.feature-card,
+.premium-card,
+.showcase-feature,
+.cta-badge,
+.cta-title,
+.cta-description,
+.cta-features,
+.cta-buttons,
+.cta-note {
+  &:not(.reveal-on-scroll) {
+    // Only apply automatic animations to elements that don't use reveal-on-scroll
+    // Keep original animation timing
+  }
+}
+
 // Animations
 @keyframes fadeInUp {
   from {
