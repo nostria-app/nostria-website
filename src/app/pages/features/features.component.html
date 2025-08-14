@@ -1,18 +1,43 @@
 <!-- Features Hero Section -->
 <section class="features-hero">
+  <div class="hero-background">
+    <div class="hero-decoration hero-decoration-1"></div>
+    <div class="hero-decoration hero-decoration-2"></div>
+    <div class="hero-decoration hero-decoration-3"></div>
+  </div>
   <div class="container">
     <div class="hero-content">
-      <h1>Features that matters</h1>
+      <div class="hero-badge">
+        <span class="material-symbols-outlined">auto_awesome</span>
+        <span>Powerful Features</span>
+      </div>
+      <h1 class="hero-title">Features That Actually Matter</h1>
       <p class="hero-subtitle">
-        We focus on the features that matter most to you, so you can focus on what matters most to you. Our goal is to delivery a premium experience for our users.
+        Discover the powerful features that make Nostria the best way to experience the Nostr protocol. 
+        Built for scale, designed for users, optimized for the future of decentralized social media.
       </p>
       <div class="feature-categories">
         @for (category of featureCategories; track category.id) {
           <button class="category-button" 
                   (click)="scrollToSection(category.id)">
+            <span class="material-symbols-outlined">{{ getCategoryIcon(category.id) }}</span>
             {{ category.title }}
           </button>
         }
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-number">4</span>
+          <span class="stat-label">Core Categories</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">15+</span>
+          <span class="stat-label">Key Features</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">100%</span>
+          <span class="stat-label">Open Source</span>
+        </div>
       </div>
     </div>
   </div>
@@ -25,30 +50,37 @@
   <section [id]="category.id" class="feature-section">
     <div class="container">
       <div class="section-header">
-        <h2>{{ category.title }}</h2>
+        <div class="section-badge">
+          <span class="material-symbols-outlined">{{ getCategoryIcon(category.id) }}</span>
+          <span>{{ category.title }}</span>
+        </div>
+        <h2 class="section-title">{{ category.title }}</h2>
         @if (category.id === 'user-experience') {
-          <p class="section-subheading">Intuitive design meets powerful functionality</p>
+          <p class="section-subheading">Intuitive design meets powerful functionality for the best user experience</p>
         }
         @if (category.id === 'scaling') {
-          <p class="section-subheading">Enabling truly decentralized global scale for Nostr</p>
+          <p class="section-subheading">Enabling truly decentralized global scale for the Nostr protocol</p>
         }
         @if (category.id === 'infrastructure') {
-          <p class="section-subheading">Built to scale with your needs and the network</p>
+          <p class="section-subheading">Enterprise-grade infrastructure built to scale with your needs</p>
         }
         @if (category.id === 'cross-platform') {
-          <p class="section-subheading">Use Nostria anywhere, on any device</p>
+          <p class="section-subheading">Seamless experience across every device and platform</p>
         }
       </div>
       
       <div class="features-grid">
-        @for (feature of category.features; track feature.title) {
-          <div class="feature-item">
+        @for (feature of category.features; track feature.title; let i = $index) {
+          <div class="feature-item" [style.animation-delay]="(i * 0.1) + 's'">
             <div class="feature-icon" [style.background]="'linear-gradient(135deg, ' + feature.color + ', ' + feature.color + '80)'" >
               <span [class]="feature.icon"></span>
             </div>
             <div class="feature-content">
               <h3>{{ feature.title }}</h3>
               <p>{{ feature.description }}</p>
+              <div class="feature-arrow">
+                <span class="material-symbols-outlined">arrow_forward</span>
+              </div>
             </div>
           </div>
         }
@@ -226,17 +258,44 @@
 
 <!-- Call to Action -->
 <section class="features-cta">
+  <div class="cta-background">
+    <div class="cta-decoration cta-decoration-1"></div>
+    <div class="cta-decoration cta-decoration-2"></div>
+  </div>
   <div class="container">
     <div class="cta-content">
-      <h2>Ready to get started?</h2>
-      <p>Join thousands of satisfied users and discover the best way to connect on Nostr</p>
+      <div class="cta-badge">
+        <span class="material-symbols-outlined">rocket_launch</span>
+        <span>Ready to Start?</span>
+      </div>
+      <h2 class="cta-title">Experience the Future of Social Media</h2>
+      <p class="cta-description">Join thousands of users who've already discovered the power of user-controlled social networking with Nostria</p>
+      <div class="cta-features">
+        <div class="cta-feature">
+          <span class="material-symbols-outlined">speed</span>
+          <span>2-Click Signup</span>
+        </div>
+        <div class="cta-feature">
+          <span class="material-symbols-outlined">security</span>
+          <span>Your Data, Your Control</span>
+        </div>
+        <div class="cta-feature">
+          <span class="material-symbols-outlined">public</span>
+          <span>Global Scale</span>
+        </div>
+      </div>
       <div class="cta-buttons">
-        <a href="https://nostria.app" target="_blank" class="btn btn-primary">
-          Start Using Nostria
+        <a href="https://nostria.app" target="_blank" rel="noopener" class="btn btn-primary btn-cta-primary">
+          <span class="btn-text">Launch Nostria</span>
+          <span class="material-symbols-outlined">rocket_launch</span>
         </a>
-        <a routerLink="/about" class="btn btn-outline">
-          About Nostria
+        <a routerLink="/about" class="btn btn-outline btn-cta-secondary">
+          Learn More About Us
         </a>
+      </div>
+      <div class="cta-note">
+        <span class="material-symbols-outlined">verified</span>
+        <span>100% free to start • No email required • Open source</span>
       </div>
     </div>
   </div>
@@ -245,8 +304,12 @@
 <!-- Lightbox Modal -->
 <div class="lightbox-overlay" [class.active]="showLightbox" (click)="closeLightbox()">
   <div class="lightbox-content" (click)="$event.stopPropagation()">
-    <button class="lightbox-close" (click)="closeLightbox()">×</button>
-    <img [src]="lightboxImageSrc" [alt]="lightboxAlt" />
+    <button class="lightbox-close" (click)="closeLightbox()">
+      <span class="material-symbols-outlined">close</span>
+    </button>
+    @if (lightboxImageSrc) {
+      <img [src]="lightboxImageSrc" [alt]="lightboxAlt" [title]="lightboxAlt" />
+    }
     <div class="lightbox-caption">{{ lightboxAlt }}</div>
   </div>
 </div>

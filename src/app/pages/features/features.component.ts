@@ -6,7 +6,7 @@ import { RouterLink } from '@angular/router';
   selector: 'app-features',
   standalone: true,
   imports: [
-    CommonModule, 
+    CommonModule,
     RouterLink
   ],
   templateUrl: './features.component.html',
@@ -74,16 +74,16 @@ export class FeaturesComponent {
       color: '#8e44ad', // Purple
       features: [
         {
+          title: 'Easy signup',
+          description: 'Two click signup, regionally optimized.',
+          icon: 'material-symbols-outlined view_column',
+          color: '#8e44ad' // Purple
+        },
+        {
           title: 'Intuitive Interface',
           description: 'Clean, modern design that makes navigating the Nostr network simple for both beginners and power users.',
           icon: 'material-symbols-outlined auto_fix',
           color: '#8e44ad' // Purple
-        },
-        {
-          title: 'Customizable Themes',
-          description: 'Choose from multiple themes or create your own to personalize your Nostria experience.',
-          icon: 'material-symbols-outlined palette',
-          color: '#9b59b6' // Light purple
         },
         {
           title: 'Multi-column Layout',
@@ -229,14 +229,14 @@ export class FeaturesComponent {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }
-  
+
   // Track accordion state
   expandedFaqs: boolean[] = [];
-  
+
   toggleFaq(index: number): void {
     this.expandedFaqs[index] = !this.expandedFaqs[index];
   }
-  
+
   isFaqExpanded(index: number): boolean {
     return this.expandedFaqs[index] === true;
   }
@@ -245,16 +245,27 @@ export class FeaturesComponent {
   showLightbox = false;
   lightboxImageSrc = '';
   lightboxAlt = '';
-  
+
   openLightbox(imageSrc: string, alt: string): void {
     this.lightboxImageSrc = imageSrc;
     this.lightboxAlt = alt;
     this.showLightbox = true;
     document.body.classList.add('no-scroll');
   }
-  
+
   closeLightbox(): void {
     this.showLightbox = false;
     document.body.classList.remove('no-scroll');
+  }
+
+  // Get category icon for navigation buttons
+  getCategoryIcon(categoryId: string): string {
+    const iconMap: { [key: string]: string } = {
+      'user-experience': 'star',
+      'scaling': 'public',
+      'infrastructure': 'dns',
+      'cross-platform': 'devices'
+    };
+    return iconMap[categoryId] || 'circle';
   }
 }
