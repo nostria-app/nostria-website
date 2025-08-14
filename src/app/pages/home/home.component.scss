@@ -215,9 +215,9 @@
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     border: 2px solid transparent;
     
-    &:nth-child(1) { animation: fadeInUp 0.4s ease-out 0.1s both; }
-    &:nth-child(2) { animation: fadeInUp 0.4s ease-out 0.2s both; }
-    &:nth-child(3) { animation: fadeInUp 0.4s ease-out 0.3s both; }
+    &:nth-child(1) { animation: fadeInUp 0.6s ease-out 0.6s both; }
+    &:nth-child(2) { animation: fadeInUp 0.6s ease-out 0.7s both; }
+    &:nth-child(3) { animation: fadeInUp 0.6s ease-out 0.8s both; }
     
     &:hover {
       transform: translateY(-4px) scale(1.1);
@@ -486,7 +486,7 @@
   font-size: 0.9rem;
   font-weight: 600;
   box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
-  opacity: 1;
+  animation: fadeInUp 0.6s ease-out;
   
   .material-symbols-outlined {
     font-size: 1.2rem;
@@ -502,7 +502,7 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  opacity: 1;
+  animation: fadeInUp 0.6s ease-out 0.1s both;
 }
 
 .section-subheading {
@@ -510,7 +510,7 @@
   color: var(--text-secondary);
   margin-top: 1rem;
   line-height: 1.6;
-  opacity: 1;
+  animation: fadeInUp 0.6s ease-out 0.2s both;
 }
 
 // Features Overview
@@ -580,10 +580,10 @@
     }
   }
   
-  // No animations for immediate content display
-  &:nth-child(1) { opacity: 1; }
-  &:nth-child(2) { opacity: 1; }
-  &:nth-child(3) { opacity: 1; }
+  // Staggered animation delay for each card
+  &:nth-child(1) { animation: fadeInUp 0.8s ease-out 0.3s both; }
+  &:nth-child(2) { animation: fadeInUp 0.8s ease-out 0.5s both; }
+  &:nth-child(3) { animation: fadeInUp 0.8s ease-out 0.7s both; }
   
   &.feature-card-primary {
     .feature-background {
@@ -717,7 +717,7 @@
   text-align: center;
   position: relative;
   z-index: 2;
-  opacity: 1;
+  animation: fadeInUp 0.8s ease-out 0.9s both;
 }
 
 .cta-stats {
@@ -2131,14 +2131,5 @@
   }
   50% {
     transform: scale(1.1);
-  }
-}
-
-// Respect user's reduced motion preference
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
   }
 }
