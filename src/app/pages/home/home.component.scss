@@ -486,7 +486,7 @@
   font-size: 0.9rem;
   font-weight: 600;
   box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
-  animation: fadeInUp 0.6s ease-out;
+  opacity: 1;
   
   .material-symbols-outlined {
     font-size: 1.2rem;
@@ -502,7 +502,7 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation: fadeInUp 0.6s ease-out 0.1s both;
+  opacity: 1;
 }
 
 .section-subheading {
@@ -510,7 +510,7 @@
   color: var(--text-secondary);
   margin-top: 1rem;
   line-height: 1.6;
-  animation: fadeInUp 0.6s ease-out 0.2s both;
+  opacity: 1;
 }
 
 // Features Overview
@@ -580,10 +580,10 @@
     }
   }
   
-  // Simplified animation for better mobile performance
-  &:nth-child(1) { animation: fadeInUp 0.5s ease-out both; }
-  &:nth-child(2) { animation: fadeInUp 0.5s ease-out 0.1s both; }
-  &:nth-child(3) { animation: fadeInUp 0.5s ease-out 0.2s both; }
+  // No animations for immediate content display
+  &:nth-child(1) { opacity: 1; }
+  &:nth-child(2) { opacity: 1; }
+  &:nth-child(3) { opacity: 1; }
   
   &.feature-card-primary {
     .feature-background {
@@ -717,7 +717,7 @@
   text-align: center;
   position: relative;
   z-index: 2;
-  animation: fadeInUp 0.5s ease-out 0.3s both;
+  opacity: 1;
 }
 
 .cta-stats {
@@ -2131,47 +2131,6 @@
   }
   50% {
     transform: scale(1.1);
-  }
-}
-
-// Mobile performance optimizations
-@media (max-width: 768px) {
-  // Reduce animation delays on mobile for better UX
-  .feature-card {
-    &:nth-child(1) { animation: fadeInUp 0.4s ease-out both; }
-    &:nth-child(2) { animation: fadeInUp 0.4s ease-out both; }
-    &:nth-child(3) { animation: fadeInUp 0.4s ease-out both; }
-  }
-  
-  .features-cta {
-    animation: fadeInUp 0.4s ease-out 0.1s both;
-  }
-  
-  .platform-icon {
-    &:nth-child(1) { animation: fadeInUp 0.3s ease-out both; }
-    &:nth-child(2) { animation: fadeInUp 0.3s ease-out both; }
-    &:nth-child(3) { animation: fadeInUp 0.3s ease-out both; }
-  }
-  
-  .hero-image {
-    animation: fadeInUp 0.4s ease-out both;
-  }
-  
-  .showcase-feature {
-    &:nth-child(1) { animation: fadeInUp 0.3s ease-out both; }
-    &:nth-child(2) { animation: fadeInUp 0.3s ease-out both; }
-    &:nth-child(3) { animation: fadeInUp 0.3s ease-out both; }
-    &:nth-child(4) { animation: fadeInUp 0.3s ease-out both; }
-  }
-  
-  .showcase-image {
-    animation: fadeInUp 0.4s ease-out both;
-  }
-  
-  .premium-card {
-    &:nth-child(1) { animation: fadeInUp 0.4s ease-out both; }
-    &:nth-child(2) { animation: fadeInUp 0.4s ease-out both; }
-    &:nth-child(3) { animation: fadeInUp 0.4s ease-out both; }
   }
 }
 
