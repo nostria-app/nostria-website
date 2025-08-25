@@ -1,5 +1,5 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit, AfterViewInit, Inject, PLATFORM_ID } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { PitchDeckDownloadComponent } from '../../components/pitch-deck-download/pitch-deck-download.component';
 
@@ -37,14 +37,17 @@ export class HomeComponent implements OnInit, AfterViewInit {
     }
   ];
 
-  constructor() { }
+  constructor(@Inject(PLATFORM_ID) private platformId: object) { }
 
   ngOnInit(): void {
     this.setupTestimonialsSlider();
   }
 
   ngAfterViewInit(): void {
-    this.setupScrollReveal();
+    // Only run scroll reveal setup in the browser
+    if (isPlatformBrowser(this.platformId)) {
+      this.setupScrollReveal();
+    }
   }
 
   setupTestimonialsSlider(): void {
@@ -58,13 +61,21 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   scrollToSection(sectionId: string): void {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    // Only run in browser environment
+    if (isPlatformBrowser(this.platformId)) {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   }
 
   setupScrollReveal(): void {
+    // Ensure we're in browser environment before accessing DOM
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
+    }
+
     const revealElements = document.querySelectorAll('.reveal-on-scroll');
     
     if (!revealElements.length) return;
