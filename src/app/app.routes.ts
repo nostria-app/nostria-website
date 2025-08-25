@@ -8,6 +8,7 @@ import { PrivacyComponent } from './pages/privacy/privacy.component';
 import { TermsComponent } from './pages/terms/terms.component';
 import { PreSeedFundRaisedComponent } from './pages/press/pre-seed-fund-raised/pre-seed-fund-raised.component';
 import { PressComponent } from './pages/press/press.component';
+import { PreSeedComponent } from './pages/funding/pre-seed.component';
 
 export const routes: Routes = [
   {
@@ -25,6 +26,7 @@ export const routes: Routes = [
   { path: 'press/pre-seed-fund-raised', component: PreSeedFundRaisedComponent },
   { path: 'premium', component: PremiumComponent },
   { path: 'funding', component: FundingComponent },
+  { path: 'funding/pre-seed', component: PreSeedComponent },
   { path: 'terms', component: TermsComponent },
   { path: 'privacy', component: PrivacyComponent },
   { path: 'testimonials', component: TestimonialsComponent },
