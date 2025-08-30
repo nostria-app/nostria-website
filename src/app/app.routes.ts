@@ -9,6 +9,7 @@ import { TermsComponent } from './pages/terms/terms.component';
 import { PreSeedFundRaisedComponent } from './pages/press/pre-seed-fund-raised/pre-seed-fund-raised.component';
 import { PressComponent } from './pages/press/press.component';
 import { PreSeedComponent } from './pages/funding/pre-seed.component';
+import { MvpReleasedComponent } from './pages/press/mvp-released/mvp-released.component';
 
 export const routes: Routes = [
   {
@@ -22,8 +23,21 @@ export const routes: Routes = [
     pathMatch: 'full'
   },
   { path: 'features', component: FeaturesComponent },
-  { path: 'press', component: PressComponent },
-  { path: 'press/pre-seed-fund-raised', component: PreSeedFundRaisedComponent },
+  { 
+    path: 'press', 
+    component: PressComponent,
+    title: 'Press & Media - Nostria'
+  },
+  { 
+    path: 'press/pre-seed-fund-raised', 
+    component: PreSeedFundRaisedComponent,
+    title: 'Pre-Seed Funding Announcement - Nostria Press'
+  },
+  { 
+    path: 'press/mvp-released', 
+    component: MvpReleasedComponent,
+    title: 'MVP Launch: The Beginning has Started - Nostria Press'
+  },
   { path: 'premium', component: PremiumComponent },
   { path: 'funding', component: FundingComponent },
   { path: 'funding/pre-seed', component: PreSeedComponent },
