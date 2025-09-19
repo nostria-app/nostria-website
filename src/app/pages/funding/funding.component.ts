@@ -17,13 +17,13 @@ export class FundingComponent implements OnInit {
   // Funding videos - keeping the same videos as they show project progress
   fundingVideos = [
     {
-      title: 'Nostria: Revenue-Based Financing with NOS Tokens',
-      description: 'Learn about our Revenue-Based Financing Agreement and how to invest through NOS tokens on Bitcoin RGB protocol.',
+      title: 'Nostria: Angor Revenue Share Overview',
+      description: 'Explaining the tokenless Revenue-Based Financing structure, weighting model, and monthly BTC distributions via Angor.',
       youtubeId: 'a38kcmvi_9E'
     },
     {
-      title: 'Nostria: How to invest using Bitcoin',
-      description: 'A step-by-step tutorial on how to invest in Nostria using Bitcoin or Bitcoin Lightning for NOS tokens.',
+      title: 'Nostria: Contributing via Bitcoin',
+      description: 'Tutorial on contributing capital in Bitcoin / Lightning and how weighted shares are tracked on Angor.',
       youtubeId: 'AsPuEoy8fWc'
     },
     {
