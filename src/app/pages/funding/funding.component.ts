@@ -17,13 +17,13 @@ export class FundingComponent implements OnInit {
   // Funding videos - keeping the same videos as they show project progress
   fundingVideos = [
     {
-      title: 'Nostria: Pre-Seed Funding Round',
-      description: 'Learn about our Pre-Seed funding round and how we plan to grow Nostria and make Nostr scale globally.',
+      title: 'Nostria: Revenue-Based Financing with NOS Tokens',
+      description: 'Learn about our Revenue-Based Financing Agreement and how to invest through NOS tokens on Bitcoin RGB protocol.',
       youtubeId: 'a38kcmvi_9E'
     },
     {
-      title: 'Nostria: How to invest using Angor',
-      description: 'A step-by-step tutorial on how to invest in Nostria using the Angor platform.',
+      title: 'Nostria: How to invest using Bitcoin',
+      description: 'A step-by-step tutorial on how to invest in Nostria using Bitcoin or Bitcoin Lightning for NOS tokens.',
       youtubeId: 'AsPuEoy8fWc'
     },
     {
@@ -41,6 +41,6 @@ export class FundingComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    // No countdown logic needed for Seed Round announcement page
+    // No initialization needed for RBF structure
   }
 }
