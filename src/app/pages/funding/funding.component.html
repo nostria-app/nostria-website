@@ -6,15 +6,25 @@
       <p class="hero-subtitle">
         Participate in Nostria's premium subscription revenue through a tokenless Revenue-Based Financing raise recorded on the Angor platform.
       </p>
+      <div class="raise-progress">
+        <div class="progress-header">
+          <strong>Progress:</strong>
+          <span>{{ raisedUsd | number:'1.0-0' }} USD (~{{ raisedBtc | number:'1.4-4' }} BTC) / $400,000 USD (3.45 BTC) target
+            (<span>{{ progressPct() }}%</span>)</span>
+        </div>
+        <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" title="Seed raise progress" [attr.aria-valuenow]="progressPct()" [attr.aria-label]="'Raise progress ' + progressPct() + '%'">
+          <div class="progress-fill" [style.width.%]="progressPct()"></div>
+        </div>
+        <div class="progress-footnote">Full pre-seed tranche of $38,000 receives the defined weighting uplift; subsequent capital is unweighted.</div>
+      </div>
 
       <div class="funding-status">
         <div class="funding-announcement">
-          <h2>RBF Raise Target: $370k</h2>
+          <h2>RBF Raise Target: $400k</h2>
           <p>
-            We're raising $370,000 in Bitcoin (following a completed $30k pre-seed) to scale Nostria. Investors receive 50% of net premium subscription revenue (pro‑rata by weighted contribution). The other 50% funds infrastructure and development via <a href="https://openresist.com" target="_blank" rel="noopener noreferrer">OpenResist</a>.
+            We're raising $400,000 in Bitcoin (following a completed $38,000 pre-seed) to scale Nostria. Investors receive 50% of net premium subscription revenue (pro‑rata by weighted contribution). The other 50% funds infrastructure and development via <a href="https://openresist.com" target="_blank" rel="noopener noreferrer">OpenResist</a>.
           </p>
-          <p>
-            Pre-Seed contributors receive a 1.15x weighting on their original $30k tranche. No tokens. No equity. Pure contractual revenue sharing.
+          <p>No tokens. No equity. Pure contractual revenue sharing.
           </p>
         </div>
       </div>
@@ -33,7 +43,7 @@
   <div class="container">
     <div class="section-header">
   <h2>Revenue-Based Financing Overview</h2>
-  <p class="section-subheading">Seed raise: $370k (plus $30k pre-seed) – tokenless, Bitcoin-settled revenue share</p>
+  <p class="section-subheading">Seed raise: $400k (plus $38k pre-seed) – tokenless, Bitcoin-settled revenue share</p>
     </div>
 
     <div class="funding-details">
@@ -43,7 +53,7 @@
         </div>
         <h3>Weighted Contributions</h3>
         <p>
-          Pre-Seed capital ($30k) is multiplied by 1.15; Seed capital is weighted 1.00. Your share = weighted contribution / total weighted capital.
+          Early pre-seed capital (full $38,000 tranche) receives a modest, one-time uplift; later capital is unweighted. Your share = weighted contribution / total weighted capital (no other hidden multipliers).
         </p>
       </div>
 
@@ -53,7 +63,7 @@
         </div>
         <h3>Monthly Distribution</h3>
         <p>
-          50% of net premium revenue is distributed pro‑rata to investors through Angor to Bitcoin (Lightning/on-chain) wallets.
+          50% of net premium revenue is distributed pro‑rata to investors through Angor (Bitcoin Lightning/on-chain). Amounts are variable—there is no guaranteed minimum and a period with low or zero revenue yields proportionally low or zero distribution.
         </p>
       </div>
 
@@ -109,7 +119,7 @@
         <div class="tier-amount">$10,000 (Pre-Seed)</div>
         <div class="tier-benefits">
           <ul>
-            <li>Weighted &#64; 1.15 = $11,500</li>
+            <li>Preferentially weighted relative to later capital</li>
             <li>Boosted relative share vs later capital</li>
             <li>Accelerated early upside</li>
           </ul>
@@ -134,8 +144,8 @@
     <div class="token-details" data-role="metrics">
       <h3>Raise Metrics</h3>
       <div class="token-info">
-        <div class="token-fact"><strong>Target Seed</strong><div class="token-value">$370,000</div></div>
-        <div class="token-fact"><strong>Pre-Seed Weight</strong><div class="token-value">1.15x on $30k</div></div>
+  <div class="token-fact"><strong>Target Seed</strong><div class="token-value">$400,000</div></div>
+        <div class="token-fact"><strong>Early Tranche</strong><div class="token-value">Preferentially Weighted</div></div>
         <div class="token-fact"><strong>Investor Pool</strong><div class="token-value">50% Net Revenue</div></div>
         <div class="token-fact"><strong>Distribution</strong><div class="token-value">Monthly via Angor</div></div>
       </div>
@@ -180,16 +190,16 @@
           <span class="material-symbols-outlined">trending_up</span>
         </div>
         <h3>No Fixed Cap</h3>
-  <p>There is no payout cap—investor participation continues while premium revenue exists.</p>
-        <p>Pre-Seed weighting only affects relative share—it does not expire.</p>
+  <p>There is no payout cap—investor participation continues while premium revenue exists (subject only to the 2× review process).</p>
+    <p>Pre-Seed weighting only affects relative share, does not expire, and does not guarantee absolute return timing. This indefinite structure differs from conventional capped RBF models that terminate after a repayment multiple.</p>
       </div>
 
       <div class="revenue-card">
         <div class="revenue-icon">
           <span class="material-symbols-outlined">flag</span>
         </div>
-        <h3>4× Review Threshold</h3>
-        <p>When an individual participant’s cumulative distributions reach <strong>4× their original contributed amount</strong>, a non-binding review may be initiated.</p>
+  <h3>2× Review Threshold</h3>
+          <p>When an individual participant’s cumulative distributions reach <strong>2× their original contributed amount</strong>, a non-binding review may be initiated.</p>
         <ul>
           <li>Possible outcomes: continue unchanged; adjust investor pool %; or negotiate transition.</li>
           <li>No automatic termination—changes require explicit written consent.</li>
@@ -338,7 +348,12 @@
 
       <div class="faq-item">
         <h3>How is my share calculated?</h3>
-        <p>Your Percentage Share = (Weighted Contribution) / (Total Weighted Capital). Pre-Seed amounts multiply by 1.15. Distribution each month = Percentage Share × (50% of Net Revenue).</p>
+        <p>Your Percentage Share = (Weighted Contribution) / (Total Weighted Capital). Some early contributions receive a preferential weighting. Distribution each month = Percentage Share × (50% of Net Revenue).</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>What is the Pre-Seed multiplier?</h3>
+        <p>The Pre Seed Funding investors get their percentage calculated with an 1.15 multiplier from their total investment.</p>
       </div>
 
       <div class="faq-item">
@@ -349,20 +364,25 @@
       <div class="faq-item">
         <h3>How long do distributions last?</h3>
         <p>
-          Indefinite—distributions continue while premium revenue exists. They only stop if the product is discontinued, regulators require cessation, operations become non-viable, or all parties formally agree to restructure. Hitting a <strong>4× cumulative payout</strong> simply triggers a review; it does not auto‑end or cap your participation. Any earned but unpaid amounts are still processed.
+          Indefinite—variable monthly amounts continue while premium revenue exists. They only stop if the product is discontinued, regulators require cessation, operations become non-viable, or all parties formally agree to restructure. Hitting a <strong>2× cumulative payout</strong> simply triggers a non‑binding review; it does not auto‑end or cap your participation. Any earned but unpaid amounts are still processed.
         </p>
       </div>
 
       <div class="faq-item">
-        <h3>What happens after a 4× payout?</h3>
+        <h3>What happens after a 2× payout?</h3>
         <p>
-          Reaching 4× cumulative distributions initiates an optional review window. Possible paths: (1) continue status quo; (2) mutually adjust investor pool percentage going forward; (3) change to a different structured agreement.
+          Reaching 2× cumulative distributions initiates an optional review window. Possible paths: (1) continue status quo; (2) mutually adjust investor pool percentage going forward; (3) change to a different structured agreement.
         </p>
+      </div>
+
+      <div class="faq-item">
+        <h3>What if Nostria incorporates later?</h3>
+        <p>If Nostria is incorporated in the future, the existing investors will be able to convert their RBF agreement into one for equity in the company.</p>
       </div>
 
       <div class="faq-item">
         <h3>Can I transfer my rights?</h3>
-        <p>Rights are non-transferable without written approval to prevent informal secondary markets that could trigger securities treatment.</p>
+        <p>Yes—rights may be transferred, provided you notify the Nostria team in writing before the change so allocation records and payout (BTC) addresses can be updated. Until confirmations are processed, distributions continue to the previously registered address. We discourage speculative secondary trading; transfers should reflect genuine reallocation or entity restructuring.</p>
       </div>
 
       <div class="faq-item">

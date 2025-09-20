@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
 import { SafePipeModule } from '../../shared/pipes/safe.pipe';
 import { YouTubePlayerModule } from '@angular/youtube-player';
 import { PitchDeckDownloadComponent } from '../../components/pitch-deck-download/pitch-deck-download.component';
@@ -8,7 +7,7 @@ import { PitchDeckDownloadComponent } from '../../components/pitch-deck-download
 @Component({
   selector: 'app-funding',
   standalone: true,
-  imports: [CommonModule, RouterLink, SafePipeModule, YouTubePlayerModule, PitchDeckDownloadComponent],
+  imports: [CommonModule, SafePipeModule, YouTubePlayerModule, PitchDeckDownloadComponent],
   templateUrl: './funding.component.html',
   styleUrl: './funding.component.scss'
 })
@@ -42,5 +41,25 @@ export class FundingComponent implements OnInit {
 
   ngOnInit(): void {
     // No initialization needed for RBF structure
+  }
+
+  // Raise economics
+  private readonly targetUsd = 400_000;
+  // Pre-seed fully closed & weighted
+  private readonly preSeedUsd = 38_000;
+
+  // Placeholder BTC rate (can later be replaced with a service fetching live price)
+  btcUsdRate = signal<number>(103663); // 1 BTC = 65,000 USD (example snapshot)
+
+  // Signals for raised amounts (could be replaced by dynamic backend fetch)
+  raisedUsdSig = signal<number>(this.preSeedUsd);
+  raisedBtcSig = signal<number>(this.raisedUsdSig() / this.btcUsdRate());
+
+  // Exposed getters for template (keeping simple functions rather than computed for clarity here)
+  get raisedUsd() { return this.raisedUsdSig(); }
+  get raisedBtc() { return this.raisedBtcSig(); }
+
+  progressPct(): number {
+    return +( (this.raisedUsd / this.targetUsd) * 100 ).toFixed(1);
   }
 }

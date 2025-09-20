@@ -40,6 +40,42 @@ html, body {
   font-weight: 400;
 }
 
+/* Themed link styling */
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  position: relative;
+  transition: color .25s ease;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+a:hover {
+  color: var(--secondary-color);
+}
+
+/* Subtle underline reveal */
+a:not(.btn)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 2px;
+  width: 0;
+  background: linear-gradient(90deg,var(--primary-color),var(--secondary-color));
+  transition: width .3s ease;
+  border-radius: 2px;
+}
+
+a:not(.btn):hover::after,
+a:not(.btn):focus-visible::after {
+  width: 100%;
+}
+
 a.link {
   color: var(--primary-color);
   transition: all 0.3s ease;
