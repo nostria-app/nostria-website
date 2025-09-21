@@ -60,6 +60,47 @@ export class FundingComponent implements OnInit {
   get raisedBtc() { return this.raisedBtcSig(); }
 
   progressPct(): number {
-    return +( (this.raisedUsd / this.targetUsd) * 100 ).toFixed(1);
+    return +((this.raisedUsd / this.targetUsd) * 100).toFixed(1);
   }
+
+
+  // Investment tiers
+  investmentTiers = [
+    {
+      name: 'Supporter',
+      amount: '$1,000',
+      benefits: [
+        'RBF Agreement with minimum 2× payout',
+        'Pro-rata rights for future rounds',
+        'Supporter Exclusive Badge',
+        'Nostria Premium account (6 months)'
+      ],
+      highlighted: false
+    },
+    {
+      name: 'Angel',
+      amount: '$5,000',
+      benefits: [
+        'All Supporter benefits',
+        'Quarterly investor calls',
+        'Name in app credits',
+        'Investor Exclusive Badge',
+        'Early access to new features',
+        'Nostria Premium account (1 years)'
+      ],
+      highlighted: true
+    },
+    {
+      name: 'Partner',
+      amount: '$10,000+',
+      benefits: [
+        'All Angel benefits',
+        'Direct access to Nostria team',
+        'Input on product roadmap',
+        'Nostria Premium+ account (1 year)'
+      ],
+      highlighted: false
+    }
+  ];
+
 }

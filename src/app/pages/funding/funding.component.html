@@ -108,65 +108,36 @@
 <section id="investment-options" class="investment-tiers">
   <div class="container">
     <div class="section-header">
-      <h2>Participation Examples</h2>
-      <p class="section-subheading">Illustrative weighting & distribution scenarios (no fixed tiers)</p>
+      <h2>Investment Options</h2>
+      <p class="section-subheading">Choose the investment tier that's right for you</p>
     </div>
+
     <div class="tiers-grid">
-      <div class="tier-card">
-        <h3>Example A</h3>
-        <div class="tier-amount">$5,000 Contribution</div>
-        <div class="tier-benefits">
-          <ul>
-            <li>Weighted &#64; 1.00 = $5,000</li>
-            <li>If Total Weighted = $400k → 1.25% share of Investor Pool</li>
-            <li>Receives 1.25% of 50% Net Revenue</li>
+      @for (tier of investmentTiers; track tier.name) {
+        <div class="tier-card" [class.highlighted]="tier.highlighted">
+          <div *ngIf="tier.highlighted" class="recommended-badge">Recommended</div>
+          <h3>{{tier.name}}</h3>
+          <div class="tier-amount">{{tier.amount}}</div>
+          <ul class="tier-benefits">
+            @for (benefit of tier.benefits; track benefit) {
+              <li>
+                <span class="check-icon"><span class="material-symbols-outlined">check</span></span>
+                {{benefit}}
+              </li>
+            }
           </ul>
+          <!-- <div class="tier-cta">
+            <button [class]="tier.highlighted ? 'btn btn-primary' : 'btn btn-outline'" (click)="openInvestModal()">
+              Invest as {{tier.name}}
+            </button>
+          </div> -->
         </div>
-      </div>
-      <div class="tier-card highlighted">
-        <div class="recommended-badge">Pre-Seed</div>
-        <h3>Example B</h3>
-        <div class="tier-amount">$10,000 (Pre-Seed)</div>
-        <div class="tier-benefits">
-          <ul>
-            <li>Preferentially weighted relative to later capital</li>
-            <li>Boosted relative share vs later capital</li>
-            <li>Accelerated early upside</li>
-          </ul>
-        </div>
-      </div>
-      <div class="tier-card">
-        <h3>Example C</h3>
-        <div class="tier-amount">$50,000 Contribution</div>
-        <div class="tier-benefits">
-          <ul>
-            <li>Weighted &#64; 1.00 = $50,000</li>
-            <li>Strategic alignment influence (non-binding)</li>
-            <li>Material portion of Investor Pool</li>
-          </ul>
-        </div>
-      </div>
+      }
     </div>
+
     <div class="custom-investment">
-      <p>All participation is flexible. Your proportional share is formula-based—no tiers required.</p>
-      <a href="mailto:nostriaapp@gmail.com" class="btn btn-outline">Request Allocation Model</a>
-    </div>
-    <div class="token-details" data-role="metrics">
-      <h3>Raise Metrics</h3>
-      <div class="token-info">
-        <div class="token-fact"><strong>Target Seed</strong>
-          <div class="token-value">$400,000 (3.45 BTC)</div>
-        </div>
-        <div class="token-fact"><strong>Investment Opening</strong>
-          <div class="token-value">1st October</div>
-        </div>
-        <div class="token-fact"><strong>Investor Pool</strong>
-          <div class="token-value">50% Net Revenue</div>
-        </div>
-        <div class="token-fact"><strong>Distribution</strong>
-          <div class="token-value">Monthly via Angor</div>
-        </div>
-      </div>
+      <p>Looking to invest a different amount? Contact us directly for custom investment options.</p>
+      <a href="mailto:nostriaapp@gmail.com" class="btn btn-outline">Contact us about investing</a> or <a href="https://hub.angor.io/project/angor1qwdgxjuzhjykgpn5q8p3l2q9vyrgqdlrkfp5sjr?network=main" class="btn btn-outline">invest now</a>
     </div>
   </div>
 </section>
