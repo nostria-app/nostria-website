@@ -2,12 +2,12 @@ import { Component, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SafePipeModule } from '../../shared/pipes/safe.pipe';
 import { YouTubePlayerModule } from '@angular/youtube-player';
-import { PitchDeckDownloadComponent } from '../../components/pitch-deck-download/pitch-deck-download.component';
+import { SeedPitchDeckDownloadComponent } from '../../components/seed-pitch-deck-download/seed-pitch-deck-download.component';
 
 @Component({
   selector: 'app-funding',
   standalone: true,
-  imports: [CommonModule, SafePipeModule, YouTubePlayerModule, PitchDeckDownloadComponent],
+  imports: [CommonModule, SafePipeModule, YouTubePlayerModule, SeedPitchDeckDownloadComponent],
   templateUrl: './funding.component.html',
   styleUrl: './funding.component.scss'
 })
