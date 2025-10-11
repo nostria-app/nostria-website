@@ -59,7 +59,7 @@ a:hover {
 }
 
 /* Subtle underline reveal */
-a:not(.btn)::after {
+a:not(.btn):not(.platform-link)::after {
   content: "";
   position: absolute;
   left: 0;
@@ -71,8 +71,8 @@ a:not(.btn)::after {
   border-radius: 2px;
 }
 
-a:not(.btn):hover::after,
-a:not(.btn):focus-visible::after {
+a:not(.btn):not(.platform-link):hover::after,
+a:not(.btn):not(.platform-link):focus-visible::after {
   width: 100%;
 }
 
