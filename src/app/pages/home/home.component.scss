@@ -424,6 +424,22 @@
       background: rgba(255, 255, 255, 1);
     }
 
+    &.platform-link-secondary {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      border: none;
+      font-weight: 600;
+
+      .material-symbols-outlined {
+        color: white;
+      }
+
+      &:hover {
+        transform: translateY(-2px) scale(1.02);
+        box-shadow: 0 8px 25px rgba(142, 68, 173, 0.4);
+      }
+    }
+
     @media (max-width: 480px) {
       justify-content: center;
       width: 100%;
