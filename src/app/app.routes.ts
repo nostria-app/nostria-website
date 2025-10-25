@@ -11,6 +11,7 @@ import { PressComponent } from './pages/press/press.component';
 import { PreSeedComponent } from './pages/funding/pre-seed.component';
 import { MvpReleasedComponent } from './pages/press/mvp-released/mvp-released.component';
 import { SeedFundLaunchComponent } from './pages/press/seed-fund-launch/seed-fund-launch.component';
+import { DiscordRedirectComponent } from './pages/discord-redirect.component';
 
 export const routes: Routes = [
   {
@@ -51,5 +52,10 @@ export const routes: Routes = [
   { path: 'privacy', component: PrivacyComponent },
   { path: 'testimonials', component: TestimonialsComponent },
   { path: 'about', component: AboutComponent },
+  { 
+    path: 'discord', 
+    component: DiscordRedirectComponent,
+    title: 'Join Our Discord - Nostria'
+  },
   { path: '**', redirectTo: '' } // Catch any unfound routes and redirect to home
 ];
