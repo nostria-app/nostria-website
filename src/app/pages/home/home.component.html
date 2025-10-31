@@ -24,16 +24,22 @@
 </section>
 
 <!-- Hero Section -->
-<section class="hero">
+<section class="hero" itemscope itemtype="https://schema.org/SoftwareApplication">
+  <meta itemprop="name" content="Nostria">
+  <meta itemprop="applicationCategory" content="SocialNetworkingApplication">
+  <meta itemprop="operatingSystem" content="Web, Windows, Android">
+  <meta itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+  <meta itemprop="price" content="0">
+  <meta itemprop="priceCurrency" content="USD">
   <div class="container">
     <div class="hero-content">
       <div class="hero-text">
         <h1 class="hero-title">Your Social Network</h1>
-        <p class="hero-subtitle">
+        <p class="hero-subtitle" itemprop="description">
           Take control of your social experience. Sign up in two clicks—no email or phone required.
         </p>
         <div class="hero-cta">
-          <a href="https://nostria.app" target="_blank" rel="noopener" class="btn btn-primary btn-hero">
+          <a itemprop="url" href="https://nostria.app" target="_blank" rel="noopener" class="btn btn-primary btn-hero">
             Launch App <span class="material-symbols-outlined">rocket_launch</span>
           </a>
           <a routerLink="/features" class="btn btn-outline btn-hero">
@@ -43,7 +49,7 @@
         <div class="platform-downloads">
           <p class="download-label">Install from app store:</p>
           <div class="platform-links">
-            <a href="https://apps.microsoft.com/store/detail/9N7F0TWQ0D8G" target="_blank" rel="noopener" class="platform-link">
+            <a itemprop="downloadUrl" href="https://apps.microsoft.com/store/detail/9N7F0TWQ0D8G" target="_blank" rel="noopener" class="platform-link">
               <span class="material-symbols-outlined">computer</span>
               <span>Windows</span>
             </a>
@@ -51,7 +57,7 @@
               <span class="material-symbols-outlined">phone_iphone</span>
               <span>iOS</span>
             </a> -->
-            <a href="https://play.google.com/apps/testing/app.nostria.twa" target="_blank" rel="noopener" class="platform-link">
+            <a itemprop="downloadUrl" href="https://play.google.com/apps/testing/app.nostria.twa" target="_blank" rel="noopener" class="platform-link">
               <span class="material-symbols-outlined">android</span>
               <span>Android (Join Testing)</span>
             </a>
@@ -61,7 +67,7 @@
       <div class="hero-image">
         <video autoplay muted loop playsinline preload="auto" class="hero-video">
           <source src="assets/videos/nostria-get-started.mp4" type="video/mp4">
-          <img src="assets/screenshots/nostria-01.jpg" alt="Nostria App Interface" class="hero-mockup" />
+          <img itemprop="screenshot" src="assets/screenshots/nostria-01.jpg" alt="Nostria App Interface" class="hero-mockup" />
         </video>
         <div class="hero-shape-1"></div>
         <div class="hero-shape-2"></div>

@@ -168,6 +168,6 @@ export class PreSeedComponent implements OnInit {
   }
 
   openInvestModal(): void {
-    document.location = 'https://nostria.com/invest';
+    document.location = 'https://www.nostria.app/invest';
   }
 }

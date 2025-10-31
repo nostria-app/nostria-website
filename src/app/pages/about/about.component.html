@@ -1,5 +1,10 @@
 <!-- About Hero Section -->
-<section class="about-hero">
+<section class="about-hero" itemscope itemtype="https://schema.org/Organization">
+  <meta itemprop="name" content="Nostria">
+  <meta itemprop="url" content="https://www.nostria.app">
+  <meta itemprop="logo" content="https://www.nostria.app/assets/icons/icon-512x512.png">
+  <meta itemprop="sameAs" content="https://github.com/nostria-app">
+  <meta itemprop="foundingDate" content="2025">
   <div class="hero-background">
     <div class="hero-decoration hero-decoration-1"></div>
     <div class="hero-decoration hero-decoration-2"></div>
@@ -11,7 +16,7 @@
         <span class="material-symbols-outlined">info</span>
         <span>Our Story</span>
       </div>
-      <h1 class="hero-title">About Nostria</h1>
+      <h1 class="hero-title" itemprop="description">About Nostria</h1>
       <p class="hero-subtitle">
         Building the future of decentralized social communication on Nostr with cutting-edge technology and unwavering commitment to user sovereignty
       </p>
@@ -368,9 +373,9 @@
     </div>
 
     <div class="team-grid">
-      <div class="team-member featured">
+      <div class="team-member featured" itemscope itemtype="https://schema.org/Person">
         <div class="member-image">
-          <img src="assets/team/sondre.jpg" alt="Sondre Bjellås" />
+          <img itemprop="image" src="assets/team/sondre.jpg" alt="Sondre Bjellås" />
           <div class="member-overlay">
             <div class="member-badge">
               <span class="material-symbols-outlined">star</span>
@@ -379,9 +384,9 @@
           </div>
         </div>
         <div class="member-info">
-          <h3>Sondre Bjellås</h3>
-          <p class="member-title">Founder & CEO</p>
-          <p class="member-bio">
+          <h3 itemprop="name">Sondre Bjellås</h3>
+          <p class="member-title" itemprop="jobTitle">Founder & CEO</p>
+          <p class="member-bio" itemprop="description">
             Sondre is a software engineer with a background in distributed systems, experience from many
             sectors and industries. Has a passion for open source and decentralized protocols. He has been involved in the
             Nostr protocol since early times. Decentralize everything.
@@ -392,21 +397,22 @@
               <span class="material-symbols-outlined">tag</span>
               <span>Nostr</span>
             </a>
-            <a href="https://github.com/sondreb" rel="noopener noreferrer" class="social-link">
+            <a itemprop="url" href="https://github.com/sondreb" rel="noopener noreferrer" class="social-link">
               <span class="material-symbols-outlined">code</span>
               <span>GitHub</span>
             </a>
-            <a href="https://sondreb.com" rel="noopener noreferrer" class="social-link">
+            <a itemprop="sameAs" href="https://sondreb.com" rel="noopener noreferrer" class="social-link">
               <span class="material-symbols-outlined">public</span>
               <span>Website</span>
             </a>
           </div>
+          <meta itemprop="worksFor" content="Nostria">
         </div>
       </div>
 
-      <div class="team-member">
+      <div class="team-member" itemscope itemtype="https://schema.org/Person">
         <div class="member-image">
-          <img src="assets/team/kosta.jpg" alt="Kosta Korenkov" />
+          <img itemprop="image" src="assets/team/kosta.jpg" alt="Kosta Korenkov" />
           <div class="member-overlay">
             <div class="member-badge">
               <span class="material-symbols-outlined">code</span>
@@ -415,9 +421,9 @@
           </div>
         </div>
         <div class="member-info">
-          <h3>Kosta Korenkov</h3>
-          <p class="member-title">Software Engineer</p>
-          <p class="member-bio">
+          <h3 itemprop="name">Kosta Korenkov</h3>
+          <p class="member-title" itemprop="jobTitle">Software Engineer</p>
+          <p class="member-bio" itemprop="description">
             Fullstack developer with a product focus.
             Interested in self sovereignty, making sense, minimalism, sane ways of living and making peace with oneself.
           </p>
@@ -427,21 +433,22 @@
               <span class="material-symbols-outlined">tag</span>
               <span>Nostr</span>
             </a>
-            <a href="https://github.com/troggy" rel="noopener noreferrer" class="social-link">
+            <a itemprop="url" href="https://github.com/troggy" rel="noopener noreferrer" class="social-link">
               <span class="material-symbols-outlined">code</span>
               <span>GitHub</span>
             </a>
-            <a href="https://korenkov.net" class="social-link">
+            <a itemprop="sameAs" href="https://korenkov.net" rel="noopener noreferrer" class="social-link">
               <span class="material-symbols-outlined">public</span>
               <span>Website</span>
             </a>
           </div>
+          <meta itemprop="worksFor" content="Nostria">
         </div>
       </div>
 
-      <div class="team-member">
+      <div class="team-member" itemscope itemtype="https://schema.org/Person">
         <div class="member-image">
-          <img src="assets/team/lu.jpg" alt="Lu Barvinskaya" />
+          <img itemprop="image" src="assets/team/lu.jpg" alt="Lu Barvinskaya" />
           <div class="member-overlay">
             <div class="member-badge">
               <span class="material-symbols-outlined">school</span>
@@ -450,9 +457,9 @@
           </div>
         </div>
         <div class="member-info">
-          <h3>Lu Barvinskaya</h3>
-          <p class="member-title">Software Engineer</p>
-          <p class="member-bio">
+          <h3 itemprop="name">Lu Barvinskaya</h3>
+          <p class="member-title" itemprop="jobTitle">Software Engineer</p>
+          <p class="member-bio" itemprop="description">
             Junior developer that has contributed to open source and
             is currently finishing education in software development.
           </p>
@@ -462,17 +469,18 @@
               <span class="material-symbols-outlined">tag</span>
               <span>Nostr</span>
             </a>
-            <a href="https://github.com/missmeowness" rel="noopener noreferrer" class="social-link">
+            <a itemprop="url" href="https://github.com/missmeowness" rel="noopener noreferrer" class="social-link">
               <span class="material-symbols-outlined">code</span>
               <span>GitHub</span>
             </a>
           </div>
+          <meta itemprop="worksFor" content="Nostria">
         </div>
       </div>
 
-      <div class="team-member">
+      <div class="team-member" itemscope itemtype="https://schema.org/Person">
         <div class="member-image">
-          <img src="assets/team/dmitrii.jpg" alt="Dmitrii Lunin" />
+          <img itemprop="image" src="assets/team/dmitrii.jpg" alt="Dmitrii Lunin" />
           <div class="member-overlay">
             <div class="member-badge">
               <span class="material-symbols-outlined">campaign</span>
@@ -481,18 +489,19 @@
           </div>
         </div>
         <div class="member-info">
-          <h3>Dmitrii Lunin</h3>
-          <p class="member-title">Chief Marketing Officer</p>
-          <p class="member-bio">
+          <h3 itemprop="name">Dmitrii Lunin</h3>
+          <p class="member-title" itemprop="jobTitle">Chief Marketing Officer</p>
+          <p class="member-bio" itemprop="description">
             Dmitrii has an MBA and is certified e-commerce consultant. He is advising Nostria on market plans, seed round and launch plans.
           </p>
           <div class="member-social">
-            <a href="https://www.linkedin.com/in/dmitrylunin/"
+            <a itemprop="sameAs" href="https://www.linkedin.com/in/dmitrylunin/"
               rel="noopener noreferrer" class="social-link">
               <span class="material-symbols-outlined">public</span>
               <span>LinkedIn</span>
             </a>
           </div>
+          <meta itemprop="worksFor" content="Nostria">
         </div>
       </div>
     </div>
@@ -550,7 +559,9 @@
 </section>
 
 <!-- Contact Section -->
-<section class="contact-section">
+<section class="contact-section" itemscope itemtype="https://schema.org/Organization">
+  <meta itemprop="name" content="Nostria">
+  <meta itemprop="url" content="https://www.nostria.app">
   <div class="contact-background">
     <div class="contact-decoration contact-decoration-1"></div>
     <div class="contact-decoration contact-decoration-2"></div>
@@ -572,7 +583,7 @@
             </div>
             <div class="method-details">
               <h3>Email</h3>
-              <p><a href="mailto:hello@nostria.app">nostriaapp&#64;gmail.com</a></p>
+              <p><a itemprop="email" href="mailto:hello@nostria.app">nostriaapp&#64;gmail.com</a></p>
             </div>
           </div>
 
@@ -586,13 +597,13 @@
             </div>
           </div>
 
-          <div class="contact-method">
+          <div class="contact-method" itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
             <div class="method-icon">
               <span class="material-symbols-outlined">location_on</span>
             </div>
             <div class="method-details">
               <h3>Headquarters</h3>
-              <p>Liberstad<br>Norway</p>
+              <p><span itemprop="addressLocality">Liberstad</span><br><span itemprop="addressCountry">Norway</span></p>
             </div>
           </div>
 
