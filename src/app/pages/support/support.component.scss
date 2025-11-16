@@ -45,10 +45,43 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
 
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  &.premium-card {
+    border: 2px solid #f59e0b;
+    background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+
+    .channel-icon {
+      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    }
+  }
+
+  .premium-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: white;
+    padding: 0.375rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 600;
+
+    .material-symbols-outlined {
+      font-size: 1rem;
+    }
   }
 
   .channel-icon {
@@ -61,7 +94,7 @@
     border-radius: 50%;
     margin-bottom: 1.5rem;
 
-    .material-icons {
+    .material-symbols-outlined {
       font-size: 2.5rem;
       color: white;
     }
@@ -95,7 +128,7 @@
       opacity: 0.9;
     }
 
-    .material-icons {
+    .material-symbols-outlined {
       font-size: 1.25rem;
     }
   }
@@ -191,12 +224,12 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   }
 
-  .material-icons {
+  .material-symbols-outlined {
     font-size: 1.5rem;
     color: #667eea;
   }
 
-  span:not(.material-icons) {
+  span:not(.material-symbols-outlined) {
     font-weight: 600;
   }
 }

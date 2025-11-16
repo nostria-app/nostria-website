@@ -21,8 +21,16 @@ export class SupportComponent {
       title: 'Nostr Support Account',
       description: 'Get direct support from our team on Nostr',
       icon: 'support_agent',
-      link: 'https://nostria.app/npub1nostriaapp',
+      link: 'https://nostria.app/p/npub1mzz0g9y86ljtt94zl3dsvnlzz93jljwygkdz8pfew20lrvrd0lrsn0c2z2',
       buttonText: 'Contact on Nostria'
+    },
+    {
+      title: 'Premium Email Support',
+      description: 'Exclusive priority email support for Premium subscribers',
+      icon: 'mail',
+      link: '/premium',
+      buttonText: 'Learn About Premium',
+      isPremium: true
     }
   ];
 }

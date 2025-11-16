@@ -10,15 +10,21 @@
     <div class="container">
       <div class="channels-grid">
         @for (channel of supportChannels; track channel.title) {
-          <div class="channel-card">
+          <div class="channel-card" [class.premium-card]="channel.isPremium">
+            @if (channel.isPremium) {
+              <div class="premium-badge">
+                <span class="material-symbols-outlined">workspace_premium</span>
+                <span>Premium</span>
+              </div>
+            }
             <div class="channel-icon">
-              <span class="material-icons">{{ channel.icon }}</span>
+              <span class="material-symbols-outlined">{{ channel.icon }}</span>
             </div>
             <h2>{{ channel.title }}</h2>
             <p>{{ channel.description }}</p>
             <a [href]="channel.link" target="_blank" rel="noopener noreferrer" class="btn-primary">
               {{ channel.buttonText }}
-              <span class="material-icons">open_in_new</span>
+              <span class="material-symbols-outlined">open_in_new</span>
             </a>
           </div>
         }
@@ -67,11 +73,11 @@
       </p>
       <div class="community-links">
         <a href="https://github.com/nostria-app/nostria" target="_blank" rel="noopener noreferrer" class="community-link">
-          <span class="material-icons">code</span>
+          <span class="material-symbols-outlined">code</span>
           <span>GitHub Repository</span>
         </a>
         <a href="https://nostria.app" target="_blank" rel="noopener noreferrer" class="community-link">
-          <span class="material-icons">public</span>
+          <span class="material-symbols-outlined">public</span>
           <span>Nostria App</span>
         </a>
       </div>
