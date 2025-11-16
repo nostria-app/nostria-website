@@ -12,6 +12,7 @@ import { PreSeedComponent } from './pages/funding/pre-seed.component';
 import { MvpReleasedComponent } from './pages/press/mvp-released/mvp-released.component';
 import { SeedFundLaunchComponent } from './pages/press/seed-fund-launch/seed-fund-launch.component';
 import { DiscordRedirectComponent } from './pages/discord-redirect.component';
+import { SupportComponent } from './pages/support/support.component';
 
 export const routes: Routes = [
   {
@@ -52,6 +53,11 @@ export const routes: Routes = [
   { path: 'privacy', component: PrivacyComponent },
   { path: 'testimonials', component: TestimonialsComponent },
   { path: 'about', component: AboutComponent },
+  { 
+    path: 'support', 
+    component: SupportComponent,
+    title: 'Get Support - Nostria'
+  },
   { 
     path: 'discord', 
     component: DiscordRedirectComponent,

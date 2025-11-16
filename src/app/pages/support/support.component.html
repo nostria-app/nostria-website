@@ -1,0 +1,80 @@
+<div class="support-page">
+  <section class="hero">
+    <div class="container">
+      <h1>Get Support</h1>
+      <p class="subtitle">We're here to help you get the most out of Nostria</p>
+    </div>
+  </section>
+
+  <section class="support-channels">
+    <div class="container">
+      <div class="channels-grid">
+        @for (channel of supportChannels; track channel.title) {
+          <div class="channel-card">
+            <div class="channel-icon">
+              <span class="material-icons">{{ channel.icon }}</span>
+            </div>
+            <h2>{{ channel.title }}</h2>
+            <p>{{ channel.description }}</p>
+            <a [href]="channel.link" target="_blank" rel="noopener noreferrer" class="btn-primary">
+              {{ channel.buttonText }}
+              <span class="material-icons">open_in_new</span>
+            </a>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="faq-preview">
+    <div class="container">
+      <h2>Common Questions</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <h3>How do I report a bug?</h3>
+          <p>
+            Visit our <a href="https://github.com/nostria-app/nostria/issues" target="_blank" rel="noopener noreferrer">GitHub Issues</a> 
+            page and create a new issue with the bug report template. Include as much detail as possible about 
+            the issue you're experiencing.
+          </p>
+        </div>
+        <div class="faq-item">
+          <h3>How can I request a new feature?</h3>
+          <p>
+            We love hearing feature ideas! Create a feature request on our 
+            <a href="https://github.com/nostria-app/nostria/issues" target="_blank" rel="noopener noreferrer">GitHub Issues</a> 
+            page or reach out to our support team on Nostr.
+          </p>
+        </div>
+        <div class="faq-item">
+          <h3>What's the best way to get quick help?</h3>
+          <p>
+            For quick questions and real-time support, contact us through our 
+            <a href="https://nostria.app/p/npub1mzz0g9y86ljtt94zl3dsvnlzz93jljwygkdz8pfew20lrvrd0lrsn0c2z2" target="_blank" rel="noopener noreferrer">Nostria Support Account</a>. 
+            Our team monitors this account regularly and can provide personalized assistance.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="community-support">
+    <div class="container">
+      <h2>Community Resources</h2>
+      <p>
+        Join our growing community to connect with other Nostria users, share tips, 
+        and stay updated on the latest features and improvements.
+      </p>
+      <div class="community-links">
+        <a href="https://github.com/nostria-app/nostria" target="_blank" rel="noopener noreferrer" class="community-link">
+          <span class="material-icons">code</span>
+          <span>GitHub Repository</span>
+        </a>
+        <a href="https://nostria.app" target="_blank" rel="noopener noreferrer" class="community-link">
+          <span class="material-icons">public</span>
+          <span>Nostria App</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</div>
