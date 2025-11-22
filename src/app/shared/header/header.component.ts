@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
@@ -7,7 +7,10 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   standalone: true,
   imports: [RouterLink, RouterLinkActive],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
+  styleUrl: './header.component.scss',
+  host: {
+    '(window:scroll)': 'onWindowScroll()'
+  }
 })
 export class HeaderComponent {
   isMenuOpen = false;
@@ -26,7 +29,6 @@ export class HeaderComponent {
     }
   }
 
-  @HostListener('window:scroll', ['$event'])
   onWindowScroll() {
     this.isScrolled = window.scrollY > 50;
   }
