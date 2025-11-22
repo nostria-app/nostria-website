@@ -1,12 +1,12 @@
 import { Component, OnInit, AfterViewInit, Inject, PLATFORM_ID } from '@angular/core';
-import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { isPlatformBrowser } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { PitchDeckDownloadComponent } from '../../components/pitch-deck-download/pitch-deck-download.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterLink, PitchDeckDownloadComponent],
+  imports: [RouterLink, PitchDeckDownloadComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })

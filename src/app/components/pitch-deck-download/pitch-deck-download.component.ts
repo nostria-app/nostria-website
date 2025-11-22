@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-pitch-deck-download',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './pitch-deck-download.component.html',
   styleUrls: ['./pitch-deck-download.component.scss']
 })

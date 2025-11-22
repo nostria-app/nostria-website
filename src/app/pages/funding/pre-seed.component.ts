@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { RouterLink } from '@angular/router';
 import { SafePipeModule } from '../../shared/pipes/safe.pipe';
 import { YouTubePlayerModule } from '@angular/youtube-player';
@@ -8,7 +8,7 @@ import { PitchDeckDownloadComponent } from '../../components/pitch-deck-download
 @Component({
   selector: 'app-pre-seed',
   standalone: true,
-  imports: [CommonModule, RouterLink, SafePipeModule, YouTubePlayerModule, PitchDeckDownloadComponent],
+  imports: [RouterLink, SafePipeModule, YouTubePlayerModule, PitchDeckDownloadComponent],
   templateUrl: './pre-seed.component.html',
   styleUrl: './pre-seed.component.scss'
 })

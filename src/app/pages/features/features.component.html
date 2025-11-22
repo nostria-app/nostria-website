@@ -16,13 +16,13 @@
       </div>
       <h1 class="hero-title">Features That Actually Matter</h1>
       <p class="hero-subtitle" itemprop="description">
-        Discover the powerful features that make Nostria the best way to experience the Nostr protocol. 
+        Discover the powerful features that make Nostria the best way to experience the Nostr protocol.
         Built for scale, designed for users, optimized for the future of decentralized social media.
       </p>
       <div class="feature-categories">
         @for (category of featureCategories; track category.id) {
-          <button class="category-button" 
-                  (click)="scrollToSection(category.id)">
+          <button class="category-button"
+            (click)="scrollToSection(category.id)">
             <span class="material-symbols-outlined">{{ getCategoryIcon(category.id) }}</span>
             {{ category.title }}
           </button>
@@ -86,7 +86,7 @@
           <p class="section-subheading">Seamless experience across every device and platform</p>
         }
       </div>
-      
+
       <div class="features-grid">
         @for (feature of category.features; track feature.title; let i = $index) {
           <div class="feature-item" [style.animation-delay]="(i * 0.1) + 's'">
@@ -103,30 +103,32 @@
           </div>
         }
       </div>
-      
-      <div class="feature-showcase" *ngIf="category.id === 'user-experience'">
-        <img 
-          src="assets/screenshots/nostria-02.jpg" 
-          alt="Nostria User Interface" 
-          class="feature-image" 
-          (click)="openLightbox('assets/screenshots/nostria-02.jpg', 'Nostria User Interface')" />
-        <div class="feature-details">
-          <h3>A Beautiful Interface for Everyone</h3>
-          <p>
-            Whether you're new to Nostr or a power user, Nostria's interface adapts to your needs.
-            Our design philosophy puts your content front and center while providing powerful tools
-            right where you need them.
-          </p>
-          <ul class="feature-list">
-            <li>Intuitive navigation for new users</li>
-            <li>Keyboard shortcuts for power users</li>
-            <li>Flexible layout options for any screen size</li>
-            <li>Accessibility features built-in</li>
-          </ul>
-        </div>
-      </div>
-      
-      <!-- <div class="feature-showcase reverse" *ngIf="category.id === 'performance'">
+
+      @if (category.id === 'user-experience') {
+        <div class="feature-showcase">
+          <img
+            src="assets/screenshots/nostria-02.jpg"
+            alt="Nostria User Interface"
+            class="feature-image"
+            (click)="openLightbox('assets/screenshots/nostria-02.jpg', 'Nostria User Interface')" />
+            <div class="feature-details">
+              <h3>A Beautiful Interface for Everyone</h3>
+              <p>
+                Whether you're new to Nostr or a power user, Nostria's interface adapts to your needs.
+                Our design philosophy puts your content front and center while providing powerful tools
+                right where you need them.
+              </p>
+              <ul class="feature-list">
+                <li>Intuitive navigation for new users</li>
+                <li>Keyboard shortcuts for power users</li>
+                <li>Flexible layout options for any screen size</li>
+                <li>Accessibility features built-in</li>
+              </ul>
+            </div>
+          </div>
+        }
+
+        <!-- <div class="feature-showcase reverse" *ngIf="category.id === 'performance'">
         <div class="feature-details">
           <h3>Performance That Feels Like Magic</h3>
           <p>
@@ -141,193 +143,199 @@
             <li>Battery-friendly operation on mobile devices</li>
           </ul>
         </div>
-        <img 
-          src="assets/diagrams/nostria-architecture.svg" 
-          alt="Nostria Performance Metrics" 
-          class="feature-image" 
+        <img
+          src="assets/diagrams/nostria-architecture.svg"
+          alt="Nostria Performance Metrics"
+          class="feature-image"
           (click)="openLightbox('assets/diagrams/nostria-architecture.svg', 'Nostria Architecture')" />
-      </div> -->
-      
-      <div class="feature-showcase reverse" *ngIf="category.id === 'scaling'">
-        <div class="feature-details">
-          <h3>Scaling Beyond Centralized Relays</h3>
-          <p>
-            Nostria is designed to enable true global scaling for the Nostr network. By intelligently 
-            distributing users across appropriate relays rather than relying on massive centralized 
-            servers, Nostria helps create a more resilient, faster, and truly decentralized network.
-          </p>
-          <p>
-            Nostria believe everyone should have a great experience, regardless of their location on the globe. 
-            We are hosting relays in multiple locations around the world. That means if you're living in Cape Town, 
-            you'll be able to connect to a relay in your region and have very low latency.
-          </p>
-          <ul class="feature-list">
-            <li>We host globally distributed Discovery Relays</li>
-            <li>Connect directly to smaller user relays</li>
-            <li>Everyone receive lower latency</li>
-            <li>Reduced dependency on large centralized relays</li>
-          </ul>
-        </div>
-        <img 
-          src="assets/diagrams/nostria-architecture.svg" 
-          alt="Nostria Scaling Architecture" 
-          class="feature-image" 
-          (click)="openLightbox('assets/diagrams/nostria-architecture.svg', 'Nostria Scaling Architecture')" />
-      </div>
-      
-      <div class="feature-showcase" *ngIf="category.id === 'infrastructure'">
-        <img 
-          src="assets/diagrams/nostria-infrastructure.svg" 
-          alt="Nostria Infrastructure" 
-          class="feature-image" 
-          (click)="openLightbox('assets/diagrams/nostria-infrastructure.svg', 'Nostria Infrastructure')" />
-        <div class="feature-details">
-          <h3>Infrastructure Built for Scale</h3>
-          <p>
-            Premium users enjoy access to Nostria's dedicated infrastructure, designed to enhance 
-            your experience and ensure reliability. Our global network provides consistent performance 
-            wherever you are in the world.
-          </p>
-          <ul class="feature-list">
-            <li>Dedicated user relays for premium subscribers</li>
-            <li>Media servers with high availability</li>
-            <li>Discovery Relays for user discovery</li>
-            <li>Geographically distributed infrastructure for global reach</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="feature-showcase reverse" *ngIf="category.id === 'cross-platform'">
-        <div class="feature-details">
-          <h3>Seamless Experience Across Devices</h3>
-          <p>
-            Start a conversation on your phone, continue it on your desktop, and finish it on your tablet.
-            Nostria synchronizes your experience across all platforms, allowing you to stay connected
-            no matter where you are or what device you're using.
-          </p>
-          <ul class="feature-list">
-            <li>Native apps for all major platforms</li>
-            <li>Real-time synchronization across devices</li>
-            <li>Optimized interfaces for each form factor</li>
-          </ul>
-        </div>
-        <img 
-          src="assets/screenshots/nostria-bookmarks.jpg" 
-          alt="Nostria on Multiple Devices" 
-          class="feature-image" 
-          (click)="openLightbox('assets/screenshots/nostria-bookmarks.jpg', 'Nostria Bookmarks')" />
-      </div>
-    </div>
-  </section>
-}
+        </div> -->
 
-<!-- Learn Section (Migrated from learn component) -->
-<section class="learn-section">
-  <div class="container">
-    <div class="section-container">
-      @for (section of sections; track section.title) {
-        <div class="info-card">
-          <div class="card-header">
-            <div class="icon-container">
-              <span class="material-symbols-outlined">{{section.icon}}</span>
+        @if (category.id === 'scaling') {
+          <div class="feature-showcase reverse">
+            <div class="feature-details">
+              <h3>Scaling Beyond Centralized Relays</h3>
+              <p>
+                Nostria is designed to enable true global scaling for the Nostr network. By intelligently
+                distributing users across appropriate relays rather than relying on massive centralized
+                servers, Nostria helps create a more resilient, faster, and truly decentralized network.
+              </p>
+              <p>
+                Nostria believe everyone should have a great experience, regardless of their location on the globe.
+                We are hosting relays in multiple locations around the world. That means if you're living in Cape Town,
+                you'll be able to connect to a relay in your region and have very low latency.
+              </p>
+              <ul class="feature-list">
+                <li>We host globally distributed Discovery Relays</li>
+                <li>Connect directly to smaller user relays</li>
+                <li>Everyone receive lower latency</li>
+                <li>Reduced dependency on large centralized relays</li>
+              </ul>
             </div>
-            <h3 class="card-title">{{section.title}}</h3>
-          </div>
-          <div class="card-content">
-            <p>{{section.content}}</p>
-          </div>
-        </div>
-      }
-    </div>
+            <img
+              src="assets/diagrams/nostria-architecture.svg"
+              alt="Nostria Scaling Architecture"
+              class="feature-image"
+              (click)="openLightbox('assets/diagrams/nostria-architecture.svg', 'Nostria Scaling Architecture')" />
+            </div>
+          }
 
-    <div class="features-section">
-      <h2>Key Features</h2>
-      <div class="key-features-grid">
-        @for (feature of keyFeatures; track feature.title) {
-          <div class="key-feature-item">
-            <div class="feature-icon" [style.background]="'linear-gradient(135deg, ' + feature.color + ', ' + feature.color + '80)'">
-              <span [class]="feature.icon"></span>
+          @if (category.id === 'infrastructure') {
+            <div class="feature-showcase">
+              <img
+                src="assets/diagrams/nostria-infrastructure.svg"
+                alt="Nostria Infrastructure"
+                class="feature-image"
+                (click)="openLightbox('assets/diagrams/nostria-infrastructure.svg', 'Nostria Infrastructure')" />
+                <div class="feature-details">
+                  <h3>Infrastructure Built for Scale</h3>
+                  <p>
+                    Premium users enjoy access to Nostria's dedicated infrastructure, designed to enhance
+                    your experience and ensure reliability. Our global network provides consistent performance
+                    wherever you are in the world.
+                  </p>
+                  <ul class="feature-list">
+                    <li>Dedicated user relays for premium subscribers</li>
+                    <li>Media servers with high availability</li>
+                    <li>Discovery Relays for user discovery</li>
+                    <li>Geographically distributed infrastructure for global reach</li>
+                  </ul>
+                </div>
+              </div>
+            }
+
+            @if (category.id === 'cross-platform') {
+              <div class="feature-showcase reverse">
+                <div class="feature-details">
+                  <h3>Seamless Experience Across Devices</h3>
+                  <p>
+                    Start a conversation on your phone, continue it on your desktop, and finish it on your tablet.
+                    Nostria synchronizes your experience across all platforms, allowing you to stay connected
+                    no matter where you are or what device you're using.
+                  </p>
+                  <ul class="feature-list">
+                    <li>Native apps for all major platforms</li>
+                    <li>Real-time synchronization across devices</li>
+                    <li>Optimized interfaces for each form factor</li>
+                  </ul>
+                </div>
+                <img
+                  src="assets/screenshots/nostria-bookmarks.jpg"
+                  alt="Nostria on Multiple Devices"
+                  class="feature-image"
+                  (click)="openLightbox('assets/screenshots/nostria-bookmarks.jpg', 'Nostria Bookmarks')" />
+                </div>
+              }
             </div>
-            <h3>{{feature.title}}</h3>
-            <p>{{feature.description}}</p>
-          </div>
+          </section>
         }
-      </div>
-    </div>
 
-    <div class="faq-section">
-      <h2>Frequently Asked Questions</h2>
-      <div class="accordion">
-        @for (faq of faqs; track faq.question; let i = $index) {
-          <div class="accordion-item">
-            <div class="accordion-header" (click)="toggleFaq(i)">
-              <h4>{{faq.question}}</h4>
-              <span class="accordion-icon">{{ isFaqExpanded(i) ? '−' : '+' }}</span>
+        <!-- Learn Section (Migrated from learn component) -->
+        <section class="learn-section">
+          <div class="container">
+            <div class="section-container">
+              @for (section of sections; track section.title) {
+                <div class="info-card">
+                  <div class="card-header">
+                    <div class="icon-container">
+                      <span class="material-symbols-outlined">{{section.icon}}</span>
+                    </div>
+                    <h3 class="card-title">{{section.title}}</h3>
+                  </div>
+                  <div class="card-content">
+                    <p>{{section.content}}</p>
+                  </div>
+                </div>
+              }
             </div>
-            <div class="accordion-content" [class.expanded]="isFaqExpanded(i)">
-              <p>{{faq.answer}}</p>
+
+            <div class="features-section">
+              <h2>Key Features</h2>
+              <div class="key-features-grid">
+                @for (feature of keyFeatures; track feature.title) {
+                  <div class="key-feature-item">
+                    <div class="feature-icon" [style.background]="'linear-gradient(135deg, ' + feature.color + ', ' + feature.color + '80)'">
+                      <span [class]="feature.icon"></span>
+                    </div>
+                    <h3>{{feature.title}}</h3>
+                    <p>{{feature.description}}</p>
+                  </div>
+                }
+              </div>
+            </div>
+
+            <div class="faq-section">
+              <h2>Frequently Asked Questions</h2>
+              <div class="accordion">
+                @for (faq of faqs; track faq.question; let i = $index) {
+                  <div class="accordion-item">
+                    <div class="accordion-header" (click)="toggleFaq(i)">
+                      <h4>{{faq.question}}</h4>
+                      <span class="accordion-icon">{{ isFaqExpanded(i) ? '−' : '+' }}</span>
+                    </div>
+                    <div class="accordion-content" [class.expanded]="isFaqExpanded(i)">
+                      <p>{{faq.answer}}</p>
+                    </div>
+                  </div>
+                }
+              </div>
             </div>
           </div>
-        }
-      </div>
-    </div>
-  </div>
-</section>
+        </section>
 
-<!-- Call to Action -->
-<section class="features-cta">
-  <div class="cta-background">
-    <div class="cta-decoration cta-decoration-1"></div>
-    <div class="cta-decoration cta-decoration-2"></div>
-  </div>
-  <div class="container">
-    <div class="cta-content">
-      <div class="cta-badge">
-        <span class="material-symbols-outlined">rocket_launch</span>
-        <span>Ready to Start?</span>
-      </div>
-      <h2 class="cta-title">Experience the Future of Social Media</h2>
-      <p class="cta-description">Join thousands of users who've already discovered the power of user-controlled social networking with Nostria</p>
-      <div class="cta-features">
-        <div class="cta-feature">
-          <span class="material-symbols-outlined">speed</span>
-          <span>2-Click Signup</span>
-        </div>
-        <div class="cta-feature">
-          <span class="material-symbols-outlined">security</span>
-          <span>Your Data, Your Control</span>
-        </div>
-        <div class="cta-feature">
-          <span class="material-symbols-outlined">public</span>
-          <span>Global Scale</span>
-        </div>
-      </div>
-      <div class="cta-buttons">
-        <a href="https://nostria.app" target="_blank" rel="noopener" class="btn btn-primary btn-cta-primary">
-          <span class="btn-text">Launch Nostria</span>
-          <span class="material-symbols-outlined">rocket_launch</span>
-        </a>
-        <a routerLink="/about" class="btn btn-outline btn-cta-secondary">
-          Learn More About Us
-        </a>
-      </div>
-      <div class="cta-note">
-        <span class="material-symbols-outlined">verified</span>
-        <span>100% free to start • No email required • Open source</span>
-      </div>
-    </div>
-  </div>
-</section>
+        <!-- Call to Action -->
+        <section class="features-cta">
+          <div class="cta-background">
+            <div class="cta-decoration cta-decoration-1"></div>
+            <div class="cta-decoration cta-decoration-2"></div>
+          </div>
+          <div class="container">
+            <div class="cta-content">
+              <div class="cta-badge">
+                <span class="material-symbols-outlined">rocket_launch</span>
+                <span>Ready to Start?</span>
+              </div>
+              <h2 class="cta-title">Experience the Future of Social Media</h2>
+              <p class="cta-description">Join thousands of users who've already discovered the power of user-controlled social networking with Nostria</p>
+              <div class="cta-features">
+                <div class="cta-feature">
+                  <span class="material-symbols-outlined">speed</span>
+                  <span>2-Click Signup</span>
+                </div>
+                <div class="cta-feature">
+                  <span class="material-symbols-outlined">security</span>
+                  <span>Your Data, Your Control</span>
+                </div>
+                <div class="cta-feature">
+                  <span class="material-symbols-outlined">public</span>
+                  <span>Global Scale</span>
+                </div>
+              </div>
+              <div class="cta-buttons">
+                <a href="https://nostria.app" target="_blank" rel="noopener" class="btn btn-primary btn-cta-primary">
+                  <span class="btn-text">Launch Nostria</span>
+                  <span class="material-symbols-outlined">rocket_launch</span>
+                </a>
+                <a routerLink="/about" class="btn btn-outline btn-cta-secondary">
+                  Learn More About Us
+                </a>
+              </div>
+              <div class="cta-note">
+                <span class="material-symbols-outlined">verified</span>
+                <span>100% free to start • No email required • Open source</span>
+              </div>
+            </div>
+          </div>
+        </section>
 
-<!-- Lightbox Modal -->
-<div class="lightbox-overlay" [class.active]="showLightbox" (click)="closeLightbox()">
-  <div class="lightbox-content" (click)="$event.stopPropagation()">
-    <button class="lightbox-close" (click)="closeLightbox()">
-      <span class="material-symbols-outlined">close</span>
-    </button>
-    @if (lightboxImageSrc) {
-      <img [src]="lightboxImageSrc" [alt]="lightboxAlt" [title]="lightboxAlt" />
-    }
-    <div class="lightbox-caption">{{ lightboxAlt }}</div>
-  </div>
-</div>
+        <!-- Lightbox Modal -->
+        <div class="lightbox-overlay" [class.active]="showLightbox" (click)="closeLightbox()">
+          <div class="lightbox-content" (click)="$event.stopPropagation()">
+            <button class="lightbox-close" (click)="closeLightbox()">
+              <span class="material-symbols-outlined">close</span>
+            </button>
+            @if (lightboxImageSrc) {
+              <img [src]="lightboxImageSrc" [alt]="lightboxAlt" [title]="lightboxAlt" />
+            }
+            <div class="lightbox-caption">{{ lightboxAlt }}</div>
+          </div>
+        </div>

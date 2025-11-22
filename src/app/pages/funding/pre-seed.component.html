@@ -9,63 +9,71 @@
 
       <div class="funding-status">
         <!-- Show different content based on funding status -->
-        <div *ngIf="!fundingStarted" class="funding-countdown">
-          <h2>Pre-Seed Round Starts In</h2>
-          <div class="countdown-timer">
-            <div class="countdown-unit">
-              <span class="count-number">{{daysLeft}}</span>
-              <span class="count-label">Days</span>
+        @if (!fundingStarted) {
+          <div class="funding-countdown">
+            <h2>Pre-Seed Round Starts In</h2>
+            <div class="countdown-timer">
+              <div class="countdown-unit">
+                <span class="count-number">{{daysLeft}}</span>
+                <span class="count-label">Days</span>
+              </div>
+              <div class="countdown-unit">
+                <span class="count-number">{{hoursLeft}}</span>
+                <span class="count-label">Hours</span>
+              </div>
+              <div class="countdown-unit">
+                <span class="count-number">{{minutesLeft}}</span>
+                <span class="count-label">Mins</span>
+              </div>
+              <div class="countdown-unit">
+                <span class="count-number">{{secondsLeft}}</span>
+                <span class="count-label">Secs</span>
+              </div>
             </div>
-            <div class="countdown-unit">
-              <span class="count-number">{{hoursLeft}}</span>
-              <span class="count-label">Hours</span>
-            </div>
-            <div class="countdown-unit">
-              <span class="count-number">{{minutesLeft}}</span>
-              <span class="count-label">Mins</span>
-            </div>
-            <div class="countdown-unit">
-              <span class="count-number">{{secondsLeft}}</span>
-              <span class="count-label">Secs</span>
-            </div>
+            <p class="funding-dates">May 11, 2025 - May 31, 2025</p>
           </div>
-          <p class="funding-dates">May 11, 2025 - May 31, 2025</p>
-        </div>
-        
-        <div *ngIf="fundingStarted && !fundingEnded" class="funding-countdown">
-          <h2>Pre-Seed Round Ends In</h2>
-          <div class="countdown-timer">
-            <div class="countdown-unit">
-              <span class="count-number">{{daysLeft}}</span>
-              <span class="count-label">Days</span>
+        }
+
+        @if (fundingStarted && !fundingEnded) {
+          <div class="funding-countdown">
+            <h2>Pre-Seed Round Ends In</h2>
+            <div class="countdown-timer">
+              <div class="countdown-unit">
+                <span class="count-number">{{daysLeft}}</span>
+                <span class="count-label">Days</span>
+              </div>
+              <div class="countdown-unit">
+                <span class="count-number">{{hoursLeft}}</span>
+                <span class="count-label">Hours</span>
+              </div>
+              <div class="countdown-unit">
+                <span class="count-number">{{minutesLeft}}</span>
+                <span class="count-label">Mins</span>
+              </div>
+              <div class="countdown-unit">
+                <span class="count-number">{{secondsLeft}}</span>
+                <span class="count-label">Secs</span>
+              </div>
             </div>
-            <div class="countdown-unit">
-              <span class="count-number">{{hoursLeft}}</span>
-              <span class="count-label">Hours</span>
-            </div>
-            <div class="countdown-unit">
-              <span class="count-number">{{minutesLeft}}</span>
-              <span class="count-label">Mins</span>
-            </div>
-            <div class="countdown-unit">
-              <span class="count-number">{{secondsLeft}}</span>
-              <span class="count-label">Secs</span>
-            </div>
+            <p class="funding-dates">Funding Round Open: May 12 - May 31, 2025</p>
           </div>
-          <p class="funding-dates">Funding Round Open: May 12 - May 31, 2025</p>
-        </div>
-        
-        <div *ngIf="fundingEnded" class="funding-ended">
-          <h2>Pre-Seed Round Opens Soon</h2>
-          <p>
+        }
+
+        @if (fundingEnded) {
+          <div class="funding-ended">
+            <h2>Pre-Seed Round Opens Soon</h2>
+            <p>
             We're preparing for our pre-seed round. If you are interested in investing, please reach out to us.</p>
-        </div>
+          </div>
+        }
       </div>
 
       <div class="hero-cta">
-        <a href="https://hub.angor.io/project/angor1qwdgxjuzhjykgpn5q8p3l2q9vyrgqdlrkfp5sjr?network=main" rel="noopener noreferrer" *ngIf="fundingStarted && !fundingEnded" class="btn btn-primary">
-          Invest Now
-        </a>
+        @if (fundingStarted && !fundingEnded) {
+          <a href="https://hub.angor.io/project/angor1qwdgxjuzhjykgpn5q8p3l2q9vyrgqdlrkfp5sjr?network=main" rel="noopener noreferrer" class="btn btn-primary">
+            Invest Now
+          </a>
+        }
       </div>
     </div>
   </div>
@@ -138,7 +146,9 @@
     <div class="tiers-grid">
       @for (tier of investmentTiers; track tier.name) {
         <div class="tier-card" [class.highlighted]="tier.highlighted">
-          <div *ngIf="tier.highlighted" class="recommended-badge">Recommended</div>
+          @if (tier.highlighted) {
+            <div class="recommended-badge">Recommended</div>
+          }
           <h3>{{tier.name}}</h3>
           <div class="tier-amount">{{tier.amount}}</div>
           <ul class="tier-benefits">
@@ -150,19 +160,19 @@
             }
           </ul>
           <!-- <div class="tier-cta">
-            <button [class]="tier.highlighted ? 'btn btn-primary' : 'btn btn-outline'" (click)="openInvestModal()">
-              Invest as {{tier.name}}
-            </button>
-          </div> -->
-        </div>
-      }
-    </div>
-
-    <div class="custom-investment">
-      <p>Looking to invest a different amount? Contact us directly for custom investment options.</p>
-      <a href="mailto:nostriaapp@gmail.com" class="btn btn-outline">Contact us about investing</a> or <a href="https://hub.angor.io/project/angor1qwdgxjuzhjykgpn5q8p3l2q9vyrgqdlrkfp5sjr?network=main" class="btn btn-outline">invest now</a>
-    </div>
+          <button [class]="tier.highlighted ? 'btn btn-primary' : 'btn btn-outline'" (click)="openInvestModal()">
+            Invest as {{tier.name}}
+          </button>
+        </div> -->
+      </div>
+    }
   </div>
+
+  <div class="custom-investment">
+    <p>Looking to invest a different amount? Contact us directly for custom investment options.</p>
+    <a href="mailto:nostriaapp@gmail.com" class="btn btn-outline">Contact us about investing</a> or <a href="https://hub.angor.io/project/angor1qwdgxjuzhjykgpn5q8p3l2q9vyrgqdlrkfp5sjr?network=main" class="btn btn-outline">invest now</a>
+  </div>
+</div>
 </section>
 
 <!-- Funding Milestones Section -->
@@ -209,11 +219,11 @@
         <div class="video-card">
           <div class="video-container">
             <!-- <youtube-player [videoId]="video.youtubeId" placeholderImageQuality="high"/> -->
-            <iframe 
+            <iframe
               [src]="'https://www.youtube.com/embed/' + video.youtubeId | safe:'resourceUrl'"
-              title="YouTube video player" 
-              frameborder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen>
             </iframe>
           </div>
@@ -311,8 +321,8 @@
       <div class="faq-item">
         <h3>What is a SAFE Agreement?</h3>
         <p>
-          SAFE (Simple Agreement for Future Equity) is an investment instrument that provides the right to receive equity in the future. 
-          As a Pre-Seed investor, you receive a SAFE that will convert to equity shares at the Seed Round with a 15% discount. For example, if you invest 
+          SAFE (Simple Agreement for Future Equity) is an investment instrument that provides the right to receive equity in the future.
+          As a Pre-Seed investor, you receive a SAFE that will convert to equity shares at the Seed Round with a 15% discount. For example, if you invest
           €1,000 in the Pre-Seed round, you'll receive €1,150 worth of shares after company valuation in the Seed Round.
         </p>
       </div>
@@ -320,7 +330,7 @@
       <div class="faq-item">
         <h3>What are pro-rata rights?</h3>
         <p>
-          Pre-Seed investors have the right to maintain their ownership percentage in future funding rounds. This means you'll have the first 
+          Pre-Seed investors have the right to maintain their ownership percentage in future funding rounds. This means you'll have the first
           opportunity to purchase additional shares equal to your percentage of pre-seed capital before other investors can participate.
         </p>
       </div>
@@ -328,7 +338,7 @@
       <div class="faq-item">
         <h3>What is the Angor protocol?</h3>
         <p>
-          Angor is a P2P funding protocol built on Bitcoin that enables transparent milestone-based funding. 
+          Angor is a P2P funding protocol built on Bitcoin that enables transparent milestone-based funding.
           It ensures funds are released only when development milestones are reached and verified.
         </p>
       </div>
@@ -336,7 +346,7 @@
       <div class="faq-item">
         <h3>What happens after the Pre-Seed round?</h3>
         <p>
-          After the 3-month development period, we'll announce our Seed Round, at which point your SAFE will convert to equity shares 
+          After the 3-month development period, we'll announce our Seed Round, at which point your SAFE will convert to equity shares
           with a 15% discount based on the company's valuation.
         </p>
       </div>
@@ -345,7 +355,7 @@
         <h3>What are the minimum and maximum investment amounts?</h3>
         <p>
           The maximum investment on Angor is currently 0.1 BTC (approximately $8,500) for each investor.
-          However, we can accept larger investments through direct negotiation. 
+          However, we can accept larger investments through direct negotiation.
           There is no minimum investment in the Pre-Seed round.
         </p>
       </div>
@@ -353,7 +363,7 @@
       <div class="faq-item">
         <h3>How will I receive investment updates?</h3>
         <p>
-          All investors receive monthly progress reports. Angel tier ($5,000+) and Partner tier ($10,000+) 
+          All investors receive monthly progress reports. Angel tier ($5,000+) and Partner tier ($10,000+)
           investors also get access to quarterly investor calls with the founding team.
         </p>
       </div>
@@ -361,7 +371,7 @@
       <div class="faq-item">
         <h3>When does my SAFE convert to equity?</h3>
         <p>
-          Your SAFE will convert to equity shares when we complete our Seed Round funding and establish a company valuation, 
+          Your SAFE will convert to equity shares when we complete our Seed Round funding and establish a company valuation,
           expected 3-6 months after the completion of Pre-Seed development.
         </p>
       </div>
@@ -375,7 +385,7 @@
     <div class="contact-content">
       <h2>Ready to Invest in the Future of Social?</h2>
       <p>
-        Join us in building the next generation of decentralized social communication. For investment questions or to discuss 
+        Join us in building the next generation of decentralized social communication. For investment questions or to discuss
         custom investment options, contact our investment team.
       </p>
       <div class="contact-cta">

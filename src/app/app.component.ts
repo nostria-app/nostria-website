@@ -1,6 +1,6 @@
-import { Component, inject, PLATFORM_ID } from '@angular/core';
+import { Component, inject, PLATFORM_ID, DOCUMENT } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { CommonModule, DOCUMENT, isPlatformBrowser, isPlatformServer } from '@angular/common';
+import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { ScrollRestorationService } from './services/scroll-restoration.service';
@@ -8,7 +8,7 @@ import { ScrollRestorationService } from './services/scroll-restoration.service'
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, HeaderComponent, FooterComponent],
+  imports: [RouterOutlet, HeaderComponent, FooterComponent],
   templateUrl: './app.component.html',
 })
 export class AppComponent {

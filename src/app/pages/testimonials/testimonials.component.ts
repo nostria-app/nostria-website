@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-testimonials',
   standalone: true,
-  imports: [CommonModule, RouterLink, FormsModule],
+  imports: [RouterLink, FormsModule],
   templateUrl: './testimonials.component.html',
   styleUrl: './testimonials.component.scss'
 })

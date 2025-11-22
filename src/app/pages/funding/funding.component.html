@@ -13,23 +13,23 @@
           <span>{{ raisedUsd | number:'1.0-0' }} USD (~{{ raisedBtc | number:'1.4-4' }} BTC) / $400,000 USD (3.45 BTC)
             target
             (<span>{{ progressPct() }}%</span>)</span>
+          </div>
+          <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" title="Seed raise progress"
+            [attr.aria-valuenow]="progressPct()" [attr.aria-label]="'Raise progress ' + progressPct() + '%'">
+            <div class="progress-fill" [style.width.%]="progressPct()"></div>
+          </div>
+          <div class="progress-footnote">Pre-seed investors of $38,000 receives the defined weighting uplift of 1.15×.
+          </div>
         </div>
-        <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" title="Seed raise progress"
-          [attr.aria-valuenow]="progressPct()" [attr.aria-label]="'Raise progress ' + progressPct() + '%'">
-          <div class="progress-fill" [style.width.%]="progressPct()"></div>
-        </div>
-        <div class="progress-footnote">Pre-seed investors of $38,000 receives the defined weighting uplift of 1.15×.
-        </div>
-      </div>
 
-      <div class="funding-status">
-        <div class="funding-announcement">
-          <h2>RBF Raise Target: 3.45 BTC ($400,000)</h2>
-          <p>
-            We're raising $400,000 in Bitcoin (3.45 BTC) (following a completed $38,000 pre-seed) to scale Nostria.
-            Investors receive 50% of net premium subscription revenue (pro‑rata by weighted contribution). The other 50%
-            funds infrastructure and development via <a href="https://openresist.com" target="_blank"
-              rel="noopener noreferrer">OpenResist</a>.
+        <div class="funding-status">
+          <div class="funding-announcement">
+            <h2>RBF Raise Target: 3.45 BTC ($400,000)</h2>
+            <p>
+              We're raising $400,000 in Bitcoin (3.45 BTC) (following a completed $38,000 pre-seed) to scale Nostria.
+              Investors receive 50% of net premium subscription revenue (pro‑rata by weighted contribution). The other 50%
+              funds infrastructure and development via <a href="https://openresist.com" target="_blank"
+            rel="noopener noreferrer">OpenResist</a>.
           </p>
           <p>No tokens. No equity. Pure contractual revenue sharing.
           </p>
@@ -115,7 +115,9 @@
     <div class="tiers-grid">
       @for (tier of investmentTiers; track tier.name) {
         <div class="tier-card" [class.highlighted]="tier.highlighted">
-          <div *ngIf="tier.highlighted" class="recommended-badge">Recommended</div>
+          @if (tier.highlighted) {
+            <div class="recommended-badge">Recommended</div>
+          }
           <h3>{{tier.name}}</h3>
           <div class="tier-amount">{{tier.amount}}</div>
           <ul class="tier-benefits">
@@ -127,19 +129,19 @@
             }
           </ul>
           <!-- <div class="tier-cta">
-            <button [class]="tier.highlighted ? 'btn btn-primary' : 'btn btn-outline'" (click)="openInvestModal()">
-              Invest as {{tier.name}}
-            </button>
-          </div> -->
-        </div>
-      }
-    </div>
-
-    <div class="custom-investment">
-      <p>Looking to invest a different amount? Contact us directly for custom investment options.</p>
-      <a href="mailto:nostriaapp@gmail.com" class="btn btn-outline">Contact us about investing</a> or <a href="https://hub.angor.io/project/angor1qzwrm6hf5l0tgen99anr9hj7ylk38v6zhmnq7w0?network=main" class="btn btn-outline">invest now</a>
-    </div>
+          <button [class]="tier.highlighted ? 'btn btn-primary' : 'btn btn-outline'" (click)="openInvestModal()">
+            Invest as {{tier.name}}
+          </button>
+        </div> -->
+      </div>
+    }
   </div>
+
+  <div class="custom-investment">
+    <p>Looking to invest a different amount? Contact us directly for custom investment options.</p>
+    <a href="mailto:nostriaapp@gmail.com" class="btn btn-outline">Contact us about investing</a> or <a href="https://hub.angor.io/project/angor1qzwrm6hf5l0tgen99anr9hj7ylk38v6zhmnq7w0?network=main" class="btn btn-outline">invest now</a>
+  </div>
+</div>
 </section>
 
 <!-- Revenue Sharing Details Section -->
@@ -157,54 +159,54 @@
         </div>
         <h3>Revenue Basis</h3>
         <p><strong>Gross Revenue:</strong> Premium subscription receipts (after store commissions) + direct Bitcoin
-          subscription receipts.</p>
-        <p><strong>Net Revenue:</strong> Gross minus indirect taxes (VAT / sales taxes) & mandatory platform levies.</p>
-        <p><strong>Investor Pool:</strong> 50% of Net Revenue allocated proportionally by weighting formula.</p>
-      </div>
+      subscription receipts.</p>
+      <p><strong>Net Revenue:</strong> Gross minus indirect taxes (VAT / sales taxes) & mandatory platform levies.</p>
+      <p><strong>Investor Pool:</strong> 50% of Net Revenue allocated proportionally by weighting formula.</p>
+    </div>
 
-      <div class="revenue-card">
-        <div class="revenue-icon">
-          <span class="material-symbols-outlined">schedule</span>
-        </div>
-        <h3>Distribution Cycle</h3>
-        <p>Intended monthly (batch) distribution after reconciliation.</p>
-        <ul>
-          <li>Sent to Angor investor wallets</li>
-          <li>Bitcoin (on-chain or Lightning)</li>
-          <li>Uses BTC/USD reference at batch time</li>
-        </ul>
+    <div class="revenue-card">
+      <div class="revenue-icon">
+        <span class="material-symbols-outlined">schedule</span>
       </div>
+      <h3>Distribution Cycle</h3>
+      <p>Intended monthly (batch) distribution after reconciliation.</p>
+      <ul>
+        <li>Sent to Angor investor wallets</li>
+        <li>Bitcoin (on-chain or Lightning)</li>
+        <li>Uses BTC/USD reference at batch time</li>
+      </ul>
+    </div>
 
 
-      <div class="revenue-card">
-        <div class="revenue-icon">
-          <span class="material-symbols-outlined">flag</span>
-        </div>
-        <h3>2× Review Threshold</h3>
-        <p>When an individual participant’s cumulative distributions reach <strong>2× their original contributed
-            amount</strong>, a non-binding review may be initiated.</p>
-        <ul>
-          <li>Internal review by Nostria team (may consult investors, but decision rests with team).</li>
-          <li>Possible outcomes (team discretion): continue; adjust future investor pool %; or wind down distributions.</li>
-          <li>Accrued but unpaid amounts always remain payable.</li>
-        </ul>
+    <div class="revenue-card">
+      <div class="revenue-icon">
+        <span class="material-symbols-outlined">flag</span>
       </div>
+      <h3>2× Review Threshold</h3>
+      <p>When an individual participant’s cumulative distributions reach <strong>2× their original contributed
+      amount</strong>, a non-binding review may be initiated.</p>
+      <ul>
+        <li>Internal review by Nostria team (may consult investors, but decision rests with team).</li>
+        <li>Possible outcomes (team discretion): continue; adjust future investor pool %; or wind down distributions.</li>
+        <li>Accrued but unpaid amounts always remain payable.</li>
+      </ul>
+    </div>
 
-      <div class="revenue-card">
-        <div class="revenue-icon">
-          <span class="material-symbols-outlined">description</span>
-        </div>
-        <h3>Transparency & Reporting</h3>
-        <p>Monthly investor update includes:</p>
-        <ul>
-          <li>Gross & Net figures</li>
-          <li>Weighting & distribution table</li>
-          <li>BTC batch tx references</li>
-          <li>Any reconciliation adjustments</li>
-        </ul>
+    <div class="revenue-card">
+      <div class="revenue-icon">
+        <span class="material-symbols-outlined">description</span>
       </div>
+      <h3>Transparency & Reporting</h3>
+      <p>Monthly investor update includes:</p>
+      <ul>
+        <li>Gross & Net figures</li>
+        <li>Weighting & distribution table</li>
+        <li>BTC batch tx references</li>
+        <li>Any reconciliation adjustments</li>
+      </ul>
     </div>
   </div>
+</div>
 </section>
 
 <!-- Funding Videos Section -->
@@ -217,20 +219,20 @@
 
     <div class="videos-grid">
       @for (video of fundingVideos; track video.youtubeId) {
-      <div class="video-card">
-        <div class="video-container">
-          <!-- <youtube-player [videoId]="video.youtubeId" placeholderImageQuality="high"/> -->
-          <iframe [src]="'https://www.youtube.com/embed/' + video.youtubeId | safe:'resourceUrl'"
-            title="YouTube video player" frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen>
-          </iframe>
+        <div class="video-card">
+          <div class="video-container">
+            <!-- <youtube-player [videoId]="video.youtubeId" placeholderImageQuality="high"/> -->
+            <iframe [src]="'https://www.youtube.com/embed/' + video.youtubeId | safe:'resourceUrl'"
+              title="YouTube video player" frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <div class="video-info">
+            <h3>{{ video.title }}</h3>
+            <p>{{ video.description }}</p>
+          </div>
         </div>
-        <div class="video-info">
-          <h3>{{ video.title }}</h3>
-          <p>{{ video.description }}</p>
-        </div>
-      </div>
       }
     </div>
   </div>
@@ -323,31 +325,31 @@
         <h3>Wasn't a SAFE originally promised?</h3>
         <p>Yes—early communication referenced a future SAFE. We replaced it with a Revenue-Based Financing structure so
           Nostria can remain a distributed, non‑equity organization and avoid unnecessary jurisdictional securities
-          overhead. RBF lets contributors share upside without governance dilution.</p>
+        overhead. RBF lets contributors share upside without governance dilution.</p>
       </div>
 
       <div class="faq-item">
         <h3>Are there tokens or NFTs?</h3>
         <p>No. There is no token issuance in the live structure. All allocation is ledgered via Angor contributions +
-          weighting logic. This reduces regulatory ambiguity and eliminates market speculation distractions.</p>
+        weighting logic. This reduces regulatory ambiguity and eliminates market speculation distractions.</p>
       </div>
 
       <div class="faq-item">
         <h3>How is my share calculated?</h3>
         <p>Your Percentage Share = (Weighted Contribution) / (Total Weighted Capital). Some early contributions receive
-          a preferential weighting. Distribution each month = Percentage Share × (50% of Net Revenue).</p>
+        a preferential weighting. Distribution each month = Percentage Share × (50% of Net Revenue).</p>
       </div>
 
       <div class="faq-item">
         <h3>What is the Pre-Seed multiplier?</h3>
         <p>The Pre Seed Funding investors get their percentage calculated with an 1.15 multiplier from their total
-          investment.</p>
+        investment.</p>
       </div>
 
       <div class="faq-item">
         <h3>Why use Angor?</h3>
         <p>Angor provides structured contribution recording and automated/assisted BTC distribution, reducing
-          operational friction and avoiding bespoke token contracts.</p>
+        operational friction and avoiding bespoke token contracts.</p>
       </div>
 
       <div class="faq-item">
@@ -363,19 +365,19 @@
         <p>Yes—rights may be transferred, provided you notify the Nostria team in writing before the change so
           allocation records and payout (BTC) addresses can be updated. Until confirmations are processed, distributions
           continue to the previously registered address. We discourage speculative secondary trading; transfers should
-          reflect genuine reallocation or entity restructuring.</p>
+        reflect genuine reallocation or entity restructuring.</p>
       </div>
 
       <div class="faq-item">
         <h3>What about taxes?</h3>
         <p>You should treat distributions as income in your jurisdiction (consult professional advisors). We provide
-          monthly statements & BTC transaction references for record-keeping.</p>
+        monthly statements & BTC transaction references for record-keeping.</p>
       </div>
 
       <div class="faq-item">
         <h3>How is this different from equity / SAFE?</h3>
         <p>No dilution, no cap table, no governance—only proportional access to 50% of ongoing Net Revenue. The earlier
-          SAFE concept was deprecated to maintain decentralisation and simplicity.</p>
+        SAFE concept was deprecated to maintain decentralisation and simplicity.</p>
       </div>
     </div>
   </div>

@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-seed-pitch-deck-download',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './seed-pitch-deck-download.component.html',
   styleUrls: ['./seed-pitch-deck-download.component.scss']
 })
