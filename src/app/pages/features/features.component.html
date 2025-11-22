@@ -61,6 +61,22 @@
           <h2 class="section-title">{{ category.title }}</h2>
           <p class="section-subheading">Intuitive design meets powerful functionality for the best user experience</p>
         }
+        @if (category.id === 'ai-intelligence') {
+          <div class="section-badge">
+            <span class="material-symbols-outlined">{{ getCategoryIcon(category.id) }}</span>
+            <span>AI & Intelligence</span>
+          </div>
+          <h2 class="section-title">{{ category.title }}</h2>
+          <p class="section-subheading">Powerful local AI models for translation, dictation, and more</p>
+        }
+        @if (category.id === 'media-content') {
+          <div class="section-badge">
+            <span class="material-symbols-outlined">{{ getCategoryIcon(category.id) }}</span>
+            <span>Media & Content</span>
+          </div>
+          <h2 class="section-title">{{ category.title }}</h2>
+          <p class="section-subheading">Rich media support including video clips, audio messages, and live streams</p>
+        }
         @if (category.id === 'scaling') {
           <div class="section-badge">
             <span class="material-symbols-outlined">{{ getCategoryIcon(category.id) }}</span>
@@ -96,6 +112,11 @@
             <div class="feature-content">
               <h3>{{ feature.title }}</h3>
               <p>{{ feature.description }}</p>
+              @if (feature.screenshot) {
+                <div class="feature-screenshot">
+                  <img [src]="feature.screenshot" [alt]="feature.title" [title]="feature.title" loading="lazy" (click)="openLightbox(feature.screenshot, feature.title)">
+                </div>
+              }
               <div class="feature-arrow">
                 <span class="material-symbols-outlined">arrow_forward</span>
               </div>

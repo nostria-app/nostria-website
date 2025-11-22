@@ -367,6 +367,28 @@
         font-size: 1rem;
         line-height: 1.6;
       }
+
+      .feature-screenshot {
+        margin-top: 1.5rem;
+        border-radius: 0.75rem;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        cursor: pointer;
+        transition: transform 0.3s ease;
+        border: 1px solid rgba(0,0,0,0.05);
+
+        &:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+      }
       
       .feature-arrow {
         position: absolute;

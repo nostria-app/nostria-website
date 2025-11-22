@@ -82,19 +82,99 @@ export class FeaturesComponent {
           title: 'Intuitive Interface',
           description: 'Clean, modern design that makes navigating the Nostr network simple for both beginners and power users.',
           icon: 'material-symbols-outlined auto_fix',
-          color: '#8e44ad' // Purple
+          color: '#8e44ad', // Purple
+          screenshot: ''
         },
         {
-          title: 'Multi-column Layout',
-          description: 'Power users can view multiple timelines simultaneously with our flexible column layout system.',
-          icon: 'material-symbols-outlined view_column',
-          color: '#8e44ad' // Purple
+          title: 'Command Palette',
+          description: 'Quickly get to where you want to go within Nostria, with the new command palette, open it with ALT-P to filter and choose your command or action.',
+          icon: 'material-symbols-outlined terminal',
+          color: '#9b59b6', // Light purple
+          screenshot: 'assets/screenshots/nostria-01.jpg'
+        },
+        {
+          title: 'Favorites',
+          description: 'You can now organize your favorites and have them displayed at all times in the top toolbar, including a new flyout menu where you can drag and drop to organize your friends.',
+          icon: 'material-symbols-outlined star',
+          color: '#8e44ad', // Purple
+          screenshot: 'assets/screenshots/nostria-bookmarks.jpg'
+        },
+        {
+          title: 'Threads',
+          description: 'Users can make multiple threads that have one or more columns that shows various content from the Nostr social network.',
+          icon: 'material-symbols-outlined view_week',
+          color: '#9b59b6', // Light purple
+          screenshot: 'assets/screenshots/nostria-mvp-home.jpg'
         },
         {
           title: 'Advanced Filters',
           description: 'Filter your timeline by content type, keywords, authors, and more to focus on what matters to you.',
           icon: 'material-symbols-outlined filter_alt',
-          color: '#9b59b6' // Light purple
+          color: '#9b59b6', // Light purple
+          screenshot: ''
+        }
+      ]
+    },
+    {
+      id: 'ai-intelligence',
+      title: 'AI & Intelligence',
+      color: '#2ecc71', // Green
+      features: [
+        {
+          title: 'Local AI Models',
+          description: 'Nostria can now perform local AI models that will translate to many languages, you can record dictation (text-to-speech) for notes, you can validate the sentiment of your post before posting.',
+          icon: 'material-symbols-outlined psychology',
+          color: '#2ecc71', // Green
+          screenshot: ''
+        },
+        {
+          title: 'Text-to-Speech',
+          description: 'There is the ability to read aloud any Nostr event with beautiful voices built using AI.',
+          icon: 'material-symbols-outlined record_voice_over',
+          color: '#27ae60', // Darker green
+          screenshot: ''
+        },
+        {
+          title: 'Privacy Focused',
+          description: 'All models run locally with full privacy, no cloud provider receives any information or data.',
+          icon: 'material-symbols-outlined security',
+          color: '#2ecc71', // Green
+          screenshot: ''
+        }
+      ]
+    },
+    {
+      id: 'media-content',
+      title: 'Media & Content',
+      color: '#e67e22', // Orange
+      features: [
+        {
+          title: 'Video Clips',
+          description: 'Just like the old Vine app, you can record 6 second short clips and post fun videos to Nostr social network.',
+          icon: 'material-symbols-outlined videocam',
+          color: '#e67e22', // Orange
+          screenshot: 'assets/screenshots/nostria-media.jpg'
+        },
+        {
+          title: 'Audio Clips',
+          description: 'You can now send voice messages up to 60 seconds to anyone who wants to listen to you. You can reply with voice to other voice messages.',
+          icon: 'material-symbols-outlined mic',
+          color: '#d35400', // Darker orange
+          screenshot: ''
+        },
+        {
+          title: 'Live Streams',
+          description: 'You have an awesome live stream viewer built into Nostria now, with chat, zap goals and lots more features.',
+          icon: 'material-symbols-outlined live_tv',
+          color: '#e67e22', // Orange
+          screenshot: ''
+        },
+        {
+          title: 'Articles',
+          description: 'Nostria has a beautiful and simple article editor, making it smooth and seamless to write and publish long form content on Nostr.',
+          icon: 'material-symbols-outlined article',
+          color: '#d35400', // Darker orange
+          screenshot: ''
         }
       ]
     },
@@ -107,25 +187,29 @@ export class FeaturesComponent {
           title: 'Decentralized Architecture',
           description: 'Distribute load across the network without relying on centralized relays, ensuring better resilience and global reach.',
           icon: 'material-symbols-outlined hub',
-          color: '#2980b9' // Blue
+          color: '#2980b9', // Blue
+          screenshot: ''
         },
         {
           title: 'Automatic Relay Usage',
           description: 'Automatically connects to the relays for each user, optimizing network traffic and reducing bottlenecks.',
           icon: 'material-symbols-outlined router',
-          color: '#3498db' // Light blue
+          color: '#3498db', // Light blue
+          screenshot: ''
         },
         {
           title: 'Load Balancing',
           description: 'Intelligently distributes requests across multiple relays to prevent overloading and ensure consistent performance.',
           icon: 'material-symbols-outlined balance',
-          color: '#2980b9' // Blue
+          color: '#2980b9', // Blue
+          screenshot: ''
         },
         {
           title: 'Discovery Relay',
           description: 'Utilizing high-performance Discovery Relay enables anyone to find everyone.',
           icon: 'material-symbols-outlined sync_alt',
-          color: '#3498db' // Light blue
+          color: '#3498db', // Light blue
+          screenshot: ''
         }
       ]
     },
@@ -138,25 +222,29 @@ export class FeaturesComponent {
           title: 'User Relays',
           description: 'Premium users get dedicated relay servers for faster message propagation and improved reliability.',
           icon: 'material-symbols-outlined dns',
-          color: '#16a085' // Teal
+          color: '#16a085', // Teal
+          screenshot: ''
         },
         {
           title: 'Media Servers',
           description: 'Store and deliver your media content through our optimized, censorship-resistant content delivery network.',
           icon: 'material-symbols-outlined cloud',
-          color: '#1abc9c' // Light teal
+          color: '#1abc9c', // Light teal
+          screenshot: ''
         },
         {
           title: 'Discovery Relays',
           description: 'Find relevant content and people through our specialized discovery relays with advanced filtering.',
           icon: 'material-symbols-outlined explore',
-          color: '#16a085' // Teal
+          color: '#16a085', // Teal
+          screenshot: ''
         },
         {
           title: 'Global Scale',
           description: 'Nostria\'s infrastructure is built to scale globally, ensuring consistent performance worldwide.',
           icon: 'material-symbols-outlined public',
-          color: '#1abc9c' // Light teal
+          color: '#1abc9c', // Light teal
+          screenshot: ''
         }
       ]
     },
@@ -169,25 +257,29 @@ export class FeaturesComponent {
           title: 'Web App',
           description: 'Access Nostria from any modern web browser without downloading software.',
           icon: 'material-symbols-outlined public',
-          color: '#c0392b' // Red
+          color: '#c0392b', // Red
+          screenshot: ''
         },
         {
           title: 'Desktop Apps',
           description: 'Native applications for Windows, macOS, and Linux.',
           icon: 'material-symbols-outlined desktop_windows',
-          color: '#e74c3c' // Light red
+          color: '#e74c3c', // Light red
+          screenshot: ''
         },
         {
           title: 'Mobile Apps',
           description: 'iOS and Android apps designed specifically for the mobile experience.',
           icon: 'material-symbols-outlined smartphone',
-          color: '#c0392b' // Red
+          color: '#c0392b', // Red
+          screenshot: ''
         },
         {
           title: 'Synchronized Experience',
           description: 'Seamlessly switch between devices while maintaining your exact place in conversations and feeds.',
           icon: 'material-symbols-outlined sync_alt',
-          color: '#e74c3c' // Light red
+          color: '#e74c3c', // Light red
+          screenshot: ''
         }
       ]
     }
@@ -261,6 +353,8 @@ export class FeaturesComponent {
   getCategoryIcon(categoryId: string): string {
     const iconMap: { [key: string]: string } = {
       'user-experience': 'star',
+      'ai-intelligence': 'psychology',
+      'media-content': 'perm_media',
       'scaling': 'public',
       'infrastructure': 'dns',
       'cross-platform': 'devices'
