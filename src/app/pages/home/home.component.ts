@@ -41,9 +41,13 @@ export class HomeComponent implements OnInit, AfterViewInit {
   showLightbox = false;
   lightboxImageSrc = '';
   lightboxAlt = '';
+  currentLightboxIndex = -1;
+  
+  // Touch handling
+  touchStartX = 0;
+  touchEndX = 0;
 
   screenshots = [
-    { src: 'assets/screenshots/screenshot-2025-11-22-160125.png', alt: 'Get started', title: 'Create a new account with only two clicks' },
     { src: 'assets/screenshots/screenshot-2025-11-22-160125.png', alt: 'Get started', title: 'Create a new account with only two clicks' },
     { src: 'assets/screenshots/screenshot-2025-11-22-160157.png', alt: 'Account setup', title: 'No e-mail, no phone numbers, you can be anonymous' },
     { src: 'assets/screenshots/screenshot-2025-11-22-145538.png', alt: 'Home Feed', title: 'Feeds with multiple columns' },
@@ -148,12 +152,21 @@ export class HomeComponent implements OnInit, AfterViewInit {
     });
   }
 
-  openLightbox(imageSrc: string, alt: string): void {
+  openLightbox(imageSrc: string, alt: string, index: number = -1): void {
     this.lightboxImageSrc = imageSrc;
     this.lightboxAlt = alt;
     this.showLightbox = true;
+    
+    if (index === -1) {
+      this.currentLightboxIndex = this.screenshots.findIndex(s => s.src === imageSrc);
+    } else {
+      this.currentLightboxIndex = index;
+    }
+
     if (isPlatformBrowser(this.platformId)) {
       document.body.classList.add('no-scroll');
+      // Add keyboard event listener
+      window.addEventListener('keydown', this.handleKeyboardEvent);
     }
   }
 
@@ -161,6 +174,80 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.showLightbox = false;
     if (isPlatformBrowser(this.platformId)) {
       document.body.classList.remove('no-scroll');
+      // Remove keyboard event listener
+      window.removeEventListener('keydown', this.handleKeyboardEvent);
+    }
+  }
+
+  nextImage(event?: Event): void {
+    if (event) {
+      event.stopPropagation();
+    }
+    if (this.currentLightboxIndex < this.screenshots.length - 1) {
+      this.currentLightboxIndex++;
+      this.updateLightboxImage();
+    } else {
+      // Loop to start
+      this.currentLightboxIndex = 0;
+      this.updateLightboxImage();
+    }
+  }
+
+  prevImage(event?: Event): void {
+    if (event) {
+      event.stopPropagation();
+    }
+    if (this.currentLightboxIndex > 0) {
+      this.currentLightboxIndex--;
+      this.updateLightboxImage();
+    } else {
+      // Loop to end
+      this.currentLightboxIndex = this.screenshots.length - 1;
+      this.updateLightboxImage();
+    }
+  }
+
+  updateLightboxImage(): void {
+    const screenshot = this.screenshots[this.currentLightboxIndex];
+    this.lightboxImageSrc = screenshot.src;
+    this.lightboxAlt = screenshot.alt;
+  }
+
+  handleKeyboardEvent = (event: KeyboardEvent): void => {
+    if (!this.showLightbox) return;
+
+    switch (event.key) {
+      case 'ArrowRight':
+        this.nextImage();
+        break;
+      case 'ArrowLeft':
+        this.prevImage();
+        break;
+      case 'Escape':
+        this.closeLightbox();
+        break;
+    }
+  }
+
+  onTouchStart(event: TouchEvent): void {
+    this.touchStartX = event.changedTouches[0].screenX;
+  }
+
+  onTouchEnd(event: TouchEvent): void {
+    this.touchEndX = event.changedTouches[0].screenX;
+    this.handleSwipe();
+  }
+
+  handleSwipe(): void {
+    const swipeThreshold = 50;
+    if (this.touchEndX < this.touchStartX - swipeThreshold) {
+      // Swipe left -> Next image
+      this.nextImage();
+    }
+    
+    if (this.touchEndX > this.touchStartX + swipeThreshold) {
+      // Swipe right -> Prev image
+      this.prevImage();
     }
   }
 }

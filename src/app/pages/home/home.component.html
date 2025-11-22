@@ -89,8 +89,8 @@
     </div>
 
     <div class="screenshot-grid">
-      @for (shot of screenshots; track shot.src) {
-        <div class="screenshot-card reveal-on-scroll" (click)="openLightbox(shot.src, shot.alt)">
+      @for (shot of screenshots; track shot.src; let i = $index) {
+        <div class="screenshot-card reveal-on-scroll" (click)="openLightbox(shot.src, shot.alt, i)">
           <div class="screenshot-wrapper">
             <img [src]="shot.src" [alt]="shot.alt" [title]="shot.title" loading="lazy">
             <div class="screenshot-overlay">
@@ -459,10 +459,19 @@
 
 <!-- Lightbox -->
 <div class="lightbox" [class.show]="showLightbox" (click)="closeLightbox()">
-  <div class="lightbox-content" (click)="$event.stopPropagation()">
+  <div class="lightbox-content" (click)="$event.stopPropagation()" (touchstart)="onTouchStart($event)" (touchend)="onTouchEnd($event)">
     <div class="lightbox-close" (click)="closeLightbox()">
       <span class="material-symbols-outlined">close</span>
     </div>
+    
+    <div class="lightbox-navigation lightbox-prev" (click)="prevImage($event)">
+      <span class="material-symbols-outlined">chevron_left</span>
+    </div>
+    
     <img [src]="lightboxImageSrc" [alt]="lightboxAlt" [title]="lightboxAlt">
+    
+    <div class="lightbox-navigation lightbox-next" (click)="nextImage($event)">
+      <span class="material-symbols-outlined">chevron_right</span>
+    </div>
   </div>
 </div>
