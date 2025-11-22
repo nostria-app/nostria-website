@@ -7,7 +7,7 @@ import { RouterLink } from '@angular/router';
   standalone: true,
   imports: [
     RouterLink
-],
+  ],
   templateUrl: './features.component.html',
   styleUrls: ['./features.component.scss']
 })
@@ -70,48 +70,49 @@ export class FeaturesComponent {
     {
       id: 'user-experience',
       title: 'User Experience',
-      color: '#8e44ad', // Purple
+      color: '#8e44ad',
       features: [
         {
           title: 'Easy signup',
           description: 'Two click signup, regionally optimized.',
           icon: 'material-symbols-outlined view_column',
-          color: '#8e44ad' // Purple
+          color: '#8e44ad',
+          screenshot: 'assets/screenshots/screenshot-2025-11-22-160125.png'
         },
         {
           title: 'Intuitive Interface',
           description: 'Clean, modern design that makes navigating the Nostr network simple for both beginners and power users.',
           icon: 'material-symbols-outlined auto_fix',
           color: '#8e44ad', // Purple
-          screenshot: ''
+          screenshot: 'assets/screenshots/screenshot-2025-11-22-145615.png'
         },
         {
           title: 'Command Palette',
           description: 'Quickly get to where you want to go within Nostria, with the new command palette, open it with ALT-P to filter and choose your command or action.',
           icon: 'material-symbols-outlined terminal',
           color: '#9b59b6', // Light purple
-          screenshot: 'assets/screenshots/nostria-01.jpg'
+          screenshot: 'assets/screenshots/screenshot-2025-11-22-160242.png'
         },
         {
           title: 'Favorites',
           description: 'You can now organize your favorites and have them displayed at all times in the top toolbar, including a new flyout menu where you can drag and drop to organize your friends.',
           icon: 'material-symbols-outlined star',
           color: '#8e44ad', // Purple
-          screenshot: 'assets/screenshots/nostria-bookmarks.jpg'
+          screenshot: 'assets/screenshots/screenshot-2025-11-22-145559.png'
         },
         {
           title: 'Threads',
           description: 'Users can make multiple threads that have one or more columns that shows various content from the Nostr social network.',
           icon: 'material-symbols-outlined view_week',
           color: '#9b59b6', // Light purple
-          screenshot: 'assets/screenshots/nostria-mvp-home.jpg'
+          screenshot: 'assets/screenshots/screenshot-2025-11-22-160921.png'
         },
         {
-          title: 'Advanced Filters',
-          description: 'Filter your timeline by content type, keywords, authors, and more to focus on what matters to you.',
+          title: 'People',
+          description: 'A dedicated people section to find and manage and those you follow and discover new connections.',
           icon: 'material-symbols-outlined filter_alt',
           color: '#9b59b6', // Light purple
-          screenshot: ''
+          screenshot: 'assets/screenshots/screenshot-2025-11-22-145635.png'
         }
       ]
     },
@@ -125,21 +126,28 @@ export class FeaturesComponent {
           description: 'Nostria can now perform local AI models that will translate to many languages, you can record dictation (text-to-speech) for notes, you can validate the sentiment of your post before posting.',
           icon: 'material-symbols-outlined psychology',
           color: '#2ecc71', // Green
-          screenshot: ''
+          screenshot: 'assets/screenshots/screenshot-2025-11-22-150516.png'
         },
         {
           title: 'Text-to-Speech',
           description: 'There is the ability to read aloud any Nostr event with beautiful voices built using AI.',
           icon: 'material-symbols-outlined record_voice_over',
           color: '#27ae60', // Darker green
-          screenshot: ''
+          screenshot: 'assets/screenshots/screenshot-2025-11-22-160657.png'
         },
         {
           title: 'Privacy Focused',
           description: 'All models run locally with full privacy, no cloud provider receives any information or data.',
           icon: 'material-symbols-outlined security',
           color: '#2ecc71', // Green
-          screenshot: ''
+          screenshot: 'assets/screenshots/screenshot-2025-11-22-150526.png'
+        },
+        {
+          title: 'Translations',
+          description: 'Translate posts and messages into your preferred language instantly using built-in AI translation models.',
+          icon: 'material-symbols-outlined security',
+          color: '#2ecc71', // Green
+          screenshot: 'assets/screenshots/screenshot-2025-11-22-160642.png'
         }
       ]
     },
@@ -149,32 +157,46 @@ export class FeaturesComponent {
       color: '#e67e22', // Orange
       features: [
         {
-          title: 'Video Clips',
-          description: 'Just like the old Vine app, you can record 6 second short clips and post fun videos to Nostr social network.',
-          icon: 'material-symbols-outlined videocam',
-          color: '#e67e22', // Orange
-          screenshot: 'assets/screenshots/nostria-media.jpg'
-        },
-        {
-          title: 'Audio Clips',
-          description: 'You can now send voice messages up to 60 seconds to anyone who wants to listen to you. You can reply with voice to other voice messages.',
-          icon: 'material-symbols-outlined mic',
+          title: 'Notes',
+          description: 'Quickly and easily write your notes, or dictate them using voice-to-text and publish them to Nostr.',
+          icon: 'material-symbols-outlined article',
           color: '#d35400', // Darker orange
-          screenshot: ''
-        },
-        {
-          title: 'Live Streams',
-          description: 'You have an awesome live stream viewer built into Nostria now, with chat, zap goals and lots more features.',
-          icon: 'material-symbols-outlined live_tv',
-          color: '#e67e22', // Orange
-          screenshot: ''
+          screenshot: 'assets/screenshots/screenshot-2025-11-22-150104.png'
         },
         {
           title: 'Articles',
           description: 'Nostria has a beautiful and simple article editor, making it smooth and seamless to write and publish long form content on Nostr.',
           icon: 'material-symbols-outlined article',
           color: '#d35400', // Darker orange
-          screenshot: ''
+          screenshot: 'assets/screenshots/screenshot-2025-11-22-150255.png'
+        },
+        {
+          title: 'Video Clips',
+          description: 'Just like the old Vine app, you can record 6 second short clips and post fun videos to Nostr social network.',
+          icon: 'material-symbols-outlined videocam',
+          color: '#e67e22', // Orange
+          screenshot: 'assets/screenshots/screenshot-2025-11-22-160400.png'
+        },
+        {
+          title: 'Audio Clips',
+          description: 'You can now send voice messages up to 60 seconds to anyone who wants to listen to you. You can reply with voice to other voice messages.',
+          icon: 'material-symbols-outlined mic',
+          color: '#d35400', // Darker orange
+          screenshot: 'assets/screenshots/screenshot-2025-11-22-160413.png'
+        },
+        {
+          title: 'Live Streams',
+          description: 'You have an awesome live stream viewer built into Nostria now, with chat, zap goals and lots more features.',
+          icon: 'material-symbols-outlined live_tv',
+          color: '#e67e22', // Orange
+          screenshot: 'assets/screenshots/screenshot-2025-11-22-145843.png'
+        },
+        {
+          title: 'Media',
+          description: 'View images and videos the user has posted in a beautiful gallery view.',
+          icon: 'material-symbols-outlined live_tv',
+          color: '#e67e22', // Orange
+          screenshot: 'assets/screenshots/screenshot-2025-11-22-172043.png'
         }
       ]
     },
