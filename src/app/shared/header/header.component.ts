@@ -9,16 +9,45 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
   host: {
-    '(window:scroll)': 'onWindowScroll()'
+    '(window:scroll)': 'onWindowScroll()',
+    '(document:click)': 'closeInstallMenu()'
   }
 })
 export class HeaderComponent {
   isMenuOpen = false;
+  isInstallMenuOpen = false;
   isScrolled = false;
+  canInstall = false;
+
+  constructor() {
+    // Check if navigator.install is supported (Chrome/Edge/Brave 143+)
+    // @ts-ignore
+    // this.canInstall = typeof navigator !== 'undefined' && typeof navigator.install === 'function';
+    this.canInstall = true;
+  }
 
   toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;
     document.body.classList.toggle('no-scroll', this.isMenuOpen);
+  }
+
+  toggleInstallMenu(event: Event): void {
+    event.stopPropagation();
+    this.isInstallMenuOpen = !this.isInstallMenuOpen;
+  }
+
+  installApp(): void {
+    this.isInstallMenuOpen = false;
+    // @ts-ignore
+    if (typeof navigator.install === 'function') {
+      // @ts-ignore
+      navigator.install(
+        'https://nostria.app', 
+        'https://nostria.app/app.nostria'
+      );
+    } else {
+      console.warn('navigator.install is not supported');
+    }
   }
 
   closeMenu(): void {
@@ -27,6 +56,10 @@ export class HeaderComponent {
       this.isMenuOpen = false;
       document.body.classList.remove('no-scroll');
     }
+  }
+
+  closeInstallMenu(): void {
+    this.isInstallMenuOpen = false;
   }
 
   onWindowScroll() {

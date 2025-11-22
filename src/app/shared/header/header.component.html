@@ -18,7 +18,23 @@
       </nav>
       
       <div class="header-actions">
-        <a href="https://nostria.app" target="_blank" class="btn btn-primary">Launch App</a>
+        <div class="launch-wrapper">
+          <a href="https://nostria.app" target="_blank" rel="noopener" class="btn btn-primary launch-btn" [class.rounded-right]="!canInstall">Launch App</a>
+          @if (canInstall) {
+            <button class="btn btn-primary dropdown-trigger" (click)="toggleInstallMenu($event)" [class.active]="isInstallMenuOpen" aria-label="More options">
+              <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            
+            @if (isInstallMenuOpen) {
+              <div class="dropdown-menu">
+                <button (click)="installApp()" class="dropdown-item">Install App</button>
+              </div>
+            }
+          }
+        </div>
+        
         <button class="menu-toggle" (click)="toggleMenu()" aria-label="Toggle menu">
           <span class="menu-icon" [class.menu-open]="isMenuOpen"></span>
         </button>

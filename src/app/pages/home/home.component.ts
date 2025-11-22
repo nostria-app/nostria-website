@@ -8,9 +8,15 @@ import { PitchDeckDownloadComponent } from '../../components/pitch-deck-download
   standalone: true,
   imports: [RouterLink, PitchDeckDownloadComponent],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrl: './home.component.scss',
+  host: {
+    '(document:click)': 'closeInstallMenu()'
+  }
 })
 export class HomeComponent implements OnInit, AfterViewInit {
+  isInstallMenuOpen = false;
+  canInstall = false;
+
   // Properties for any interactive elements like testimonial slider
   currentTestimonialIndex = 0;
   testimonials = [
@@ -86,7 +92,11 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   ];
 
-  constructor(@Inject(PLATFORM_ID) private platformId: object) { }
+  constructor(@Inject(PLATFORM_ID) private platformId: object) {
+    // Check if navigator.install is supported (Chrome/Edge/Brave 143+)
+    // @ts-ignore
+    this.canInstall = typeof navigator !== 'undefined' && typeof navigator.install === 'function';
+  }
 
   ngOnInit(): void {
     this.setupTestimonialsSlider();
@@ -249,5 +259,28 @@ export class HomeComponent implements OnInit, AfterViewInit {
       // Swipe right -> Prev image
       this.prevImage();
     }
+  }
+
+  toggleInstallMenu(event: Event): void {
+    event.stopPropagation();
+    this.isInstallMenuOpen = !this.isInstallMenuOpen;
+  }
+
+  installApp(): void {
+    this.isInstallMenuOpen = false;
+    // @ts-ignore
+    if (typeof navigator.install === 'function') {
+      // @ts-ignore
+      navigator.install(
+        'https://nostria.app', 
+        'https://nostria.app/app.nostria'
+      );
+    } else {
+      console.warn('navigator.install is not supported');
+    }
+  }
+
+  closeInstallMenu(): void {
+    this.isInstallMenuOpen = false;
   }
 }

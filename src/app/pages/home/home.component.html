@@ -39,9 +39,26 @@
           Take control of your social experience. Sign up in two clicks—no email or phone required.
         </p>
         <div class="hero-cta">
-          <a itemprop="url" href="https://nostria.app" target="_blank" rel="noopener" class="btn btn-primary btn-hero">
-            Launch App <span class="material-symbols-outlined">rocket_launch</span>
-          </a>
+          <div class="launch-wrapper">
+            <a itemprop="url" href="https://nostria.app" target="_blank" rel="noopener" class="btn btn-primary btn-hero launch-btn" [class.rounded-right]="!canInstall">
+              Launch App <span class="material-symbols-outlined">rocket_launch</span>
+            </a>
+            @if (canInstall) {
+              <button class="btn btn-primary btn-hero dropdown-trigger" (click)="toggleInstallMenu($event)" [class.active]="isInstallMenuOpen" aria-label="More options">
+                <svg width="12" height="8" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              
+              @if (isInstallMenuOpen) {
+                <div class="dropdown-menu">
+                  <button (click)="installApp()" class="dropdown-item">
+                    Install App <span class="material-symbols-outlined">download</span>
+                  </button>
+                </div>
+              }
+            }
+          </div>
           <a routerLink="/features" class="btn btn-outline btn-hero">
             Explore Features
           </a>
