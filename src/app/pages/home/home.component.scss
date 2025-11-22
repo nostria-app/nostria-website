@@ -2583,11 +2583,11 @@
 
   .lightbox-close {
     position: absolute;
-    top: -50px;
-    right: -50px;
+    top: 30px;
+    right: 30px;
     width: 50px;
     height: 50px;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.5);
     border: 2px solid rgba(255, 255, 255, 0.3);
     border-radius: 50%;
     display: flex;
@@ -2598,6 +2598,7 @@
     transition: all 0.3s ease;
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
+    z-index: 1010; // Higher than content
 
     &:hover {
       background: rgba(255, 255, 255, 0.2);
@@ -2614,9 +2615,9 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 50px;
-    height: 50px;
-    background: rgba(255, 255, 255, 0.1);
+    width: 60px;
+    height: 60px;
+    background: rgba(0, 0, 0, 0.5);
     border: 2px solid rgba(255, 255, 255, 0.3);
     border-radius: 50%;
     display: flex;
@@ -2627,7 +2628,7 @@
     transition: all 0.3s ease;
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
-    z-index: 10;
+    z-index: 1010; // Higher than content
 
     &:hover {
       background: rgba(255, 255, 255, 0.2);
@@ -2636,22 +2637,22 @@
     }
 
     &.lightbox-prev {
-      left: -80px;
+      left: 30px;
     }
 
     &.lightbox-next {
-      right: -80px;
+      right: 30px;
     }
 
     .material-symbols-outlined {
-      font-size: 2rem;
+      font-size: 2.5rem;
     }
   }
 
   @media (max-width: 768px) {
     .lightbox-close {
-      top: -40px;
-      right: -10px;
+      top: 20px;
+      right: 20px;
       width: 40px;
       height: 40px;
     }
@@ -2661,11 +2662,11 @@
       height: 40px;
       
       &.lightbox-prev {
-        left: -20px;
+        left: 10px;
       }
 
       &.lightbox-next {
-        right: -20px;
+        right: 10px;
       }
 
       .material-symbols-outlined {

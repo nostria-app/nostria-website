@@ -459,19 +459,19 @@
 
 <!-- Lightbox -->
 <div class="lightbox" [class.show]="showLightbox" (click)="closeLightbox()">
+  <div class="lightbox-close" (click)="closeLightbox()">
+    <span class="material-symbols-outlined">close</span>
+  </div>
+  
+  <div class="lightbox-navigation lightbox-prev" (click)="prevImage($event)">
+    <span class="material-symbols-outlined">chevron_left</span>
+  </div>
+
+  <div class="lightbox-navigation lightbox-next" (click)="nextImage($event)">
+    <span class="material-symbols-outlined">chevron_right</span>
+  </div>
+
   <div class="lightbox-content" (click)="$event.stopPropagation()" (touchstart)="onTouchStart($event)" (touchend)="onTouchEnd($event)">
-    <div class="lightbox-close" (click)="closeLightbox()">
-      <span class="material-symbols-outlined">close</span>
-    </div>
-    
-    <div class="lightbox-navigation lightbox-prev" (click)="prevImage($event)">
-      <span class="material-symbols-outlined">chevron_left</span>
-    </div>
-    
     <img [src]="lightboxImageSrc" [alt]="lightboxAlt" [title]="lightboxAlt">
-    
-    <div class="lightbox-navigation lightbox-next" (click)="nextImage($event)">
-      <span class="material-symbols-outlined">chevron_right</span>
-    </div>
   </div>
 </div>
