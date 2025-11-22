@@ -22,8 +22,7 @@ export class HeaderComponent {
   constructor() {
     // Check if navigator.install is supported (Chrome/Edge/Brave 143+)
     // @ts-ignore
-    // this.canInstall = typeof navigator !== 'undefined' && typeof navigator.install === 'function';
-    this.canInstall = true;
+    this.canInstall = typeof navigator !== 'undefined' && typeof navigator.install === 'function';
   }
 
   toggleMenu(): void {
