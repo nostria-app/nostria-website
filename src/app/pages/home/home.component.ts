@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { PitchDeckDownloadComponent } from '../../components/pitch-deck-download/pitch-deck-download.component';
@@ -13,9 +13,12 @@ import { PitchDeckDownloadComponent } from '../../components/pitch-deck-download
     '(document:click)': 'closeInstallMenu()'
   }
 })
-export class HomeComponent implements OnInit, AfterViewInit {
+export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   isInstallMenuOpen = false;
   canInstall = false;
+  
+  private scrollListener: (() => void) | null = null;
+  private resizeListener: (() => void) | null = null;
 
   // Properties for any interactive elements like testimonial slider
   currentTestimonialIndex = 0;
@@ -109,6 +112,17 @@ export class HomeComponent implements OnInit, AfterViewInit {
     }
   }
 
+  ngOnDestroy(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      if (this.scrollListener) {
+        window.removeEventListener('scroll', this.scrollListener);
+      }
+      if (this.resizeListener) {
+        window.removeEventListener('resize', this.resizeListener);
+      }
+    }
+  }
+
   setupTestimonialsSlider(): void {
     // In a real implementation, would set up an automated slider
     // For now, it's just static with the dots being clickable
@@ -141,7 +155,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     
     const observerOptions = {
       root: null, // use viewport as root
-      rootMargin: '0px 0px -100px 0px', // trigger slightly before element comes into view
+      rootMargin: '0px', // trigger as soon as it enters viewport
       threshold: 0.1 // trigger when 10% of element is visible
     };
     
@@ -160,6 +174,32 @@ export class HomeComponent implements OnInit, AfterViewInit {
       element.classList.remove('revealed');
       observer.observe(element);
     });
+
+    // Fallback: Check on scroll just in case IntersectionObserver misses something
+    const checkVisibility = () => {
+      revealElements.forEach((element) => {
+        if (element.classList.contains('revealed')) return;
+        
+        const rect = element.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        
+        // If element is within the viewport (with a small buffer)
+        if (rect.top <= windowHeight - 50) {
+           element.classList.add('revealed');
+           observer.unobserve(element);
+        }
+      });
+    };
+
+    // Check immediately and after a small delay
+    checkVisibility();
+    setTimeout(checkVisibility, 500);
+
+    this.scrollListener = () => checkVisibility();
+    this.resizeListener = () => checkVisibility();
+
+    window.addEventListener('scroll', this.scrollListener, { passive: true });
+    window.addEventListener('resize', this.resizeListener, { passive: true });
   }
 
   openLightbox(imageSrc: string, alt: string, index: number = -1): void {
