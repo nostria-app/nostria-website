@@ -707,6 +707,131 @@
   }
 }
 
+// Comparison Section
+.comparison-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+.comparison-card {
+  background: white;
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  height: 100%;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+  }
+  
+  &.legacy {
+    border-top: 4px solid #e74c3c;
+    
+    .comparison-icon {
+      background: rgba(231, 76, 60, 0.1);
+      color: #e74c3c;
+    }
+  }
+  
+  &.nostria {
+    border-top: 4px solid #2ecc71;
+    background: linear-gradient(to bottom, #ffffff, #f0fdf4);
+    
+    .comparison-icon {
+      background: rgba(46, 204, 113, 0.1);
+      color: #2ecc71;
+    }
+  }
+}
+
+.comparison-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  
+  h3 {
+    font-size: 1.5rem;
+    margin: 1rem 0 0.5rem;
+    color: var(--text-primary);
+  }
+  
+  .comparison-subtitle {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin: 0;
+  }
+}
+
+.comparison-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  
+  .material-symbols-outlined {
+    font-size: 32px;
+  }
+}
+
+.comparison-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  
+  li {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+    color: var(--text-primary);
+    font-size: 1rem;
+    line-height: 1.5;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.list-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  
+  &.negative {
+    color: #e74c3c;
+  }
+  
+  &.positive {
+    color: #2ecc71;
+  }
+  
+  .material-symbols-outlined {
+    font-size: 20px;
+  }
+}
+
+.comparison-main-title {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
 // Section Styles
 .section {
   padding: 6rem 0;
@@ -2189,7 +2314,7 @@
 
   .material-symbols-outlined {
     font-size: 1.1rem;
-  }
+   }
 }
 
 .cta-buttons {
