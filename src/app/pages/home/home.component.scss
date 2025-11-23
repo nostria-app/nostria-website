@@ -2509,11 +2509,11 @@
   transform: translateY(30px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
   will-change: opacity, transform;
-}
 
-.revealed {
-  opacity: 1;
-  transform: translateY(0);
+  &.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 // Animations

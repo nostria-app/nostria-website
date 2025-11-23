@@ -184,6 +184,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
         const windowHeight = window.innerHeight;
         
         // If element is within the viewport (with a small buffer)
+        // Or if the element is above the viewport (scrolled past)
         if (rect.top <= windowHeight - 50) {
            element.classList.add('revealed');
            observer.unobserve(element);
@@ -193,10 +194,17 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
     // Check immediately and after a small delay
     checkVisibility();
+    setTimeout(checkVisibility, 100);
     setTimeout(checkVisibility, 500);
+    setTimeout(checkVisibility, 1000);
+    setTimeout(checkVisibility, 2000);
 
-    this.scrollListener = () => checkVisibility();
-    this.resizeListener = () => checkVisibility();
+    this.scrollListener = () => {
+      requestAnimationFrame(checkVisibility);
+    };
+    this.resizeListener = () => {
+      requestAnimationFrame(checkVisibility);
+    };
 
     window.addEventListener('scroll', this.scrollListener, { passive: true });
     window.addEventListener('resize', this.resizeListener, { passive: true });
