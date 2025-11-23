@@ -74,10 +74,30 @@
               <span class="material-symbols-outlined">phone_iphone</span>
               <span>iOS (Soon)</span>
             </a>
-            <a itemprop="downloadUrl" disabled="disabled" target="_blank" rel="noopener" class="platform-link">
-              <span class="material-symbols-outlined">android</span>
-              <span>Android (Soon)</span>
-            </a>
+            <div class="platform-link-wrapper">
+              <button class="platform-link" (click)="toggleAndroidMenu($event)" [class.active]="isAndroidMenuOpen">
+                <span class="material-symbols-outlined">android</span>
+                <span>Android</span>
+                <span class="material-symbols-outlined dropdown-arrow">expand_more</span>
+              </button>
+              
+              @if (isAndroidMenuOpen) {
+                <div class="platform-dropdown" (click)="$event.stopPropagation()">
+                  <a href="https://github.com/nostria-app/nostria/releases/download/android-v1.0.5/nostria-android-v1.0.5.apk" 
+                     target="_blank" 
+                     rel="noopener" 
+                     class="dropdown-item"
+                     itemprop="downloadUrl">
+                    <span class="material-symbols-outlined">download</span>
+                    <span>Download APK</span>
+                  </a>
+                  <a class="dropdown-item disabled">
+                    <span class="material-symbols-outlined">store</span>
+                    <span>Play Store (Soon)</span>
+                  </a>
+                </div>
+              }
+            </div>
           </div>
         </div>
       </div>

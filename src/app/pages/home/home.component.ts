@@ -10,11 +10,12 @@ import { PitchDeckDownloadComponent } from '../../components/pitch-deck-download
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
   host: {
-    '(document:click)': 'closeInstallMenu()'
+    '(document:click)': 'closeInstallMenu(); closeAndroidMenu()'
   }
 })
 export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   isInstallMenuOpen = false;
+  isAndroidMenuOpen = false;
   canInstall = false;
   
   private scrollListener: (() => void) | null = null;
@@ -330,5 +331,14 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   closeInstallMenu(): void {
     this.isInstallMenuOpen = false;
+  }
+
+  toggleAndroidMenu(event: Event): void {
+    event.stopPropagation();
+    this.isAndroidMenuOpen = !this.isAndroidMenuOpen;
+  }
+
+  closeAndroidMenu(): void {
+    this.isAndroidMenuOpen = false;
   }
 }

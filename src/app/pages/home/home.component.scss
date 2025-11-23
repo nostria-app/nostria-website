@@ -512,6 +512,10 @@
     }
   }
 
+  .platform-link-wrapper {
+    position: relative;
+  }
+
   .platform-link {
     display: inline-flex;
     align-items: center;
@@ -528,11 +532,24 @@
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    position: relative;
 
     .material-symbols-outlined {
       font-size: 1.1rem;
       color: var(--primary-color);
       margin: 0;
+    }
+
+    .dropdown-arrow {
+      font-size: 1rem;
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    &.active .dropdown-arrow {
+      transform: rotate(180deg);
     }
 
     &:hover {
@@ -561,6 +578,73 @@
     @media (max-width: 480px) {
       justify-content: center;
       width: 100%;
+    }
+  }
+
+  .platform-dropdown {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 0;
+    right: 0;
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(142, 68, 173, 0.2);
+    overflow: hidden;
+    z-index: 1000;
+    animation: fadeInDown 0.2s ease-out;
+    min-width: 200px;
+
+    .dropdown-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 1.25rem;
+      color: var(--text-primary);
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border-bottom: 1px solid rgba(142, 68, 173, 0.05);
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      .material-symbols-outlined {
+        font-size: 1.25rem;
+        color: var(--primary-color);
+      }
+
+      span:not(.material-symbols-outlined) {
+        font-size: 0.9rem;
+        font-weight: 500;
+      }
+
+      &:hover:not(.disabled) {
+        background: linear-gradient(135deg, rgba(142, 68, 173, 0.05), rgba(52, 152, 219, 0.05));
+        padding-left: 1.5rem;
+      }
+
+      &.disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+
+        &:hover {
+          background: transparent;
+          padding-left: 1.25rem;
+        }
+      }
+    }
+  }
+
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 }
