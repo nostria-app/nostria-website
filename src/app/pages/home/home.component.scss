@@ -453,7 +453,7 @@
 
       &::before {
         opacity: 1;
-        animation: border-rotate 2.5s cubic-bezier(0.5, 0.15, 0.5, 0.85) infinite;
+        animation: border-rotate 2s linear infinite;
       }
     }
   }
