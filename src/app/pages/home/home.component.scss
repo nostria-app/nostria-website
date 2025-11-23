@@ -258,6 +258,7 @@
   @media (max-width: 480px) {
     font-size: clamp(2rem, 7vw, 2.8rem);
     margin-bottom: 1.25rem;
+    line-height: 1.1;
   }
 }
 
@@ -410,6 +411,11 @@
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
   position: relative; // Added to ensure z-index works
   z-index: 5; // Ensure buttons are above animations
+
+  @media (max-width: 600px) {
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+  }
 
   &.btn-primary {
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
