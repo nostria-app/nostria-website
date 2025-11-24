@@ -291,7 +291,7 @@
   gap: 1.5rem;
   margin-bottom: 2rem;
   position: relative;
-  z-index: 20; // Higher z-index to ensure dropdown appears above platform downloads
+  z-index: 200; // Higher z-index to ensure dropdown appears above platform downloads and animations
 
   @media (max-width: 1024px) {
     justify-content: center;
@@ -311,6 +311,10 @@
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 5;
+
+    @media (max-width: 480px) {
+      width: 100%;
+    }
 
     &:hover {
       transform: translateY(-3px) scale(1.05);
@@ -417,6 +421,10 @@
     font-size: 1rem;
   }
 
+  @media (max-width: 480px) {
+    width: 100%;
+  }
+
   &.btn-primary {
     background: transparent;
     border: none;
@@ -488,7 +496,7 @@
   margin-top: 2rem;
   text-align: center;
   position: relative;
-  z-index: 10;
+  z-index: 100;
 
   @media (max-width: 1024px) {
     margin-top: 1.5rem;
@@ -718,7 +726,7 @@
   grid-column: span 6;
   position: relative;
   animation: fadeInUp 0.8s ease-out 0.3s both;
-  z-index: 5; // Higher z-index to ensure video is above decorative elements
+  z-index: 1; // Lower z-index so it doesn't interfere with interactive elements
 
   @media (max-width: 1024px) {
     grid-column: span 12;
@@ -785,10 +793,11 @@
     border-radius: 50%;
     top: -80px;
     right: -100px;
-    z-index: -1; // Behind the video
+    z-index: -10; // Further behind to avoid interfering with any content
     filter: blur(60px);
     opacity: 0.4; // Reduced opacity to be less intrusive
     animation: float 8s ease-in-out infinite reverse, pulseScale 4s ease-in-out infinite;
+    pointer-events: none; // Ensure it doesn't block clicks
   }
 
   .hero-shape-2 {
@@ -799,10 +808,11 @@
     border-radius: 50%;
     bottom: -150px;
     left: -120px;
-    z-index: -1; // Behind the video
+    z-index: -10; // Further behind to avoid interfering with any content
     filter: blur(80px);
     opacity: 0.3; // Reduced opacity to be less intrusive
     animation: float 10s ease-in-out infinite, pulseScale 6s ease-in-out infinite reverse;
+    pointer-events: none; // Ensure it doesn't block clicks
   }
 
   &::before {
@@ -814,6 +824,8 @@
     height: 140%;
     background: conic-gradient(from 0deg, transparent, rgba(142, 68, 173, 0.05), transparent, rgba(52, 152, 219, 0.05), transparent); // Reduced opacity
     border-radius: 50%;
+    z-index: -10; // Further behind to avoid interfering with any content
+    pointer-events: none; // Ensure it doesn't block clicks
     animation: rotate 15s linear infinite;
     z-index: -2; // Even further behind
   }
