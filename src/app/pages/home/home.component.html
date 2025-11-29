@@ -40,23 +40,26 @@
         </p>
         <div class="hero-cta">
           <div class="launch-wrapper">
-            <a itemprop="url" href="https://nostria.app" target="_blank" rel="noopener" class="btn btn-primary btn-hero launch-btn" [class.rounded-right]="!canInstall">
+            <a itemprop="url" href="https://nostria.app" target="_blank" rel="noopener"
+              class="btn btn-primary btn-hero launch-btn" [class.rounded-right]="!canInstall">
               Launch App <span class="material-symbols-outlined">rocket_launch</span>
             </a>
             @if (canInstall) {
-              <button class="btn btn-primary btn-hero dropdown-trigger" (click)="toggleInstallMenu($event)" [class.active]="isInstallMenuOpen" aria-label="More options">
-                <svg width="12" height="8" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
+            <button class="btn btn-primary btn-hero dropdown-trigger" (click)="toggleInstallMenu($event)"
+              [class.active]="isInstallMenuOpen" aria-label="More options">
+              <svg width="12" height="8" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </button>
+
+            @if (isInstallMenuOpen) {
+            <div class="dropdown-menu">
+              <button (click)="installApp()" class="dropdown-item">
+                Install App <span class="material-symbols-outlined">download</span>
               </button>
-              
-              @if (isInstallMenuOpen) {
-                <div class="dropdown-menu">
-                  <button (click)="installApp()" class="dropdown-item">
-                    Install App <span class="material-symbols-outlined">download</span>
-                  </button>
-                </div>
-              }
+            </div>
+            }
             }
           </div>
           <a routerLink="/features" class="btn btn-outline btn-hero">
@@ -66,7 +69,8 @@
         <div class="platform-downloads">
           <p class="download-label">Install from app store:</p>
           <div class="platform-links">
-            <a itemprop="downloadUrl" href="https://apps.microsoft.com/store/detail/9N7F0TWQ0D8G" target="_blank" rel="noopener" class="platform-link">
+            <a itemprop="downloadUrl" href="https://apps.microsoft.com/store/detail/9N7F0TWQ0D8G" target="_blank"
+              rel="noopener" class="platform-link">
               <span class="material-symbols-outlined">computer</span>
               <span>Windows</span>
             </a>
@@ -80,22 +84,19 @@
                 <span>Android</span>
                 <span class="material-symbols-outlined dropdown-arrow">expand_more</span>
               </button>
-              
+
               @if (isAndroidMenuOpen) {
-                <div class="platform-dropdown" (click)="$event.stopPropagation()">
-                  <a href="https://github.com/nostria-app/nostria/releases/download/android-v1.0.6/nostria-android-v1.0.6.apk" 
-                     target="_blank" 
-                     rel="noopener" 
-                     class="dropdown-item"
-                     itemprop="downloadUrl">
-                    <span class="material-symbols-outlined">download</span>
-                    <span>Download APK</span>
-                  </a>
-                  <a class="dropdown-item disabled">
-                    <span class="material-symbols-outlined">store</span>
-                    <span>Play Store (Soon)</span>
-                  </a>
-                </div>
+              <div class="platform-dropdown" (click)="$event.stopPropagation()">
+                <a href="https://github.com/nostria-app/nostria/releases/download/android-v1.0.6/nostria-android-v1.0.6.apk"
+                  target="_blank" rel="noopener" class="dropdown-item" itemprop="downloadUrl">
+                  <span class="material-symbols-outlined">download</span>
+                  <span>Download APK</span>
+                </a>
+                <a class="dropdown-item disabled">
+                  <span class="material-symbols-outlined">store</span>
+                  <span>Play Store (Soon)</span>
+                </a>
+              </div>
               }
             </div>
           </div>
@@ -104,7 +105,8 @@
       <div class="hero-image">
         <video autoplay muted loop playsinline preload="auto" class="hero-video">
           <source src="assets/videos/nostria-get-started.mp4" type="video/mp4">
-          <img itemprop="screenshot" src="assets/screenshots/nostria-01.jpg" alt="Nostria App Interface" class="hero-mockup" />
+          <img itemprop="screenshot" src="assets/screenshots/nostria-01.jpg" alt="Nostria App Interface"
+            class="hero-mockup" />
         </video>
         <div class="hero-shape-1"></div>
         <div class="hero-shape-2"></div>
@@ -122,25 +124,26 @@
         <span>Visual Tour</span>
       </div>
       <h2 class="section-title reveal-on-scroll">Experience Nostria</h2>
-      <p class="section-subtitle reveal-on-scroll">A beautiful, modern interface designed for clarity and ease of use.</p>
+      <p class="section-subtitle reveal-on-scroll">A beautiful, modern interface designed for clarity and ease of use.
+      </p>
     </div>
 
     <div class="screenshot-grid">
       @for (shot of screenshots; track shot.src; let i = $index) {
-        <div class="screenshot-card reveal-on-scroll" (click)="openLightbox(shot.src, shot.alt, i)">
-          <div class="screenshot-wrapper">
-            <img [src]="shot.src" [alt]="shot.alt" [title]="shot.title" loading="lazy">
-            <div class="screenshot-overlay">
-              <span class="material-symbols-outlined">zoom_in</span>
-            </div>
-          </div>
-          <div class="screenshot-caption">
-            <h3>{{ shot.title }}</h3>
+      <div class="screenshot-card reveal-on-scroll" (click)="openLightbox(shot.src, shot.alt, i)">
+        <div class="screenshot-wrapper">
+          <img [src]="shot.src" [alt]="shot.alt" [title]="shot.title" loading="lazy">
+          <div class="screenshot-overlay">
+            <span class="material-symbols-outlined">zoom_in</span>
           </div>
         </div>
+        <div class="screenshot-caption">
+          <h3>{{ shot.title }}</h3>
+        </div>
+      </div>
       }
     </div>
-    
+
     <div class="features-cta reveal-on-scroll">
       <a routerLink="/features" class="btn btn-primary btn-features">
         See All Features <span class="material-symbols-outlined">arrow_forward</span>
@@ -412,7 +415,7 @@
           <p class="testimonial-text">
             "Really can't use any other web client after using Nostria."
           </p>
-          <p class="testimonial-author">Mist</p>
+          <p class="testimonial-author"><a href="https://nostria.app/p/npub1kuzk93p4mea2yxehddet03szwx2h4uw3wqz3ehvqrwj9ssd0tetqs5adr6" target="_blank" rel="noopener noreferrer">Mist</a></p>
         </div>
       </div>
 
@@ -432,6 +435,25 @@
             "I signed up for Nostr long time ago, Nostria made me come back again."
           </p>
           <p class="testimonial-author">Tania</p>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-avatar">
+          <span class="material-symbols-outlined">account_circle</span>
+        </div>
+        <div class="testimonial-content">
+          <div class="testimonial-rating">
+            <span class="material-symbols-outlined">star</span>
+            <span class="material-symbols-outlined">star</span>
+            <span class="material-symbols-outlined">star</span>
+            <span class="material-symbols-outlined">star</span>
+            <span class="material-symbols-outlined">star</span>
+          </div>
+          <p class="testimonial-text">
+            "Nostria saved my streaming experience today. Good Job. Streaming is slick."
+          </p>
+          <p class="testimonial-author"><a href="https://nostria.app/u/shredder" target="_blank" rel="noopener noreferrer">Shredder</a></p>
         </div>
       </div>
     </div>
@@ -496,7 +518,7 @@
   <div class="lightbox-close" (click)="closeLightbox()">
     <span class="material-symbols-outlined">close</span>
   </div>
-  
+
   <div class="lightbox-navigation lightbox-prev" (click)="prevImage($event)">
     <span class="material-symbols-outlined">chevron_left</span>
   </div>
@@ -505,7 +527,8 @@
     <span class="material-symbols-outlined">chevron_right</span>
   </div>
 
-  <div class="lightbox-content" (click)="$event.stopPropagation()" (touchstart)="onTouchStart($event)" (touchend)="onTouchEnd($event)">
+  <div class="lightbox-content" (click)="$event.stopPropagation()" (touchstart)="onTouchStart($event)"
+    (touchend)="onTouchEnd($event)">
     <img [src]="lightboxImageSrc" [alt]="lightboxAlt" [title]="lightboxAlt">
   </div>
 </div>
