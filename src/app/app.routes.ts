@@ -13,6 +13,7 @@ import { MvpReleasedComponent } from './pages/press/mvp-released/mvp-released.co
 import { SeedFundLaunchComponent } from './pages/press/seed-fund-launch/seed-fund-launch.component';
 import { DiscordRedirectComponent } from './pages/discord-redirect.component';
 import { SupportComponent } from './pages/support/support.component';
+import { PolicyComponent } from './pages/policy/policy.component';
 
 export const routes: Routes = [
   {
@@ -51,6 +52,7 @@ export const routes: Routes = [
   { path: 'funding/pre-seed', component: PreSeedComponent },
   { path: 'terms', component: TermsComponent },
   { path: 'privacy', component: PrivacyComponent },
+  { path: 'policy', component: PolicyComponent },
   { path: 'testimonials', component: TestimonialsComponent },
   { path: 'about', component: AboutComponent },
   { 

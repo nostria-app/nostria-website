@@ -1,0 +1,42 @@
+// Mission Section
+.mission-section {
+    padding: 6rem 0;
+    background-color: white;
+
+    .mission-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        align-items: center;
+    }
+
+    .mission-content {
+        h2 {
+            margin-bottom: 1.5rem;
+            font-size: 2.5rem;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .mission-text {
+            font-size: 1.125rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+    }
+}
+
+.ellipsis {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
+    max-width: 100%;
+    white-space: normal;
+}
+
+ul {
+    margin-left: 2rem;
+}
