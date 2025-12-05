@@ -14,6 +14,7 @@ import { SeedFundLaunchComponent } from './pages/press/seed-fund-launch/seed-fun
 import { DiscordRedirectComponent } from './pages/discord-redirect.component';
 import { SupportComponent } from './pages/support/support.component';
 import { PolicyComponent } from './pages/policy/policy.component';
+import { IosRedirectComponent } from './pages/ios-redirect.component';
 
 export const routes: Routes = [
   {
@@ -27,23 +28,23 @@ export const routes: Routes = [
     pathMatch: 'full'
   },
   { path: 'features', component: FeaturesComponent },
-  { 
-    path: 'press', 
+  {
+    path: 'press',
     component: PressComponent,
     title: 'Press & Media - Nostria'
   },
-  { 
-    path: 'press/seed-fund-launch', 
+  {
+    path: 'press/seed-fund-launch',
     component: SeedFundLaunchComponent,
     title: 'Seed Funding Launch Announcement - Nostria Press'
   },
-  { 
-    path: 'press/pre-seed-fund-raised', 
+  {
+    path: 'press/pre-seed-fund-raised',
     component: PreSeedFundRaisedComponent,
     title: 'Pre-Seed Funding Announcement - Nostria Press'
   },
-  { 
-    path: 'press/mvp-released', 
+  {
+    path: 'press/mvp-released',
     component: MvpReleasedComponent,
     title: 'MVP Launch: The Beginning has Started - Nostria Press'
   },
@@ -55,15 +56,20 @@ export const routes: Routes = [
   { path: 'policy', component: PolicyComponent },
   { path: 'testimonials', component: TestimonialsComponent },
   { path: 'about', component: AboutComponent },
-  { 
-    path: 'support', 
+  {
+    path: 'support',
     component: SupportComponent,
     title: 'Get Support - Nostria'
   },
-  { 
-    path: 'discord', 
+  {
+    path: 'discord',
     component: DiscordRedirectComponent,
     title: 'Join Our Discord - Nostria'
+  },
+  {
+    path: 'ios',
+    component: IosRedirectComponent,
+    title: 'Join iOS TestFlight - Nostria'
   },
   { path: '**', redirectTo: '' } // Catch any unfound routes and redirect to home
 ];
