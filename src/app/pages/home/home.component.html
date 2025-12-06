@@ -74,9 +74,9 @@
               <span class="material-symbols-outlined">computer</span>
               <span>Windows</span>
             </a>
-            <a target="_blank" disabled="disabled" rel="noopener" class="platform-link">
+            <a href="https://testflight.apple.com/join/ysTpCtum" target="_blank" disabled="disabled" rel="noopener" class="platform-link">
               <span class="material-symbols-outlined">phone_iphone</span>
-              <span>iOS (Soon)</span>
+              <span>iOS</span>
             </a>
             <div class="platform-link-wrapper">
               <button class="platform-link" (click)="toggleAndroidMenu($event)" [class.active]="isAndroidMenuOpen">
@@ -84,7 +84,6 @@
                 <span>Android</span>
                 <span class="material-symbols-outlined dropdown-arrow">expand_more</span>
               </button>
-
               @if (isAndroidMenuOpen) {
               <div class="platform-dropdown" (click)="$event.stopPropagation()">
                 <a href="https://github.com/nostria-app/nostria/releases/download/android-v1.0.6/nostria-android-v1.0.6.apk"
