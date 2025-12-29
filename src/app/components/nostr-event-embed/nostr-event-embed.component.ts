@@ -196,12 +196,16 @@ interface MentionedProfile {
     }
 
     .event-body {
+      overflow: hidden;
+      
       .event-text {
         font-size: 1.125rem;
         line-height: 1.6;
         color: var(--text-primary, #212121);
         margin: 0;
         font-style: italic;
+        word-break: break-word;
+        overflow-wrap: anywhere;
         
         &::before {
           content: '"';
