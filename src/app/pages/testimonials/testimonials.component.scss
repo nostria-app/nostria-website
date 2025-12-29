@@ -35,7 +35,7 @@
   justify-content: center;
   flex-wrap: wrap;
   gap: 1rem;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   
   .filter-btn {
     background: none;
@@ -60,6 +60,19 @@
   }
 }
 
+// Testimonials Intro
+.testimonials-intro {
+  text-align: center;
+  margin-bottom: 3rem;
+  
+  p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
 // Testimonials Grid
 .testimonials-grid {
   display: grid;
@@ -76,75 +89,12 @@
   }
 }
 
-// Testimonial Card
+// Testimonial Card (wrapper for nostr-event-embed)
 .testimonial-card {
-  background-color: white;
-  border-radius: 1rem;
-  padding: 2rem;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
   
   &:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-  }
-  
-  .testimonial-content {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    
-    .testimonial-rating {
-      margin-bottom: 1rem;
-      
-      .star {
-        color: #ffc107;
-        font-size: 1.25rem;
-      }
-    }
-    
-    .testimonial-quote {
-      color: var(--primary-color);
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      opacity: 0.5;
-    }
-    
-    .testimonial-text {
-      flex: 1;
-      margin-bottom: 1.5rem;
-      font-size: 1.125rem;
-      line-height: 1.6;
-      color: var(--text-secondary);
-      font-style: italic;
-    }
-    
-    .testimonial-author {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      
-      .author-avatar {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        object-fit: cover;
-      }
-      
-      .author-info {
-        h4 {
-          margin-bottom: 0.25rem;
-          font-weight: 600;
-          font-size: 1rem;
-        }
-        
-        p {
-          color: var(--text-secondary);
-          margin-bottom: 0;
-          font-size: 0.875rem;
-        }
-      }
-    }
   }
   
   &.hidden {
@@ -152,94 +102,144 @@
   }
 }
 
-// Load More Button
-.load-more {
+// No Testimonials Message
+.no-testimonials {
   text-align: center;
-  margin-top: 2rem;
+  padding: 4rem 2rem;
+  color: var(--text-secondary);
+  
+  .material-symbols-outlined {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+  }
+  
+  p {
+    font-size: 1.125rem;
+  }
 }
 
-// Submit Testimonial Section
-.submit-testimonial {
+// Share Experience Section
+.share-experience {
   padding: 5rem 0;
   background: linear-gradient(135deg, #f0f9ff 0%, #f8fafc 100%);
   
   .section-header {
     text-align: center;
     margin-bottom: 3rem;
+    
+    h2 {
+      margin-bottom: 0.5rem;
+    }
+    
+    .section-subheading {
+      color: var(--text-secondary);
+      font-size: 1.125rem;
+    }
+  }
+}
+
+// Instruction Cards
+.share-instructions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto 3rem;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+.instruction-card {
+  background: white;
+  border-radius: 1rem;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
   }
   
-  .testimonial-form-container {
-    max-width: 800px;
-    margin: 0 auto;
-    background-color: white;
-    border-radius: 1rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    padding: 2.5rem;
+  .step-number {
+    width: 48px;
+    height: 48px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 auto 1.5rem;
   }
   
-  .testimonial-form {
-    .form-group {
-      margin-bottom: 1.5rem;
+  h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+  }
+  
+  p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0;
+    
+    strong {
+      color: var(--primary-color);
+    }
+  }
+}
+
+// CTA Buttons
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    
+    .material-symbols-outlined {
+      font-size: 1.25rem;
+    }
+    
+    &.btn-primary {
+      background: var(--primary-color);
+      color: white;
+      border: 2px solid var(--primary-color);
       
-      label {
-        display: block;
-        margin-bottom: 0.5rem;
-        font-weight: 500;
-        color: var(--text-primary);
-      }
-      
-      input[type="text"],
-      input[type="email"],
-      select,
-      textarea {
-        width: 100%;
-        padding: 0.75rem 1rem;
-        border: 1px solid var(--divider);
-        border-radius: 0.5rem;
-        transition: border-color 0.3s ease;
-        
-        &:focus {
-          outline: none;
-          border-color: var(--primary-color);
-        }
-      }
-      
-      textarea {
-        resize: vertical;
-      }
-      
-      // Star Rating Input
-      .rating-input {
-        display: flex;
-        flex-direction: row-reverse;
-        justify-content: flex-end;
-        
-        input {
-          display: none;
-        }
-        
-        label {
-          cursor: pointer;
-          font-size: 2rem;
-          color: #ddd;
-          margin: 0;
-          padding: 0 0.25rem;
-          
-          &:hover,
-          &:hover ~ label,
-          input:checked ~ label {
-            color: #ffc107;
-          }
-        }
+      &:hover {
+        background: var(--primary-dark, #4a00b0);
+        border-color: var(--primary-dark, #4a00b0);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(98, 0, 234, 0.3);
       }
     }
     
-    .form-submit {
-      text-align: center;
-      margin-top: 2rem;
+    &.btn-outline {
+      background: transparent;
+      color: var(--primary-color);
+      border: 2px solid var(--primary-color);
       
-      .btn-primary {
-        padding: 0.875rem 2rem;
+      &:hover {
+        background: var(--primary-color);
+        color: white;
+        transform: translateY(-2px);
       }
     }
   }

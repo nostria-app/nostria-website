@@ -1,111 +1,57 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, ChangeDetectionStrategy, signal, computed } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { NostrEventEmbedComponent } from '../../components/nostr-event-embed/nostr-event-embed.component';
+
+interface Testimonial {
+  naddr: string;
+  category: 'creators' | 'developers' | 'businesses' | 'community';
+}
 
 @Component({
   selector: 'app-testimonials',
-  standalone: true,
-  imports: [RouterLink, FormsModule],
+  imports: [RouterLink, NostrEventEmbedComponent],
   templateUrl: './testimonials.component.html',
-  styleUrl: './testimonials.component.scss'
+  styleUrl: './testimonials.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TestimonialsComponent implements OnInit {
+export class TestimonialsComponent {
   // Track current filter
-  currentFilter: string = 'all';
+  currentFilter = signal<string>('all');
   
-  // Mock form data for demonstration
-  formData: {
-    name: string;
-    title: string;
-    category: string;
-    rating: number;
-    testimonial: string;
-    photo: File | null;
-  } = {
-    name: '',
-    title: '',
-    category: '',
-    rating: 5,
-    testimonial: '',
-    photo: null
-  };
+  // Real testimonials from Nostr events - replace these with actual naddr values
+  // These are placeholder addresses that should be replaced with real testimonial events
+  testimonials: Testimonial[] = [
+    // Community testimonials
+    { naddr: 'nevent1qvzqqqqqqypzq0c34wewydw694xa5htdavh3yvtnga48gk3u545ftgws7ce2gt6qqqsvr6uzxjhmf08820nvljmyuy9cp7qc03znzkv5jpvtr00vll4j3kg3vzjqt', category: 'community' },
+    { naddr: 'nevent1qqs9r3x8fndfng8nxzj6gztd3q9wzx3m6x5dfjxzqv2fqvlpd9v9pqpp4mhxue69uhkummn9ekx7mqpr4mhxue69uhkummn9ekx7mqz9rhwden5te0v4jx2m3wdehhxarj9ekxzmny9uq3samnwvaz7tmjv4kxz7fwwdhx7un59esk6ef0', category: 'developers' },
+    { naddr: 'nevent1qqsxvhk5hqm2msz4u4c7qjvc3khm4g65kpzh8tlc7dq8ufde5kzwgzspp4mhxue69uhkummn9ekx7mqpr4mhxue69uhkummn9ekx7mqz9rhwden5te0v4jx2m3wdehhxarj9ekxzmny9uq3samnwvaz7tmjv4kxz7fwwdhx7un59esk6ef0', category: 'creators' },
+    { naddr: 'nevent1qqszyhp4n72dvn0vkg8pmcy36tzj5znfp6sn93n2txj7s9fmga6xrqpp4mhxue69uhkummn9ekx7mqpr4mhxue69uhkummn9ekx7mqz9rhwden5te0v4jx2m3wdehhxarj9ekxzmny9uq3samnwvaz7tmjv4kxz7fwwdhx7un59esk6ef0', category: 'businesses' },
+    { naddr: 'nevent1qqsqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqpp4mhxue69uhkummn9ekx7mqpr4mhxue69uhkummn9ekx7mqz9rhwden5te0v4jx2m3wdehhxarj9ekxzmny9uq3samnwvaz7tmjv4kxz7fwwdhx7un59esk6ef0', category: 'community' },
+    { naddr: 'nevent1qqsrqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqpp4mhxue69uhkummn9ekx7mqpr4mhxue69uhkummn9ekx7mqz9rhwden5te0v4jx2m3wdehhxarj9ekxzmny9uq3samnwvaz7tmjv4kxz7fwwdhx7un59esk6ef0', category: 'developers' },
+    { naddr: 'nevent1qqsyqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqpp4mhxue69uhkummn9ekx7mqpr4mhxue69uhkummn9ekx7mqz9rhwden5te0v4jx2m3wdehhxarj9ekxzmny9uq3samnwvaz7tmjv4kxz7fwwdhx7un59esk6ef0', category: 'creators' },
+    { naddr: 'nevent1qqszqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqpp4mhxue69uhkummn9ekx7mqpr4mhxue69uhkummn9ekx7mqz9rhwden5te0v4jx2m3wdehhxarj9ekxzmny9uq3samnwvaz7tmjv4kxz7fwwdhx7un59esk6ef0', category: 'businesses' },
+    { naddr: 'nevent1qqs0qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqpp4mhxue69uhkummn9ekx7mqpr4mhxue69uhkummn9ekx7mqz9rhwden5te0v4jx2m3wdehhxarj9ekxzmny9uq3samnwvaz7tmjv4kxz7fwwdhx7un59esk6ef0', category: 'community' },
+  ];
 
-  constructor() { }
+  // Filter categories
+  categories = [
+    { id: 'all', label: 'All Testimonials' },
+    { id: 'community', label: 'Community' },
+    { id: 'creators', label: 'Content Creators' },
+    { id: 'developers', label: 'Developers' },
+    { id: 'businesses', label: 'Businesses' }
+  ];
 
-  ngOnInit(): void {
-    this.setupFilterButtons();
-    this.setupFormSubmission();
-  }
+  // Computed filtered testimonials
+  filteredTestimonials = computed(() => {
+    const filter = this.currentFilter();
+    if (filter === 'all') {
+      return this.testimonials;
+    }
+    return this.testimonials.filter(t => t.category === filter);
+  });
 
-  setupFilterButtons(): void {
-    // We'll use setTimeout to ensure DOM is ready
-    setTimeout(() => {
-      const filterButtons = document.querySelectorAll('.filter-btn');
-      
-      filterButtons.forEach(button => {
-        button.addEventListener('click', (event) => {
-          const target = event.currentTarget as HTMLButtonElement;
-          const filter = target.getAttribute('data-filter') || 'all';
-          
-          // Update active state
-          filterButtons.forEach(btn => btn.classList.remove('active'));
-          target.classList.add('active');
-          
-          this.filterTestimonials(filter);
-        });
-      });
-    }, 0);
-  }
-
-  filterTestimonials(filter: string): void {
-    this.currentFilter = filter;
-    const testimonialCards = document.querySelectorAll('.testimonial-card');
-    
-    testimonialCards.forEach(card => {
-      if (filter === 'all' || card.getAttribute('data-category') === filter) {
-        card.classList.remove('hidden');
-      } else {
-        card.classList.add('hidden');
-      }
-    });
-  }
-
-  setupFormSubmission(): void {
-    setTimeout(() => {
-      const form = document.querySelector('.testimonial-form');
-      
-      if (form) {
-        form.addEventListener('submit', (event) => {
-          event.preventDefault();
-          
-          // In a real app, we would send the form data to a backend
-          console.log('Testimonial submitted:', this.formData);
-          
-          // Show success message or redirect
-          alert('Thank you for sharing your testimonial! It will be reviewed and published shortly.');
-          
-          // Reset form
-          (event.target as HTMLFormElement).reset();
-        });
-      }
-      
-      // Handle file input for photo
-      const photoInput = document.getElementById('photo');
-      if (photoInput) {
-        photoInput.addEventListener('change', (event) => {
-          const files = (event.target as HTMLInputElement).files;
-          if (files && files.length > 0) {
-            this.formData.photo = files[0];
-          }
-        });
-      }
-    }, 0);
-  }
-
-  // Method to load more testimonials
-  loadMoreTestimonials(): void {
-    // In a real application, this would fetch more testimonials from an API
-    alert('In a real application, this would load more testimonials from the server.');
+  setFilter(filter: string): void {
+    this.currentFilter.set(filter);
   }
 }

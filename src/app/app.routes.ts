@@ -11,6 +11,7 @@ import { PressComponent } from './pages/press/press.component';
 import { PreSeedComponent } from './pages/funding/pre-seed.component';
 import { MvpReleasedComponent } from './pages/press/mvp-released/mvp-released.component';
 import { SeedFundLaunchComponent } from './pages/press/seed-fund-launch/seed-fund-launch.component';
+import { Nostria2ReleaseComponent } from './pages/press/nostria-2-release/nostria-2-release.component';
 import { DiscordRedirectComponent } from './pages/discord-redirect.component';
 import { SupportComponent } from './pages/support/support.component';
 import { PolicyComponent } from './pages/policy/policy.component';
@@ -32,6 +33,11 @@ export const routes: Routes = [
     path: 'press',
     component: PressComponent,
     title: 'Press & Media - Nostria'
+  },
+  {
+    path: 'press/nostria-2-release',
+    component: Nostria2ReleaseComponent,
+    title: 'Nostria 2.0: A New Era for Decentralized Social Networking - Nostria Press'
   },
   {
     path: 'press/seed-fund-launch',

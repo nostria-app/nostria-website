@@ -4,7 +4,7 @@
     <div class="hero-content">
       <h1>What Our Users Say</h1>
       <p class="hero-subtitle">
-        Join thousands of satisfied users who love using Nostria for their Nostr experience
+        Real feedback from the Nostr community, loaded directly from the protocol
       </p>
     </div>
   </div>
@@ -14,315 +14,76 @@
 <section class="testimonials-section">
   <div class="container">
     <div class="testimonials-filter">
-      <button class="filter-btn active" data-filter="all">All Testimonials</button>
-      <button class="filter-btn" data-filter="creators">Content Creators</button>
-      <button class="filter-btn" data-filter="developers">Developers</button>
-      <button class="filter-btn" data-filter="businesses">Businesses</button>
+      @for (category of categories; track category.id) {
+        <button 
+          class="filter-btn" 
+          [class.active]="currentFilter() === category.id"
+          (click)="setFilter(category.id)">
+          {{ category.label }}
+        </button>
+      }
+    </div>
+    
+    <div class="testimonials-intro">
+      <p>
+        Every testimonial below is a real Nostr event, fetched live from the protocol. 
+        Click the link icon on any testimonial to view it directly on Nostr.
+      </p>
     </div>
     
     <div class="testimonials-grid">
-      <!-- Testimonial 1 -->
-      <div class="testimonial-card" data-category="creators">
-        <div class="testimonial-content">
-          <div class="testimonial-rating">
-            <span class="star">★</span>
-            <span class="star">★</span>
-            <span class="star">★</span>
-            <span class="star">★</span>
-            <span class="star">★</span>
-          </div>
-          <div class="testimonial-quote">
-            <span class="material-symbols-outlined">format_quote</span>
-          </div>
-          <p class="testimonial-text">
-            "As a content creator, Nostria has changed how I interact with my audience. The media hosting is lightning fast, and I can schedule posts to maximize engagement. The analytics help me understand what content my audience loves most."
-          </p>
-          <div class="testimonial-author">
-            <img src="assets/avatars/user1.jpg" alt="Sarah K." class="author-avatar" />
-            <div class="author-info">
-              <h4>Sarah K.</h4>
-              <p>Digital Artist & Content Creator</p>
-            </div>
-          </div>
+      @for (testimonial of filteredTestimonials(); track testimonial.naddr) {
+        <div class="testimonial-card" [attr.data-category]="testimonial.category">
+          <app-nostr-event-embed [naddr]="testimonial.naddr" />
         </div>
-      </div>
-      
-      <!-- Testimonial 2 -->
-      <div class="testimonial-card" data-category="developers">
-        <div class="testimonial-content">
-          <div class="testimonial-rating">
-            <span class="star">★</span>
-            <span class="star">★</span>
-            <span class="star">★</span>
-            <span class="star">★</span>
-            <span class="star">★</span>
-          </div>
-          <div class="testimonial-quote">
-            <span class="material-symbols-outlined">format_quote</span>
-          </div>
-          <p class="testimonial-text">
-            "Nostria is hands down the most well-engineered Nostr client I've used. The performance is outstanding, and as a developer, I appreciate how well it handles large amounts of data without any lag. The API access with Premium is fantastic for building on top of Nostr."
-          </p>
-          <div class="testimonial-author">
-            <img src="assets/avatars/user2.jpg" alt="Marco T." class="author-avatar" />
-            <div class="author-info">
-              <h4>Marco T.</h4>
-              <p>Software Developer</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Testimonial 3 -->
-      <div class="testimonial-card" data-category="businesses">
-        <div class="testimonial-content">
-          <div class="testimonial-rating">
-            <span class="star">★</span>
-            <span class="star">★</span>
-            <span class="star">★</span>
-            <span class="star">★</span>
-            <span class="star">★</span>
-          </div>
-          <div class="testimonial-quote">
-            <span class="material-symbols-outlined">format_quote</span>
-          </div>
-          <p class="testimonial-text">
-            "Our company needed a reliable way to communicate on Nostr, and Nostria delivered beyond our expectations. The premium infrastructure ensures our brand presence is always reliable, and the support team has been incredibly responsive."
-          </p>
-          <div class="testimonial-author">
-            <img src="assets/avatars/user3.jpg" alt="Jordan L." class="author-avatar" />
-            <div class="author-info">
-              <h4>Jordan L.</h4>
-              <p>Marketing Director, Blockchain Startup</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Testimonial 4 -->
-      <div class="testimonial-card" data-category="creators">
-        <div class="testimonial-content">
-          <div class="testimonial-rating">
-            <span class="star">★</span>
-            <span class="star">★</span>
-            <span class="star">★</span>
-            <span class="star">★</span>
-            <span class="star">★</span>
-          </div>
-          <div class="testimonial-quote">
-            <span class="material-symbols-outlined">format_quote</span>
-          </div>
-          <p class="testimonial-text">
-            "I produce a lot of video content, and Nostria's media CDN has been a game-changer. My videos load quickly for my audience, and I never worry about them disappearing. The cross-platform sync means I can start a draft on my phone and finish it on desktop seamlessly."
-          </p>
-          <div class="testimonial-author">
-            <img src="assets/avatars/user4.jpg" alt="Alex R." class="author-avatar" />
-            <div class="author-info">
-              <h4>Alex R.</h4>
-              <p>Video Content Creator</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Testimonial 5 -->
-      <div class="testimonial-card" data-category="developers">
-        <div class="testimonial-content">
-          <div class="testimonial-rating">
-            <span class="star">★</span>
-            <span class="star">★</span>
-            <span class="star">★</span>
-            <span class="star">★</span>
-            <span class="star">★</span>
-          </div>
-          <div class="testimonial-quote">
-            <span class="material-symbols-outlined">format_quote</span>
-          </div>
-          <p class="testimonial-text">
-            "I've been working with decentralized protocols for years, and Nostria stands out for its thoughtful implementation of the Nostr protocol. The personal relay feature gives me confidence that my content will propagate correctly, and the UX is simply outstanding."
-          </p>
-          <div class="testimonial-author">
-            <img src="assets/avatars/user5.jpg" alt="Priya M." class="author-avatar" />
-            <div class="author-info">
-              <h4>Priya M.</h4>
-              <p>Protocol Engineer</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Testimonial 6 -->
-      <div class="testimonial-card" data-category="businesses">
-        <div class="testimonial-content">
-          <div class="testimonial-rating">
-            <span class="star">★</span>
-            <span class="star">★</span>
-            <span class="star">★</span>
-            <span class="star">★</span>
-            <span class="star">★</span>
-          </div>
-          <div class="testimonial-quote">
-            <span class="material-symbols-outlined">format_quote</span>
-          </div>
-          <p class="testimonial-text">
-            "We've integrated Nostria into our company's communication strategy, and it's been transformative. The ability to have team channels alongside public engagement has helped us build our community while maintaining internal discussions."
-          </p>
-          <div class="testimonial-author">
-            <img src="assets/avatars/user6.jpg" alt="Carlos D." class="author-avatar" />
-            <div class="author-info">
-              <h4>Carlos D.</h4>
-              <p>Community Manager, Tech Company</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Testimonial 7 -->
-      <div class="testimonial-card" data-category="creators">
-        <div class="testimonial-content">
-          <div class="testimonial-rating">
-            <span class="star">★</span>
-            <span class="star">★</span>
-            <span class="star">★</span>
-            <span class="star">★</span>
-            <span class="star">★</span>
-          </div>
-          <div class="testimonial-quote">
-            <span class="material-symbols-outlined">format_quote</span>
-          </div>
-          <p class="testimonial-text">
-            "I switched to Nostria from another client and immediately noticed how much more engagement my posts were getting. The discovery features help new followers find my content, and the interface is just beautiful to work with."
-          </p>
-          <div class="testimonial-author">
-            <img src="assets/avatars/user7.jpg" alt="Emma L." class="author-avatar" />
-            <div class="author-info">
-              <h4>Emma L.</h4>
-              <p>Podcast Host</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Testimonial 8 -->
-      <div class="testimonial-card" data-category="developers">
-        <div class="testimonial-content">
-          <div class="testimonial-rating">
-            <span class="star">★</span>
-            <span class="star">★</span>
-            <span class="star">★</span>
-            <span class="star">★</span>
-            <span class="star">★</span>
-          </div>
-          <div class="testimonial-quote">
-            <span class="material-symbols-outlined">format_quote</span>
-          </div>
-          <p class="testimonial-text">
-            "The attention to detail in Nostria is impressive. As someone who builds software, I can tell that every feature was implemented with care. The reliability of the premium infrastructure has made Nostr a viable platform for serious communication."
-          </p>
-          <div class="testimonial-author">
-            <img src="assets/avatars/user8.jpg" alt="David K." class="author-avatar" />
-            <div class="author-info">
-              <h4>David K.</h4>
-              <p>Frontend Developer</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Testimonial 9 -->
-      <div class="testimonial-card" data-category="businesses">
-        <div class="testimonial-content">
-          <div class="testimonial-rating">
-            <span class="star">★</span>
-            <span class="star">★</span>
-            <span class="star">★</span>
-            <span class="star">★</span>
-            <span class="star">★</span>
-          </div>
-          <div class="testimonial-quote">
-            <span class="material-symbols-outlined">format_quote</span>
-          </div>
-          <p class="testimonial-text">
-            "After trying several Nostr clients, we standardized on Nostria for our entire team. The consistency across platforms means everyone has the same experience regardless of their device, and the premium support has been exceptional whenever we've needed help."
-          </p>
-          <div class="testimonial-author">
-            <img src="assets/avatars/user9.jpg" alt="Sofia R." class="author-avatar" />
-            <div class="author-info">
-              <h4>Sofia R.</h4>
-              <p>Operations Director</p>
-            </div>
-          </div>
-        </div>
-      </div>
+      }
     </div>
     
-    <div class="load-more">
-      <button class="btn btn-outline">Load More Testimonials</button>
-    </div>
+    @if (filteredTestimonials().length === 0) {
+      <div class="no-testimonials">
+        <span class="material-symbols-outlined">sentiment_neutral</span>
+        <p>No testimonials found in this category.</p>
+      </div>
+    }
   </div>
 </section>
 
-<!-- Submit Testimonial Section -->
-<section class="submit-testimonial">
+<!-- Share Your Experience Section -->
+<section class="share-experience">
   <div class="container">
     <div class="section-header">
-      <h2>Love Using Nostria?</h2>
-      <p class="section-subheading">Share your experience with others!</p>
+      <h2>Share Your Nostria Experience</h2>
+      <p class="section-subheading">
+        Love using Nostria? Share your experience on Nostr and it may be featured here!
+      </p>
     </div>
     
-    <div class="testimonial-form-container">
-      <form class="testimonial-form">
-        <div class="form-group">
-          <label for="name">Your Name</label>
-          <input type="text" id="name" name="name" placeholder="Full Name" required>
-        </div>
-        
-        <div class="form-group">
-          <label for="title">Your Title/Position</label>
-          <input type="text" id="title" name="title" placeholder="e.g. Software Developer, Content Creator" required>
-        </div>
-        
-        <div class="form-group">
-          <label for="category">Category</label>
-          <select id="category" name="category" required>
-            <option value="" disabled selected>Select a category</option>
-            <option value="creators">Content Creator</option>
-            <option value="developers">Developer</option>
-            <option value="businesses">Business</option>
-            <option value="other">Other</option>
-          </select>
-        </div>
-        
-        <div class="form-group">
-          <label for="rating">Your Rating</label>
-          <div class="rating-input">
-            <input type="radio" id="star5" name="rating" value="5" checked>
-            <label for="star5">★</label>
-            <input type="radio" id="star4" name="rating" value="4">
-            <label for="star4">★</label>
-            <input type="radio" id="star3" name="rating" value="3">
-            <label for="star3">★</label>
-            <input type="radio" id="star2" name="rating" value="2">
-            <label for="star2">★</label>
-            <input type="radio" id="star1" name="rating" value="1">
-            <label for="star1">★</label>
-          </div>
-        </div>
-        
-        <div class="form-group">
-          <label for="testimonial">Your Experience with Nostria</label>
-          <textarea id="testimonial" name="testimonial" rows="6" placeholder="Tell us about your experience using Nostria..." required></textarea>
-        </div>
-        
-        <div class="form-group">
-          <label for="photo">Profile Photo (optional)</label>
-          <input type="file" id="photo" name="photo" accept="image/*">
-        </div>
-        
-        <div class="form-submit">
-          <button type="submit" class="btn btn-primary">Submit Testimonial</button>
-        </div>
-      </form>
+    <div class="share-instructions">
+      <div class="instruction-card">
+        <div class="step-number">1</div>
+        <h3>Post on Nostr</h3>
+        <p>Share your experience with Nostria on any Nostr client. Tag <strong>&#64;nostria</strong> or use the hashtag <strong>#nostria</strong>.</p>
+      </div>
+      <div class="instruction-card">
+        <div class="step-number">2</div>
+        <h3>Get Featured</h3>
+        <p>Our team reviews community feedback and selects authentic testimonials to feature on this page.</p>
+      </div>
+      <div class="instruction-card">
+        <div class="step-number">3</div>
+        <h3>Stay Connected</h3>
+        <p>Your testimonial will link directly to your original Nostr event, giving you full credit and visibility.</p>
+      </div>
+    </div>
+    
+    <div class="cta-buttons">
+      <a href="https://nostria.app" target="_blank" rel="noopener" class="btn btn-primary">
+        <span class="material-symbols-outlined">open_in_new</span>
+        Open Nostria
+      </a>
+      <a routerLink="/features" class="btn btn-outline">
+        Learn About Features
+      </a>
     </div>
   </div>
 </section>
