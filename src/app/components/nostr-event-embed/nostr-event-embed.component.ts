@@ -173,18 +173,24 @@ interface MentionedProfile {
       }
 
       .nostr-link {
-        padding: 0.5rem;
-        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 6px;
         color: var(--text-secondary, #666);
-        transition: all 0.2s ease;
+        text-decoration: none;
+        transition: color 0.2s ease;
+        opacity: 0.6;
 
         &:hover {
-          background: var(--primary-light, rgba(98, 0, 234, 0.1));
           color: var(--primary-color, #6200ea);
+          opacity: 1;
         }
 
         .material-symbols-outlined {
-          font-size: 1.25rem;
+          font-size: 1.125rem;
         }
       }
     }
