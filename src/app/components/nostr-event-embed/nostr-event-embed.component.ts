@@ -26,6 +26,12 @@ interface AuthorProfile {
   about?: string;
 }
 
+interface MentionedProfile {
+  pubkey: string;
+  profile: AuthorProfile | null;
+  originalMatch: string;
+}
+
 @Component({
   selector: 'app-nostr-event-embed',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -62,7 +68,7 @@ interface AuthorProfile {
             </a>
           </div>
           <div class="event-body">
-            <p class="event-text">{{ event()?.content }}</p>
+            <p class="event-text">{{ renderedContent() }}</p>
           </div>
           <div class="event-footer">
             <time [dateTime]="eventDate()">{{ formattedDate() }}</time>
@@ -224,6 +230,9 @@ export class NostrEventEmbedComponent implements OnInit, OnDestroy {
   /** The author's profile metadata */
   authorProfile = signal<AuthorProfile | null>(null);
   
+  /** Mentioned profiles in the content */
+  mentionedProfiles = signal<Map<string, AuthorProfile | null>>(new Map());
+  
   /** Loading state */
   loading = signal(true);
   
@@ -232,6 +241,7 @@ export class NostrEventEmbedComponent implements OnInit, OnDestroy {
 
   private websocket: WebSocket | null = null;
   private subscriptionId = '';
+  private relayUrl = '';
 
   displayName = computed(() => {
     const profile = this.authorProfile();
@@ -239,6 +249,33 @@ export class NostrEventEmbedComponent implements OnInit, OnDestroy {
     if (profile?.name) return profile.name;
     const pubkey = this.event()?.pubkey;
     return pubkey ? `${pubkey.slice(0, 8)}...${pubkey.slice(-8)}` : 'Unknown';
+  });
+
+  /** Render content with resolved @mentions */
+  renderedContent = computed(() => {
+    const evt = this.event();
+    if (!evt) return '';
+    
+    let content = evt.content;
+    const profiles = this.mentionedProfiles();
+    
+    // Replace nostr:nprofile and nostr:npub references with display names
+    const nostrPattern = /nostr:(nprofile1[a-z0-9]+|npub1[a-z0-9]+)/gi;
+    
+    content = content.replace(nostrPattern, (match, identifier) => {
+      const pubkey = this.extractPubkeyFromIdentifier(identifier);
+      if (pubkey && profiles.has(pubkey)) {
+        const profile = profiles.get(pubkey);
+        if (profile) {
+          const name = profile.display_name || profile.name || `@${pubkey.slice(0, 8)}...`;
+          return `@${name}`;
+        }
+      }
+      // If we couldn't resolve, show a shortened version
+      return `@${identifier.slice(0, 12)}...`;
+    });
+    
+    return content;
   });
 
   eventDate = computed(() => {
@@ -258,7 +295,7 @@ export class NostrEventEmbedComponent implements OnInit, OnDestroy {
   });
 
   nostrLink = computed(() => {
-    return `https://njump.me/${this.naddr()}`;
+    return `https://nostria.app/e/${this.naddr()}`;
   });
 
   ngOnInit() {
@@ -470,6 +507,9 @@ export class NostrEventEmbedComponent implements OnInit, OnDestroy {
               // Now fetch author profile
               this.fetchAuthorProfile(event.pubkey, relayUrl);
               
+              // Parse and fetch mentioned profiles
+              this.fetchMentionedProfiles(event.content, relayUrl);
+              
               clearTimeout(timeout);
               this.loading.set(false);
             } else if (data[0] === 'EOSE') {
@@ -522,6 +562,94 @@ export class NostrEventEmbedComponent implements OnInit, OnDestroy {
           const profile = JSON.parse(event.content) as AuthorProfile;
           this.authorProfile.set(profile);
           ws.close();
+        } else if (data[0] === 'EOSE') {
+          ws.close();
+        }
+      } catch {
+        // Ignore parse errors
+      }
+    };
+
+    setTimeout(() => ws.close(), 5000);
+  }
+
+  /** Extract pubkey from nprofile or npub identifier */
+  private extractPubkeyFromIdentifier(identifier: string): string | null {
+    try {
+      if (identifier.startsWith('npub1')) {
+        // npub is just the pubkey encoded in bech32
+        const decoded = this.bech32Decode(identifier);
+        if (decoded) {
+          return this.bytesToHex(decoded.data);
+        }
+      } else if (identifier.startsWith('nprofile1')) {
+        // nprofile contains TLV data with pubkey at type 0
+        const decoded = this.bech32Decode(identifier);
+        if (decoded) {
+          const data = decoded.data;
+          let offset = 0;
+          
+          while (offset < data.length) {
+            const type = data[offset];
+            const length = data[offset + 1];
+            const value = data.slice(offset + 2, offset + 2 + length);
+            offset += 2 + length;
+            
+            if (type === 0) {
+              // Type 0 is the pubkey
+              return this.bytesToHex(value);
+            }
+          }
+        }
+      }
+    } catch {
+      // Ignore decode errors
+    }
+    return null;
+  }
+
+  /** Fetch profiles for all mentioned users in content */
+  private fetchMentionedProfiles(content: string, relayUrl: string): void {
+    const nostrPattern = /nostr:(nprofile1[a-z0-9]+|npub1[a-z0-9]+)/gi;
+    const matches = content.matchAll(nostrPattern);
+    const pubkeys = new Set<string>();
+    
+    for (const match of matches) {
+      const pubkey = this.extractPubkeyFromIdentifier(match[1]);
+      if (pubkey) {
+        pubkeys.add(pubkey);
+      }
+    }
+    
+    if (pubkeys.size === 0) return;
+    
+    // Fetch all mentioned profiles
+    const ws = new WebSocket(relayUrl);
+    const subId = Math.random().toString(36).substring(2, 15);
+    const profileMap = new Map<string, AuthorProfile | null>();
+    
+    // Initialize with null values
+    pubkeys.forEach(pk => profileMap.set(pk, null));
+    this.mentionedProfiles.set(new Map(profileMap));
+
+    ws.onopen = () => {
+      const request = JSON.stringify(['REQ', subId, {
+        kinds: [0],
+        authors: Array.from(pubkeys)
+      }]);
+      ws.send(request);
+    };
+
+    ws.onmessage = (msg) => {
+      try {
+        const data = JSON.parse(msg.data);
+        
+        if (data[0] === 'EVENT' && data[1] === subId) {
+          const event = data[2] as NostrEvent;
+          const profile = JSON.parse(event.content) as AuthorProfile;
+          profileMap.set(event.pubkey, profile);
+          // Update the signal with new map
+          this.mentionedProfiles.set(new Map(profileMap));
         } else if (data[0] === 'EOSE') {
           ws.close();
         }
