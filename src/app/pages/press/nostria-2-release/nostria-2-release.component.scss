@@ -348,10 +348,13 @@
   border-radius: 12px;
   min-width: 120px;
   transition: all 0.3s ease;
+  text-decoration: none;
+  cursor: pointer;
 
   &:hover {
     border-color: var(--primary-color);
     transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
 
   .material-symbols-outlined {
@@ -376,6 +379,75 @@
 
     &:hover {
       text-decoration: underline;
+    }
+  }
+}
+
+// Screenshots Section
+.screenshots-section {
+  .screenshot-feature {
+    margin-bottom: 3rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      @media (max-width: 768px) {
+        font-size: 1.25rem;
+      }
+    }
+
+    > p {
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  .screenshot-pair {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    figure {
+      margin: 0;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--divider);
+      background: var(--surface);
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+      }
+
+      img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      figcaption {
+        padding: 0.75rem 1rem;
+        text-align: center;
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        background: var(--surface);
+        border-top: 1px solid var(--divider);
+      }
     }
   }
 }
