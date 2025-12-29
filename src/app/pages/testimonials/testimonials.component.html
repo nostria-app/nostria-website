@@ -13,17 +13,6 @@
 <!-- Testimonials Grid -->
 <section class="testimonials-section">
   <div class="container">
-    <div class="testimonials-filter">
-      @for (category of categories; track category.id) {
-        <button 
-          class="filter-btn" 
-          [class.active]="currentFilter() === category.id"
-          (click)="setFilter(category.id)">
-          {{ category.label }}
-        </button>
-      }
-    </div>
-    
     <div class="testimonials-intro">
       <p>
         Every testimonial below is a real Nostr event, fetched live from the protocol. 
@@ -32,19 +21,12 @@
     </div>
     
     <div class="testimonials-grid">
-      @for (testimonial of filteredTestimonials(); track testimonial.naddr) {
-        <div class="testimonial-card" [attr.data-category]="testimonial.category">
-          <app-nostr-event-embed [naddr]="testimonial.naddr" />
+      @for (naddr of testimonials; track naddr) {
+        <div class="testimonial-card">
+          <app-nostr-event-embed [naddr]="naddr" />
         </div>
       }
     </div>
-    
-    @if (filteredTestimonials().length === 0) {
-      <div class="no-testimonials">
-        <span class="material-symbols-outlined">sentiment_neutral</span>
-        <p>No testimonials found in this category.</p>
-      </div>
-    }
   </div>
 </section>
 
