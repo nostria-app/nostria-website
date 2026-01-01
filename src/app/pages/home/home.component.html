@@ -87,14 +87,14 @@
               </button>
               @if (isAndroidMenuOpen) {
               <div class="platform-dropdown" (click)="$event.stopPropagation()">
+                <a href="https://play.google.com/store/apps/details?id=app.nostria.twa" class="dropdown-item">
+                  <span class="material-symbols-outlined">store</span>
+                  <span>Play Store</span>
+                </a>
                 <a href="https://github.com/nostria-app/nostria/releases/download/android-v1.0.6/nostria-android-v1.0.6.apk"
                   target="_blank" rel="noopener" class="dropdown-item" itemprop="downloadUrl">
                   <span class="material-symbols-outlined">download</span>
                   <span>Download APK</span>
-                </a>
-                <a class="dropdown-item disabled">
-                  <span class="material-symbols-outlined">store</span>
-                  <span>Play Store (Soon)</span>
                 </a>
               </div>
               }
