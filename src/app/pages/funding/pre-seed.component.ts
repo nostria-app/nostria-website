@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, PLATFORM_ID, inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
-import { RouterLink } from '@angular/router';
 import { SafePipeModule } from '../../shared/pipes/safe.pipe';
 import { YouTubePlayerModule } from '@angular/youtube-player';
 import { PitchDeckDownloadComponent } from '../../components/pitch-deck-download/pitch-deck-download.component';
@@ -8,11 +8,12 @@ import { PitchDeckDownloadComponent } from '../../components/pitch-deck-download
 @Component({
   selector: 'app-pre-seed',
   standalone: true,
-  imports: [RouterLink, SafePipeModule, YouTubePlayerModule, PitchDeckDownloadComponent],
+  imports: [SafePipeModule, YouTubePlayerModule, PitchDeckDownloadComponent],
   templateUrl: './pre-seed.component.html',
   styleUrl: './pre-seed.component.scss'
 })
 export class PreSeedComponent implements OnInit {
+  private readonly platformId = inject(PLATFORM_ID);
   // Countdown properties
   daysLeft: number = 0;
   hoursLeft: number = 0;
@@ -113,6 +114,8 @@ export class PreSeedComponent implements OnInit {
   }
 
   initCountdown(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+
     // Set funding dates
     const fundingStartDate = new Date('May 12, 2025 00:00:00 UTC').getTime();
     const fundingEndDate = new Date('May 31, 2025 23:59:59 UTC').getTime();

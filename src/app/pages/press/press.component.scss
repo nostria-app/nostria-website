@@ -102,7 +102,6 @@
       .press-date {
         font-size: 0.875rem;
         color: var(--primary-color);
-        font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 0.5px;
         margin-bottom: 1rem;
@@ -117,7 +116,6 @@
         padding: 0.25rem 0.75rem;
         border-radius: 20px;
         font-size: 0.75rem;
-        font-weight: 700;
         text-transform: uppercase;
         letter-spacing: 0.5px;
       }
@@ -146,7 +144,6 @@
       .press-link {
         color: var(--primary-color);
         text-decoration: none;
-        font-weight: 500;
         
         &:hover {
           text-decoration: underline;
@@ -278,7 +275,6 @@
             flex-direction: column;
             
             .color-name {
-              font-weight: 500;
               color: var(--text-primary);
             }
             

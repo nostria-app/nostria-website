@@ -1,697 +1,147 @@
-<!-- Premium Hero Section -->
-<section class="premium-hero">
-  <div class="hero-background">
-    <div class="hero-decoration hero-decoration-1"></div>
-    <div class="hero-decoration hero-decoration-2"></div>
-    <div class="hero-decoration hero-decoration-3"></div>
-  </div>
+<section class="premium" itemscope itemtype="https://schema.org/Product">
+  <header class="hero">
+    <div class="hero-bg" aria-hidden="true">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+    </div>
+
+    <div class="container">
+      <div class="hero-inner">
+        <div class="badge">
+          <span class="material-symbols-outlined" aria-hidden="true">workspace_premium</span>
+          <span itemprop="name">Nostria Premium</span>
+        </div>
+
+        <h1>Premium infrastructure for your Nostr identity.</h1>
+        <p class="sub" itemprop="description">
+          Dedicated relays, fast media, and power tools for people who live on Nostr.
+        </p>
+
+        <div class="actions">
+          <a href="https://nostria.app/premium" class="btn btn-primary btn-lg">Get Premium</a>
+          <a href="https://nostria.app" class="btn btn-outline btn-lg">Launch App</a>
+        </div>
+
+        <div class="trust">
+          <span class="material-symbols-outlined" aria-hidden="true">payments</span>
+          <span>Bitcoin/Lightning payments • Cancel anytime</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
   <div class="container">
-    <div class="hero-content">
-      <div class="hero-badge">
-        <span class="material-symbols-outlined">workspace_premium</span>
-        <span>Premium Experience</span>
+    <section class="value" aria-label="Premium benefits">
+      <div class="value-grid">
+        <article class="card">
+          <div class="icon"><span class="material-symbols-outlined" aria-hidden="true">dns</span></div>
+          <h2>Dedicated relays</h2>
+          <p>Premium users are assigned to a dedicated relay pool for consistent performance.</p>
+        </article>
+
+        <article class="card">
+          <div class="icon"><span class="material-symbols-outlined" aria-hidden="true">cloud</span></div>
+          <h2>Media hosting + CDN</h2>
+          <p>2GB of fast media storage backed by a global CDN for snappy loads.</p>
+        </article>
+
+        <article class="card">
+          <div class="icon"><span class="material-symbols-outlined" aria-hidden="true">verified</span></div>
+          <h2>Verified username</h2>
+          <p>A verified handle that uniquely identifies you across the Nostr network.</p>
+        </article>
+
+        <article class="card">
+          <div class="icon"><span class="material-symbols-outlined" aria-hidden="true">explore</span></div>
+          <h2>Discovery relays</h2>
+          <p>We run discovery infrastructure that helps the ecosystem scale and helps you find people.</p>
+        </article>
       </div>
-      <h1 class="hero-title">Unlock the Full Potential of Your Nostr Experience</h1>
-      <p class="hero-subtitle">
-        Take your Nostr experience to the next level with dedicated infrastructure, 
-        advanced features, and enterprise-grade performance designed for serious users.
-      </p>
-      <div class="hero-stats">
-        <div class="stat-card">
-          <div class="stat-icon">
-            <span class="material-symbols-outlined">dns</span>
+    </section>
+
+    <section class="plans" aria-label="Pricing">
+      <div class="section-head">
+        <div class="kicker">Pricing</div>
+        <h2>Choose your plan</h2>
+        <p>Simple pricing. No toggles. Straight to the point.</p>
+      </div>
+
+      <div class="plan-grid">
+        <article class="plan">
+          <div class="plan-top">
+            <h3>Basic</h3>
+            <div class="price"><span class="currency">$</span><span class="amount">0</span><span class="per">/forever</span></div>
           </div>
-          <div class="stat-content">
-            <span class="stat-number">2GB</span>
-            <span class="stat-label">Media Storage</span>
-          </div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-icon">
-            <span class="material-symbols-outlined">support_agent</span>
-          </div>
-          <div class="stat-content">
-            <span class="stat-number">Premium</span>
-            <span class="stat-label">Support</span>
-          </div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-icon">
-            <span class="material-symbols-outlined">public</span>
-          </div>
-          <div class="stat-content">
-            <span class="stat-number">Global</span>
-            <span class="stat-label">CDN Network</span>
-          </div>
-        </div>
-      </div>
-      <div class="hero-cta">
-        <a href="https://nostria.app/premium" class="btn btn-primary btn-hero">
-          <span class="btn-text">Get Nostria Premium</span>
-          <span class="material-symbols-outlined">arrow_forward</span>
-        </a>
-        <div class="hero-note">
-          <span class="material-symbols-outlined">verified</span>
-          <span>Cancel anytime • No hidden fees</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Premium Benefits -->
-<section class="premium-benefits">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-badge">
-        <span class="material-symbols-outlined">star</span>
-        <span>Premium Features</span>
-      </div>
-      <h2 class="section-title">Why Choose Nostria Premium?</h2>
-      <p class="section-subheading">Get the enterprise-grade infrastructure and advanced features you need to scale on Nostr</p>
-    </div>
-
-    <div class="benefits-grid">
-      <div class="benefit-card">
-        <div class="benefit-icon">
-          <span class="material-symbols-outlined">dns</span>
-        </div>
-        <div class="benefit-content">
-          <h3>Dedicated Relays</h3>
-          <div class="benefit-badge">Core Feature</div>
-          <p>
-            We host a pool of dedicated relays for our premium users. When you sign up, you are assigned to a relay from
-            our pool. As more users join, we will add more relays to the pool, ensuring users always get a great
-            experience and performance.
-          </p>
-          <div class="benefit-stats">
-            <div class="stat-item">
-              <span class="stat-number">Regionally</span>
-              <span class="stat-label">Dedicated Relays</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-number">Automatic</span>
-              <span class="stat-label">Region selection</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="benefit-card">
-        <div class="benefit-icon">
-          <span class="material-symbols-outlined">cloud</span>
-        </div>
-        <div class="benefit-content">
-          <h3>Media Hosting & CDN</h3>
-          <p>
-            Store images and media on our dedicated global CDN.
-            Your content stays online with faster loading times worldwide.
-          </p>
-          <div class="benefit-features">
-            <div class="feature-item">
-              <span class="material-symbols-outlined">check_circle</span>
-              <span>2GB Storage</span>
-            </div>
-            <div class="feature-item">
-              <span class="material-symbols-outlined">check_circle</span>
-              <span>Global CDN</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="benefit-card">
-        <div class="benefit-icon">
-          <span class="material-symbols-outlined">explore</span>
-        </div>
-        <div class="benefit-content">
-          <h3>Discovery Relay</h3>
-          <p>
-            We host Discovery Relays that help everyone discover users. This is important to support scaling of the Nostr
-            ecosystem.
-          </p>
-        </div>
-      </div>
-
-      <div class="benefit-card">
-        <div class="benefit-icon">
-          <span class="material-symbols-outlined">verified</span>
-        </div>
-        <div class="benefit-content">
-          <h3>Verified Username</h3>
-          <p>
-            Get a verified username that uniquely identifies you across the Nostr network.
-          </p>
-        </div>
-      </div>
-
-      <div class="benefit-card coming-soon">
-        <div class="benefit-icon">
-          <span class="material-symbols-outlined">bolt</span>
-        </div>
-        <div class="benefit-content">
-          <h3>Bitcoin Lightning Address</h3>
-          <div class="benefit-badge soon">Coming Soon</div>
-          <p>
-            Premium users get their own Bitcoin Lightning Address allowing you to start receiving Zaps from other users
-            and collect sats.
-          </p>
-        </div>
-      </div>
-
-      <div class="benefit-card coming-soon">
-        <div class="benefit-icon">
-          <span class="material-symbols-outlined">monitoring</span>
-        </div>
-        <div class="benefit-content">
-          <h3>Analytics & Insights</h3>
-          <div class="benefit-badge soon">Coming Soon</div>
-          <p>
-            Gain valuable insights into how your content performs with detailed analytics
-            on engagement, reach, and audience growth.
-          </p>
-        </div>
-      </div>
-
-      <div class="benefit-card coming-soon">
-        <div class="benefit-icon">
-          <span class="material-symbols-outlined">schedule</span>
-        </div>
-        <div class="benefit-content">
-          <h3>Scheduled Posting</h3>
-          <div class="benefit-badge soon">Coming Soon</div>
-          <p>
-            Plan ahead and schedule your notes to be published at optimal times,
-            ensuring maximum reach and engagement for your content.
-          </p>
-        </div>
-      </div>
-
-      <div class="benefit-card coming-soon">
-        <div class="benefit-icon">
-          <span class="material-symbols-outlined">backup</span>
-        </div>
-        <div class="benefit-content">
-          <h3>Automated Backup</h3>
-          <div class="benefit-badge soon">Coming Soon</div>
-          <p>
-            Keep your notes and data safe with automated daily backups. You also get access to a powerful backup management tool.
-          </p>
-        </div>
-      </div>
-
-      <div class="benefit-card coming-soon">
-        <div class="benefit-icon">
-          <span class="material-symbols-outlined">sync_alt</span>
-        </div>
-        <div class="benefit-content">
-          <h3>Relay Migration</h3>
-          <div class="benefit-badge soon">Coming Soon</div>
-          <p>
-            When you change your relay, all your data can be automatically migrated to the new one.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Pricing Section -->
-<section class="premium-pricing">
-  <div class="pricing-background">
-    <div class="pricing-decoration pricing-decoration-1"></div>
-    <div class="pricing-decoration pricing-decoration-2"></div>
-  </div>
-  <div class="container">
-    <div class="section-header">
-      <div class="section-badge">
-        <span class="material-symbols-outlined">payments</span>
-        <span>Transparent Pricing</span>
-      </div>
-      <h2 class="section-title">Choose Your Plan</h2>
-      <p class="section-subheading">Simple, transparent pricing with no hidden fees. Scale your Nostr experience as you grow.</p>
-    </div>
-
-    <div class="toggle-container">
-      <span class="toggle-label">Monthly</span>
-      <label class="toggle-switch" for="billing-toggle" aria-label="Toggle between monthly and yearly billing">
-        <input type="checkbox" id="billing-toggle" aria-label="Switch to yearly billing">
-        <span class="toggle-slider"></span>
-      </label>
-      <span class="toggle-label active">Yearly <span class="save-badge">Save 20%</span></span>
-    </div>
-
-    <div class="pricing-grid">
-      <div class="pricing-card">
-        <div class="pricing-header">
-          <div class="plan-icon">
-            <span class="material-symbols-outlined">person</span>
-          </div>
-          <h3>Basic</h3>
-          <div class="pricing-amount">
-            <span class="pricing-currency">$</span>
-            <span class="pricing-number">0</span>
-            <span class="pricing-duration-free">/forever</span>
-          </div>
-          <div class="plan-description">Perfect for getting started with Nostr</div>
-        </div>
-        <div class="pricing-features">
-          <ul>
-            <li>Standard Client Features</li>
-            <li>Public Relay Access</li>
-            <li>Basic Content Discovery</li>
-            <li>Media Hosting (50MB)</li>
-            <li>Up to 2 accounts</li>
-            <li>Community Support</li>
+          <ul class="bullets">
+            <li>Standard client features</li>
+            <li>Public relay access</li>
+            <li>Community support</li>
           </ul>
-        </div>
-        <div class="pricing-cta">
-          <a href="https://nostria.app" class="btn btn-outline btn-pricing">
-            <span class="btn-text">Get Started Free</span>
-            <span class="material-symbols-outlined">arrow_forward</span>
-          </a>
-        </div>
-      </div>
+          <a href="https://nostria.app" class="btn btn-outline btn-block">Launch free</a>
+        </article>
 
-      <div class="pricing-card popular">
-        <div class="pricing-header">
-          <div class="plan-icon premium">
-            <span class="material-symbols-outlined">workspace_premium</span>
+        <article class="plan plan-featured" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+          <div class="ribbon">Recommended</div>
+          <div class="plan-top">
+            <h3>Premium</h3>
+            <div class="price">
+              <span class="currency">$</span><span class="amount" itemprop="price">10</span>
+              <span class="per">/month</span>
+            </div>
+            <div class="fine">Billed quarterly</div>
           </div>
-          <h3>Premium</h3>
-          <div class="pricing-amount">
-            <span class="pricing-currency">$</span>
-            <span class="pricing-number monthly">10</span>
-            <span class="pricing-number yearly hide">8</span>
-            <span class="pricing-duration">/month, billed quarterly</span>
-          </div>
-          <div class="plan-description">For serious Nostr users and creators</div>
-        </div>
-        <div class="pricing-features">
-          <ul>
-            <li><strong>Everything in Basic, plus:</strong></li>
-            <li><strong>Dedicated Relay Server</strong></li>
-            <li><strong>Premium Media Hosting (2GB)</strong></li>
-            <li><strong>Verified Username</strong></li>
-            <li><strong>Bitcoin Payment Address</strong></li>
-            <li><strong>Relay Migration</strong></li>
-            <li>Analytics Dashboard</li>
-            <li><strong>Premium Badge on Profile</strong></li>
-            <li>Priority Support</li>
+          <ul class="bullets">
+            <li>Dedicated relay pool</li>
+            <li>2GB media hosting + CDN</li>
+            <li>Verified username</li>
+            <li>Priority support</li>
           </ul>
-        </div>
-        <div class="pricing-cta">
-          <a href="https://nostria.app/premium" class="btn btn-primary btn-pricing">
-            <span class="btn-text">Get Premium</span>
-            <span class="material-symbols-outlined">rocket_launch</span>
-          </a>
-        </div>
-      </div>
+          <a href="https://nostria.app/premium" class="btn btn-primary btn-block">Get Premium</a>
+        </article>
 
-      <div class="pricing-card">
-        <div class="pricing-header">
-          <div class="plan-icon plus">
-            <span class="material-symbols-outlined">stars</span>
+        <article class="plan">
+          <div class="plan-top">
+            <h3>Premium+</h3>
+            <div class="price"><span class="currency">$</span><span class="amount">25</span><span class="per">/month</span></div>
+            <div class="fine">Billed quarterly</div>
           </div>
-          <h3>Premium+</h3>
-          <div class="pricing-amount">
-            <span class="pricing-currency">$</span>
-            <span class="pricing-number monthly">25</span>
-            <span class="pricing-number yearly hide">20</span>
-            <span class="pricing-duration">/month, billed quarterly</span>
-          </div>
-          <div class="plan-description">For power users and organizations</div>
-        </div>
-        <div class="pricing-features">
-          <ul>
-            <li><strong>Everything in Premium, plus:</strong></li>
-            <li>Multiple Dedicated Relays</li>
-            <li>Premium Media Hosting (5GB)</li>
-            <li><strong>Automated Backup</strong></li>
-            <li><strong>Backup Management</strong></li>
-            <li>Scheduled Posting</li>
-            <li>Advanced Analytics</li>
-            <li><strong>Premium+ Exclusive Badge</strong></li>
-            <li><strong>Dedicated Support</strong></li>
-            <li><strong>Features Early Access</strong></li>
+          <ul class="bullets">
+            <li>Everything in Premium</li>
+            <li>More storage + advanced tooling</li>
+            <li>Backup + relay migration (rolling out)</li>
+            <li>Dedicated support</li>
           </ul>
-        </div>
-        <div class="pricing-cta">
-          <a href="https://nostria.app/premium" class="btn btn-outline btn-pricing">
-            <span class="btn-text">Get Premium+</span>
-            <span class="material-symbols-outlined">arrow_forward</span>
-          </a>
-        </div>
+          <a href="https://nostria.app/premium" class="btn btn-outline btn-block">Get Premium+</a>
+        </article>
       </div>
-    </div>
-    
-    <div class="pricing-note">
-      <div class="note-icon">
-        <span class="material-symbols-outlined">info</span>
-      </div>
-      <p>All plans include support for Bitcoin/Lightning payments. Credit card payments coming soon.</p>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- Infrastructure Diagram -->
-<section class="infrastructure-section">
-  <div class="infrastructure-background">
-    <div class="infra-decoration infra-decoration-1"></div>
-    <div class="infra-decoration infra-decoration-2"></div>
-  </div>
-  <div class="container">
-    <div class="section-header">
-      <div class="section-badge">
-        <span class="material-symbols-outlined">cloud_sync</span>
-        <span>Global Infrastructure</span>
-      </div>
-      <h2 class="section-title">How Nostria Premium Infrastructure Works</h2>
-      <p class="section-subheading">
-        A glimpse behind the scenes of our global infrastructure. This is our 
-        designed infrastructure for the future of Nostria. It is partially implemented today.
-      </p>
-    </div>
-
-    <div class="infrastructure-diagram">
-      <div class="diagram-container">
-        <img src="assets/diagrams/nostria-infrastructure.svg" alt="Nostria Infrastructure Diagram" class="diagram-image" />
-        <div class="diagram-overlay">
-          <div class="overlay-stats">
-            <div class="overlay-stat">
-              <div class="stat-icon">
-                <span class="material-symbols-outlined">dns</span>
-              </div>
-              <div class="stat-content">
-                <span class="stat-number">Dedicated</span>
-                <span class="stat-label">Infrastructure</span>
-              </div>
-            </div>
-            <div class="overlay-stat">
-              <div class="stat-icon">
-                <span class="material-symbols-outlined">speed</span>
-              </div>
-              <div class="stat-content">
-                <span class="stat-number">&lt;50ms</span>
-                <span class="stat-label">Global Latency</span>
-              </div>
-            </div>
-            <div class="overlay-stat">
-              <div class="stat-icon">
-                <span class="material-symbols-outlined">public</span>
-              </div>
-              <div class="stat-content">
-                <span class="stat-number">3 (more soon)</span>
-                <span class="stat-label">Global Regions</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="infrastructure-features">
-      <div class="infra-feature">
-        <div class="infra-icon">
-          <span class="material-symbols-outlined">public</span>
-        </div>
-        <div class="infra-content">
-          <h3>Global Distribution</h3>
-          <p>
-            Our infrastructure is distributed across data centers worldwide, ensuring
-            low-latency connections and high availability no matter where you are. In the future we will migrate 
-            users to the closest data center, giving each user the best possible experience.
-          </p>
-          <div class="feature-highlights">
-            <div class="highlight-item">
-              <span class="material-symbols-outlined">check_circle</span>
-              <span>Multi-region deployment</span>
-            </div>
-            <div class="highlight-item">
-              <span class="material-symbols-outlined">check_circle</span>
-              <span>Auto-failover systems</span>
-            </div>
-          </div>
-        </div>
+    <section class="faq" aria-label="FAQ">
+      <div class="section-head">
+        <div class="kicker">FAQ</div>
+        <h2>Common questions</h2>
       </div>
 
-      <div class="infra-feature">
-        <div class="infra-icon">
-          <span class="material-symbols-outlined">shield</span>
-        </div>
-        <div class="infra-content">
-          <h3>Infrastructure Security</h3>
-          <p>
-            We take security seriously. Our infrastructure is built with multiple layers of
-            protection to safeguard your data and privacy.
-          </p>
-          <div class="feature-highlights">
-            <div class="highlight-item">
-              <span class="material-symbols-outlined">check_circle</span>
-              <span>End-to-end encryption</span>
-            </div>
-            <div class="highlight-item">
-              <span class="material-symbols-outlined">check_circle</span>
-              <span>Regular security audits</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="infra-feature">
-        <div class="infra-icon">
-          <span class="material-symbols-outlined">sync</span>
-        </div>
-        <div class="infra-content">
-          <h3>Redundant Systems</h3>
-          <p>
-            Multiple redundancies ensure your relays and media remain
-            accessible even if individual servers experience issues.
-          </p>
-          <div class="feature-highlights">
-            <div class="highlight-item">
-              <span class="material-symbols-outlined">check_circle</span>
-              <span>Real-time replication</span>
-            </div>
-            <div class="highlight-item">
-              <span class="material-symbols-outlined">check_circle</span>
-              <span>Automated backups</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Testimonials Section -->
-<!-- <section class="premium-testimonials">
-  <div class="container">
-    <div class="section-header">
-      <h2>What Premium Users Say</h2>
-      <p class="section-subheading">Don't just take our word for it</p>
-    </div>
-
-    <div class="testimonials-grid">
-      <div class="testimonial-card">
-        <div class="testimonial-content">
-          <div class="testimonial-quote">
-            <span class="material-symbols-outlined">format_quote</span>
-          </div>
-          <p>
-            The difference with Premium is night and day. My posts reach more people,
-            media loads instantly, and the analytics help me understand what content works best.
-          </p>
-          <div class="testimonial-author">
-            <img src="assets/avatars/user4.jpg" alt="Sarah K." class="author-avatar" />
-            <div class="author-info">
-              <h4>Sarah K.</h4>
-              <p>Content Creator</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="testimonial-card">
-        <div class="testimonial-content">
-          <div class="testimonial-quote">
-            <span class="material-symbols-outlined">format_quote</span>
-          </div>
-          <p>
-            As someone who posts a lot of images and videos, the Premium media CDN has been
-            a game-changer. Everything loads so much faster and I never worry about my content disappearing.
-          </p>
-          <div class="testimonial-author">
-            <img src="assets/avatars/user5.jpg" alt="Marco T." class="author-avatar" />
-            <div class="author-info">
-              <h4>Marco T.</h4>
-              <p>Photographer</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="testimonial-card">
-        <div class="testimonial-content">
-          <div class="testimonial-quote">
-            <span class="material-symbols-outlined">format_quote</span>
-          </div>
-          <p>
-            The dedicated relay alone is worth the subscription. My posts propagate instantly
-            and the discovery features have helped me find amazing content and people to follow.
-          </p>
-          <div class="testimonial-author">
-            <img src="assets/avatars/user6.jpg" alt="Jordan L." class="author-avatar" />
-            <div class="author-info">
-              <h4>Jordan L.</h4>
-              <p>Tech Enthusiast</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section> -->
-
-<!-- FAQ Section -->
-<section class="premium-faq">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-badge">
-        <span class="material-symbols-outlined">help</span>
-        <span>Common Questions</span>
-      </div>
-      <h2 class="section-title">Frequently Asked Questions</h2>
-      <p class="section-subheading">Everything you need to know about Nostria Premium and our infrastructure</p>
-    </div>
-
-    <div class="faq-grid">
-      <div class="faq-item">
-        <div class="faq-icon">
-          <span class="material-symbols-outlined">payments</span>
-        </div>
-        <div class="faq-content">
+      <div class="faq-grid">
+        <article class="qa">
           <h3>What payment methods do you accept?</h3>
-          <p>
-            We currently accept Bitcoin/Lightning payments. 
-            We are in the process of incorporating credit/debit cards payments.
-            <br><br>
-            When available, you can pay through in-app purchases on iOS App Store or Google Play Store.
-          </p>
-        </div>
+          <p>Bitcoin/Lightning today. Cards and in-app purchases are planned.</p>
+        </article>
+        <article class="qa">
+          <h3>Can I cancel anytime?</h3>
+          <p>Yes. Your benefits continue until the end of your current billing period.</p>
+        </article>
+        <article class="qa">
+          <h3>What happens to my media if I cancel?</h3>
+          <p>Media remains accessible for a grace period so you have time to migrate if needed.</p>
+        </article>
+        <article class="qa">
+          <h3>Do I get a dedicated relay?</h3>
+          <p>You’re assigned to our premium relay pool for consistent performance and capacity planning.</p>
+        </article>
       </div>
-      
-      <div class="faq-item">
-        <div class="faq-icon">
-          <span class="material-symbols-outlined">trending_up</span>
-        </div>
-        <div class="faq-content">
-          <h3>Can I upgrade or downgrade my plan?</h3>
-          <p>
-            Yes, you can upgrade or downgrade your plan at any time. Changes take effect at the start of your next billing
-            cycle.
-          </p>
-        </div>
-      </div>
-      
-      <div class="faq-item">
-        <div class="faq-icon">
-          <span class="material-symbols-outlined">backup</span>
-        </div>
-        <div class="faq-content">
-          <h3>What is the Content Backup feature?</h3>
-          <p>
-            Once you subscribe to Nostria Premium, a new "Content Backup" section will appear in your sidebar menu, where you can manage all your backup settings, download backup locally, and restore previous content if needed.
-          </p>
-        </div>
-      </div>
+    </section>
 
-      <div class="faq-item">
-        <div class="faq-icon">
-          <span class="material-symbols-outlined">cancel</span>
-        </div>
-        <div class="faq-content">
-          <h3>Can I cancel my subscription anytime?</h3>
-          <p>
-            Yes, you can cancel your Premium subscription at any time. Your benefits will continue until the end of your current billing period.
-          </p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-icon">
-          <span class="material-symbols-outlined">cloud_off</span>
-        </div>
-        <div class="faq-content">
-          <h3>What happens to my media if I cancel Premium?</h3>
-          <p>
-            Your media remains accessible for 30 days after cancellation, giving you time to migrate if needed. You need to remove excess storage used above the free limit. After that period, content exceeding the free tier limit may be removed.
-          </p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-icon">
-          <span class="material-symbols-outlined">support</span>
-        </div>
-        <div class="faq-content">
-          <h3>What kind of support do I get?</h3>
-          <p>
-            Premium users get priority support with faster response times. Premium+ users get dedicated support with direct access to our technical team for complex issues and feature requests.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Call to Action -->
-<section class="premium-cta">
-  <div class="cta-background">
-    <div class="cta-decoration cta-decoration-1"></div>
-    <div class="cta-decoration cta-decoration-2"></div>
-    <div class="cta-decoration cta-decoration-3"></div>
-  </div>
-  <div class="container">
-    <div class="cta-content">
-      <div class="cta-badge">
-        <span class="material-symbols-outlined">rocket_launch</span>
-        <span>Ready to Upgrade?</span>
-      </div>
-      <h2 class="cta-title">Ready to Enhance Your Nostr Experience?</h2>
-      <p class="cta-description">Join thousands of premium users enjoying a better Nostr experience with dedicated infrastructure, enhanced features, and priority support.</p>
-      <div class="cta-features">
-        <div class="cta-feature">
-          <span class="material-symbols-outlined">dns</span>
-          <span>Dedicated Relays</span>
-        </div>
-        <div class="cta-feature">
-          <span class="material-symbols-outlined">cloud</span>
-          <span>2GB Media Storage</span>
-        </div>
-        <div class="cta-feature">
-          <span class="material-symbols-outlined">verified</span>
-          <span>Verified Username</span>
-        </div>
-        <div class="cta-feature">
-          <span class="material-symbols-outlined">support</span>
-          <span>Priority Support</span>
-        </div>
-      </div>
-      <div class="cta-buttons">
-        <a href="https://nostria.app/premium" class="btn btn-primary btn-cta">
-          <span class="btn-text">Get Nostria Premium</span>
-          <span class="material-symbols-outlined">arrow_forward</span>
-        </a>
-        <a href="https://nostria.app" class="btn btn-outline btn-cta-secondary">
-          <span class="btn-text">Try Free Version</span>
-          <span class="material-symbols-outlined">play_arrow</span>
-        </a>
-      </div>
-      <div class="cta-guarantee">
-        <span class="material-symbols-outlined">shield_with_heart</span>
-        <span>Cancel anytime • No hidden fees</span>
-      </div>
-    </div>
   </div>
 </section>

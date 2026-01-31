@@ -16,9 +16,7 @@
           <span class="footer-logo-text title-font">Nostria</span>
         </a>
         <p class="footer-tagline">Your Social Network</p>
-        <p class="footer-description">
-          Take control of your social experience with user-controlled algorithms and zero data tracking.
-        </p>
+        <p class="footer-description">Built for human connection on the decentralized Nostr protocol.</p>
         <div class="social-links">
           <a href="https://x.com/nostriaapp" target="_blank" rel="noopener" class="social-link social-twitter" aria-label="Twitter">
             <span class="material-symbols-outlined">tag</span>
@@ -29,7 +27,7 @@
           <a href="/discord" target="_blank" rel="noopener" class="social-link social-discord" aria-label="Discord">
             <span class="material-symbols-outlined">forum</span>
           </a>
-          <a href="https://nostria.app/p/nostr:npub16x7nxvehx0wvgy0sa6ynkw9c2ghuph3z0ll5t8veq3xwm8n9tqds6ka44x" target="_blank" rel="noopener" class="social-link social-nostr" aria-label="Nostr">
+          <a href="https://nostria.app/u/nostria" target="_blank" rel="noopener" class="social-link social-nostr" aria-label="Nostr">
             <span class="material-symbols-outlined">bolt</span>
           </a>
         </div>
@@ -40,12 +38,13 @@
           <span class="heading-icon">
             <span class="material-symbols-outlined">apps</span>
           </span>
-          Product
+          Get Nostria
         </h5>
         <ul class="footer-list">
-          <li><a routerLink="/features">Features</a></li>
-          <li><a routerLink="/premium">Premium</a></li>
-          <li><a href="https://status.nostria.app" target="_blank" rel="noopener">Status</a></li>
+          <li><a href="https://nostria.app" target="_blank" rel="noopener">Launch Web App</a></li>
+          <li><a href="https://apps.microsoft.com/store/detail/9N7F0TWQ0D8G" target="_blank" rel="noopener">Windows</a></li>
+          <li><a href="https://play.google.com/store/apps/details?id=app.nostria.twa" target="_blank" rel="noopener">Android</a></li>
+          <li><a href="https://testflight.apple.com/join/ysTpCtum" target="_blank" rel="noopener">iOS TestFlight</a></li>
         </ul>
       </div>
 
@@ -54,12 +53,13 @@
           <span class="heading-icon">
             <span class="material-symbols-outlined">business</span>
           </span>
-          Company
+          About
         </h5>
         <ul class="footer-list">
-          <li><a routerLink="/about">About</a></li>
+          <li><a routerLink="/about">Manifesto</a></li>
           <li><a routerLink="/press">Press</a></li>
-          <li><a href="https://nostria.app/p/npub16x7nxvehx0wvgy0sa6ynkw9c2ghuph3z0ll5t8veq3xwm8n9tqds6ka44x/reads" target="_blank" rel="noopener">Blog</a></li>
+          <li><a href="https://github.com/nostria-app" target="_blank" rel="noopener">Open Source</a></li>
+          <li><a href="https://status.nostria.app" target="_blank" rel="noopener">Status</a></li>
         </ul>
       </div>
 
@@ -68,40 +68,14 @@
           <span class="heading-icon">
             <span class="material-symbols-outlined">help</span>
           </span>
-          Resources
+          Support
         </h5>
         <ul class="footer-list">
-          <li><a [routerLink]="['/support']">Support</a></li>
-          <li><a [routerLink]="['/discord']">Discord</a></li>
-          <li><a [routerLink]="['/privacy']">Privacy Policy</a></li>
-          <li><a [routerLink]="['/terms']">Terms of Service</a></li>
-          <li><a [routerLink]="['/policy']">Content Policy</a></li>
-          <li><a href="mailto:nostriaapp@gmail.com">Contact Us</a></li>
+          <li><a [routerLink]="['/support']">Help Center</a></li>
+          <li><a [routerLink]="['/privacy']">Privacy</a></li>
+          <li><a [routerLink]="['/terms']">Terms</a></li>
+          <li><a href="mailto:nostriaapp@gmail.com">Contact</a></li>
         </ul>
-      </div>
-
-      <div class="footer-newsletter">
-        <h5 class="footer-heading">
-          <span class="heading-icon">
-            <span class="material-symbols-outlined">notifications</span>
-          </span>
-          Stay Updated
-        </h5>
-        <p class="newsletter-description">Follow us on Nostr for the latest updates and features:</p>
-        <div class="nostr-link-card">
-          <div class="nostr-icon">
-            <span class="material-symbols-outlined">bolt</span>
-          </div>
-          <div class="nostr-content">
-            <p class="nostr-label">Follow on Nostr</p>
-            <a class="nostr-handle" href="https://nostria.app/p/npub16x7nxvehx0wvgy0sa6ynkw9c2ghuph3z0ll5t8veq3xwm8n9tqds6ka44x" rel="noopener noreferrer" target="_blank">
-              &#64;nostria.app
-            </a>
-          </div>
-          <div class="nostr-arrow">
-            <span class="material-symbols-outlined">arrow_outward</span>
-          </div>
-        </div>
       </div>
     </div>
 
@@ -109,20 +83,20 @@
       <div class="footer-bottom-content">
         <div class="footer-copyright">
           <p class="built-with">Built with <span class="heart">❤️</span> for the Nostr community</p>
-          <p class="copyright-text">Open source software. Taking back social media, one user at a time.</p>
+          <p class="copyright-text">Open source. User-owned. Censorship-resistant.</p>
         </div>
         <div class="footer-stats">
           <div class="stat-badge">
-            <span class="material-symbols-outlined">security</span>
-            <span>100% Open Source</span>
-          </div>
-          <div class="stat-badge">
             <span class="material-symbols-outlined">public</span>
-            <span>Decentralized</span>
+            <span>Nostr</span>
           </div>
           <div class="stat-badge">
-            <span class="material-symbols-outlined">verified_user</span>
-            <span>Privacy First</span>
+            <span class="material-symbols-outlined">lock</span>
+            <span>Own Your Data</span>
+          </div>
+          <div class="stat-badge">
+            <span class="material-symbols-outlined">gavel</span>
+            <span>No Censorship</span>
           </div>
         </div>
       </div>

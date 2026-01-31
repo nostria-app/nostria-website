@@ -2,6 +2,7 @@
   min-height: calc(100vh - 160px); // Account for header and footer height
   display: flex;
   flex-direction: column;
+  padding-top: 60px; // Account for fixed header with extra spacing
 }
 
 // Smooth transitions between pages

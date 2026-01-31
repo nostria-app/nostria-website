@@ -48,7 +48,6 @@
   }
 
   time {
-    font-weight: 500;
   }
 
   .press-category {
@@ -57,7 +56,6 @@
     color: white;
     border-radius: 4px;
     font-size: 0.85rem;
-    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
   }
@@ -68,7 +66,6 @@
   line-height: 1.2;
   margin-bottom: 1rem;
   color: var(--text-primary);
-  font-weight: 700;
 
   @media (max-width: 768px) {
     font-size: 2rem;
@@ -83,7 +80,6 @@
   font-size: 1.25rem;
   line-height: 1.5;
   color: var(--text-secondary);
-  font-weight: 400;
 
   @media (max-width: 768px) {
     font-size: 1.1rem;
@@ -212,7 +208,6 @@
       position: absolute;
       left: 0;
       color: var(--primary-color);
-      font-weight: bold;
     }
   }
 }
@@ -243,7 +238,6 @@
   .stat-number {
     display: block;
     font-size: 2.5rem;
-    font-weight: 700;
     color: var(--primary-color);
     margin-bottom: 0.5rem;
 
@@ -305,7 +299,6 @@
       gap: 0.5rem;
       padding: 1rem 2rem;
       font-size: 1rem;
-      font-weight: 600;
       text-decoration: none;
       border-radius: 8px;
       transition: all 0.3s ease;
@@ -363,7 +356,6 @@
   }
 
   span:last-child {
-    font-weight: 500;
     color: var(--text-primary);
   }
 }
@@ -374,7 +366,6 @@
 
   a {
     color: var(--primary-color);
-    font-weight: 600;
     text-decoration: none;
 
     &:hover {
@@ -510,7 +501,6 @@
     gap: 0.5rem;
     color: var(--primary-color);
     text-decoration: none;
-    font-weight: 500;
     transition: all 0.2s ease;
 
     &:hover {

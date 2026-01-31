@@ -67,7 +67,6 @@
     //   border: 1px solid rgba(255, 255, 255, 0.2);
     //   padding: 0.75rem 1.5rem;
     //   border-radius: 2rem;
-    //   font-weight: 600;
     //   font-size: 0.9rem;
     //   margin-bottom: 2rem;
     //   animation: fadeInUp 0.8s ease-out 0.1s both;
@@ -79,7 +78,6 @@
     
     .hero-title {
       font-size: 4rem;
-      font-weight: 800;
       margin-bottom: 2rem;
       color: white;
       background: linear-gradient(135deg, #ffffff, #e2e8f0);
@@ -126,7 +124,6 @@
         padding: 1rem 1.5rem;
         border-radius: 3rem;
         font-size: 1rem;
-        font-weight: 600;
         cursor: pointer;
         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         position: relative;
@@ -189,7 +186,6 @@
       border: 1px solid rgba(71, 85, 105, 0.2);
       padding: 0.75rem 1.5rem;
       border-radius: 2rem;
-      font-weight: 600;
       font-size: 0.9rem;
       margin-bottom: 1.5rem;
       animation: fadeInUp 0.8s ease-out 0.1s both;
@@ -202,7 +198,6 @@
     
     .section-title {
       font-size: 3rem;
-      font-weight: 800;
       margin-bottom: 1.5rem;
       background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
       -webkit-background-clip: text;
@@ -311,7 +306,6 @@
       h3 {
         margin-bottom: 0.75rem;
         font-size: 1.4rem;
-        font-weight: 900;
         color: var(--text-primary);
       }
       
@@ -430,7 +424,6 @@
           position: absolute;
           left: -1.25rem;
           color: var(--primary-color);
-          font-weight: bold;
         }
       }
     }
@@ -589,7 +582,6 @@
       border: 1px solid rgba(255, 255, 255, 0.2);
       padding: 0.75rem 1.5rem;
       border-radius: 2rem;
-      font-weight: 600;
       font-size: 0.9rem;
       margin-bottom: 2rem;
       animation: fadeInUp 0.8s ease-out 0.1s both;
@@ -601,7 +593,6 @@
     
     .cta-title {
       font-size: 3.5rem;
-      font-weight: 800;
       margin-bottom: 1.5rem;
       background: linear-gradient(135deg, #ffffff, #e2e8f0);
       -webkit-background-clip: text;
@@ -647,7 +638,6 @@
         background: rgba(255, 255, 255, 0.05);
         border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: 2rem;
-        font-weight: 500;
         
         .material-symbols-outlined {
           font-size: 1.1rem;
@@ -676,7 +666,6 @@
         color: white;
         padding: 1.25rem 2.5rem;
         border-radius: 3rem;
-        font-weight: 600;
         font-size: 1.1rem;
         text-decoration: none;
         transition: all 0.4s ease;
@@ -713,7 +702,6 @@
         color: white;
         padding: 1.25rem 2.5rem;
         border-radius: 3rem;
-        font-weight: 600;
         font-size: 1.1rem;
         background: transparent;
         transition: all 0.3s ease;
@@ -954,7 +942,6 @@
         color: var(--primary-color);
         padding: 0.75rem 1.5rem;
         border-radius: 2rem;
-        font-weight: 600;
         font-size: 0.9rem;
         margin-bottom: 2rem;
         border: 1px solid rgba(124, 77, 255, 0.2);
@@ -967,7 +954,6 @@
       
       h2 {
         font-size: 2.5rem;
-        font-weight: 800;
         margin-bottom: 1.5rem;
         background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
         -webkit-background-clip: text;
@@ -1024,7 +1010,6 @@
           }
           
           .feature-text {
-            font-weight: 600;
             color: var(--text-dark);
           }
         }
@@ -1039,7 +1024,6 @@
         padding: 1rem 2rem;
         border-radius: 2rem;
         text-decoration: none;
-        font-weight: 600;
         transition: all 0.4s ease;
         position: relative;
         overflow: hidden;
@@ -1134,7 +1118,6 @@
             
             .stat-number {
               font-size: 1.5rem;
-              font-weight: 800;
               color: var(--primary-color);
               margin-bottom: 0.5rem;
             }
@@ -1142,7 +1125,6 @@
             .stat-label {
               font-size: 0.9rem;
               color: #64748b;
-              font-weight: 500;
             }
           }
         }
@@ -1178,7 +1160,6 @@
             }
             
             .feature-name {
-              font-weight: 600;
               color: var(--text-dark);
             }
           }

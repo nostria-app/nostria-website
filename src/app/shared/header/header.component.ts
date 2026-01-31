@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, PLATFORM_ID, inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
@@ -19,15 +20,19 @@ export class HeaderComponent {
   isScrolled = false;
   canInstall = false;
 
+  private readonly platformId = inject(PLATFORM_ID);
+
   constructor() {
     // Check if navigator.install is supported (Chrome/Edge/Brave 143+)
     // @ts-ignore
-    this.canInstall = typeof navigator !== 'undefined' && typeof navigator.install === 'function';
+    this.canInstall = isPlatformBrowser(this.platformId) && typeof navigator !== 'undefined' && typeof navigator.install === 'function';
   }
 
   toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;
-    document.body.classList.toggle('no-scroll', this.isMenuOpen);
+    if (isPlatformBrowser(this.platformId)) {
+      document.body.classList.toggle('no-scroll', this.isMenuOpen);
+    }
   }
 
   toggleInstallMenu(event: Event): void {
@@ -53,7 +58,9 @@ export class HeaderComponent {
     // Only close menu if it's currently open
     if (this.isMenuOpen) {
       this.isMenuOpen = false;
-      document.body.classList.remove('no-scroll');
+      if (isPlatformBrowser(this.platformId)) {
+        document.body.classList.remove('no-scroll');
+      }
     }
   }
 
@@ -62,6 +69,7 @@ export class HeaderComponent {
   }
 
   onWindowScroll() {
+    if (!isPlatformBrowser(this.platformId)) return;
     this.isScrolled = window.scrollY > 50;
   }
 }

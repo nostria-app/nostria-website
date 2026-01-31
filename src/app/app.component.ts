@@ -10,6 +10,7 @@ import { ScrollRestorationService } from './services/scroll-restoration.service'
   standalone: true,
   imports: [RouterOutlet, HeaderComponent, FooterComponent],
   templateUrl: './app.component.html',
+  styleUrl: './app.component.scss',
 })
 export class AppComponent {
   title = 'Nostria';
