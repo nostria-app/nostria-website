@@ -12,6 +12,7 @@ import { NostrEventEmbedComponent } from '../../components/nostr-event-embed/nos
 export class TestimonialsComponent {
   // Real testimonials from Nostr events
   testimonials = [
+    'nevent1qvzqqqqqqypzqwau4dlr62c854gzwgrdtcvnsylszsrgstd26p2pywy62zm8h2fwqy2hwumn8ghj7un9d3shjtnyv9kh2uewd9hj7qpq68zv345sjhhe2vls4vry3nrauxvcy22artjezw2evlsq6dm9ygssrt7h8d',
     'nevent1qvzqqqqqqypzqyqzr784mk8kn85nxwrej728hp732m4h54rx9p7um4ckm4puwrzqqy2hwumn8ghj7un9d3shjtnyv9kh2uewd9hj7qpqplhq9t6uv9rwqjtmazp2pfr7hgq7ulum6zrxsj343t8he7d0ndxq0l634u',
     'nevent1qvzqqqqqqypzqth65u2mhdrd6klxkldg6acqyek3ze6tjyacz79dmdwzuc7esue3qyt8wumn8ghj7etyv4hzumn0wd68ytnvv9hxgtcqyqqlep7pvtp2khhvq3jqkk0x97ml54fxu09cqhlvmkrwtuy0kapcjfd2enp',
     'nevent1qvzqqqqqqypzqth65u2mhdrd6klxkldg6acqyek3ze6tjyacz79dmdwzuc7esue3qy88wumn8ghj7mn0wvhxcmmv9uqzqpl8z8xrsulqzmunp3shmuxn7x5t8jt07nmhqk6rqkgu34xn2ku0ek5f40',
