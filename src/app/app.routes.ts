@@ -28,6 +28,11 @@ export const routes: Routes = [
     redirectTo: '',
     pathMatch: 'full'
   },
+  {
+    path: 'hero',
+    loadComponent: () => import('./pages/hero/hero.component').then(m => m.HeroComponent),
+    title: 'Nostria - Hero Banner'
+  },
   { path: 'features', component: FeaturesComponent },
   {
     path: 'press',
