@@ -103,12 +103,14 @@
 
           <div class="made-card__visual made-card__visual--stack" aria-hidden="true">
             <div class="visual-stack">
+              <div class="visual-stack__hint visual-stack__hint--top">Create your key</div>
               <div class="visual-stack__card visual-stack__card--back">No phone required</div>
               <div class="visual-stack__card visual-stack__card--middle">No identity broker</div>
               <div class="visual-stack__card visual-stack__card--front">
                 <span class="material-symbols-outlined">mail</span>
                 <span>No email needed</span>
               </div>
+              <div class="visual-stack__hint visual-stack__hint--bottom">Ready in two taps</div>
             </div>
           </div>
         </article>
@@ -121,6 +123,15 @@
 
           <div class="made-card__visual made-card__visual--status" aria-hidden="true">
             <div class="visual-status">
+              <div class="visual-status__graph">
+                <span class="visual-status__node visual-status__node--center"></span>
+                <span class="visual-status__node visual-status__node--one"></span>
+                <span class="visual-status__node visual-status__node--two"></span>
+                <span class="visual-status__node visual-status__node--three"></span>
+                <span class="visual-status__link visual-status__link--one"></span>
+                <span class="visual-status__link visual-status__link--two"></span>
+                <span class="visual-status__link visual-status__link--three"></span>
+              </div>
               <div class="visual-status__eyebrow">
                 <span class="visual-status__dot"></span>
                 <span>STATUS</span>
@@ -141,6 +152,10 @@
                     <span>portable.</span>
                   </span>
                 </span>
+              </div>
+              <div class="visual-status__footer">
+                <span class="material-symbols-outlined">hub</span>
+                <span>Synced across relays</span>
               </div>
             </div>
           </div>
@@ -362,17 +377,26 @@
           </div>
         </article>
 
-        <article class="made-card writers-card writers-card--archive">
+        <article class="made-card writers-card writers-card--newsletter">
           <div class="made-card__copy writers-card__copy">
-            <h3>Keep your archive</h3>
-            <p>Your articles live on the network, so readers can find them across clients while your catalog stays portable.</p>
+            <h3>Newsletter</h3>
+            <p>Nostria supports newsletter signups, so readers can subscribe and receive messages directly from authors.</p>
           </div>
 
-          <div class="made-card__visual writers-visual writers-visual--archive" aria-hidden="true">
-            <div class="writer-archive">
-              <div class="writer-archive__item">Issue #12</div>
-              <div class="writer-archive__item">Feature essay</div>
-              <div class="writer-archive__item">Reader notes</div>
+          <div class="made-card__visual writers-visual writers-visual--newsletter" aria-hidden="true">
+            <div class="writer-newsletter">
+              <div class="writer-newsletter__header">
+                <span class="material-symbols-outlined">mail</span>
+                <span>Author dispatch</span>
+              </div>
+              <div class="writer-newsletter__signup">
+                <span>Subscribed readers</span>
+                <span>+128</span>
+              </div>
+              <div class="writer-newsletter__messages">
+                <div class="writer-newsletter__message">New essay delivered</div>
+                <div class="writer-newsletter__message">Weekly note sent</div>
+              </div>
             </div>
           </div>
         </article>
