@@ -229,12 +229,12 @@
   letter-spacing: -0.02em;
 
   @media (max-width: 768px) {
-    font-size: clamp(2.2rem, 8vw, 3.5rem);
+    font-size: clamp(2.7rem, 10vw, 4.2rem);
     margin-bottom: 1.5rem;
   }
 
   @media (max-width: 480px) {
-    font-size: clamp(2rem, 7vw, 2.8rem);
+    font-size: clamp(2.8rem, 11vw, 3.9rem);
     margin-bottom: 1.25rem;
     line-height: 1.1;
   }
@@ -497,6 +497,7 @@
 
     @media (max-width: 480px) {
       flex-direction: column;
+      align-items: center;
       gap: 0.75rem;
     }
   }
@@ -504,6 +505,14 @@
   .platform-link-wrapper {
     position: relative;
     display: inline-block;
+
+    @media (max-width: 480px) {
+      width: min(100%, 19rem);
+    }
+
+    @media (max-width: 360px) {
+      width: min(100%, 17.5rem);
+    }
   }
 
   .platform-link {
@@ -577,7 +586,11 @@
 
     @media (max-width: 480px) {
       justify-content: center;
-      width: 100%;
+      width: min(100%, 19rem);
+    }
+
+    @media (max-width: 360px) {
+      width: min(100%, 17.5rem);
     }
   }
 
@@ -827,13 +840,11 @@
   color: var(--text-primary);
   background: none;
   -webkit-text-fill-color: currentColor;
-  animation: fadeInUp 0.75s ease-out both;
 
   span {
     display: inline-block;
     color: var(--primary-color);
     font-style: italic;
-    animation: madeAccentTilt 4.8s ease-in-out infinite 0.8s;
   }
 }
 
@@ -938,13 +949,13 @@
 .person-section {
   position: relative;
   overflow: clip;
-  padding: clamp(4.5rem, 10vw, 7rem) 0 clamp(7rem, 14vw, 11rem);
+  padding: clamp(7.5rem, 14vw, 10.5rem) 0 clamp(12.5rem, 22vw, 17rem);
 }
 
 .creator-value-section {
   position: relative;
   overflow: clip;
-  padding: clamp(2rem, 4vw, 3rem) 0 clamp(6rem, 11vw, 8rem);
+  padding: clamp(5.5rem, 10vw, 8rem) 0 clamp(11.5rem, 20vw, 15rem);
 }
 
 .person-message {
@@ -1021,13 +1032,11 @@
   font-size: clamp(3.5rem, 10vw, 6.2rem);
   line-height: 0.92;
   letter-spacing: -0.04em;
-  animation: fadeInUp 0.85s ease-out both;
 }
 
 .person-message__title-line--accent {
   color: var(--primary-color);
   font-style: italic;
-  animation: fadeInUp 0.95s ease-out both, madeAccentTilt 5.2s ease-in-out infinite 1s;
 }
 
 .creator-value-message__eyebrow {
@@ -1056,13 +1065,11 @@
   font-size: clamp(3.15rem, 9vw, 5.8rem);
   line-height: 0.93;
   letter-spacing: -0.04em;
-  animation: fadeInUp 0.85s ease-out both;
 }
 
 .creator-value-message__title-line--accent {
   color: var(--primary-color);
   font-style: italic;
-  animation: fadeInUp 0.95s ease-out both, madeAccentTilt 5.2s ease-in-out infinite 1s;
 }
 
 .creator-value-message__body {
@@ -1103,13 +1110,11 @@
   color: var(--text-primary);
   background: none;
   -webkit-text-fill-color: currentColor;
-  animation: fadeInUp 0.75s ease-out both;
 
   span {
     display: inline-block;
     color: var(--primary-color);
     font-style: italic;
-    animation: madeAccentTilt 4.8s ease-in-out infinite 0.8s;
   }
 }
 
