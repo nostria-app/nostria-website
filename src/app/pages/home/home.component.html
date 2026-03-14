@@ -89,24 +89,97 @@
   </div>
 </section>
 
-<section class="below-hero">
+<section class="below-hero" aria-labelledby="made-for-you-heading">
   <div class="container">
-    <div class="value-grid">
-      <div class="value-card">
-        <div class="value-icon"><span class="material-symbols-outlined">touch_app</span></div>
-        <h2>Start in two clicks</h2>
-        <p>No email. No phone. Your identity stays yours.</p>
+    <div class="made-for-you">
+      <h2 id="made-for-you-heading" class="made-for-you__title">Made for <span>you.</span></h2>
+
+      <div class="made-for-you__grid">
+        <article class="made-card made-card--onboarding">
+          <div class="made-card__copy">
+            <h3>Start in two clicks</h3>
+            <p>No email. No phone. Your identity stays yours.</p>
+          </div>
+
+          <div class="made-card__visual made-card__visual--stack" aria-hidden="true">
+            <div class="visual-stack">
+              <div class="visual-stack__card visual-stack__card--back">No phone required</div>
+              <div class="visual-stack__card visual-stack__card--middle">No identity broker</div>
+              <div class="visual-stack__card visual-stack__card--front">
+                <span class="material-symbols-outlined">mail</span>
+                <span>No email needed</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="made-card made-card--ownership">
+          <div class="made-card__copy">
+            <h3>Own your data</h3>
+            <p>Your social network lives with you, not inside a walled garden.</p>
+          </div>
+
+          <div class="made-card__visual made-card__visual--status" aria-hidden="true">
+            <div class="visual-status">
+              <div class="visual-status__eyebrow">
+                <span class="visual-status__dot"></span>
+                <span>STATUS</span>
+              </div>
+              <div class="visual-status__lines">
+                <span>Welcome back.</span>
+                <span>No algorithmic timeline.</span>
+                <span>Just your friends.</span>
+                <span>Your graph is secure.</span>
+              </div>
+              <div class="visual-status__ticker">
+                <span class="visual-status__ticker-label">Identity stays</span>
+                <span class="visual-status__ticker-window">
+                  <span class="visual-status__ticker-track">
+                    <span>portable.</span>
+                    <span>private.</span>
+                    <span>yours.</span>
+                    <span>portable.</span>
+                  </span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="made-card made-card--privacy">
+          <div class="made-card__copy">
+            <h3>No ads, no tracking</h3>
+            <p>Your attention isn't for sale. Browse freely without surveillance.</p>
+          </div>
+
+          <div class="made-card__visual made-card__visual--privacy" aria-hidden="true">
+            <div class="visual-privacy">
+              <div class="visual-privacy__badge visual-privacy__badge--top">
+                <span class="material-symbols-outlined">do_not_disturb_on</span>
+              </div>
+              <div class="visual-privacy__ring"></div>
+              <div class="visual-privacy__center">
+                <span class="material-symbols-outlined">self_improvement</span>
+              </div>
+              <div class="visual-privacy__badge visual-privacy__badge--bottom">
+                <span class="material-symbols-outlined">visibility_off</span>
+              </div>
+            </div>
+          </div>
+        </article>
       </div>
-      <div class="value-card">
-        <div class="value-icon"><span class="material-symbols-outlined">lock</span></div>
-        <h2>Own your data</h2>
-        <p>Your social graph lives on Nostr, not inside a walled garden.</p>
-      </div>
-      <div class="value-card">
-        <div class="value-icon"><span class="material-symbols-outlined">visibility_off</span></div>
-        <h2>No ads, no tracking</h2>
-        <p>Your attention isn't for sale. Browse freely without surveillance.</p>
-      </div>
+    </div>
+  </div>
+</section>
+
+<section class="person-section" aria-labelledby="person-section-heading">
+  <div class="container">
+    <div class="person-message">
+      <p class="person-message__eyebrow">Most networks treat you as a product.</p>
+      <h2 id="person-section-heading" class="person-message__title">
+        <span class="person-message__title-line">We treat you</span>
+        <span class="person-message__title-line person-message__title-line--accent">as a person.</span>
+      </h2>
     </div>
   </div>
 </section>
