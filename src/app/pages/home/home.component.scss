@@ -1000,6 +1000,210 @@
   animation: fadeInUp 0.95s ease-out both, madeAccentTilt 5.2s ease-in-out infinite 1s;
 }
 
+.musicians-section {
+  padding: 0 0 clamp(4.5rem, 8vw, 6rem);
+}
+
+.musicians {
+  display: grid;
+  gap: 2.4rem;
+}
+
+.musicians__title {
+  margin: 0;
+  font-size: clamp(3rem, 7vw, 5rem);
+  line-height: 0.94;
+  letter-spacing: -0.04em;
+  color: var(--text-primary);
+  background: none;
+  -webkit-text-fill-color: currentColor;
+  animation: fadeInUp 0.75s ease-out both;
+
+  span {
+    display: inline-block;
+    color: var(--primary-color);
+    font-style: italic;
+    animation: madeAccentTilt 4.8s ease-in-out infinite 0.8s;
+  }
+}
+
+.musicians__grid {
+  align-items: stretch;
+}
+
+.musicians-card {
+  min-height: 19.5rem;
+}
+
+.musicians-card__copy {
+  max-width: 19rem;
+}
+
+.musicians-visual {
+  min-height: 8.75rem;
+}
+
+.musicians-visual--publish,
+.musicians-visual--catalog,
+.musicians-visual--zaps {
+  display: grid;
+  place-items: center;
+}
+
+.music-release {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.9rem;
+  width: 100%;
+  align-items: center;
+}
+
+.music-release__cover {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 1rem;
+  background: linear-gradient(135deg, rgba(var(--primary-color-rgb), 0.95), rgba(var(--secondary-color-rgb), 0.6));
+  box-shadow: 0 14px 30px rgba(var(--primary-color-rgb), 0.2);
+  animation: musicCoverPulse 4.2s ease-in-out infinite;
+}
+
+.music-release__meta {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.music-release__label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(120, 89, 52, 0.78);
+}
+
+.music-release__title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.music-release__apps {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+
+  span {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.4rem 0.7rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.86);
+    border: 1px solid rgba(var(--primary-color-rgb), 0.12);
+    color: var(--text-secondary);
+    font-size: 0.82rem;
+    font-weight: 600;
+    animation: musicChipFloat 4.6s ease-in-out infinite;
+  }
+
+  span:nth-child(2) {
+    animation-delay: 0.18s;
+  }
+
+  span:nth-child(3) {
+    animation-delay: 0.36s;
+  }
+}
+
+.music-catalog {
+  display: grid;
+  gap: 0.65rem;
+  width: 100%;
+}
+
+.music-catalog__row {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.7rem 0.9rem;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.84);
+  border: 1px solid rgba(var(--primary-color-rgb), 0.12);
+  color: var(--text-primary);
+  font-weight: 600;
+  box-shadow: 0 12px 24px rgba(60, 43, 14, 0.05);
+  animation: musicRowSlide 4.8s ease-in-out infinite;
+
+  .material-symbols-outlined {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+  }
+}
+
+.music-catalog__row--track {
+  animation-delay: 0.18s;
+}
+
+.music-catalog__row--identity {
+  animation-delay: 0.36s;
+}
+
+.music-zaps {
+  position: relative;
+  width: 100%;
+  min-height: 7rem;
+  display: grid;
+  place-items: center;
+}
+
+.music-zaps__coin,
+.music-zaps__bolt {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+}
+
+.music-zaps__coin {
+  width: 3.75rem;
+  height: 3.75rem;
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--primary-color);
+  font-size: 1.65rem;
+  font-weight: 800;
+  box-shadow: 0 16px 32px rgba(60, 43, 14, 0.1);
+  animation: musicCoinBob 3.8s ease-in-out infinite;
+}
+
+.music-zaps__bolt {
+  width: 2.4rem;
+  height: 2.4rem;
+  right: 20%;
+  bottom: 10%;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--primary-color);
+  box-shadow: 0 12px 24px rgba(60, 43, 14, 0.08);
+  animation: musicBoltFlash 2.2s ease-in-out infinite;
+
+  .material-symbols-outlined {
+    font-size: 1.2rem;
+  }
+}
+
+.music-zaps__pulse {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  width: 3.75rem;
+  height: 3.75rem;
+  border-radius: 50%;
+  border: 1px solid rgba(var(--primary-color-rgb), 0.22);
+  transform: translate(-50%, -50%);
+  animation: musicZapPulse 2.6s ease-out infinite;
+}
+
+.music-zaps__pulse--two {
+  animation-delay: 1.2s;
+}
+
 .signer-section {
   padding: 0 0 5rem;
 }
@@ -1012,6 +1216,10 @@
 
   .person-message__title {
     gap: 0.15rem;
+  }
+
+  .musicians {
+    gap: 1.8rem;
   }
 }
 
@@ -3294,6 +3502,81 @@
   }
 }
 
+@keyframes musicCoverPulse {
+
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+
+  50% {
+    transform: scale(1.06) rotate(2deg);
+  }
+}
+
+@keyframes musicChipFloat {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes musicRowSlide {
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(4px);
+  }
+}
+
+@keyframes musicCoinBob {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes musicBoltFlash {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+}
+
+@keyframes musicZapPulse {
+
+  0% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0.9;
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(2.1);
+    opacity: 0;
+  }
+}
+
 @keyframes madeGlowDrift {
 
   0%,
@@ -3477,6 +3760,8 @@
   .person-message::before,
   .person-message__eyebrow,
   .person-message__title-line,
+  .musicians__title,
+  .musicians__title span,
   .visual-stack__card,
   .visual-status,
   .visual-status__dot,
@@ -3485,7 +3770,13 @@
   .visual-status__ticker-track,
   .visual-privacy__ring,
   .visual-privacy__center,
-  .visual-privacy__badge {
+  .visual-privacy__badge,
+  .music-release__cover,
+  .music-release__apps span,
+  .music-catalog__row,
+  .music-zaps__coin,
+  .music-zaps__bolt,
+  .music-zaps__pulse {
     animation: none !important;
     transition: none !important;
   }
