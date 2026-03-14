@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Disallow: /discord
+Disallow: /ios
+
+Sitemap: https://www.nostria.app/sitemap.xml
