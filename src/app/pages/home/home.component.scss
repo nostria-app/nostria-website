@@ -1000,16 +1000,22 @@
   animation: fadeInUp 0.95s ease-out both, madeAccentTilt 5.2s ease-in-out infinite 1s;
 }
 
-.musicians-section {
+.musicians-section,
+.streamers-section,
+.writers-section {
   padding: 0 0 clamp(4.5rem, 8vw, 6rem);
 }
 
-.musicians {
+.musicians,
+.streamers,
+.writers {
   display: grid;
   gap: 2.4rem;
 }
 
-.musicians__title {
+.musicians__title,
+.streamers__title,
+.writers__title {
   margin: 0;
   font-size: clamp(3rem, 7vw, 5rem);
   line-height: 0.94;
@@ -1027,19 +1033,30 @@
   }
 }
 
-.musicians__grid {
+.musicians__grid,
+.streamers__grid,
+.writers__grid {
   align-items: stretch;
 }
 
-.musicians-card {
+.musicians-card,
+.streamers-card,
+.writers-card {
   min-height: 19.5rem;
 }
 
-.musicians-card__copy {
+.musicians-card__copy,
+.streamers-card__copy,
+.writers-card__copy {
   max-width: 19rem;
 }
 
 .musicians-visual {
+  min-height: 8.75rem;
+}
+
+.streamers-visual,
+.writers-visual {
   min-height: 8.75rem;
 }
 
@@ -1204,6 +1221,233 @@
   animation-delay: 1.2s;
 }
 
+.streamers-visual--watch,
+.streamers-visual--chat,
+.streamers-visual--zaps,
+.writers-visual--articles,
+.writers-visual--apps,
+.writers-visual--archive {
+  display: grid;
+  place-items: center;
+}
+
+.stream-watch {
+  display: grid;
+  gap: 0.8rem;
+  width: 100%;
+}
+
+.stream-watch__screen {
+  position: relative;
+  min-height: 4.6rem;
+  display: grid;
+  place-items: center;
+  border-radius: 1.1rem;
+  background: linear-gradient(135deg, rgba(48, 35, 18, 0.92), rgba(96, 58, 20, 0.9));
+  color: white;
+  box-shadow: 0 18px 36px rgba(60, 43, 14, 0.16);
+  animation: streamScreenPulse 4.8s ease-in-out infinite;
+
+  .material-symbols-outlined {
+    font-size: 1.9rem;
+  }
+}
+
+.stream-watch__live {
+  position: absolute;
+  top: 0.7rem;
+  left: 0.7rem;
+  padding: 0.28rem 0.5rem;
+  border-radius: 999px;
+  background: rgba(255, 122, 0, 0.95);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.stream-watch__meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.stream-chat {
+  display: grid;
+  gap: 0.55rem;
+  width: 100%;
+}
+
+.stream-chat__bubble {
+  width: fit-content;
+  max-width: 92%;
+  padding: 0.6rem 0.8rem;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(var(--primary-color-rgb), 0.12);
+  color: var(--text-primary);
+  font-size: 0.84rem;
+  box-shadow: 0 12px 24px rgba(60, 43, 14, 0.05);
+  animation: streamBubbleFloat 4.4s ease-in-out infinite;
+}
+
+.stream-chat__bubble--two {
+  margin-left: auto;
+  animation-delay: 0.2s;
+}
+
+.stream-chat__bubble--three {
+  animation-delay: 0.4s;
+}
+
+.stream-zaps {
+  position: relative;
+  width: 100%;
+  min-height: 7rem;
+  display: grid;
+  place-items: center;
+}
+
+.stream-zaps__center {
+  position: relative;
+  z-index: 1;
+  width: 3.5rem;
+  height: 3.5rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  font-weight: 800;
+  box-shadow: 0 14px 28px rgba(60, 43, 14, 0.1);
+  animation: musicCoinBob 3.6s ease-in-out infinite;
+}
+
+.stream-zaps__ring {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  border: 1px solid rgba(var(--primary-color-rgb), 0.24);
+  transform: translate(-50%, -50%);
+  animation: musicZapPulse 2.8s ease-out infinite;
+}
+
+.stream-zaps__ring--two {
+  animation-delay: 1.25s;
+}
+
+.stream-zaps__badge {
+  position: absolute;
+  right: 18%;
+  bottom: 8%;
+  width: 2.3rem;
+  height: 2.3rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--primary-color);
+  box-shadow: 0 12px 24px rgba(60, 43, 14, 0.08);
+  animation: musicBoltFlash 2.2s ease-in-out infinite;
+
+  .material-symbols-outlined {
+    font-size: 1.15rem;
+  }
+}
+
+.writer-article {
+  display: grid;
+  gap: 0.55rem;
+  width: 100%;
+}
+
+.writer-article__line {
+  height: 0.8rem;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(var(--primary-color-rgb), 0.18), rgba(var(--secondary-color-rgb), 0.28));
+  animation: writerLineGlow 4.6s ease-in-out infinite;
+}
+
+.writer-article__line--title {
+  height: 1.1rem;
+  width: 72%;
+}
+
+.writer-article__line--body {
+  width: 100%;
+}
+
+.writer-article__line.short {
+  width: 82%;
+}
+
+.writer-apps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  width: 100%;
+
+  span {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.45rem 0.75rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(var(--primary-color-rgb), 0.12);
+    color: var(--text-secondary);
+    font-size: 0.82rem;
+    font-weight: 600;
+    animation: musicChipFloat 4.8s ease-in-out infinite;
+  }
+
+  span:nth-child(2) {
+    animation-delay: 0.15s;
+  }
+
+  span:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+
+  span:nth-child(4) {
+    animation-delay: 0.45s;
+  }
+
+  span:nth-child(5) {
+    animation-delay: 0.6s;
+  }
+}
+
+.writer-archive {
+  display: grid;
+  gap: 0.6rem;
+  width: 100%;
+}
+
+.writer-archive__item {
+  padding: 0.7rem 0.9rem;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.86);
+  border: 1px solid rgba(var(--primary-color-rgb), 0.12);
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-weight: 600;
+  box-shadow: 0 10px 20px rgba(60, 43, 14, 0.05);
+  animation: writerArchiveShift 4.6s ease-in-out infinite;
+}
+
+.writer-archive__item:nth-child(2) {
+  animation-delay: 0.16s;
+}
+
+.writer-archive__item:nth-child(3) {
+  animation-delay: 0.32s;
+}
+
 .signer-section {
   padding: 0 0 5rem;
 }
@@ -1218,7 +1462,9 @@
     gap: 0.15rem;
   }
 
-  .musicians {
+  .musicians,
+  .streamers,
+  .writers {
     gap: 1.8rem;
   }
 }
@@ -3577,6 +3823,56 @@
   }
 }
 
+@keyframes streamScreenPulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+@keyframes streamBubbleFloat {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes writerLineGlow {
+
+  0%,
+  100% {
+    opacity: 0.75;
+    transform: scaleX(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scaleX(0.98);
+  }
+}
+
+@keyframes writerArchiveShift {
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(3px);
+  }
+}
+
 @keyframes madeGlowDrift {
 
   0%,
@@ -3762,6 +4058,10 @@
   .person-message__title-line,
   .musicians__title,
   .musicians__title span,
+  .streamers__title,
+  .streamers__title span,
+  .writers__title,
+  .writers__title span,
   .visual-stack__card,
   .visual-status,
   .visual-status__dot,
@@ -3776,7 +4076,15 @@
   .music-catalog__row,
   .music-zaps__coin,
   .music-zaps__bolt,
-  .music-zaps__pulse {
+  .music-zaps__pulse,
+  .stream-watch__screen,
+  .stream-chat__bubble,
+  .stream-zaps__center,
+  .stream-zaps__ring,
+  .stream-zaps__badge,
+  .writer-article__line,
+  .writer-apps span,
+  .writer-archive__item {
     animation: none !important;
     transition: none !important;
   }
