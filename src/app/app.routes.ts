@@ -97,7 +97,7 @@ export const routes: Routes = [
     title: 'Nostria Overview - Nostr Client by Nostria',
     data: pageSeo({
       title: 'Nostria Overview - Nostr Client by Nostria',
-      description: 'See how Nostria presents a cleaner, calmer Nostr experience built for real relationships and everyday use.',
+      description: 'See how Nostria feels in practice: calmer, simpler, and built to help you spend more time with the people you care about.',
       canonicalPath: '/hero',
       image: socialImage,
       keywords: ['Nostria overview', 'Nostr social app', 'decentralized social media']
@@ -109,7 +109,7 @@ export const routes: Routes = [
     title: 'Nostria Features - Modern Nostr Client Capabilities',
     data: pageSeo({
       title: 'Nostria Features - Modern Nostr Client Capabilities',
-      description: 'Explore Nostria features including rich media, local AI tools, cross-platform support, and infrastructure designed to help Nostr scale.',
+      description: 'Explore the features that make Nostria feel simpler, calmer, and more human across every device you use.',
       canonicalPath: '/features',
       image: socialImage,
       keywords: ['Nostr client features', 'Nostria features', 'decentralized social media app', 'Nostr app for musicians'],
@@ -117,7 +117,7 @@ export const routes: Routes = [
         '@context': 'https://schema.org',
         '@type': 'CollectionPage',
         name: 'Nostria Features',
-        description: 'Feature overview for the Nostria Nostr client.',
+        description: 'A closer look at the features that make Nostria feel simple, useful, and made for real connection.',
         url: `${siteUrl}/features`
       }
     })
@@ -128,7 +128,7 @@ export const routes: Routes = [
     title: 'Press & Media - Nostria',
     data: pageSeo({
       title: 'Press & Media - Nostria',
-      description: 'Read the latest Nostria announcements, product releases, and company milestones about our modern Nostr client and premium infrastructure.',
+      description: 'Read the latest announcements, releases, and milestones from Nostria as we build social without the noise.',
       canonicalPath: '/press',
       image: socialImage,
       keywords: ['Nostria press', 'Nostr client news', 'decentralized social network announcements'],
@@ -136,7 +136,7 @@ export const routes: Routes = [
         '@context': 'https://schema.org',
         '@type': 'CollectionPage',
         name: 'Nostria Press & Media',
-        description: 'Press releases and media resources from Nostria.',
+        description: 'Press releases, updates, and media resources from Nostria.',
         url: `${siteUrl}/press`
       }
     })
@@ -147,13 +147,13 @@ export const routes: Routes = [
     title: 'Nostria 2.0: A New Era for Decentralized Social Networking - Nostria Press',
     data: pageSeo({
       title: 'Nostria 2.0: A New Era for Decentralized Social Networking - Nostria Press',
-      description: 'Nostria 2.0 introduces major performance improvements, feature upgrades, and a refined experience for users of the Nostr protocol.',
+      description: 'Nostria 2.0 brings a smoother, more polished experience so it is easier to focus on people, conversations, and community.',
       canonicalPath: '/press/nostria-2-release',
       image: socialImage,
       type: 'article',
       structuredData: articleSchema({
         headline: 'Nostria 2.0: A New Era for Decentralized Social Networking',
-        description: 'Nostria 2.0 introduces major performance improvements, feature upgrades, and a refined experience for users of the Nostr protocol.',
+        description: 'Nostria 2.0 brings a smoother, more polished experience so it is easier to focus on people, conversations, and community.',
         path: '/press/nostria-2-release',
         datePublished: '2025-12-29'
       })
@@ -165,13 +165,13 @@ export const routes: Routes = [
     title: 'Seed Funding Launch Announcement - Nostria Press',
     data: pageSeo({
       title: 'Seed Funding Launch Announcement - Nostria Press',
-      description: 'Nostria announces its seed funding launch and outlines how the company is scaling Nostr infrastructure for premium users and the broader network.',
+      description: 'Nostria announces its seed round and shares how we plan to keep building a calmer, more human social network.',
       canonicalPath: '/press/seed-fund-launch',
       image: socialImage,
       type: 'article',
       structuredData: articleSchema({
         headline: 'Nostria Launches $400,000 Seed Round via Revenue-Based Financing on Angor Protocol',
-        description: 'Nostria announces its seed funding launch and outlines how the company is scaling Nostr infrastructure for premium users and the broader network.',
+        description: 'Nostria announces its seed round and shares how we plan to keep building a calmer, more human social network.',
         path: '/press/seed-fund-launch',
         datePublished: '2025-10-06'
       })
@@ -183,13 +183,13 @@ export const routes: Routes = [
     title: 'Pre-Seed Funding Announcement - Nostria Press',
     data: pageSeo({
       title: 'Pre-Seed Funding Announcement - Nostria Press',
-      description: 'Nostria shares details about completing its pre-seed funding round to expand modern Nostr infrastructure and decentralized social networking.',
+      description: 'Nostria shares the story of its first funding round and the next steps in building social without the noise.',
       canonicalPath: '/press/pre-seed-fund-raised',
       image: socialImage,
       type: 'article',
       structuredData: articleSchema({
         headline: 'Nostria Successfully Completes $30,000 Pre-Seed Funding Round Using Angor Protocol',
-        description: 'Nostria shares details about completing its pre-seed funding round to expand modern Nostr infrastructure and decentralized social networking.',
+        description: 'Nostria shares the story of its first funding round and the next steps in building social without the noise.',
         path: '/press/pre-seed-fund-raised',
         datePublished: '2025-05-31'
       })
@@ -201,13 +201,13 @@ export const routes: Routes = [
     title: 'MVP Launch: The Beginning has Started - Nostria Press',
     data: pageSeo({
       title: 'MVP Launch: The Beginning has Started - Nostria Press',
-      description: 'Read the announcement for Nostria MVP launch, bringing a fully supported and backward-compatible Nostr client to users worldwide.',
+      description: 'Read the announcement for the first public version of Nostria and the beginning of a more human social experience.',
       canonicalPath: '/press/mvp-released',
       image: socialImage,
       type: 'article',
       structuredData: articleSchema({
         headline: 'Nostria Launch: The Beginning has Started',
-        description: 'Read the announcement for Nostria MVP launch, bringing a fully supported and backward-compatible Nostr client to users worldwide.',
+        description: 'Read the announcement for the first public version of Nostria and the beginning of a more human social experience.',
         path: '/press/mvp-released',
         datePublished: '2025-08-31'
       })
@@ -219,7 +219,7 @@ export const routes: Routes = [
     title: 'Nostria Premium - Dedicated Nostr Infrastructure',
     data: pageSeo({
       title: 'Nostria Premium - Dedicated Nostr Infrastructure',
-      description: 'Get Nostria Premium for dedicated relays, global media delivery, verified identity tools, and infrastructure built for serious Nostr users.',
+      description: 'Get more from Nostria with premium tools, smoother performance, and extra support for the people who use it every day.',
       canonicalPath: '/premium',
       image: socialImage,
       type: 'product',
@@ -228,7 +228,7 @@ export const routes: Routes = [
         '@context': 'https://schema.org',
         '@type': 'Product',
         name: 'Nostria Premium',
-        description: 'Dedicated relays, fast media, and premium infrastructure for people who live on Nostr.',
+        description: 'Premium tools and smoother performance for people who want more from Nostria.',
         brand: {
           '@type': 'Brand',
           name: 'Nostria'
@@ -255,7 +255,7 @@ export const routes: Routes = [
     title: 'Nostria Pre-Seed Funding - Company Update',
     data: pageSeo({
       title: 'Nostria Pre-Seed Funding - Company Update',
-      description: 'See details about Nostria pre-seed fundraising and the roadmap for expanding its Nostr client and premium infrastructure services.',
+      description: 'See the details from Nostria’s first funding round and how that support helped us keep building.',
       canonicalPath: '/funding/pre-seed',
       image: socialImage,
       type: 'article'
@@ -267,7 +267,7 @@ export const routes: Routes = [
     title: 'Terms of Service - Nostria',
     data: pageSeo({
       title: 'Terms of Service - Nostria',
-      description: 'Review the terms of service for Nostria, including use of the website, applications, and premium services.',
+      description: 'Review the terms for using Nostria, including the website, apps, and premium services.',
       canonicalPath: '/terms',
       image: socialImage
     })
@@ -278,7 +278,7 @@ export const routes: Routes = [
     title: 'Privacy Policy - Nostria',
     data: pageSeo({
       title: 'Privacy Policy - Nostria',
-      description: 'Read how Nostria approaches privacy, data handling, and account-related information across its website and products.',
+      description: 'Read how Nostria handles privacy and the information connected to the website, apps, and your account.',
       canonicalPath: '/privacy',
       image: socialImage
     })
@@ -289,7 +289,7 @@ export const routes: Routes = [
     title: 'Content Policy - Nostria',
     data: pageSeo({
       title: 'Content Policy - Nostria',
-      description: 'Read the Nostria content policy and expectations for safe, respectful participation across the platform and community channels.',
+      description: 'Read the expectations for safe and respectful participation across Nostria and its community spaces.',
       canonicalPath: '/policy',
       image: socialImage
     })
@@ -300,7 +300,7 @@ export const routes: Routes = [
     title: 'Nostria Reviews & Testimonials',
     data: pageSeo({
       title: 'Nostria Reviews & Testimonials',
-      description: 'See what users say about Nostria, the modern Nostr client focused on human connection, usability, and performance.',
+      description: 'See what people say about using Nostria and why it feels calmer, simpler, and more social.',
       canonicalPath: '/testimonials',
       image: socialImage,
       keywords: ['Nostria reviews', 'Nostr client testimonials', 'Nostria user feedback']
@@ -312,7 +312,7 @@ export const routes: Routes = [
     title: 'About Nostria - Manifesto for Human Connection',
     data: pageSeo({
       title: 'About Nostria - Manifesto for Human Connection',
-      description: 'Read the Nostria manifesto and learn why we are building a Nostr client and social network centered on people instead of manipulation.',
+      description: 'Read the Nostria manifesto and why we believe social media should help people feel closer, not more overwhelmed.',
       canonicalPath: '/about',
       image: socialImage,
       keywords: ['about Nostria', 'Nostria manifesto', 'human connection social network']
@@ -324,7 +324,7 @@ export const routes: Routes = [
     title: 'Get Support - Nostria',
     data: pageSeo({
       title: 'Get Support - Nostria',
-      description: 'Get help with Nostria, find support channels, and learn where to ask questions about the website, client, and premium services.',
+      description: 'Get help with Nostria, find the right support channel, and get answers when you need them.',
       canonicalPath: '/support',
       image: socialImage,
       keywords: ['Nostria support', 'Nostr app help', 'Nostria help center']
@@ -336,7 +336,7 @@ export const routes: Routes = [
     title: 'Join Our Discord - Nostria',
     data: pageSeo({
       title: 'Join Our Discord - Nostria',
-      description: 'Redirecting to the Nostria Discord community.',
+      description: 'Join the Nostria community on Discord.',
       canonicalPath: '/discord',
       image: socialImage,
       robots: 'noindex, nofollow'
@@ -348,7 +348,7 @@ export const routes: Routes = [
     title: 'Join iOS TestFlight - Nostria',
     data: pageSeo({
       title: 'Join iOS TestFlight - Nostria',
-      description: 'Redirecting to the Nostria iOS TestFlight experience.',
+      description: 'Join Nostria on iPhone through TestFlight.',
       canonicalPath: '/ios',
       image: socialImage,
       robots: 'noindex, nofollow'
