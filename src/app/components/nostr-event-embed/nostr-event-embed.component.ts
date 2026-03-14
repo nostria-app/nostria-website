@@ -1,5 +1,5 @@
-import { Component, ChangeDetectionStrategy, input, signal, computed, OnInit, OnDestroy, PLATFORM_ID, inject } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { Component, ChangeDetectionStrategy, input, signal, computed, OnInit, OnDestroy, PLATFORM_ID, inject, makeStateKey, PendingTasks, TransferState } from '@angular/core';
+import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 
 interface NostrEvent {
   id: string;
@@ -30,6 +30,11 @@ interface MentionedProfile {
   pubkey: string;
   profile: AuthorProfile | null;
   originalMatch: string;
+}
+
+interface NostrEventEmbedTransferState {
+  event: NostrEvent;
+  authorProfile: AuthorProfile | null;
 }
 
 @Component({
@@ -230,6 +235,8 @@ interface MentionedProfile {
 })
 export class NostrEventEmbedComponent implements OnInit, OnDestroy {
   private platformId = inject(PLATFORM_ID);
+  private transferState = inject(TransferState);
+  private pendingTasks = inject(PendingTasks);
   
   /** The naddr or nevent identifier to fetch */
   naddr = input.required<string>();
@@ -309,13 +316,21 @@ export class NostrEventEmbedComponent implements OnInit, OnDestroy {
   });
 
   ngOnInit() {
-    // Only fetch events in browser environment (not during SSR)
-    if (isPlatformBrowser(this.platformId)) {
-      this.fetchEvent();
-    } else {
-      // On server, just show loading state (will hydrate on client)
-      this.loading.set(true);
+    const stateKey = this.getTransferStateKey();
+    const transferData = this.transferState.get<NostrEventEmbedTransferState | null>(stateKey, null);
+
+    if (transferData) {
+      this.event.set(transferData.event);
+      this.authorProfile.set(transferData.authorProfile);
+      this.loading.set(false);
+      this.transferState.remove(stateKey);
+      return;
     }
+
+    const done = isPlatformServer(this.platformId) ? this.pendingTasks.add() : () => undefined;
+
+    void this.fetchEvent()
+      .finally(() => done());
   }
 
   ngOnDestroy() {
@@ -338,6 +353,13 @@ export class NostrEventEmbedComponent implements OnInit, OnDestroy {
       }
 
       await this.connectAndFetch(decoded);
+
+      if (this.event()) {
+        this.transferState.set(this.getTransferStateKey(), {
+          event: this.event()!,
+          authorProfile: this.authorProfile()
+        });
+      }
     } catch (err) {
       this.error.set(err instanceof Error ? err.message : 'Failed to fetch event');
       this.loading.set(false);
@@ -517,8 +539,10 @@ export class NostrEventEmbedComponent implements OnInit, OnDestroy {
               // Now fetch author profile
               this.fetchAuthorProfile(event.pubkey, relayUrl);
               
-              // Parse and fetch mentioned profiles
-              this.fetchMentionedProfiles(event.content, relayUrl);
+              // Parse and fetch mentioned profiles in the browser to avoid slowing SSR
+              if (isPlatformBrowser(this.platformId)) {
+                this.fetchMentionedProfiles(event.content, relayUrl);
+              }
               
               clearTimeout(timeout);
               this.loading.set(false);
@@ -683,5 +707,9 @@ export class NostrEventEmbedComponent implements OnInit, OnDestroy {
       this.websocket.close();
       this.websocket = null;
     }
+  }
+
+  private getTransferStateKey() {
+    return makeStateKey<NostrEventEmbedTransferState>(`nostr-event-${this.naddr()}`);
   }
 }

@@ -4,7 +4,7 @@
     <div class="hero-content">
       <h1>What Our Users Say</h1>
       <p class="hero-subtitle">
-        Real feedback from the Nostr community, loaded directly from the protocol
+        Real feedback from the Nostr community, pre-selected from public Nostr posts
       </p>
     </div>
   </div>
@@ -15,16 +15,52 @@
   <div class="container">
     <div class="testimonials-intro">
       <p>
-        Every testimonial below is a real Nostr event, fetched live from the protocol. 
-        Click the link icon on any testimonial to view it directly on Nostr.
+        Every testimonial below comes from a real public Nostr post. They are rendered directly into the page so search engines and visitors can read them right away.
       </p>
     </div>
     
     <div class="testimonials-grid">
-      @for (naddr of testimonials; track naddr) {
-        <div class="testimonial-card">
-          <app-nostr-event-embed [naddr]="naddr" />
-        </div>
+      @for (testimonial of testimonials; track testimonial.id) {
+        <article class="testimonial-card">
+          <div class="testimonial-card__top">
+            <div class="testimonial-card__author">
+              @if (testimonial.authorImage) {
+                <img
+                  class="testimonial-card__avatar"
+                  [src]="testimonial.authorImage"
+                  [alt]="testimonial.authorName"
+                  [title]="testimonial.authorName"
+                  loading="lazy">
+              } @else {
+                <div class="testimonial-card__avatar testimonial-card__avatar--placeholder" aria-hidden="true">
+                  <span class="material-symbols-outlined">person</span>
+                </div>
+              }
+
+              <div class="testimonial-card__identity">
+                <h2 class="testimonial-card__name">{{ testimonial.authorName }}</h2>
+                @if (testimonial.authorHandle) {
+                  <p class="testimonial-card__handle">{{ testimonial.authorHandle }}</p>
+                }
+              </div>
+            </div>
+
+            <a
+              class="testimonial-card__link"
+              [href]="testimonial.nostrUrl"
+              target="_blank"
+              rel="noopener"
+              aria-label="Open testimonial on Nostria">
+              <span class="material-symbols-outlined">open_in_new</span>
+            </a>
+          </div>
+
+          <p class="testimonial-card__quote">{{ testimonial.quote }}</p>
+
+          <div class="testimonial-card__footer">
+            <time [dateTime]="testimonial.publishedAt">{{ testimonial.publishedLabel }}</time>
+          </div>
+        </article>
       }
     </div>
   </div>
