@@ -467,6 +467,26 @@
   }
 }
 
+.product-hunt-badge {
+  margin-top: 1.5rem;
+  position: relative;
+  z-index: 100;
+  text-align: center;
+
+  a {
+    display: inline-block;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 0.85;
+    }
+  }
+
+  img {
+    display: block;
+  }
+}
+
 .platform-downloads {
   margin-top: 2rem;
   text-align: left;
