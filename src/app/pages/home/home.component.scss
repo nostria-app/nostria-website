@@ -470,7 +470,7 @@
 .product-hunt-badge {
   margin-top: 1.5rem;
   position: relative;
-  z-index: 100;
+  z-index: 0;
   text-align: center;
 
   a {
@@ -525,6 +525,7 @@
   .platform-link-wrapper {
     position: relative;
     display: inline-block;
+    z-index: 2;
 
     @media (max-width: 480px) {
       width: min(100%, 19rem);
