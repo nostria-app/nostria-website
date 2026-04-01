@@ -11,6 +11,7 @@ import { PreSeedComponent } from './pages/funding/pre-seed.component';
 import { MvpReleasedComponent } from './pages/press/mvp-released/mvp-released.component';
 import { SeedFundLaunchComponent } from './pages/press/seed-fund-launch/seed-fund-launch.component';
 import { Nostria2ReleaseComponent } from './pages/press/nostria-2-release/nostria-2-release.component';
+import { ProductHuntLaunchComponent } from './pages/press/product-hunt-launch/product-hunt-launch.component';
 import { DiscordRedirectComponent } from './pages/discord-redirect.component';
 import { SupportComponent } from './pages/support/support.component';
 import { PolicyComponent } from './pages/policy/policy.component';
@@ -139,6 +140,24 @@ export const routes: Routes = [
         description: 'Press releases, updates, and media resources from Nostria.',
         url: `${siteUrl}/press`
       }
+    })
+  },
+  {
+    path: 'press/product-hunt-launch',
+    component: ProductHuntLaunchComponent,
+    title: 'Nostria Launches on Product Hunt - Nostria Press',
+    data: pageSeo({
+      title: 'Nostria Launches on Product Hunt - Nostria Press',
+      description: 'Nostria is scheduled to launch on Product Hunt on April 6th, 2026 at 12:01 AM PDT, inviting the maker community to explore a calmer social network built on Nostr.',
+      canonicalPath: '/press/product-hunt-launch',
+      image: socialImage,
+      type: 'article',
+      structuredData: articleSchema({
+        headline: 'Nostria Launches on Product Hunt',
+        description: 'Nostria is scheduled to launch on Product Hunt on April 6th, 2026 at 12:01 AM PDT, inviting the maker community to explore a calmer social network built on Nostr.',
+        path: '/press/product-hunt-launch',
+        datePublished: '2026-04-01'
+      })
     })
   },
   {
