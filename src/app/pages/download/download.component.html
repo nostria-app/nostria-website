@@ -1,0 +1,106 @@
+<section class="download-hero" itemscope itemtype="https://schema.org/SoftwareApplication">
+  <meta itemprop="name" content="Nostria">
+  <meta itemprop="applicationCategory" content="SocialNetworkingApplication">
+  <meta itemprop="operatingSystem" content="Web, Windows, macOS, Linux, Android, iOS">
+  <meta itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+  <meta itemprop="price" content="0">
+  <meta itemprop="priceCurrency" content="USD">
+
+  <div class="hero-backdrop" aria-hidden="true">
+    <div class="hero-orb hero-orb--left"></div>
+    <div class="hero-orb hero-orb--right"></div>
+  </div>
+
+  <div class="container">
+    <div class="hero-copy">
+      <div class="hero-badge">
+        <span class="material-symbols-outlined">download</span>
+        <span>Download Nostria</span>
+      </div>
+      <h1>Pick the build that fits your device.</h1>
+      <p class="hero-subtitle" itemprop="description">
+        Nostria runs on the web, desktop, and mobile. Choose the installer format you want, including direct desktop downloads for Windows, Mac, and Linux.
+      </p>
+
+      <div class="hero-actions">
+        <a href="https://nostria.app" target="_blank" rel="noopener" class="btn btn-primary">
+          Launch Web App
+          <span class="material-symbols-outlined">rocket_launch</span>
+        </a>
+        <a href="https://github.com/nostria-app/nostria/releases/tag/v3.1.13" target="_blank" rel="noopener" class="btn btn-outline">
+          View Release Notes
+          <span class="material-symbols-outlined">open_in_new</span>
+        </a>
+      </div>
+
+      <div class="release-note">
+        <span class="material-symbols-outlined">deployed_code</span>
+        <span>Current release: {{ releaseVersion }}</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="platforms">
+  <div class="container">
+    <div class="section-head">
+      <p class="section-kicker">All Platforms</p>
+      <h2>Every official install option in one place.</h2>
+      <p>
+        Windows includes Microsoft Store, direct EXE installers, and MSI packages. Linux includes AppImage and .deb. macOS ships as a universal DMG. Mobile keeps the existing store links and beta access.
+      </p>
+    </div>
+
+    <div class="platform-grid">
+      @for (platform of platforms; track platform.id) {
+        <article class="platform-card">
+          <div class="platform-card__header">
+            <div class="platform-card__icon">
+              <span class="material-symbols-outlined">{{ platform.icon }}</span>
+            </div>
+            <div>
+              <h3>{{ platform.label }}</h3>
+              <p>{{ platform.summary }}</p>
+            </div>
+          </div>
+
+          <div class="platform-card__actions">
+            @for (option of platform.options; track option.href) {
+              <a [href]="option.href" target="_blank" rel="noopener" class="download-option"
+                [attr.itemprop]="option.itemPropDownloadUrl ? 'downloadUrl' : null">
+                <span class="download-option__icon material-symbols-outlined">{{ option.icon }}</span>
+                <span class="download-option__content">
+                  <span class="download-option__label">{{ option.label }}</span>
+                  <span class="download-option__description">{{ option.description }}</span>
+                </span>
+                <span class="download-option__arrow material-symbols-outlined">north_east</span>
+              </a>
+            }
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="download-help">
+  <div class="container">
+    <div class="download-help__panel">
+      <h2>Need help choosing?</h2>
+      <div class="download-help__grid">
+        <div>
+          <h3>Windows</h3>
+          <p>Use the Microsoft Store for the simplest updates, EXE installers for direct installs, or MSI packages for managed deployments.</p>
+        </div>
+        <div>
+          <h3>Linux</h3>
+          <p>Choose AppImage if you want a portable binary, or .deb if you prefer package-managed installation on Debian-based systems.</p>
+        </div>
+        <div>
+          <h3>Mac</h3>
+          <p>The universal DMG works on both Intel Macs and Apple Silicon, so there is only one download to remember.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

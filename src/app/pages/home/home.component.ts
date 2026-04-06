@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { homeDownloadPlatforms, type DownloadPlatformId } from '../../shared/downloads/downloads.data';
 
 @Component({
   selector: 'app-home',
@@ -8,13 +9,14 @@ import { RouterLink } from '@angular/router';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
   host: {
-    '(document:click)': 'closeInstallMenu(); closeAndroidMenu()'
+    '(document:click)': 'closeInstallMenu(); closePlatformMenu()'
   }
 })
 export class HomeComponent {
   isInstallMenuOpen = false;
-  isAndroidMenuOpen = false;
+  activePlatformMenu: DownloadPlatformId | null = null;
   canInstall = false;
+  readonly downloadPlatforms = homeDownloadPlatforms;
 
   constructor() {
     // Chrome/Edge/Brave 143+ supports navigator.install()
@@ -42,12 +44,16 @@ export class HomeComponent {
     this.isInstallMenuOpen = false;
   }
 
-  toggleAndroidMenu(event: Event): void {
+  togglePlatformMenu(platformId: DownloadPlatformId, event: Event): void {
     event.stopPropagation();
-    this.isAndroidMenuOpen = !this.isAndroidMenuOpen;
+    this.activePlatformMenu = this.activePlatformMenu === platformId ? null : platformId;
   }
 
-  closeAndroidMenu(): void {
-    this.isAndroidMenuOpen = false;
+  isPlatformMenuOpen(platformId: DownloadPlatformId): boolean {
+    return this.activePlatformMenu === platformId;
+  }
+
+  closePlatformMenu(): void {
+    this.activePlatformMenu = null;
   }
 }

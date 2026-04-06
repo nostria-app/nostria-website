@@ -75,7 +75,7 @@ export const routes: Routes = [
         '@type': 'SoftwareApplication',
         name: 'Nostria',
         applicationCategory: 'SocialNetworkingApplication',
-        operatingSystem: 'Web, Windows, Android, iOS',
+        operatingSystem: 'Web, Windows, macOS, Linux, Android, iOS',
         description: 'Nostria is social without the noise, where you can see your friends again.',
         url: siteUrl,
         image: socialImage,
@@ -91,6 +91,25 @@ export const routes: Routes = [
     path: 'home',
     redirectTo: '',
     pathMatch: 'full'
+  },
+  {
+    path: 'download',
+    loadComponent: () => import('./pages/download/download.component').then(m => m.DownloadComponent),
+    title: 'Download Nostria - Windows, Mac, Linux, Android, iOS, and Web',
+    data: pageSeo({
+      title: 'Download Nostria - Windows, Mac, Linux, Android, iOS, and Web',
+      description: 'Download Nostria for Windows, Mac, Linux, Android, iOS, or launch the web app instantly. Choose Microsoft Store, EXE, MSI, AppImage, .deb, DMG, APK, and more.',
+      canonicalPath: '/download',
+      image: socialImage,
+      keywords: ['Download Nostria', 'Nostria Windows download', 'Nostria Mac download', 'Nostria Linux download', 'Nostria Android APK'],
+      structuredData: {
+        '@context': 'https://schema.org',
+        '@type': 'CollectionPage',
+        name: 'Download Nostria',
+        description: 'Official Nostria downloads for Windows, macOS, Linux, Android, iOS, and the web.',
+        url: `${siteUrl}/download`
+      }
+    })
   },
   {
     path: 'hero',
