@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { currentDesktopRelease, downloadPlatforms } from '../../shared/downloads/downloads.data';
+import { currentDesktopRelease, currentReleaseNotesUrl, downloadPlatforms } from '../../shared/downloads/downloads.data';
 
 @Component({
   selector: 'app-download',
@@ -10,5 +10,6 @@ import { currentDesktopRelease, downloadPlatforms } from '../../shared/downloads
 })
 export class DownloadComponent {
   readonly releaseVersion = currentDesktopRelease;
+  readonly releaseNotesUrl = currentReleaseNotesUrl;
   readonly platforms = downloadPlatforms;
 }

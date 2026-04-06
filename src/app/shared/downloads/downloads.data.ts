@@ -18,7 +18,17 @@ export interface DownloadPlatform {
   options: readonly DownloadOption[];
 }
 
-export const currentDesktopRelease = '3.1.13';
+export const currentDesktopRelease = '3.1.14';
+
+function createReleaseAssetUrl(fileName: string): string {
+  return `https://github.com/nostria-app/nostria/releases/download/v${currentDesktopRelease}/${fileName}`;
+}
+
+function createReleaseAssetName(suffix: string): string {
+  return `Nostria_${currentDesktopRelease}${suffix}`;
+}
+
+export const currentReleaseNotesUrl = `https://github.com/nostria-app/nostria/releases/tag/v${currentDesktopRelease}`;
 
 export const downloadPlatforms: readonly DownloadPlatform[] = [
   {
@@ -53,14 +63,14 @@ export const downloadPlatforms: readonly DownloadPlatform[] = [
       },
       {
         label: 'Windows x64 (.exe)',
-        href: 'https://github.com/nostria-app/nostria/releases/download/v3.1.13/Nostria_3.1.13_x64-setup.exe',
+        href: createReleaseAssetUrl(createReleaseAssetName('_x64-setup.exe')),
         icon: 'download',
         description: 'Direct installer for 64-bit Intel and AMD Windows PCs.',
         itemPropDownloadUrl: true
       },
       {
         label: 'Windows x64 (.msi)',
-        href: 'https://github.com/nostria-app/nostria/releases/download/v3.1.13/Nostria_3.1.13_x64_en-US.msi',
+        href: createReleaseAssetUrl(createReleaseAssetName('_x64_en-US.msi')),
         icon: 'inventory_2',
         description: 'MSI package for 64-bit Windows deployment workflows.',
         showOnHome: false,
@@ -68,14 +78,14 @@ export const downloadPlatforms: readonly DownloadPlatform[] = [
       },
       {
         label: 'Windows ARM64 (.exe)',
-        href: 'https://github.com/nostria-app/nostria/releases/download/v3.1.13/Nostria_3.1.13_arm64-setup.exe',
+        href: createReleaseAssetUrl(createReleaseAssetName('_arm64-setup.exe')),
         icon: 'download',
         description: 'Direct installer for ARM64 Windows devices.',
         itemPropDownloadUrl: true
       },
       {
         label: 'Windows ARM64 (.msi)',
-        href: 'https://github.com/nostria-app/nostria/releases/download/v3.1.13/Nostria_3.1.13_arm64_en-US.msi',
+        href: createReleaseAssetUrl(createReleaseAssetName('_arm64_en-US.msi')),
         icon: 'inventory_2',
         description: 'MSI package for ARM64 Windows deployment workflows.',
         showOnHome: false,
@@ -92,7 +102,7 @@ export const downloadPlatforms: readonly DownloadPlatform[] = [
     options: [
       {
         label: 'macOS Universal (.dmg)',
-        href: 'https://github.com/nostria-app/nostria/releases/download/v3.1.13/Nostria_3.1.13_universal.dmg',
+        href: createReleaseAssetUrl(createReleaseAssetName('_universal.dmg')),
         icon: 'download',
         description: 'Universal DMG for both Apple Silicon and Intel Macs.',
         itemPropDownloadUrl: true
@@ -108,14 +118,14 @@ export const downloadPlatforms: readonly DownloadPlatform[] = [
     options: [
       {
         label: 'Linux AppImage',
-        href: 'https://github.com/nostria-app/nostria/releases/download/v3.1.13/Nostria_3.1.13_amd64.AppImage',
+        href: createReleaseAssetUrl(createReleaseAssetName('_amd64.AppImage')),
         icon: 'download',
         description: 'Portable AppImage for 64-bit Linux systems.',
         itemPropDownloadUrl: true
       },
       {
         label: 'Linux .deb',
-        href: 'https://github.com/nostria-app/nostria/releases/download/v3.1.13/Nostria_3.1.13_amd64.deb',
+        href: createReleaseAssetUrl(createReleaseAssetName('_amd64.deb')),
         icon: 'inventory_2',
         description: 'Debian package for Ubuntu, Debian, and compatible distributions.',
         itemPropDownloadUrl: true
@@ -143,7 +153,7 @@ export const downloadPlatforms: readonly DownloadPlatform[] = [
       },
       {
         label: 'Android APK',
-        href: 'https://github.com/nostria-app/nostria/releases/download/v3.1.12/Nostria_3.1.12.apk',
+        href: createReleaseAssetUrl(createReleaseAssetName('.apk')),
         icon: 'download',
         description: 'Direct APK download for manual installation.',
         itemPropDownloadUrl: true
