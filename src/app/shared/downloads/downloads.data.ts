@@ -140,10 +140,16 @@ export const downloadPlatforms: readonly DownloadPlatform[] = [
     homeBehavior: 'menu',
     options: [
       {
-        label: 'Zapstore',
+        label: 'Zapstore (native)',
+        href: 'https://zapstore.dev/apps/app.nostria',
+        icon: 'store',
+        description: 'Install Nostria (native) through Zapstore.'
+      },
+      {
+        label: 'Zapstore (web)',
         href: 'https://zapstore.dev/apps/app.nostria.twa',
         icon: 'store',
-        description: 'Install Nostria through Zapstore.'
+        description: 'Install Nostria (web) through Zapstore.'
       },
       {
         label: 'Play Store',
