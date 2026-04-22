@@ -479,6 +479,13 @@
   .tweet .x-logo {
     width: 22px; height: 22px; color: #e7e9ea; flex: 0 0 auto;
   }
+  .tweet .x-link {
+    display: grid; place-items: center;
+    color: #e7e9ea;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+  .tweet .x-link::after { display: none !important; }
+  .tweet .x-link:hover { opacity: 0.7; transform: scale(1.08); }
   .tweet .body {
     font-size: 17px;
     line-height: 1.4;
@@ -610,7 +617,9 @@
                 </div>
                 <div class="handle">@nikitabier</div>
               </div>
-              <svg class="x-logo" viewBox="0 0 24 24" aria-label="X"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              <a href="https://x.com/nikitabier/status/2021632774013432061" target="_blank" rel="noopener" aria-label="View on X" class="x-link">
+                <svg class="x-logo" viewBox="0 0 24 24" aria-label="X"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              </a>
             </div>
             <p class="body"><b>Prediction:</b> In less than 90 days, all channels that we thought were safe from spam &amp; automation will be so flooded that they will no longer be usable in any functional sense: iMessage, phone calls, Gmail.
 
