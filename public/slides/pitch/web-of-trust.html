@@ -352,22 +352,30 @@
 
   .logo {
     position: fixed;
-    top: 1.5rem;
-    left: 2rem;
+    top: 1.25rem;
+    left: 1.75rem;
     z-index: 100;
     display: flex;
     align-items: center;
-    gap: 0.6rem;
-    font-weight: 700;
-    letter-spacing: 0.05em;
+    gap: 0.8rem;
+    font-family: 'Protest Strike', 'Sora', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
-    font-size: 0.85rem;
+    font-size: 1.4rem;
+    text-decoration: none;
+    color: inherit;
   }
-  .logo .dot {
-    width: 10px; height: 10px; border-radius: 50%;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    box-shadow: 0 0 14px var(--primary);
+  .logo::after { display: none !important; }
+  .logo img {
+    width: 35px; height: 35px;
+    display: block;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 6px 18px rgba(255,122,0,0.45), 0 0 0 1px rgba(255,255,255,0.08);
+    transition: transform 0.3s ease;
   }
+  .logo:hover img { transform: scale(1.06) rotate(-3deg); }
 
   .slide-index {
     position: fixed;
@@ -526,7 +534,7 @@
 <body>
 
 <div class="progress"><div class="bar" id="progressBar"></div></div>
-<div class="logo"><span class="dot"></span> Nostria</div>
+<a class="logo" href="https://www.nostria.app" target="_blank" rel="noopener"><img src="/assets/icons/icon.svg" alt="Nostria" /> Nostria</a>
 <div class="slide-index" id="slideIndex">01 / 08</div>
 
 <main class="deck" id="deck">
@@ -541,7 +549,7 @@
     <div class="slide-inner">
       <div class="grid-2">
         <div>
-          <div class="eyebrow">Nostria · Pitch</div>
+          <div class="eyebrow">Nostria · Web of Trust Pitch</div>
           <h1 class="title">Your Social Network, <span class="gradient-text">Built on Trust</span></h1>
           <p class="subtitle">
             Nostria brings the Web of Trust to Nostr — a privacy-first,
