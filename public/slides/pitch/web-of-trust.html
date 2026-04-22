@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Nostria — Web of Trust</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-0: #070712;
+    --bg-1: #0d0d22;
+    --bg-2: #141432;
+    --accent: #8a5cff;
+    --accent-2: #5ce1ff;
+    --accent-3: #ff6bcb;
+    --text: #f4f4ff;
+    --muted: #a6a7c4;
+    --ring: rgba(138, 92, 255, 0.4);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    height: 100%;
+    background: var(--bg-0);
+    color: var(--text);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .deck {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .slide {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6vh 8vw;
+    opacity: 0;
+    transform: translateX(40px) scale(0.98);
+    transition: opacity 0.6s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+    background:
+      radial-gradient(1200px 600px at 20% 10%, rgba(138, 92, 255, 0.25), transparent 60%),
+      radial-gradient(900px 500px at 90% 90%, rgba(92, 225, 255, 0.18), transparent 60%),
+      radial-gradient(700px 400px at 50% 50%, rgba(255, 107, 203, 0.12), transparent 70%),
+      linear-gradient(160deg, var(--bg-0), var(--bg-1) 60%, var(--bg-2));
+  }
+
+  .slide.active {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    pointer-events: auto;
+  }
+
+  .slide.prev {
+    transform: translateX(-40px) scale(0.98);
+  }
+
+  /* Noise overlay */
+  .slide::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.05 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    opacity: 0.35;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+  }
+
+  .slide-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  h1, h2, h3 { font-family: 'Space Grotesk', 'Inter', sans-serif; letter-spacing: -0.02em; line-height: 1.05; }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: clamp(0.75rem, 1vw, 0.95rem);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--accent-2);
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(92, 225, 255, 0.35);
+    border-radius: 999px;
+    background: rgba(92, 225, 255, 0.06);
+    backdrop-filter: blur(10px);
+    margin-bottom: 2rem;
+  }
+
+  .eyebrow::before {
+    content: "";
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--accent-2);
+    box-shadow: 0 0 16px var(--accent-2);
+  }
+
+  h1.title {
+    font-size: clamp(2.5rem, 6.5vw, 6.5rem);
+    font-weight: 800;
+    background: linear-gradient(135deg, #fff 0%, #c9b8ff 45%, #5ce1ff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 1.5rem;
+  }
+
+  h2.title {
+    font-size: clamp(2rem, 5vw, 4.5rem);
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, var(--accent-3), var(--accent), var(--accent-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .subtitle {
+    font-size: clamp(1rem, 1.6vw, 1.5rem);
+    color: var(--muted);
+    max-width: 900px;
+    line-height: 1.5;
+    margin-bottom: 2rem;
+    font-weight: 300;
+  }
+
+  .grid-2 { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 4vw; align-items: center; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .grid-4 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+
+  .card {
+    background: linear-gradient(160deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    padding: 1.75rem;
+    backdrop-filter: blur(12px);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s ease, border-color 0.4s ease;
+  }
+  .card::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: radial-gradient(400px 200px at var(--mx,50%) var(--my,0%), rgba(138,92,255,0.25), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+  }
+  .card:hover { transform: translateY(-4px); border-color: rgba(138,92,255,0.4); }
+  .card:hover::after { opacity: 1; }
+
+  .card .icon {
+    width: 48px; height: 48px; border-radius: 14px;
+    display: grid; place-items: center;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+    box-shadow: 0 8px 30px -10px var(--ring);
+  }
+
+  .card h3 { font-size: 1.25rem; margin-bottom: 0.5rem; font-weight: 700; }
+  .card p { color: var(--muted); font-size: 0.95rem; line-height: 1.5; }
+
+  .hero-img-wrap {
+    position: relative;
+    border-radius: 28px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow:
+      0 40px 120px -30px rgba(138,92,255,0.5),
+      0 0 0 1px rgba(255,255,255,0.05) inset;
+    aspect-ratio: 16 / 10;
+    background: var(--bg-2);
+  }
+  .hero-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .hero-img-wrap::before {
+    content: "";
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 60%, rgba(7,7,18,0.6));
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; }
+  .chip {
+    padding: 0.5rem 1rem;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 999px;
+    font-size: 0.85rem;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  .stat {
+    text-align: left;
+  }
+  .stat .num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 800;
+    background: linear-gradient(135deg, #fff, var(--accent-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .stat .label { color: var(--muted); text-transform: uppercase; letter-spacing: 0.15em; font-size: 0.85rem; }
+
+  .author {
+    margin-top: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .author .avatar {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent-3));
+    display: grid; place-items: center;
+    font-weight: 700; font-size: 1.2rem;
+    box-shadow: 0 0 0 2px rgba(255,255,255,0.1), 0 10px 30px -10px var(--ring);
+  }
+  .author .meta .name { font-weight: 600; font-size: 1.1rem; }
+  .author .meta .role { color: var(--muted); font-size: 0.9rem; }
+
+  video {
+    width: 100%;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 30px 80px -20px rgba(138,92,255,0.4);
+    background: #000;
+    max-height: 70vh;
+    object-fit: contain;
+  }
+
+  .video-card {
+    background: linear-gradient(160deg, rgba(138,92,255,0.1), rgba(92,225,255,0.05));
+    border: 1px solid rgba(138,92,255,0.25);
+    border-radius: 24px;
+    padding: 1rem;
+  }
+
+  .bullets { list-style: none; display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem; }
+  .bullets li {
+    display: flex; gap: 1rem; align-items: flex-start;
+    font-size: clamp(1rem, 1.3vw, 1.2rem);
+    color: #dcdcee;
+    line-height: 1.5;
+  }
+  .bullets li::before {
+    content: "";
+    flex: 0 0 auto;
+    width: 10px; height: 10px; border-radius: 3px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    margin-top: 0.55em;
+    box-shadow: 0 0 12px var(--ring);
+  }
+
+  /* Navigation */
+  .nav {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    z-index: 100;
+    background: rgba(13, 13, 34, 0.7);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 999px;
+    padding: 0.5rem 0.75rem;
+    backdrop-filter: blur(20px);
+  }
+  .nav button {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: var(--text);
+    width: 40px; height: 40px; border-radius: 50%;
+    cursor: pointer;
+    display: grid; place-items: center;
+    font-size: 1.1rem;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .nav button:hover { background: rgba(138,92,255,0.3); transform: scale(1.05); }
+  .nav .counter {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    color: var(--muted);
+    font-size: 0.9rem;
+    padding: 0 0.5rem;
+    min-width: 60px;
+    text-align: center;
+  }
+  .nav .counter b { color: var(--text); }
+
+  .progress {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: rgba(255,255,255,0.05);
+    z-index: 100;
+  }
+  .progress .bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-3), var(--accent), var(--accent-2));
+    width: 0%;
+    transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    box-shadow: 0 0 20px var(--ring);
+  }
+
+  .logo {
+    position: fixed;
+    top: 1.5rem;
+    left: 2rem;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+  }
+  .logo .dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent-3), var(--accent-2));
+    box-shadow: 0 0 14px var(--accent);
+  }
+
+  .slide-index {
+    position: fixed;
+    top: 1.5rem;
+    right: 2rem;
+    z-index: 100;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.85rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+
+  /* Floating particles */
+  .particles { position: absolute; inset: 0; overflow: hidden; z-index: 1; pointer-events: none; }
+  .particle {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(40px);
+    opacity: 0.4;
+    animation: float 14s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(40px, -60px) scale(1.15); }
+  }
+
+  /* Trust network graphic */
+  .trust-graph {
+    width: 100%;
+    aspect-ratio: 1/1;
+    max-width: 520px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .trust-graph svg { width: 100%; height: 100%; overflow: visible; }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.4; r: 6; }
+    50% { opacity: 1; r: 9; }
+  }
+  @keyframes dash {
+    to { stroke-dashoffset: -20; }
+  }
+  .trust-graph .link {
+    stroke: url(#linkGrad);
+    stroke-width: 1.5;
+    fill: none;
+    stroke-dasharray: 4 4;
+    animation: dash 2s linear infinite;
+    opacity: 0.7;
+  }
+  .trust-graph .node { animation: pulse 3s ease-in-out infinite; }
+  .trust-graph .node.center { fill: url(#centerGrad); animation: none; filter: drop-shadow(0 0 18px rgba(138,92,255,0.8)); }
+
+  .two-video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; }
+
+  .footer-tag {
+    position: absolute;
+    bottom: 6vh;
+    left: 8vw;
+    right: 8vw;
+    color: var(--muted);
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    z-index: 2;
+  }
+
+  kbd {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 6px;
+    padding: 2px 8px;
+    font-size: 0.8rem;
+    font-family: 'Space Grotesk', monospace;
+  }
+
+  /* X/Twitter-style tweet card */
+  .tweet {
+    background: #000;
+    color: #e7e9ea;
+    border: 1px solid #2f3336;
+    border-radius: 18px;
+    padding: 1.25rem 1.25rem 1rem;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    max-width: 560px;
+    margin-left: auto;
+    box-shadow: 0 30px 80px -20px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04);
+    position: relative;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+  }
+  .tweet:hover { border-color: #536471; transform: translateY(-2px); }
+  .tweet .head { display: flex; align-items: center; gap: 0.75rem; }
+  .tweet .avatar-x {
+    width: 48px; height: 48px; border-radius: 50%;
+    background: linear-gradient(135deg, #1d9bf0, #0a2472);
+    display: grid; place-items: center;
+    font-weight: 800; color: #fff; font-size: 1.1rem;
+    flex: 0 0 auto;
+  }
+  .tweet .who { flex: 1; min-width: 0; line-height: 1.2; }
+  .tweet .who .name-row { display: flex; align-items: center; gap: 4px; font-weight: 700; color: #e7e9ea; font-size: 15px; }
+  .tweet .who .name-row .verified {
+    width: 18px; height: 18px; color: #1d9bf0; flex: 0 0 auto;
+  }
+  .tweet .who .handle { color: #71767b; font-size: 14px; }
+  .tweet .x-logo {
+    width: 22px; height: 22px; color: #e7e9ea; flex: 0 0 auto;
+  }
+  .tweet .body {
+    font-size: 17px;
+    line-height: 1.4;
+    color: #e7e9ea;
+    white-space: pre-wrap;
+    margin: 0.85rem 0 0.75rem;
+    word-wrap: break-word;
+  }
+  .tweet .body b { font-weight: 600; color: #fff; }
+  .tweet .meta-row {
+    color: #71767b;
+    font-size: 14px;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #2f3336;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .tweet .meta-row .views { color: #e7e9ea; font-weight: 600; }
+  .tweet .actions {
+    display: flex; justify-content: space-between;
+    padding-top: 0.75rem;
+    color: #71767b;
+    font-size: 13px;
+  }
+  .tweet .action {
+    display: flex; align-items: center; gap: 6px;
+    transition: color 0.2s;
+  }
+  .tweet .action svg { width: 18px; height: 18px; }
+  .tweet .action:hover { color: #1d9bf0; }
+
+  @media (max-width: 900px) {
+    .grid-2, .grid-3, .two-video-grid { grid-template-columns: 1fr; }
+    .slide { padding: 8vh 6vw; }
+    .footer-tag { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress"><div class="bar" id="progressBar"></div></div>
+<div class="logo"><span class="dot"></span> Nostria</div>
+<div class="slide-index" id="slideIndex">01 / 08</div>
+
+<main class="deck" id="deck">
+
+  <!-- SLIDE 1: Title / Hero -->
+  <section class="slide active" data-title="Intro">
+    <div class="particles">
+      <div class="particle" style="width:400px;height:400px;background:var(--accent);top:-10%;left:-5%;"></div>
+      <div class="particle" style="width:300px;height:300px;background:var(--accent-2);bottom:-10%;right:10%;animation-delay:-4s;"></div>
+      <div class="particle" style="width:250px;height:250px;background:var(--accent-3);top:50%;right:-5%;animation-delay:-8s;"></div>
+    </div>
+    <div class="slide-inner">
+      <div class="grid-2">
+        <div>
+          <div class="eyebrow">Nostria · Pitch</div>
+          <h1 class="title">Your Social Network, <span class="gradient-text">Built on Trust</span></h1>
+          <p class="subtitle">
+            Nostria brings the Web of Trust to Nostr — a privacy-first,
+            decentralized filter that surfaces the voices you care about
+            and silences the noise that doesn't matter.
+          </p>
+          <div class="author">
+            <div class="avatar">SB</div>
+            <div class="meta">
+              <div class="name">Sondre Bjellås</div>
+              <div class="role">Founder · Nostria</div>
+            </div>
+          </div>
+          <div class="chips">
+            <span class="chip">Decentralized</span>
+            <span class="chip">Privacy-First</span>
+            <span class="chip">Web of Trust</span>
+            <span class="chip">Built to Scale</span>
+          </div>
+        </div>
+        <div class="hero-img-wrap">
+          <img src="/assets/screenshots/2025-02-13-home-dark.png" alt="Nostria Home Screen" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 2: The Problem -->
+  <section class="slide" data-title="Problem">
+    <div class="particles">
+      <div class="particle" style="width:500px;height:500px;background:var(--accent-3);top:-20%;right:-10%;"></div>
+    </div>
+    <div class="slide-inner">
+      <div class="grid-2" style="align-items:center;">
+        <div>
+          <div class="eyebrow">The Problem</div>
+          <h2 class="title">Social media is <span class="gradient-text">broken</span>.</h2>
+          <p class="subtitle">
+            Centralized platforms drown you in spam, bots, impersonators, and rage bait.
+            Open protocols like Nostr give you freedom — but without filters, freedom can feel like chaos.
+          </p>
+          <div class="grid-4" style="margin-top:2rem;">
+            <div class="card">
+              <div class="icon">🤖</div>
+              <h3>Bot Noise</h3>
+              <p>Automated accounts flood the feed, diluting real human conversation.</p>
+            </div>
+            <div class="card">
+              <div class="icon">🎭</div>
+              <h3>Impersonators</h3>
+              <p>Anyone can claim to be anyone. Who do you actually trust?</p>
+            </div>
+            <div class="card">
+              <div class="icon">🌊</div>
+              <h3>Content Overload</h3>
+              <p>Firehose feeds make it impossible to find signal in the noise.</p>
+            </div>
+            <div class="card">
+              <div class="icon">📉</div>
+              <h3>Eroding Trust</h3>
+              <p>Even safe channels — DMs, email, calls — are losing the fight.</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <article class="tweet" aria-label="Tweet by Nikita Bier">
+            <div class="head">
+              <div class="avatar-x">NB</div>
+              <div class="who">
+                <div class="name-row">
+                  Nikita Bier
+                  <svg class="verified" viewBox="0 0 22 22" aria-label="Verified"><path fill="currentColor" d="M20.396 11c-.018-.646-.215-1.275-.57-1.816-.354-.54-.852-.972-1.438-1.246.223-.607.27-1.264.14-1.897-.131-.634-.437-1.218-.882-1.687-.47-.445-1.053-.75-1.687-.882-.633-.13-1.29-.083-1.897.14-.273-.587-.704-1.086-1.245-1.44S11.647 1.62 11 1.604c-.646.017-1.273.213-1.813.568s-.969.854-1.24 1.44c-.608-.223-1.267-.272-1.902-.14-.635.13-1.22.436-1.69.882-.445.47-.749 1.055-.878 1.688-.13.633-.08 1.29.144 1.896-.587.274-1.087.705-1.443 1.245-.356.54-.555 1.17-.574 1.817.02.647.218 1.276.574 1.817.356.54.856.972 1.443 1.245-.224.606-.274 1.263-.144 1.896.13.634.433 1.218.877 1.688.47.443 1.054.747 1.687.878.633.132 1.29.084 1.897-.136.274.586.705 1.084 1.246 1.439.54.354 1.17.551 1.816.569.647-.016 1.276-.213 1.817-.567s.972-.854 1.245-1.44c.604.239 1.266.296 1.903.164.636-.132 1.22-.447 1.68-.907.46-.46.776-1.044.908-1.681s.075-1.299-.165-1.903c.586-.274 1.084-.705 1.439-1.246.354-.54.551-1.17.569-1.816zM9.662 14.85l-3.429-3.428 1.293-1.302 2.072 2.072 4.4-4.794 1.347 1.246z"/></svg>
+                </div>
+                <div class="handle">@nikitabier</div>
+              </div>
+              <svg class="x-logo" viewBox="0 0 24 24" aria-label="X"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </div>
+            <p class="body"><b>Prediction:</b> In less than 90 days, all channels that we thought were safe from spam &amp; automation will be so flooded that they will no longer be usable in any functional sense: iMessage, phone calls, Gmail.
+
+And we will have no way to stop it.</p>
+            <div class="meta-row">
+              <span>6:09 PM · Feb 11, 2026</span>
+              <span>·</span>
+              <span class="views">9.5M</span>
+              <span>Views</span>
+            </div>
+            <div class="actions">
+              <span class="action"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1.75 12.8c1.4-3 4.5-6.8 10.25-6.8s8.8 3.8 10.25 6.8c-1.45 3-4.5 6.8-10.25 6.8S3.15 15.8 1.75 12.8z"/><circle cx="12" cy="12.8" r="3"/></svg> 3.4K</span>
+              <span class="action"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h12l4 4v12H4z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg> 3K</span>
+              <span class="action"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.697 5.5c-1.222-.06-2.679.51-3.89 2.16l-.805 1.09-.806-1.09C9.984 6.01 8.526 5.44 7.304 5.5c-1.243.07-2.349.78-2.91 1.91-.552 1.12-.633 2.78.479 4.82 1.074 1.97 3.257 4.27 7.129 6.61 3.87-2.34 6.052-4.64 7.126-6.61 1.111-2.04 1.03-3.7.477-4.82-.561-1.13-1.666-1.84-2.908-1.91z"/></svg> 23K</span>
+              <span class="action"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4.5v15l8-4 8 4v-15z"/></svg> 6.6K</span>
+            </div>
+          </article>
+          <p style="text-align:center;color:var(--muted);font-size:0.8rem;margin-top:0.75rem;letter-spacing:0.1em;text-transform:uppercase;">
+            Even the "safe" channels are falling
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 3: The Solution -->
+  <section class="slide" data-title="Solution">
+    <div class="particles">
+      <div class="particle" style="width:450px;height:450px;background:var(--accent);top:10%;left:-10%;"></div>
+      <div class="particle" style="width:350px;height:350px;background:var(--accent-2);bottom:-10%;right:-5%;animation-delay:-6s;"></div>
+    </div>
+    <div class="slide-inner">
+      <div class="grid-2">
+        <div>
+          <div class="eyebrow">The Solution</div>
+          <h2 class="title">Trust your <span class="gradient-text">network</span>, not an algorithm.</h2>
+          <p class="subtitle">
+            The Web of Trust filters your feed through the people you already follow — and the people they trust.
+            No central authority. No opaque AI. Just human relationships, cryptographically verified.
+          </p>
+          <ul class="bullets">
+            <li>See content from <b>people your network vouches for</b></li>
+            <li>Automatically hide spam, bots & strangers</li>
+            <li>Fully transparent — you control the trust depth</li>
+            <li>Works across the entire Nostr protocol</li>
+          </ul>
+        </div>
+        <div>
+          <div class="trust-graph">
+            <svg viewBox="0 0 400 400">
+              <defs>
+                <radialGradient id="centerGrad">
+                  <stop offset="0%" stop-color="#fff"/>
+                  <stop offset="100%" stop-color="#8a5cff"/>
+                </radialGradient>
+                <linearGradient id="linkGrad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#8a5cff"/>
+                  <stop offset="100%" stop-color="#5ce1ff"/>
+                </linearGradient>
+                <radialGradient id="nodeGrad">
+                  <stop offset="0%" stop-color="#5ce1ff"/>
+                  <stop offset="100%" stop-color="#8a5cff"/>
+                </radialGradient>
+              </defs>
+              <!-- links from center -->
+              <path class="link" d="M200,200 L90,90"/>
+              <path class="link" d="M200,200 L310,90"/>
+              <path class="link" d="M200,200 L70,220"/>
+              <path class="link" d="M200,200 L340,230"/>
+              <path class="link" d="M200,200 L140,340"/>
+              <path class="link" d="M200,200 L280,340"/>
+              <!-- outer links -->
+              <path class="link" d="M90,90 L40,180" style="animation-delay:-1s"/>
+              <path class="link" d="M310,90 L360,180" style="animation-delay:-1.5s"/>
+              <path class="link" d="M70,220 L50,320" style="animation-delay:-0.5s"/>
+              <path class="link" d="M340,230 L360,320" style="animation-delay:-2s"/>
+              <path class="link" d="M140,340 L90,370" style="animation-delay:-1.2s"/>
+              <path class="link" d="M280,340 L330,370" style="animation-delay:-0.8s"/>
+              <!-- nodes -->
+              <circle class="node" cx="90" cy="90" r="7" fill="url(#nodeGrad)"/>
+              <circle class="node" cx="310" cy="90" r="7" fill="url(#nodeGrad)" style="animation-delay:-1s"/>
+              <circle class="node" cx="70" cy="220" r="7" fill="url(#nodeGrad)" style="animation-delay:-0.5s"/>
+              <circle class="node" cx="340" cy="230" r="7" fill="url(#nodeGrad)" style="animation-delay:-1.5s"/>
+              <circle class="node" cx="140" cy="340" r="7" fill="url(#nodeGrad)" style="animation-delay:-2s"/>
+              <circle class="node" cx="280" cy="340" r="7" fill="url(#nodeGrad)" style="animation-delay:-2.5s"/>
+              <circle class="node" cx="40" cy="180" r="5" fill="url(#nodeGrad)" opacity="0.6" style="animation-delay:-1.2s"/>
+              <circle class="node" cx="360" cy="180" r="5" fill="url(#nodeGrad)" opacity="0.6" style="animation-delay:-0.6s"/>
+              <circle class="node" cx="50" cy="320" r="5" fill="url(#nodeGrad)" opacity="0.6" style="animation-delay:-1.8s"/>
+              <circle class="node" cx="360" cy="320" r="5" fill="url(#nodeGrad)" opacity="0.6" style="animation-delay:-2.2s"/>
+              <circle class="node" cx="90" cy="370" r="5" fill="url(#nodeGrad)" opacity="0.6" style="animation-delay:-0.3s"/>
+              <circle class="node" cx="330" cy="370" r="5" fill="url(#nodeGrad)" opacity="0.6" style="animation-delay:-1.4s"/>
+              <!-- center -->
+              <circle class="node center" cx="200" cy="200" r="16"/>
+              <text x="200" y="175" text-anchor="middle" fill="#fff" font-family="Space Grotesk" font-size="12" font-weight="600" opacity="0.9">YOU</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 4: How it works (Activation video) -->
+  <section class="slide" data-title="Activation">
+    <div class="particles">
+      <div class="particle" style="width:400px;height:400px;background:var(--accent-2);top:-10%;right:-10%;"></div>
+    </div>
+    <div class="slide-inner">
+      <div class="grid-2">
+        <div>
+          <div class="eyebrow">Activate in seconds</div>
+          <h2 class="title">One toggle. <span class="gradient-text">Instant trust.</span></h2>
+          <p class="subtitle">
+            Turn on Web of Trust in a single click. Nostria builds your trust graph
+            from the people you already follow — no setup, no friction, no compromise.
+          </p>
+          <ul class="bullets">
+            <li>Enable from Settings → Web of Trust</li>
+            <li>Tune the trust ranking threshold to your taste</li>
+            <li>Filter feeds, mentions, and notifications</li>
+          </ul>
+        </div>
+        <div class="video-card">
+          <video src="https://mibo.nostria.app/f8e6022d49b7932f38abc35228c4d9d29887b93aaefc42342c97751a94528849.mp4"
+                 controls muted playsinline preload="metadata"></video>
+          <p style="text-align:center;color:var(--muted);font-size:0.85rem;margin-top:0.75rem;letter-spacing:0.1em;text-transform:uppercase;">
+            Demo · Activating Web of Trust
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 5: Full Demo -->
+  <section class="slide" data-title="Demo">
+    <div class="particles">
+      <div class="particle" style="width:400px;height:400px;background:var(--accent);top:20%;left:-10%;"></div>
+      <div class="particle" style="width:300px;height:300px;background:var(--accent-3);bottom:-10%;right:-5%;animation-delay:-4s;"></div>
+    </div>
+    <div class="slide-inner">
+      <div class="eyebrow">Live Demo</div>
+      <h2 class="title" style="margin-bottom:2rem;">See it in <span class="gradient-text">action</span>.</h2>
+      <div class="video-card" style="max-width:1100px;margin:0 auto;">
+        <video src="https://mibo.nostria.app/adb7657412ef54f16050cecd35f736babb245b59c5c3f9b45b97e19e58d3c5cf.mp4"
+               controls muted playsinline preload="metadata"></video>
+        <p style="text-align:center;color:var(--muted);font-size:0.85rem;margin-top:0.75rem;letter-spacing:0.1em;text-transform:uppercase;">
+          Full walkthrough · Web of Trust in practice
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 6: Features -->
+  <section class="slide" data-title="Features">
+    <div class="particles">
+      <div class="particle" style="width:400px;height:400px;background:var(--accent);top:-10%;right:-10%;"></div>
+      <div class="particle" style="width:300px;height:300px;background:var(--accent-2);bottom:-10%;left:-5%;animation-delay:-5s;"></div>
+    </div>
+    <div class="slide-inner">
+      <div class="eyebrow">What you get</div>
+      <h2 class="title">A filter that <span class="gradient-text">thinks with you</span>.</h2>
+      <div class="grid-3" style="margin-top:3rem;">
+        <div class="card">
+          <div class="icon">🕸️</div>
+          <h3>Trust Ranking</h3>
+          <p>Every account gets a trust score based on your network. Tune the threshold to your taste.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🛡️</div>
+          <h3>Spam Shield</h3>
+          <p>Mentions and DMs from outside your trust graph get auto-quarantined.</p>
+        </div>
+        <div class="card">
+          <div class="icon">⚡</div>
+          <h3>Real-time</h3>
+          <p>Your graph updates as you follow new people. Always fresh, always yours.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🔒</div>
+          <h3>Privacy-First</h3>
+          <p>Trust graphs are computed on your device. Nothing is shared, nothing is tracked.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🎛️</div>
+          <h3>Full Control</h3>
+          <p>Whitelist, blacklist, override — every decision stays in your hands.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🌐</div>
+          <h3>Open Protocol</h3>
+          <p>Built on Nostr standards. Your trust data is portable across clients.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 7: Why Nostria -->
+  <section class="slide" data-title="Why Nostria">
+    <div class="particles">
+      <div class="particle" style="width:500px;height:500px;background:var(--accent);top:-20%;left:30%;"></div>
+    </div>
+    <div class="slide-inner">
+      <div class="eyebrow">Why Nostria</div>
+      <h2 class="title" style="margin-bottom:3rem;">Beautiful, <span class="gradient-text">scalable</span>, and yours.</h2>
+      <div class="grid-3">
+        <div class="stat">
+          <div class="num">100%</div>
+          <div class="label">Decentralized</div>
+        </div>
+        <div class="stat">
+          <div class="num">0</div>
+          <div class="label">Data Harvested</div>
+        </div>
+        <div class="stat">
+          <div class="num">∞</div>
+          <div class="label">Trust Levels</div>
+        </div>
+      </div>
+      <div class="grid-3" style="margin-top:3rem;">
+        <div class="card">
+          <div class="icon">🎨</div>
+          <h3>Crafted for humans</h3>
+          <p>Modern, elegant UI that works beautifully on every device.</p>
+        </div>
+        <div class="card">
+          <div class="icon">☁️</div>
+          <h3>Premium cloud</h3>
+          <p>Reliable infrastructure for power users — relays, media, backups.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🚀</div>
+          <h3>Built to scale</h3>
+          <p>From your first follow to your millionth — Nostria keeps up.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 8: Call to Action -->
+  <section class="slide" data-title="Join">
+    <div class="particles">
+      <div class="particle" style="width:600px;height:600px;background:var(--accent);top:-20%;left:-10%;"></div>
+      <div class="particle" style="width:500px;height:500px;background:var(--accent-3);bottom:-20%;right:-10%;animation-delay:-4s;"></div>
+      <div class="particle" style="width:400px;height:400px;background:var(--accent-2);top:40%;left:40%;animation-delay:-8s;"></div>
+    </div>
+    <div class="slide-inner" style="text-align:center;">
+      <div class="eyebrow" style="margin:0 auto 2rem;">Join the network</div>
+      <h1 class="title" style="font-size:clamp(3rem, 8vw, 8rem);margin-bottom:2rem;">
+        Take back <span class="gradient-text">your feed</span>.
+      </h1>
+      <p class="subtitle" style="margin:0 auto 3rem;">
+        Nostria is live. Web of Trust is live. Your network is waiting.
+      </p>
+      <div style="display:inline-flex;gap:1rem;flex-wrap:wrap;justify-content:center;">
+        <a href="https://nostria.app" target="_blank" rel="noopener"
+           style="padding:1rem 2rem;border-radius:999px;background:linear-gradient(135deg,var(--accent),var(--accent-3));color:#fff;text-decoration:none;font-weight:600;letter-spacing:0.05em;box-shadow:0 20px 50px -15px var(--ring);">
+          Try Nostria →
+        </a>
+        <a href="https://nostria.app/premium" target="_blank" rel="noopener"
+           style="padding:1rem 2rem;border-radius:999px;border:1px solid rgba(255,255,255,0.2);color:#fff;text-decoration:none;font-weight:600;letter-spacing:0.05em;background:rgba(255,255,255,0.04);">
+          Explore Premium
+        </a>
+      </div>
+      <div class="author" style="margin-top:4rem;justify-content:center;">
+        <div class="avatar">SB</div>
+        <div class="meta" style="text-align:left;">
+          <div class="name">Sondre Bjellås</div>
+          <div class="role">Founder · Nostria</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<nav class="nav" aria-label="Slide navigation">
+  <button id="prev" aria-label="Previous slide">‹</button>
+  <div class="counter"><b id="curNum">01</b> / <span id="totalNum">08</span></div>
+  <button id="next" aria-label="Next slide">›</button>
+</nav>
+
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const bar = document.getElementById('progressBar');
+  const curNum = document.getElementById('curNum');
+  const totalNum = document.getElementById('totalNum');
+  const slideIndex = document.getElementById('slideIndex');
+  let current = 0;
+  totalNum.textContent = String(slides.length).padStart(2, '0');
+
+  function go(n) {
+    current = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach((s, i) => {
+      s.classList.remove('active', 'prev');
+      if (i === current) s.classList.add('active');
+      else if (i < current) s.classList.add('prev');
+    });
+    bar.style.width = (((current + 1) / slides.length) * 100) + '%';
+    const padded = String(current + 1).padStart(2, '0');
+    curNum.textContent = padded;
+    slideIndex.textContent = padded + ' / ' + String(slides.length).padStart(2, '0');
+
+    // Pause videos on slides that aren't active
+    document.querySelectorAll('video').forEach(v => {
+      if (!v.closest('.slide').classList.contains('active')) v.pause();
+    });
+  }
+
+  document.getElementById('prev').addEventListener('click', () => go(current - 1));
+  document.getElementById('next').addEventListener('click', () => go(current + 1));
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); go(current + 1); }
+    if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); go(current - 1); }
+    if (e.key === 'Home') go(0);
+    if (e.key === 'End') go(slides.length - 1);
+    if (e.key === 'f' || e.key === 'F') {
+      if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+      else document.exitFullscreen();
+    }
+  });
+
+  // Swipe support
+  let touchX = 0;
+  document.addEventListener('touchstart', e => touchX = e.touches[0].clientX);
+  document.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 60) go(current + (dx < 0 ? 1 : -1));
+  });
+
+  // Card hover parallax
+  document.querySelectorAll('.card').forEach(c => {
+    c.addEventListener('mousemove', e => {
+      const r = c.getBoundingClientRect();
+      c.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100) + '%');
+      c.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100) + '%');
+    });
+  });
+
+  go(0);
+</script>
+
+</body>
+</html>
