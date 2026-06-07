@@ -18,7 +18,7 @@ export interface DownloadPlatform {
   options: readonly DownloadOption[];
 }
 
-export const currentDesktopRelease = '3.1.45';
+export const currentDesktopRelease = '3.1.46';
 
 function createReleaseAssetUrl(fileName: string): string {
   return `https://github.com/nostria-app/nostria/releases/download/v${currentDesktopRelease}/${fileName}`;
